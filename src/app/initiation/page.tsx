@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { KeyRound, ShieldCheck, Waves } from 'lucide-react';
+import { KeyRound, ShieldCheck, Waves, Sunrise, Sun, Sunset } from 'lucide-react';
 
 export default function InitiationPage() {
   return (
@@ -66,6 +66,48 @@ export default function InitiationPage() {
             </div>
           </CardContent>
         </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>ದೀಕ್ಷೆಯ ಹಂತಗಳು</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="flex items-start gap-4">
+              <div className="p-2 bg-primary/10 rounded-full">
+                <Sunrise className="w-6 h-6 text-primary" />
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold">ಪ್ರಾಥಮಿಕ ಹಂತ (ಪ್ರವೇಶ ಮಟ್ಟ)</h3>
+                <p className="text-muted-foreground">
+                  ಇದು ಸಾಧಕನ ಆಧ್ಯಾತ್ಮಿಕ ಪಯಣದ ಆರಂಭ. ಈ ಹಂತದಲ್ಲಿ, ಗುರುವು ಶಿಷ್ಯನ ಶರೀರ ಮತ್ತು ಮನಸ್ಸನ್ನು ಶುದ್ಧೀಕರಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತಾನೆ. ಸಾಮಾನ್ಯವಾಗಿ ಸರಳವಾದ ಬೀಜ ಮಂತ್ರವನ್ನು ಉಪದೇಶಿಸಲಾಗುತ್ತದೆ. ಇದು ಸಾಧಕನಿಗೆ ತಂತ್ರದ ಮೂಲಭೂತ ತತ್ವಗಳನ್ನು ಪರಿಚಯಿಸುತ್ತದೆ ಮತ್ತು ಮುಂದಿನ ಹಂತಗಳಿಗೆ ಅಡಿಪಾಯವನ್ನು ಹಾಕುತ್ತದೆ.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="p-2 bg-accent/10 rounded-full">
+                <Sun className="w-6 h-6 text-accent" />
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold">ಮಧ್ಯಮ ಹಂತ</h3>
+                <p className="text-muted-foreground">
+                  ಸಾಧಕನು ಪ್ರಾಥಮಿಕ ಹಂತದಲ್ಲಿ ಪ್ರಗತಿ ಸಾಧಿಸಿದ ನಂತರ, ಗುರುವು ಅವನನ್ನು ಮುಂದಿನ ಹಂತಕ್ಕೆ ಕೊಂಡೊಯ್ಯುತ್ತಾನೆ. ಈ ಹಂತದಲ್ಲಿ ಹೆಚ್ಚು ಶಕ್ತಿಶಾಲಿಯಾದ ಮಂತ್ರಗಳು, ಯಂತ್ರಗಳ ಪೂಜಾ ವಿಧಾನ ಮತ್ತು ಸರಳವಾದ ತಾಂತ್ರಿಕ ಕ್ರಿಯೆಗಳನ್ನು ಕಲಿಸಲಾಗುತ್ತದೆ. ಇಲ್ಲಿ ಸಾಧಕನ ಏಕಾಗ್ರತೆ ಮತ್ತು ಸಮರ್ಪಣಾ ಭಾವವು ಹೆಚ್ಚಾಗುತ್ತದೆ.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="p-2 bg-secondary-foreground/10 rounded-full">
+                <Sunset className="w-6 h-6 text-secondary-foreground" />
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold">ಉನ್ನತ ಹಂತ</h3>
+                <p className="text-muted-foreground">
+                  ಇದು ಅತ್ಯುನ್ನತ ಮಟ್ಟದ ದೀಕ್ಷೆಯಾಗಿದ್ದು, ಕೇವಲ ಅರ್ಹ ಮತ್ತು ಸಮರ್ಪಿತ ಶಿಷ್ಯರಿಗೆ ಮಾತ್ರ ನೀಡಲಾಗುತ್ತದೆ. ಈ ಹಂತದಲ್ಲಿ, ಗುರುವು ಅತ್ಯಂತ ರಹಸ್ಯವಾದ ಮತ್ತು ಶಕ್ತಿಶಾಲಿಯಾದ ಜ್ಞಾನವನ್ನು ವರ್ಗಾಯಿಸುತ್ತಾನೆ. ಇದು ಕುಂಡಲಿನೀ ಜಾಗೃತಿ, ಚಕ್ರ ಭೇದನ ಮತ್ತು ಆತ್ಮ-ಸಾಕ್ಷಾತ್ಕಾರದಂತಹ ಗূಢವಾದ ವಿಷಯಗಳನ್ನು ಒಳಗೊಂಡಿರುತ್ತದೆ. ಈ ದೀಕ್ಷೆಯು ಶಿಷ್ಯನನ್ನು ಸಂಪೂರ್ಣವಾಗಿ ಪರಿವರ್ತಿಸುತ್ತದೆ.
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
       </div>
     </div>
   );
