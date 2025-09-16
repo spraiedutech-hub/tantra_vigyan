@@ -15,10 +15,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 //
 const playlists = [
   {
-    name: 'Ambika D Nagaraj - All Videos',
-    playlistId: 'UU2-w9YEt2_8a_TDIZoE-3_A', // This is the special ID for all of a channel's uploads
-  },
-  {
     name: 'Glimpses of Tantra',
     playlistId: 'PLGugaNSbpj0DwQW2AG2sswSr3JgpTY2QJ',
   },
