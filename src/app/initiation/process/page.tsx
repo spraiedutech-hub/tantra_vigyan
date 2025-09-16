@@ -5,7 +5,7 @@ import { ArrowLeft, CheckCircle, CreditCard, Send } from 'lucide-react';
 import Link from 'next/link';
 
 export default function InitiationProcessPage() {
-  const initiationFee = '₹5,400';
+  const initiationFee = '₹11,111/-';
 
   return (
     <div className="space-y-8 animate-fade-in max-w-4xl mx-auto">
