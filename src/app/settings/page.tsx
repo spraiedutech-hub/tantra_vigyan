@@ -1,7 +1,6 @@
 
 'use client';
 
-import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
@@ -10,10 +9,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Switch } from '@/components/ui/switch';
 import { useToast } from '@/hooks/use-toast';
 import { Settings } from 'lucide-react';
+import { useTheme } from 'next-themes';
 
 export default function SettingsPage() {
   const { toast } = useToast();
-  const [theme, setTheme] = useState('light');
+  const { theme, setTheme } = useTheme();
+
 
   const handleSaveChanges = () => {
     toast({
@@ -45,7 +46,7 @@ export default function SettingsPage() {
               ಥೀಮ್
             </Label>
             <RadioGroup
-              defaultValue="light"
+              defaultValue={theme}
               className="flex items-center space-x-4"
               onValueChange={setTheme}
               value={theme}

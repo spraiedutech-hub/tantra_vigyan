@@ -3,6 +3,7 @@ import './globals.css';
 import { SidebarProvider, Sidebar, SidebarInset } from '@/components/ui/sidebar';
 import AppSidebar from '@/components/layout/app-sidebar';
 import { Toaster } from '@/components/ui/toaster';
+import { ThemeProvider } from '@/components/theme-provider';
 
 export const metadata: Metadata = {
   title: 'Tantra Vigyan',
@@ -15,22 +16,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="kn">
+    <html lang="kn" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased">
-        <SidebarProvider>
-          <div className="flex min-h-screen">
-            <AppSidebar />
-            <SidebarInset>
-              <main className="flex-1 p-4 sm:p-6 lg:p-8">{children}</main>
-            </SidebarInset>
-          </div>
-        </SidebarProvider>
-        <Toaster />
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+        >
+            <SidebarProvider>
+              <div className="flex min-h-screen">
+                <AppSidebar />
+                <SidebarInset>
+                  <main className="flex-1 p-4 sm:p-6 lg:p-8">{children}</main>
+                </SidebarInset>
+              </div>
+            </SidebarProvider>
+            <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );
