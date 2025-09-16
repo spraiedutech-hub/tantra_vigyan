@@ -19,11 +19,10 @@ const playlists = [
     name: 'Ambika D Nagaraj - All Videos',
     playlistId: 'UU2-w9YEt2_8a_TDIZoE-3_A', // This is the special ID for all of a channel's uploads
   },
-  // Example: Add another playlist by uncommenting and editing the lines below
-  // {
-  //   name: 'My Awesome Playlist',
-  //   playlistId: 'PLxxxxxxxxxxxxxxxxxxxxxx', 
-  // },
+  {
+    name: 'Glimpses of Tantra',
+    playlistId: 'PLGugaNSbpj0DwQW2AG2sswSr3JgpTY2QJ', 
+  },
 ];
 
 export default function YouTubePage() {
