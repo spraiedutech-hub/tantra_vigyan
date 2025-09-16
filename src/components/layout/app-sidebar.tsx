@@ -26,13 +26,12 @@ import {
   Library,
   ClipboardCheck,
 } from 'lucide-react';
-import { Button } from '../ui/button';
 import { useState, useEffect } from 'react';
 
 const navItems = [
   { href: '/', label: 'ಮುಖಪುಟ', icon: Home },
   { href: '/mantras', label: 'ಮಂತ್ರಗಳು', icon: BookAudio },
-  { href: '/activities', label: 'ಚಟುವಟಿಕೆಗಳು', icon: Activity },
+  { href: '/activities', label: 'ಚಟುವ_ಟಿಕೆಗಳು', icon: Activity },
   { href: '/recommendations', label: 'ಶಿಫಾರಸುಗಳು', icon: Sparkles },
   { href: '/initiation', label: 'ದೀಕ್ಷೆ', icon: KeyRound },
   { href: '/knowledge', label: 'ಜ್ಞಾನ', icon: BookOpen },
@@ -62,12 +61,18 @@ export default function AppSidebar() {
         <SidebarMenu>
           {navItems.map((item) => (
             <SidebarMenuItem key={item.href}>
-              <Button asChild variant="ghost" className="w-full justify-start p-2 h-auto" aria-current={mounted && pathname === item.href ? "page" : undefined}>
+              <SidebarMenuButton 
+                asChild 
+                variant="ghost" 
+                className="w-full justify-start p-2 h-auto" 
+                isActive={mounted && pathname === item.href}
+                tooltip={item.label}
+              >
                 <Link href={item.href}>
                     <item.icon className="mr-2 h-4 w-4" />
                     <span className="group-data-[collapsible=icon]:hidden">{item.label}</span>
                 </Link>
-              </Button>
+              </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
         </SidebarMenu>
