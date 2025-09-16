@@ -20,7 +20,6 @@ import {
   Activity,
   Sparkles,
   TrendingUp,
-  Users,
   BookOpen,
 } from 'lucide-react';
 import { Button } from '../ui/button';
@@ -32,7 +31,6 @@ const navItems = [
   { href: '/recommendations', label: 'ಶಿಫಾರಸುಗಳು', icon: Sparkles },
   { href: '/knowledge', label: 'ಜ್ಞಾನ', icon: BookOpen },
   { href: '/progress', label: 'ಪ್ರಗತಿ', icon: TrendingUp },
-  { href: '/community', label: 'ಸಮುದಾಯ', icon: Users },
 ];
 
 export default function AppSidebar() {
