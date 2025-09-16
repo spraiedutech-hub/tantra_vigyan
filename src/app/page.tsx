@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -30,7 +31,7 @@ export default function Home() {
       </header>
 
       {heroImage && (
-        <div className="relative w-full h-80 md:h-[500px] rounded-lg overflow-hidden shadow-lg">
+        <div className="relative w-full h-96 md:h-[600px] rounded-lg overflow-hidden shadow-lg">
           <Image
             src={heroImage.imageUrl}
             alt={heroImage.description}
