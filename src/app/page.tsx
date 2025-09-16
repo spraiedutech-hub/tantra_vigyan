@@ -30,13 +30,14 @@ export default function Home() {
       </header>
 
       {heroImage && (
-        <div className="relative w-full h-64 md:h-96 rounded-lg overflow-hidden shadow-lg">
+        <div className="relative w-full h-80 md:h-[500px] rounded-lg overflow-hidden shadow-lg">
           <Image
             src={heroImage.imageUrl}
             alt={heroImage.description}
             fill
             className="object-cover"
             data-ai-hint={heroImage.imageHint}
+            priority
           />
            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
         </div>
