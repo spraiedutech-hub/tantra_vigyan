@@ -55,7 +55,7 @@ export default function InitiationProcessPage() {
 
         <Card className="border-accent/30">
           <CardHeader>
-            <CardTitle className="text-2xl font-headline text-accent">ದೀಕ್ಷಾ ಶುಲ್ಕ (ಗುರು ದಕ್ಷಿಣೆ)</CardTitle>
+            <CardTitle className="text-2xl font-headline text-accent">Entry level - intiation price</CardTitle>
             <CardDescription>ಈ ಶುಲ್ಕವು ಜ್ಞಾನ ಪರಂಪರೆಯ ನಿರ್ವಹಣೆ ಮತ್ತು ಮುಂದುವರಿಕೆಗೆ ಸಹಾಯ ಮಾಡುತ್ತದೆ.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
