@@ -1,6 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { KeyRound, ShieldCheck, Waves, Sunrise, Sun, Sunset, Sparkles } from 'lucide-react';
+import { KeyRound, ShieldCheck, Waves, Sunrise, Sun, Sunset, Sparkles, ArrowRight } from 'lucide-react';
 import SadhanaPreview from '@/components/sadhana-preview';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export default function InitiationPage() {
   return (
@@ -111,6 +113,23 @@ export default function InitiationPage() {
       </div>
 
       <SadhanaPreview />
+
+      <Card className="mt-8 bg-gradient-to-r from-primary/20 via-card to-accent/20 animated-border">
+        <CardHeader>
+            <CardTitle className="text-2xl font-headline text-center">ನಿಮ್ಮ ಆಧ್ಯಾತ್ಮಿಕ ಪಯಣವನ್ನು ಪ್ರಾರಂಭಿಸಿ</CardTitle>
+        </CardHeader>
+        <CardContent className="text-center">
+            <p className="text-muted-foreground mb-6">
+            ದೀಕ್ಷೆ ಪಡೆಯುವ ಮೂಲಕ ತಂತ್ರದ ಆಳವಾದ ಜ್ಞಾನ ಮತ್ತು ಶಕ್ತಿಯುತ ಸಾಧನೆಗಳಿಗೆ ಪ್ರವೇಶ ಪಡೆಯಿರಿ. ನಿಮ್ಮ ನಿಜವಾದ ಸಾಮರ್ಥ್ಯವನ್ನು ಅನ್ಲಾಕ್ ಮಾಡಲು ಇದು ಮೊದಲ ಹೆಜ್ಜೆ.
+            </p>
+            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg transform hover:scale-105 transition-transform">
+                <Link href="/initiation/process">
+                ದೀಕ್ಷಾ ಪ್ರಕ್ರಿಯೆ ಮತ್ತು ಶುಲ್ಕ ತಿಳಿಯಿರಿ <ArrowRight className="ml-2" />
+                </Link>
+            </Button>
+        </CardContent>
+      </Card>
+
     </div>
   );
 }
