@@ -1,3 +1,4 @@
+
 'use client';
 
 import {
@@ -46,12 +47,25 @@ export default function ActivitiesPage() {
               {activity.title}
             </AccordionTrigger>
             <AccordionContent className="p-6 pt-0">
-              <div className="space-y-4">
-                <ol className="list-decimal list-inside space-y-3 text-base text-foreground/80">
-                  {activity.steps.map((step, stepIndex) => (
-                    <li key={stepIndex}>{step}</li>
-                  ))}
-                </ol>
+              <div className="space-y-6">
+                {activity.videoUrl && (
+                  <div className="aspect-video rounded-md overflow-hidden">
+                    <video
+                      src={activity.videoUrl}
+                      controls
+                      className="w-full h-full object-cover"
+                      aria-label={`${activity.title} video demonstration`}
+                    />
+                  </div>
+                )}
+                <div>
+                    <h3 className="text-lg font-semibold mb-2">ಸೂಚನೆಗಳು:</h3>
+                    <ol className="list-decimal list-inside space-y-3 text-base text-foreground/80">
+                    {activity.steps.map((step, stepIndex) => (
+                        <li key={stepIndex}>{step}</li>
+                    ))}
+                    </ol>
+                </div>
                 <Button
                   onClick={() => handleCompleteActivity(activity.title)}
                   className="bg-accent text-accent-foreground hover:bg-accent/90"

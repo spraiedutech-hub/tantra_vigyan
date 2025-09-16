@@ -1,3 +1,4 @@
+
 export const dailyAffirmations = [
   "ನಾನು ಶಾಂತಿ ಮತ್ತು ಸಮತೋಲನದಿಂದ ತುಂಬಿದ್ದೇನೆ.",
   "ನನ್ನ ಶಕ್ತಿಯು ಅಪಾರವಾಗಿದೆ ಮತ್ತು ನಾನು ಯಾವುದನ್ನಾದರೂ ಸಾಧಿಸಬಲ್ಲೆ.",
@@ -39,6 +40,7 @@ export const activities = [
       "ಮನಸ್ಸಿನಲ್ಲಿ ಬರುವ ಆಲೋಚನೆಗಳನ್ನು ಗಮನಿಸಿ ಆದರೆ ಅವುಗಳಲ್ಲಿ ತೊಡಗಿಸಿಕೊಳ್ಳಬೇಡಿ.",
       "ಪ್ರತಿದಿನ 10-15 ನಿಮಿಷಗಳ ಕಾಲ ಅಭ್ಯಾಸ ಮಾಡಿ.",
     ],
+    videoUrl: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
   },
   {
     title: "ಪ್ರಾಣಾಯಾಮ (ಉಸಿರಾಟದ ವ್ಯಾಯಾಮ)",
@@ -49,6 +51,7 @@ export const activities = [
       "ಈಗ ಬಲ ಹೊಳ್ಳೆಯಿಂದ ಉಸಿರನ್ನು ಒಳಗೆ ತೆಗೆದುಕೊಂಡು ಎಡ ಹೊಳ್ಳೆಯಿಂದ ಹೊರಗೆ ಬಿಡಿ. ಇದು ಒಂದು ಸುತ್ತು.",
       "5-10 ಸುತ್ತುಗಳನ್ನು ಅಭ್ಯಾಸ ಮಾಡಿ.",
     ],
+    videoUrl: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
   },
   {
     title: "ಯೋಗ ನಿದ್ರಾ",
@@ -59,6 +62,7 @@ export const activities = [
       "ನಿಮ್ಮ ದೇಹ ಮತ್ತು ಮನಸ್ಸು ಸಂಪೂರ್ಣವಾಗಿ ವಿಶ್ರಾಂತಿ ಪಡೆಯಲಿ.",
       "15-20 ನಿಮಿಷಗಳ ಕಾಲ ಈ ಸ್ಥಿತಿಯಲ್ಲಿರಿ.",
     ],
+    videoUrl: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
   },
 ];
 
