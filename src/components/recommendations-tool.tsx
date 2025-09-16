@@ -237,7 +237,7 @@ export default function RecommendationsTool() {
                 <h3 className="text-xl font-semibold">ನಿಮ್ಮ ಶಿಫಾರಸುಗಳು:</h3>
                 <Notice />
                 {mantraResult.mantraRecommendations.map((rec, index) => (
-                  <Card key={index} className="bg-muted/50">
+                  <Card key={index} className="bg-muted/50 transform hover:scale-[1.02] transition-transform duration-300 ease-in-out">
                     <CardHeader>
                       <CardTitle className="text-accent">{rec.mantraName}</CardTitle>
                     </CardHeader>
@@ -344,7 +344,7 @@ export default function RecommendationsTool() {
                 <Separator />
                 <h3 className="text-xl font-semibold">ನಿಮ್ಮ ಶಿಫಾರಸುಗಳು:</h3>
                 <Notice />
-                <Card className="bg-muted/50">
+                <Card className="bg-muted/50 transform hover:scale-[1.02] transition-transform duration-300 ease-in-out">
                     <CardContent className="p-6">
                       <p className="whitespace-pre-wrap">{activityResult.recommendations}</p>
                     </CardContent>
