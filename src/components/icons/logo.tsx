@@ -24,7 +24,7 @@ export function Logo(props: SVGProps<SVGSVGElement>) {
         fontSize="30"
         fontWeight="bold"
         fill="hsl(var(--primary))"
-        className="fill-primary"
+        className="fill-primary animate-glow"
       >
         ತಂತ್ರ ವಿಜ್ಞಾನ
       </text>
