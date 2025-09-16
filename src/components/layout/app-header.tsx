@@ -28,12 +28,15 @@ export default function AppHeader() {
           </h1>
         )}
       </div>
-      <Button asChild className="bg-primary/80 hover:bg-primary text-primary-foreground animate-pulse">
-        <Link href="/initiation/process">
-          Initiation Process Started
-          <ArrowRight className="ml-2 h-4 w-4" />
-        </Link>
-      </Button>
+      <div className="flex-1 flex justify-center">
+        <Button asChild className="bg-primary/80 hover:bg-primary text-primary-foreground animate-pulse">
+            <Link href="/initiation/process">
+            Initiation Process Started
+            <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+        </Button>
+      </div>
+      <div className="flex-1" />
     </header>
   );
 }
