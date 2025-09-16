@@ -5,14 +5,21 @@ import { useState } from 'react';
 import { Youtube } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
-// Add your YouTube playlists to this list
-// You can find the playlist ID in the URL of the playlist page on YouTube
+//
+// How to add a new YouTube Playlist:
+// 1. Find your playlist on YouTube and click on it.
+// 2. Look at the URL in your browser's address bar. It will look like:
+//    https://www.youtube.com/playlist?list=PLxxxxxxxxxxxxxxxxxx
+// 3. The part after 'list=' is your playlist ID. (e.g., PLxxxxxxxxxxxxxxxxxx)
+// 4. Copy the playlist ID.
+// 5. Add a new object to the 'playlists' array below, following the format.
+//
 const playlists = [
   {
     name: 'Ambika D Nagaraj - All Videos',
     playlistId: 'UU2-w9YEt2_8a_TDIZoE-3_A', // This is the special ID for all of a channel's uploads
   },
-  // Example: Add another playlist below
+  // Example: Add another playlist by uncommenting and editing the lines below
   // {
   //   name: 'My Awesome Playlist',
   //   playlistId: 'PLxxxxxxxxxxxxxxxxxxxxxx', 
