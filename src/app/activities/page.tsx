@@ -48,16 +48,6 @@ export default function ActivitiesPage() {
             </AccordionTrigger>
             <AccordionContent className="p-6 pt-0">
               <div className="space-y-6">
-                {activity.videoUrl && (
-                  <div className="aspect-video rounded-md overflow-hidden">
-                    <video
-                      src={activity.videoUrl}
-                      controls
-                      className="w-full h-full object-cover"
-                      aria-label={`${activity.title} video demonstration`}
-                    />
-                  </div>
-                )}
                 <div>
                     <h3 className="text-lg font-semibold mb-2">ಸೂಚನೆಗಳು:</h3>
                     <ol className="list-decimal list-inside space-y-3 text-base text-foreground/80">
