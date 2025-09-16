@@ -33,7 +33,6 @@ export default function RootLayout({
             disableTransitionOnChange
         >
             <AnimatedBackground />
-            <div className="fixed inset-0 -z-10 animate-fiery-border-glow pointer-events-none" />
             <SidebarProvider>
               <div className="flex min-h-screen">
                 <AppSidebar />
