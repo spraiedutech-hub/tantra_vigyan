@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowLeft, CheckCircle, CreditCard, Send } from 'lucide-react';
@@ -42,7 +43,7 @@ export default function InitiationProcessPage() {
                 </li>
                 <li className="flex items-start gap-3">
                     <CheckCircle className="h-6 w-6 text-primary mt-1 flex-shrink-0"/>
-                    <span><strong className="font-semibold">ಸಮಯ ನಿಗದಿ:</strong> ಪಾವತಿಯ ನಂತರ, ನಿಮಗೆ ದೀಕ್ಷೆಗಾಗಿ ಸಮಯ ಮತ್ತು ದಿನಾಂಕವನ್ನು ನಿಗದಿಪಡಿಸಲು WhatsApp ನಲ್ಲಿ ಸಂದೇಶ ಕಳುಹಿಸಲಾಗುತ್ತದೆ (ಪರೋಕ್ಷ ದೀಕ್ಷೆಗಾಗಿ).</span>
+                    <span><strong className="font-semibold">ಸಮಯ ನಿಗದಿ:</strong> ಪಾವತಿಯ ನಂತರ, ಪಾವತಿ ವಿವರಗಳನ್ನು 7022070287 ಸಂಖ್ಯೆಗೆ WhatsApp ಮಾಡಿ.</span>
                 </li>
                 <li className="flex items-start gap-3">
                     <CheckCircle className="h-6 w-6 text-primary mt-1 flex-shrink-0"/>
