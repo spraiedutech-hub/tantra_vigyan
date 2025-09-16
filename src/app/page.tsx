@@ -28,7 +28,7 @@ export default function Home() {
         </p>
       </header>
 
-      <div className="relative w-full h-96 md:h-[600px] rounded-lg overflow-hidden flex items-center justify-center p-4">
+      <div className="relative w-full h-96 md:h-[600px] flex items-center justify-center">
           <ChakraPractitioner />
       </div>
 

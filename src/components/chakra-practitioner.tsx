@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 export default function ChakraPractitioner() {
   return (
-    <svg viewBox="0 0 300 400" className="w-full h-full max-w-sm max-h-full">
+    <svg viewBox="0 0 300 400" className="w-full h-full max-h-full">
       <defs>
         <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur stdDeviation="4" result="coloredBlur" />
