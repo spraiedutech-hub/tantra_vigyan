@@ -6,6 +6,7 @@ import { generateYantraText, type YantraTextOutput } from '@/ai/flows/generate-y
 import { YantraGeometry } from '@/components/yantra-geometry';
 import { Shapes, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { preloadedYantras } from '@/lib/preloaded-yantras';
 
 type YantraContent = {
   id: number;
@@ -20,13 +21,20 @@ const animations = [
   'animate-glow',
 ];
 
+const initialContent: YantraContent[] = preloadedYantras.map((yantra, index) => ({
+  id: index,
+  data: yantra,
+  animationClass: animations[index % animations.length],
+}));
+
 export default function YantrasPage() {
-  const [content, setContent] = useState<YantraContent[]>([]);
+  const [content, setContent] = useState<YantraContent[]>(initialContent);
   const [isLoading, setIsLoading] = useState(false);
+  const [canLoadMore, setCanLoadMore] = useState(true);
   const observer = useRef<IntersectionObserver>();
 
   const loadMoreContent = useCallback(async () => {
-    if (isLoading) return;
+    if (isLoading || !canLoadMore) return;
     setIsLoading(true);
 
     let result: YantraTextOutput | null = null;
@@ -56,6 +64,7 @@ export default function YantrasPage() {
         if (attempts >= maxAttempts) {
           // You could add a user-facing error message here
           console.error('Failed to load more content after multiple attempts.');
+          setCanLoadMore(false); // Stop trying if it fails consistently
         } else {
           // Wait for a short period before retrying
           await new Promise(resolve => setTimeout(resolve, 1000 * attempts));
@@ -74,28 +83,21 @@ export default function YantrasPage() {
     }
 
     setIsLoading(false);
-  }, [isLoading, content]);
+  }, [isLoading, content, canLoadMore]);
 
   const lastElementRef = useCallback(
     (node: HTMLDivElement) => {
       if (isLoading) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
+        if (entries[0].isIntersecting && canLoadMore) {
           loadMoreContent();
         }
       });
       if (node) observer.current.observe(node);
     },
-    [isLoading, loadMoreContent]
+    [isLoading, loadMoreContent, canLoadMore]
   );
-
-  useEffect(() => {
-     if (content.length === 0) {
-        loadMoreContent();
-     }
-     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <div className="space-y-8 animate-fade-in">
