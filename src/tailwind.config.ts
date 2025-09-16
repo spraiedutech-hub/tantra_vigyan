@@ -110,6 +110,10 @@ export default {
           '50%': { backgroundPosition: '100% 50%' },
           '100%': { backgroundPosition: '0% 50%' },
         },
+        'glow': {
+          '0%, 100%': { filter: 'drop-shadow(0 0 5px hsl(var(--primary)))' },
+          '50%': { filter: 'drop-shadow(0 0 15px hsl(var(--primary)))' },
+        }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -119,6 +123,7 @@ export default {
         'rotate': 'rotate 30s linear infinite',
         'pulse-slow': 'pulse-slow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'animated-border': 'animated-border 4s linear infinite',
+        'glow': 'glow 6s ease-in-out infinite',
       },
     },
   },

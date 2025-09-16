@@ -8,7 +8,7 @@ type SacredGeometryProps = {
 export default function SacredGeometry({ className, mantra = "ॐ" }: SacredGeometryProps) {
   return (
     <div className={cn("fixed z-50 pointer-events-none", className)}>
-      <div className="relative w-24 h-24 animate-rotate">
+      <div className="relative w-24 h-24 animate-rotate animate-glow">
         <svg
           viewBox="0 0 100 100"
           xmlns="http://www.w3.org/2000/svg"
