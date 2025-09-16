@@ -1,7 +1,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowLeft, CheckCircle, CreditCard, Send } from 'lucide-react';
+import { ArrowLeft, CheckCircle, CreditCard, Send, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 
 export default function InitiationProcessPage() {
@@ -75,6 +75,21 @@ export default function InitiationProcessPage() {
                 ಈಗ ನೋಂದಾಯಿಸಿ
             </Button>
           </CardFooter>
+        </Card>
+
+        <Card className="border-secondary/30">
+            <CardHeader>
+                <CardTitle className="text-2xl font-headline text-secondary-foreground flex items-center gap-3">
+                    <TrendingUp />
+                    ಮುಂದಿನ ಹಂತ: ಮಧ್ಯಮ ಮಟ್ಟ
+                </CardTitle>
+                <CardDescription>ನಿಮ್ಮ ಆಧ್ಯಾತ್ಮಿಕ ಪಯಣದಲ್ಲಿನ ಮುಂದಿನ ಹೆಜ್ಜೆ.</CardDescription>
+            </CardHeader>
+            <CardContent>
+                <p className="text-lg text-foreground/90">
+                ಪ್ರವೇಶ ಮಟ್ಟದ ದೀಕ್ಷೆಯನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಪೂರ್ಣಗೊಳಿಸಿ, ಮತ್ತು ನಿಮ್ಮ ಜೀವನದಲ್ಲಿ ಮಂತ್ರ ಮತ್ತು ತಂತ್ರದ ಸಕಾರಾತ್ಮಕ ಪರಿಣಾಮಗಳನ್ನು ನೀವು ಅನುಭವಿಸಲು ಪ್ರಾರಂಭಿಸಿದ ನಂತರ, ನೀವು ಮುಂದಿನ ಹಂತದ ದೀಕ್ಷೆಗೆ ಅರ್ಹರಾಗುತ್ತೀರಿ. ಈ ಹಂತದಲ್ಲಿ, ನಿಮಗೆ ಹೆಚ್ಚು ಶಕ್ತಿಶಾಲಿಯಾದ ಸಾಧನೆಗಳನ್ನು ಪರಿಚಯಿಸಲಾಗುತ್ತದೆ.
+                </p>
+            </CardContent>
         </Card>
       </main>
     </div>
