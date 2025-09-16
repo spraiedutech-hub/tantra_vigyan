@@ -21,6 +21,7 @@ import {
   Sparkles,
   TrendingUp,
   BookOpen,
+  KeyRound,
 } from 'lucide-react';
 import { Button } from '../ui/button';
 
@@ -29,6 +30,7 @@ const navItems = [
   { href: '/mantras', label: 'ಮಂತ್ರಗಳು', icon: BookAudio },
   { href: '/activities', label: 'ಚಟುವಟಿಕೆಗಳು', icon: Activity },
   { href: '/recommendations', label: 'ಶಿಫಾರಸುಗಳು', icon: Sparkles },
+  { href: '/initiation', label: 'ದೀಕ್ಷೆ', icon: KeyRound },
   { href: '/knowledge', label: 'ಜ್ಞಾನ', icon: BookOpen },
   { href: '/progress', label: 'ಪ್ರಗತಿ', icon: TrendingUp },
 ];
