@@ -96,7 +96,7 @@ export default function YantrasPage() {
         {content.map((item) => (
           <div key={item.id} className="flex flex-col md:flex-row items-center gap-8 p-6 rounded-lg bg-card/80 backdrop-blur-sm shadow-md">
             <div className={cn("w-48 h-48 md:w-64 md:h-64 flex-shrink-0", item.animationClass)}>
-              <YantraGeometry variant={item.data.variant} />
+              <YantraGeometry svgString={item.data.svgString} />
             </div>
             <div className="prose prose-lg dark:prose-invert max-w-full text-foreground/90">
                 <h2 className="text-2xl font-headline text-accent">{item.data.name}</h2>
