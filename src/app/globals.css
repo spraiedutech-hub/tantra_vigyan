@@ -67,3 +67,25 @@ body {
     animation: animated-gradient 15s ease infinite;
   }
 }
+
+@layer utilities {
+  .animated-border {
+    @apply relative overflow-hidden;
+  }
+  .animated-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit; 
+    border: 1px solid transparent;
+    background: linear-gradient(120deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary))) border-box;
+    background-size: 200% 200%;
+    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    animation: animated-border 4s linear infinite;
+  }
+}

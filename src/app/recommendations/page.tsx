@@ -4,7 +4,7 @@ import { Sparkles } from "lucide-react";
 export default function RecommendationsPage() {
   return (
     <div className="space-y-8 animate-fade-in">
-      <header className="space-y-2">
+      <header className="space-y-2 p-4 rounded-lg animated-border">
         <h1 className="text-4xl font-bold font-headline text-primary flex items-center gap-2">
           <Sparkles />
           ವೈಯಕ್ತಿಕ ಶಿಫಾರಸುಗಳು
