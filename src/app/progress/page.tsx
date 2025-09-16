@@ -11,7 +11,18 @@ import {
   YAxis,
   Tooltip,
 } from 'recharts';
-import { ChartTooltipContent } from '@/components/ui/chart';
+import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from '@/components/ui/chart';
+
+const chartConfig = {
+  ಮಂತ್ರಗಳು: {
+    label: "ಮಂತ್ರಗಳು",
+    color: "hsl(var(--primary))",
+  },
+  ಚಟುವಟಿಕೆಗಳು: {
+    label: "ಚಟುವಟಿಕೆಗಳು",
+    color: "hsl(var(--accent))",
+  },
+} satisfies ChartConfig;
 
 export default function ProgressPage() {
   return (
@@ -65,27 +76,31 @@ export default function ProgressPage() {
         </CardHeader>
         <CardContent>
           <div className="h-[300px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={progressData.chartData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="month" stroke="hsl(var(--foreground))" fontSize={12} />
-                <YAxis stroke="hsl(var(--foreground))" fontSize={12} />
-                <Tooltip
-                  cursor={{ fill: 'hsl(var(--muted))' }}
+            <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
+              <BarChart accessibilityLayer data={progressData.chartData}>
+                <CartesianGrid vertical={false} />
+                <XAxis
+                  dataKey="month"
+                  tickLine={false}
+                  tickMargin={10}
+                  axisLine={false}
+                />
+                <ChartTooltip
+                  cursor={false}
                   content={<ChartTooltipContent />}
                 />
                 <Bar
                   dataKey="ಮಂತ್ರಗಳು"
                   fill="hsl(var(--primary))"
-                  radius={[4, 4, 0, 0]}
+                  radius={4}
                 />
                 <Bar
                   dataKey="ಚಟುವಟಿಕೆಗಳು"
                   fill="hsl(var(--accent))"
-                  radius={[4, 4, 0, 0]}
+                  radius={4}
                 />
               </BarChart>
-            </ResponsiveContainer>
+            </ChartContainer>
           </div>
         </CardContent>
       </Card>
