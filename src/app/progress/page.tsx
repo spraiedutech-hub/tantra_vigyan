@@ -1,6 +1,11 @@
 'use client';
+import { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { progressData } from '@/lib/constants';
+import {
+  getProgressData,
+  type ProgressData,
+  INITIAL_PROGRESS_DATA,
+} from '@/lib/progress-tracker';
 import { TrendingUp, Target, Repeat, Star } from 'lucide-react';
 import {
   Bar,
@@ -11,20 +16,31 @@ import {
   YAxis,
   Tooltip,
 } from 'recharts';
-import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from '@/components/ui/chart';
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+  type ChartConfig,
+} from '@/components/ui/chart';
 
 const chartConfig = {
   ಮಂತ್ರಗಳು: {
-    label: "ಮಂತ್ರಗಳು",
-    color: "hsl(var(--primary))",
+    label: 'ಮಂತ್ರಗಳು',
+    color: 'hsl(var(--primary))',
   },
   ಚಟುವಟಿಕೆಗಳು: {
-    label: "ಚಟುವಟಿಕೆಗಳು",
-    color: "hsl(var(--accent))",
+    label: 'ಚಟುವಟಿಕೆಗಳು',
+    color: 'hsl(var(--accent))',
   },
 } satisfies ChartConfig;
 
 export default function ProgressPage() {
+  const [progressData, setProgressData] = useState<ProgressData>(INITIAL_PROGRESS_DATA);
+
+  useEffect(() => {
+    setProgressData(getProgressData());
+  }, []);
+
   return (
     <div className="space-y-8">
       <header className="space-y-2">
@@ -44,17 +60,23 @@ export default function ProgressPage() {
             <Target className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{progressData.mantrasPracticed}</div>
+            <div className="text-2xl font-bold">
+              {progressData.mantrasPracticed}
+            </div>
             <p className="text-xs text-muted-foreground">ಒಟ್ಟು ಪಠಣಗಳು</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">ಪೂರ್ಣಗೊಂಡ ಚಟುವಟಿಕೆಗಳು</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              ಪೂರ್ಣಗೊಂಡ ಚಟುವಟಿಕೆಗಳು
+            </CardTitle>
             <Star className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{progressData.activitiesCompleted}</div>
+            <div className="text-2xl font-bold">
+              {progressData.activitiesCompleted}
+            </div>
             <p className="text-xs text-muted-foreground">ಒಟ್ಟು ಪೂರ್ಣಗೊಂಡಿದೆ</p>
           </CardContent>
         </Card>
@@ -64,7 +86,9 @@ export default function ProgressPage() {
             <Repeat className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{progressData.dailyStreak} ದಿನಗಳು</div>
+            <div className="text-2xl font-bold">
+              {progressData.dailyStreak} ದಿನಗಳು
+            </div>
             <p className="text-xs text-muted-foreground">ಸತತ ಅಭ್ಯಾಸ</p>
           </CardContent>
         </Card>
@@ -77,7 +101,16 @@ export default function ProgressPage() {
         <CardContent>
           <div className="h-[300px]">
             <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
-              <BarChart accessibilityLayer data={progressData.chartData}>
+              <BarChart
+                accessibilityLayer
+                data={progressData.chartData}
+                margin={{
+                  top: 20,
+                  right: 20,
+                  bottom: 20,
+                  left: 20,
+                }}
+              >
                 <CartesianGrid vertical={false} />
                 <XAxis
                   dataKey="month"
@@ -85,9 +118,10 @@ export default function ProgressPage() {
                   tickMargin={10}
                   axisLine={false}
                 />
+                <YAxis />
                 <ChartTooltip
                   cursor={false}
-                  content={<ChartTooltipContent />}
+                  content={<ChartTooltipContent indicator="dot" />}
                 />
                 <Bar
                   dataKey="ಮಂತ್ರಗಳು"
