@@ -7,7 +7,7 @@ import { SidebarTrigger } from '@/components/ui/sidebar';
 import { Button } from '@/components/ui/button';
 import { navItems } from './app-sidebar';
 import { useMemo } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, User } from 'lucide-react';
 
 export default function AppHeader() {
   const pathname = usePathname();
@@ -28,11 +28,17 @@ export default function AppHeader() {
           </h1>
         )}
       </div>
-      <div className="flex-1 flex justify-center">
+      <div className="flex-1 flex justify-center items-center gap-4">
         <Button asChild className="bg-primary/80 hover:bg-primary text-primary-foreground animate-pulse">
             <Link href="/initiation/process">
             ದೀಕ್ಷಾ ಪ್ರಕ್ರಿಯೆ ಪ್ರಾರಂಭವಾಗಿದೆ
             <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+        </Button>
+        <Button asChild variant="outline">
+            <Link href="/">
+                <User className="mr-2 h-4 w-4" />
+                Nagaraja D, Hosadurga
             </Link>
         </Button>
       </div>
