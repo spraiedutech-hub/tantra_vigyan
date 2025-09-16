@@ -1,16 +1,17 @@
+
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Loader2, Wand2, Volume2, Info, AlertTriangle } from 'lucide-react';
+import { Loader2, Wand2, Volume2, Info, AlertTriangle, PlayCircle, PauseCircle } from 'lucide-react';
 import type { DailySadhanaOutput } from '@/ai/flows/generate-daily-sadhana';
 import { generateSadhanaAudio } from '@/ai/flows/generate-sadhana-audio';
 import { useToast } from '@/hooks/use-toast';
 import { Alert, AlertDescription, AlertTitle } from './ui/alert';
 
 const preloadedSadhana: DailySadhanaOutput = {
-  intention: "ಇಂದು ನಾನು ನನ್ನ ಆಂತರಿಕ ಶಾಂತಿಯನ್ನು ಕಂಡುಕೊಳ್ಳುತ್ತೇನೆ ಮತ್ತು ನನ್ನ ಸುತ್ತಲೂ ಸಕಾರಾತ್ಮಕ ಶಕ್ತಿಯನ್ನು ಪ್ರಸರಿಸುತ್ತೇನೆ.",
+  intention: "ಇಂದು ನಾನು ನನ್ನ ಆಂತರಿಕ ಶಾಂತಿಯನ್ನು ಕಂಡುಕೊಳ್ಳುತ್ತೇನೆ ಮತ್ತು ನನ್ನ ಸುತ್ತಲೂ ಸಕಾರಾತ್ಮ-ಕ ಶಕ್ತಿಯನ್ನು ಪ್ರಸರಿಸುತ್ತೇನೆ.",
   mantra: "ಓಂ ಶಾಂತಿ ಮಂತ್ರ (ಓಂ ಶಾಂತಿಃ ಶಾಂತಿಃ ಶಾಂತಿಃ)",
   breathingExercise: "ಸಮವೃತ್ತಿ ಪ್ರಾಣಾಯಾಮ: 4 ಸೆಕೆಂಡುಗಳ ಕಾಲ ಉಸಿರನ್ನು ಒಳಗೆ ತೆಗೆದುಕೊಳ್ಳಿ, 4 ಸೆಕೆಂಡುಗಳ ಕಾಲ ಹಿಡಿದಿಟ್ಟುಕೊಳ್ಳಿ, ಮತ್ತು 4 ಸೆಕೆಂಡುಗಳ ಕಾಲ ಹೊರಗೆ ಬಿಡಿ. 5-7 ಬಾರಿ ಪುನರಾವರ್ತಿಸಿ.",
   meditationFocus: "ನಿಮ್ಮ ಹೃದಯದ ಮಧ್ಯದಲ್ಲಿ ಬೆಳಗುತ್ತಿರುವ ಚಿನ್ನದ ಬಣ್ಣದ ಬೆಳಕನ್ನು ಕಲ್ಪಿಸಿಕೊಳ್ಳಿ. ಪ್ರತಿ ಉಸಿರಿನೊಂದಿಗೆ, ಆ ಬೆಳಕು ಪ್ರಕಾಶಮಾನವಾಗಿ ಮತ್ತು ವಿಸ್ತಾರವಾಗಿ ಹರಡುತ್ತಿರುವುದನ್ನು ಅನುಭವಿಸಿ."
@@ -19,36 +20,24 @@ const preloadedSadhana: DailySadhanaOutput = {
 
 export default function SadhanaPreview() {
   const { toast } = useToast();
-  const [isListening, setIsListening] = useState(false);
+  const [isLoadingAudio, setIsLoadingAudio] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [sadhana, setSadhana] = useState<DailySadhanaOutput | null>(null);
+  const [audioDataUri, setAudioDataUri] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  const handleTogglePreview = () => {
-    // This will toggle the visibility of the preloaded sadhana
-    if (sadhana) {
-      setSadhana(null);
-    } else {
-      setSadhana(preloadedSadhana);
-    }
-  };
-  
-  const handleListen = async () => {
-    if (!sadhana) return;
-    setIsListening(true);
+  const generateAndPreloadAudio = async (sadhanaData: DailySadhanaOutput) => {
+    setIsLoadingAudio(true);
+    setAudioDataUri(null);
     try {
       const fullText = `
-        ಇಂದಿನ ಸಂಕಲ್ಪ: ${sadhana.intention}.
-        ಮಂತ್ರ: ${sadhana.mantra}.
-        ಪ್ರಾಣಾಯಾಮ: ${sadhana.breathingExercise}.
-        ಧ್ಯಾನ: ${sadhana.meditationFocus}.
+        ಇಂದಿನ ಸಂಕಲ್ಪ: ${sadhanaData.intention}.
+        ಮಂತ್ರ: ${sadhanaData.mantra}.
+        ಪ್ರಾಣಾಯಾಮ: ${sadhanaData.breathingExercise}.
+        ಧ್ಯಾನ: ${sadhanaData.meditationFocus}.
       `;
-      const { audioDataUri } = await generateSadhanaAudio(fullText);
-      
-      if (audioRef.current) {
-        audioRef.current.src = audioDataUri;
-        audioRef.current.play();
-      }
-
+      const result = await generateSadhanaAudio(fullText);
+      setAudioDataUri(result.audioDataUri);
     } catch (err) {
         console.error('Failed to generate audio:', err);
         toast({
@@ -57,14 +46,64 @@ export default function SadhanaPreview() {
             description: 'ಆಡಿಯೋ ರಚಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.',
         });
     } finally {
-        setIsListening(false);
+        setIsLoadingAudio(false);
     }
   };
+  
+  const handleTogglePreview = () => {
+    if (sadhana) {
+      setSadhana(null);
+      setAudioDataUri(null);
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+      }
+      setIsPlaying(false);
+    } else {
+      setSadhana(preloadedSadhana);
+      generateAndPreloadAudio(preloadedSadhana);
+    }
+  };
+
+  const handlePlayPause = () => {
+    if (!audioRef.current) return;
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+  
+  useEffect(() => {
+      const audio = audioRef.current;
+      if (audio) {
+          const onPlay = () => setIsPlaying(true);
+          const onPause = () => setIsPlaying(false);
+          const onEnded = () => setIsPlaying(false);
+          
+          audio.addEventListener('play', onPlay);
+          audio.addEventListener('pause', onPause);
+          audio.addEventListener('ended', onEnded);
+          
+          return () => {
+              audio.removeEventListener('play', onPlay);
+              audio.removeEventListener('pause', onPause);
+              audio.removeEventListener('ended', onEnded);
+          };
+      }
+  }, []);
+  
+  useEffect(() => {
+    if (audioDataUri && audioRef.current) {
+        audioRef.current.src = audioDataUri;
+    }
+  }, [audioDataUri]);
 
 
   return (
     <Card className="mt-8 border-primary/50 shadow-lg transform hover:scale-[1.01] transition-transform duration-300 ease-in-out">
-       <audio ref={audioRef} onEnded={() => setIsListening(false)} />
+       <audio ref={audioRef} />
       <CardHeader>
         <CardTitle className="flex items-center gap-3 text-2xl font-headline text-primary">
           <Wand2 />
@@ -105,13 +144,15 @@ export default function SadhanaPreview() {
                     <p className="text-foreground/80">{sadhana.meditationFocus}</p>
                 </div>
             </div>
-            <Button onClick={handleListen} disabled={isListening} variant="outline" className="w-full">
-                {isListening ? (
+            <Button onClick={handlePlayPause} disabled={isLoadingAudio || !audioDataUri} variant="outline" className="w-full">
+                {isLoadingAudio ? (
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                ) : isPlaying ? (
+                    <PauseCircle className="mr-2 h-4 w-4" />
                 ) : (
-                    <Volume2 className="mr-2 h-4 w-4" />
+                    <PlayCircle className="mr-2 h-4 w-4" />
                 )}
-                ಕೇಳಿ
+                {isLoadingAudio ? 'ಆಡಿಯೋ ಸಿದ್ಧಪಡಿಸಲಾಗುತ್ತಿದೆ...' : isPlaying ? 'ವಿರಾಮ' : 'ಕೇಳಿ'}
             </Button>
           </div>
         )}
