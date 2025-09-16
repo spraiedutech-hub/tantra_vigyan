@@ -55,7 +55,7 @@ export default function InitiationProcessPage() {
 
         <Card className="border-accent/30">
           <CardHeader>
-            <CardTitle className="text-2xl font-headline text-accent">Entry level - intiation price</CardTitle>
+            <CardTitle className="text-2xl font-headline text-accent">ಪ್ರವೇಶ ಮಟ್ಟ - ದೀಕ್ಷಾ ಶುಲ್ಕ</CardTitle>
             <CardDescription>ಈ ಶುಲ್ಕವು ಜ್ಞಾನ ಪರಂಪರೆಯ ನಿರ್ವಹಣೆ ಮತ್ತು ಮುಂದುವರಿಕೆಗೆ ಸಹಾಯ ಮಾಡುತ್ತದೆ.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
