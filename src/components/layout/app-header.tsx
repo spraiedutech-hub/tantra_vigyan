@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import { Button } from '@/components/ui/button';
-import { navItems } from './app-sidebar';
+import { navItems } from '@/lib/nav-items';
 import { useMemo } from 'react';
 import { ArrowRight, User } from 'lucide-react';
 

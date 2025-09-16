@@ -1,0 +1,31 @@
+import {
+  Home,
+  BookAudio,
+  Activity,
+  Sparkles,
+  TrendingUp,
+  BookOpen,
+  KeyRound,
+  ShieldQuestion,
+  Library,
+  ClipboardCheck,
+  Shapes,
+  Compass,
+  Youtube,
+} from 'lucide-react';
+
+export const navItems = [
+  { href: '/', label: 'ಮುಖಪುಟ', icon: Home },
+  { href: '/mantras', label: 'ಮಂತ್ರಗಳು', icon: BookAudio },
+  { href: '/activities', label: 'ಚಟುವಟಿಕೆಗಳು', icon: Activity },
+  { href: '/recommendations', label: 'ಶಿಫಾರಸುಗಳು', icon: Sparkles },
+  { href: '/initiation', label: 'ದೀಕ್ಷೆ', icon: KeyRound },
+  { href: '/knowledge', label: 'ಜ್ಞಾನ', icon: BookOpen },
+  { href: '/literature', label: 'ಸಾಹಿತ್ಯ', icon: Library },
+  { href: '/yantras', label: 'ಯಂತ್ರಗಳು', icon: Shapes },
+  { href: '/duties', label: 'ಸಾಧಕನ ಕರ್ತವ್ಯಗಳು', icon: ClipboardCheck },
+  { href: '/progress', label: 'ಪ್ರಗತಿ', icon: TrendingUp },
+  { href: '/guidance', label: 'ಮಾರ್ಗದರ್ಶನ', icon: ShieldQuestion },
+  { href: '/tour', label: 'ಸೈಟ್ ಪ್ರವಾಸ', icon: Compass },
+  { href: '/youtube', label: 'YouTube', icon: Youtube },
+];

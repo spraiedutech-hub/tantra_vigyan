@@ -1,6 +1,6 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { navItems } from '@/components/layout/app-sidebar';
+import { navItems } from '@/lib/nav-items';
 import { Compass } from 'lucide-react';
 
 // Exclude home and the tour page itself from the list
@@ -60,6 +60,8 @@ function getPageDescription(href: string): string {
             return "ನಿಮ್ಮ ದೈನಂದಿನ ಮಂತ್ರ ಮತ್ತು ಚಟುವಟಿಕೆಗಳ ಅಭ್ಯಾಸದ ಪ್ರಗತಿಯನ್ನು ಇಲ್ಲಿ ಗಮನಿಸಿ.";
         case '/guidance':
             return "ಸಾಧನೆಯ ಮಾರ್ಗದಲ್ಲಿ ಎದುರಾಗಬಹುದಾದ ಸಾಮಾನ್ಯ ಅಡೆತಡೆಗಳು ಮತ್ತು ಅವುಗಳ ಪರಿಹಾರಗಳ ಬಗ್ಗೆ ಮಾರ್ಗದರ್ಶನ ಪಡೆಯಿರಿ.";
+        case '/youtube':
+            return "ನಮ್ಮ ಯೂಟ್ಯೂಬ್ ಚಾನೆಲ್‌ನಿಂದ ನೇರವಾಗಿ ವೀಡಿಯೊಗಳನ್ನು ವೀಕ್ಷಿಸಿ.";
         default:
             return "ಈ ವಿಭಾಗದ ಬಗ್ಗೆ ಹೆಚ್ಚಿನ ಮಾಹಿತಿ ಶೀಘ್ರದಲ್ಲೇ ಬರಲಿದೆ.";
     }
