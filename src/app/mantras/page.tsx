@@ -1,14 +1,20 @@
+
 'use client';
 
+import { useState, useRef } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { mantras } from '@/lib/constants';
-import { Music, CheckCircle } from 'lucide-react';
+import { Music, CheckCircle, PlayCircle, Loader2, PauseCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { recordMantraPracticed } from '@/lib/progress-tracker';
 import { useToast } from '@/hooks/use-toast';
+import { generateAudio } from '@/ai/flows/text-to-speech';
 
 export default function MantrasPage() {
   const { toast } = useToast();
+  const [loadingAudioFor, setLoadingAudioFor] = useState<string | null>(null);
+  const [playingMantra, setPlayingMantra] = useState<string | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const handlePractice = (mantraName: string) => {
     recordMantraPracticed();
@@ -16,6 +22,35 @@ export default function MantrasPage() {
       title: 'ಅಭಿನಂದನೆಗಳು!',
       description: `"${mantraName}" ಮಂತ್ರವನ್ನು ಅಭ್ಯಾಸ ಮಾಡಿದ್ದೀರಿ.`,
     });
+  };
+
+  const handlePlayAudio = async (mantraName: string) => {
+    if (playingMantra === mantraName) {
+      audioRef.current?.pause();
+      setPlayingMantra(null);
+      return;
+    }
+
+    setLoadingAudioFor(mantraName);
+    setPlayingMantra(null);
+
+    try {
+      const { media } = await generateAudio(mantraName);
+      if (audioRef.current) {
+        audioRef.current.src = media;
+        audioRef.current.play();
+        setPlayingMantra(mantraName);
+      }
+    } catch (error) {
+      console.error('Error generating audio:', error);
+      toast({
+        variant: 'destructive',
+        title: 'ದೋಷ',
+        description: 'ಆಡಿಯೋ ಪ್ಲೇ ಮಾಡುವಲ್ಲಿ ದೋಷ ಕಂಡುಬಂದಿದೆ.',
+      });
+    } finally {
+      setLoadingAudioFor(null);
+    }
   };
 
   return (
@@ -29,6 +64,8 @@ export default function MantrasPage() {
           ಸಾಂಪ್ರದಾಯಿಕ ತಂತ್ರ ಮಂತ್ರಗಳನ್ನು ಅನ್ವೇಷಿಸಿ ಮತ್ತು ಅವುಗಳ ಉಚ್ಚಾರಣೆಯನ್ನು ಕೇಳಿ.
         </p>
       </header>
+      
+      <audio ref={audioRef} onEnded={() => setPlayingMantra(null)} />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {mantras.map((mantra, index) => (
@@ -39,7 +76,22 @@ export default function MantrasPage() {
             <CardContent className="flex-grow">
               <CardDescription>{mantra.description}</CardDescription>
             </CardContent>
-            <CardFooter>
+            <CardFooter className="grid grid-cols-2 gap-2">
+              <Button
+                variant="outline"
+                className="w-full"
+                onClick={() => handlePlayAudio(mantra.name)}
+                disabled={loadingAudioFor === mantra.name}
+              >
+                {loadingAudioFor === mantra.name ? (
+                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                ) : playingMantra === mantra.name ? (
+                  <PauseCircle className="mr-2 h-5 w-5" />
+                ) : (
+                  <PlayCircle className="mr-2 h-5 w-5" />
+                )}
+                ಕೇಳಿ
+              </Button>
               <Button
                 variant="outline"
                 className="w-full border-accent text-accent hover:bg-accent hover:text-accent-foreground"
