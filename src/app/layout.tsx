@@ -5,6 +5,7 @@ import AppSidebar from '@/components/layout/app-sidebar';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
 import SacredGeometry from '@/components/sacred-geometry';
+import AnimatedBackground from '@/components/animated-background';
 
 export const metadata: Metadata = {
   title: 'Tantra Vigyan',
@@ -30,6 +31,7 @@ export default function RootLayout({
             forcedTheme="dark"
             disableTransitionOnChange
         >
+            <AnimatedBackground />
             <div className="fixed inset-0 -z-10 animate-fiery-border-glow pointer-events-none" />
             <SidebarProvider>
               <div className="flex min-h-screen">
