@@ -23,8 +23,10 @@ import {
   BookOpen,
   KeyRound,
   ShieldQuestion,
+  Library,
 } from 'lucide-react';
 import { Button } from '../ui/button';
+import { useState, useEffect } from 'react';
 
 const navItems = [
   { href: '/', label: 'ಮುಖಪುಟ', icon: Home },
@@ -33,12 +35,18 @@ const navItems = [
   { href: '/recommendations', label: 'ಶಿಫಾರಸುಗಳು', icon: Sparkles },
   { href: '/initiation', label: 'ದೀಕ್ಷೆ', icon: KeyRound },
   { href: '/knowledge', label: 'ಜ್ಞಾನ', icon: BookOpen },
+  { href: '/literature', label: 'ಸಾಹಿತ್ಯ', icon: Library },
   { href: '/progress', label: 'ಪ್ರಗತಿ', icon: TrendingUp },
   { href: '/guidance', label: 'ಮಾರ್ಗದರ್ಶನ', icon: ShieldQuestion },
 ];
 
 export default function AppSidebar() {
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <Sidebar collapsible="icon">
@@ -52,7 +60,7 @@ export default function AppSidebar() {
         <SidebarMenu>
           {navItems.map((item) => (
             <SidebarMenuItem key={item.href}>
-              <Button asChild variant="ghost" className="w-full justify-start p-2 h-auto" aria-current={pathname === item.href ? "page" : undefined}>
+              <Button asChild variant="ghost" className="w-full justify-start p-2 h-auto" aria-current={mounted && pathname === item.href ? "page" : undefined}>
                 <Link href={item.href}>
                     <item.icon className="mr-2 h-4 w-4" />
                     <span className="group-data-[collapsible=icon]:hidden">{item.label}</span>
