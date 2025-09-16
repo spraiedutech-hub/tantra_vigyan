@@ -225,12 +225,14 @@ export default function RecommendationsTool() {
                 </Button>
               </form>
             </Form>
-            {mantraLoading && <div className="text-center pt-4">
-                <Loader2 className="h-6 w-6 animate-spin inline-block" />
-                <p>ಲೋಡ್ ಆಗುತ್ತಿದೆ...</p>
-            </div>}
+            {mantraLoading && (
+              <div className="flex justify-center items-center py-8">
+                <Loader2 className="h-8 w-8 text-primary animate-spin" />
+                <p className="ml-4 text-muted-foreground">ನಿಮಗಾಗಿ ಶಿಫಾರಸುಗಳನ್ನು ರಚಿಸಲಾಗುತ್ತಿದೆ...</p>
+              </div>
+            )}
             {mantraResult && (
-              <div className="mt-6 space-y-4">
+              <div className="mt-6 space-y-4 animate-fade-in">
                 <Separator />
                 <h3 className="text-xl font-semibold">ನಿಮ್ಮ ಶಿಫಾರಸುಗಳು:</h3>
                 <Notice />
@@ -331,12 +333,14 @@ export default function RecommendationsTool() {
                 </Button>
               </form>
             </Form>
-            {activityLoading && <div className="text-center pt-4">
-                <Loader2 className="h-6 w-6 animate-spin inline-block" />
-                <p>ಲೋಡ್ ಆಗುತ್ತಿದೆ...</p>
-            </div>}
+            {activityLoading && (
+              <div className="flex justify-center items-center py-8">
+                <Loader2 className="h-8 w-8 text-primary animate-spin" />
+                <p className="ml-4 text-muted-foreground">ನಿಮಗಾಗಿ ಶಿಫಾರಸುಗಳನ್ನು ರಚಿಸಲಾಗುತ್ತಿದೆ...</p>
+              </div>
+            )}
             {activityResult && (
-              <div className="mt-6 space-y-4">
+              <div className="mt-6 space-y-4 animate-fade-in">
                 <Separator />
                 <h3 className="text-xl font-semibold">ನಿಮ್ಮ ಶಿಫಾರಸುಗಳು:</h3>
                 <Notice />
