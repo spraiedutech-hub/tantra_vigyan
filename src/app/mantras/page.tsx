@@ -52,7 +52,7 @@ export default function MantrasPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {mantras.map((mantra, index) => (
-          <Card key={index} className="flex flex-col transform hover:scale-105 transition-transform duration-300 ease-in-out shadow-lg hover:shadow-primary/20">
+          <Card key={index} className="flex flex-col transform hover:scale-[1.02] transition-transform duration-300 ease-in-out shadow-lg hover:shadow-primary/20">
             <CardHeader>
               <CardTitle className="font-headline text-2xl text-accent">{mantra.name}</CardTitle>
             </CardHeader>

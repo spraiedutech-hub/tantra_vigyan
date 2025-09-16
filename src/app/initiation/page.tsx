@@ -115,7 +115,7 @@ export default function InitiationPage() {
 
       <SadhanaPreview />
 
-      <Card className="mt-8 bg-gradient-to-r from-primary/20 via-card to-accent/20 animated-border">
+      <Card className="mt-8 bg-gradient-to-r from-primary/20 via-card to-accent/20 animated-border transform hover:scale-[1.02] transition-transform duration-300 ease-in-out">
         <CardHeader>
             <CardTitle className="text-2xl font-headline text-center">ನಿಮ್ಮ ಆಧ್ಯಾತ್ಮಿಕ ಪಯಣವನ್ನು ಪ್ರಾರಂಭಿಸಿ</CardTitle>
         </CardHeader>

@@ -29,7 +29,7 @@ export default function InitiationProcessPage() {
             </p>
         </div>
 
-        <Card className="border-primary/30">
+        <Card className="border-primary/30 transform hover:scale-[1.02] transition-transform duration-300 ease-in-out">
           <CardHeader>
             <CardTitle className="text-2xl font-headline text-accent">ದೀಕ್ಷಾ ಪ್ರಕ್ರಿಯೆ</CardTitle>
             <CardDescription>ದೀಕ್ಷೆ ಪಡೆಯಲು ಈ ಸರಳ ಹಂತಗಳನ್ನು ಅನುಸರಿಸಿ:</CardDescription>
@@ -56,7 +56,7 @@ export default function InitiationProcessPage() {
           </CardContent>
         </Card>
 
-        <Card className="border-accent/30">
+        <Card className="border-accent/30 transform hover:scale-[1.02] transition-transform duration-300 ease-in-out">
           <CardHeader>
             <CardTitle className="text-2xl font-headline text-accent">ಪ್ರವೇಶ ಮಟ್ಟ - ದೀಕ್ಷಾ ಶುಲ್ಕ</CardTitle>
             <CardDescription>ಈ ಶುಲ್ಕವು ಜ್ಞಾನ ಪರಂಪರೆಯ ನಿರ್ವಹಣೆ ಮತ್ತು ಮುಂದುವರಿಕೆಗೆ ಸಹಾಯ ಮಾಡುತ್ತದೆ.</CardDescription>
@@ -108,7 +108,7 @@ export default function InitiationProcessPage() {
           </CardFooter>
         </Card>
 
-        <Card className="border-secondary/30">
+        <Card className="border-secondary/30 transform hover:scale-[1.02] transition-transform duration-300 ease-in-out">
             <CardHeader>
                 <CardTitle className="text-2xl font-headline text-secondary-foreground flex items-center gap-3">
                     <TrendingUp />
