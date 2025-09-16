@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { KeyRound, ShieldCheck, Waves, Sunrise, Sun, Sunset } from 'lucide-react';
+import { KeyRound, ShieldCheck, Waves, Sunrise, Sun, Sunset, Sparkles } from 'lucide-react';
+import SadhanaPreview from '@/components/sadhana-preview';
 
 export default function InitiationPage() {
   return (
@@ -107,8 +108,9 @@ export default function InitiationPage() {
             </div>
           </CardContent>
         </Card>
-
       </div>
+
+      <SadhanaPreview />
     </div>
   );
 }
