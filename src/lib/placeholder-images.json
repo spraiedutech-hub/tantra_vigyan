@@ -6,6 +6,24 @@
       "description": "A serene and tranquil image representing inner peace and spiritual connection through tantra.",
       "imageUrl": "/images/hero-home.jpg",
       "imageHint": "yoga meditation"
+    },
+    {
+      "id": "yantra-1",
+      "description": "An intricate geometric yantra diagram.",
+      "imageUrl": "https://picsum.photos/seed/yantra1/256/256",
+      "imageHint": "sacred geometry"
+    },
+    {
+      "id": "yantra-2",
+      "description": "A colorful mandala representing the cosmos.",
+      "imageUrl": "https://picsum.photos/seed/mandala1/256/256",
+      "imageHint": "mandala colorful"
+    },
+    {
+      "id": "yantra-3",
+      "description": "The Sri Yantra, a mystical diagram of interlocking triangles.",
+      "imageUrl": "https://picsum.photos/seed/sriyantra/256/256",
+      "imageHint": "sri yantra"
     }
   ]
 }

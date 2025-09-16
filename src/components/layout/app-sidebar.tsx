@@ -25,6 +25,7 @@ import {
   ShieldQuestion,
   Library,
   ClipboardCheck,
+  Shapes,
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
@@ -36,6 +37,7 @@ export const navItems = [
   { href: '/initiation', label: 'ದೀಕ್ಷೆ', icon: KeyRound },
   { href: '/knowledge', label: 'ಜ್ಞಾನ', icon: BookOpen },
   { href: '/literature', label: 'ಸಾಹಿತ್ಯ', icon: Library },
+  { href: '/yantras', label: 'ಯಂತ್ರಗಳು', icon: Shapes },
   { href: '/duties', label: 'ಸಾಧಕನ ಕರ್ತವ್ಯಗಳು', icon: ClipboardCheck },
   { href: '/progress', label: 'ಪ್ರಗತಿ', icon: TrendingUp },
   { href: '/guidance', label: 'ಮಾರ್ಗದರ್ಶನ', icon: ShieldQuestion },

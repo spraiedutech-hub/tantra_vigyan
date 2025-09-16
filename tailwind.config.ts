@@ -96,6 +96,14 @@ export default {
           from: { transform: 'rotate(0deg)' },
           to: { transform: 'rotate(360deg)' },
         },
+        'rotate-slow': {
+          from: { transform: 'rotate(0deg)' },
+          to: { transform: 'rotate(360deg)' },
+        },
+        'rotate-slow-reverse': {
+          from: { transform: 'rotate(360deg)' },
+          to: { transform: 'rotate(0deg)' },
+        },
         'pulse-slow': {
           '0%, 100%': { opacity: '0.7' },
           '50%': { opacity: '1' },
@@ -109,6 +117,10 @@ export default {
           '0%, 100%': { filter: 'drop-shadow(0 0 5px hsl(var(--primary)))' },
           '50%': { filter: 'drop-shadow(0 0 15px hsl(var(--primary)))' },
         },
+        'pulse-glow': {
+          '0%, 100%': { filter: 'drop-shadow(0 0 7px hsl(var(--accent)))', opacity: '0.9' },
+          '50%': { filter: 'drop-shadow(0 0 20px hsl(var(--accent)))', opacity: '1' },
+        },
         'fiery-border-glow': {
           '0%, 100%': {
             'box-shadow': 'inset 0 0 20px 10px hsl(var(--destructive) / 0.4), inset 0 0 40px 20px hsl(var(--primary) / 0.3)',
@@ -121,17 +133,25 @@ export default {
           '0%, 100%': { backgroundPosition: '50% 0%' },
           '50%': { backgroundPosition: '50% 100%' },
         },
+        'pulse-size': {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.05)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'fade-in': 'fade-in 0.6s ease-out forwards',
         'rotate': 'rotate 30s linear infinite',
+        'rotate-slow': 'rotate-slow 45s linear infinite',
+        'rotate-slow-reverse': 'rotate-slow-reverse 45s linear infinite',
         'pulse-slow': 'pulse-slow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'animated-border': 'animated-border 4s linear infinite',
         'glow': 'glow 6s ease-in-out infinite',
+        'pulse-glow': 'pulse-glow 8s ease-in-out infinite',
         'fiery-border-glow': 'fiery-border-glow 8s ease-in-out infinite',
         'breathing-cosmos': 'breathing-cosmos 20s ease-in-out infinite',
+        'pulse-size': 'pulse-size 6s ease-in-out infinite',
       },
     },
   },
