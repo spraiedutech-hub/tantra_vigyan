@@ -3,7 +3,8 @@ import { Youtube } from 'lucide-react';
 
 export default function YouTubePage() {
   const channelId = 'UC2-w9YEt2_8a_TDIZoE-3_A';
-  const embedUrl = `https://www.youtube.com/embed/videoseries?list=${channelId}`;
+  // This URL format is specifically for embedding a channel's uploads as a playlist.
+  const embedUrl = `https://www.youtube.com/embed/videoseries?list=UU2-w9YEt2_8a_TDIZoE-3_A`;
 
   return (
     <div className="space-y-8 animate-fade-in h-full flex flex-col">
