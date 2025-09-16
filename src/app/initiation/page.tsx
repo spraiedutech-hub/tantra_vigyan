@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { KeyRound, ShieldCheck, Waves, Sunrise, Sun, Sunset, Sparkles, ArrowRight } from 'lucide-react';
 import SadhanaPreview from '@/components/sadhana-preview';
@@ -82,7 +83,7 @@ export default function InitiationPage() {
               <div>
                 <h3 className="text-xl font-semibold">ಪ್ರಾಥಮಿಕ ಹಂತ (ಪ್ರವೇಶ ಮಟ್ಟ)</h3>
                 <p className="text-muted-foreground">
-                  ಇದು ಸಾಧಕನ ಆಧ್ಯಾತ್ಮಿಕ ಪಯಣದ ಆರಂಭ. ಈ ಹಂತದಲ್ಲಿ, ಗುರುವು ಶಿಷ್ಯನ ಶರೀರ ಮತ್ತು ಮನಸ್ಸನ್ನು ಶುದ್ಧೀಕರಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತಾನೆ. ಸಾಮಾನ್ಯವಾಗಿ ಸರಳವಾದ ಬೀಜ ಮಂತ್ರವನ್ನು ಉಪದೇಶಿಸಲಾಗುತ್ತದೆ. ಇದು ಸಾಧಕನಿಗೆ ತಂತ್ರದ ಮೂಲಭೂತ ತತ್ವಗಳನ್ನು ಪರಿಚಯಿಸುತ್ತದೆ ಮತ್ತು ಮುಂದಿನ ಹಂತಗಳಿಗೆ ಅಡಿಪಾಯವನ್ನು ಹಾಕುತ್ತದೆ.
+                  ಇದು ಸಾಧಕನ ಆಧ್ಯಾತ್ಮಿಕ ಪಯಣದ ಆರಂಭ. ಈ ಹಂತದಲ್ಲಿ, ಗುರುವು ಶಿಷ್ಯನ ಶರೀರ ಮತ್ತು ಮನಸ್ಸನ್ನು ಶುದ್ಧೀಕರಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತಾನೆ. ಸಾಮಾನ್ಯವಾಗಿ ಸರಳವಾದ ಬೀಜ ಮಂತ್ರವನ್ನು ಉಪದೇಶಿಸಲಾಗುತ್ತದೆ. ಇದು ಸಾಧಕನಿಗೆ ತಂತ್ರದ ಮೂಲಭೂತ ತತ್ವಗಳನ್ನು ಪರಿಚहालयಿಸುತ್ತದೆ ಮತ್ತು ಮುಂದಿನ ಹಂತಗಳಿಗೆ ಅಡಿಪಾಯವನ್ನು ಹಾಕುತ್ತದೆ.
                 </p>
               </div>
             </div>
@@ -124,7 +125,7 @@ export default function InitiationPage() {
             </p>
             <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg transform hover:scale-105 transition-transform">
                 <Link href="/initiation/process">
-                ದೀಕ್ಷಾ ಪ್ರಕ್ರಿಯೆ ಮತ್ತು ಶುಲ್ಕ ತಿಳಿಯಿರಿ <ArrowRight className="ml-2" />
+                ದೀಕ್ಷಾ ಪ್ರಕ್ರಿಯೆ ತಿಳಿಯಿರಿ <ArrowRight className="ml-2" />
                 </Link>
             </Button>
         </CardContent>
