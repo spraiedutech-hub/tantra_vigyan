@@ -10,6 +10,7 @@ import { Loader2, Sunrise, AlertTriangle, PlayCircle, PauseCircle } from 'lucide
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useToast } from '@/hooks/use-toast';
+import { recordActivityCompleted } from '@/lib/progress-tracker';
 
 export default function SadhanaPage() {
   const [sadhana, setSadhana] = useState<DailySadhanaOutput | null>(null);
@@ -53,6 +54,14 @@ export default function SadhanaPage() {
       `;
       const result = await generateSadhanaAudio(fullText);
       setAudioDataUri(result.audioDataUri);
+
+      // Record the activity and notify the user
+      recordActivityCompleted();
+      toast({
+        title: 'ಅಭ್ಯಾಸವನ್ನು ದಾಖಲಿಸಲಾಗಿದೆ',
+        description: 'ನಿಮ್ಮ ಇಂದಿನ ಸಾಧನಾ ಪ್ರಗತಿಯನ್ನು ಯಶಸ್ವಿಯಾಗಿ ನವೀಕರಿಸಲಾಗಿದೆ.',
+      });
+
     } catch (err) {
       console.error('Failed to generate audio:', err);
       toast({
