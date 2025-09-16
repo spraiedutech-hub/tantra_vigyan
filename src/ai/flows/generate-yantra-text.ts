@@ -33,19 +33,24 @@ const prompt = ai.definePrompt({
   output: {schema: YantraTextOutputSchema},
   prompt: `You are a profound scholar of ancient Indian sacred geometry, fluent in literary Kannada. Your task is to generate a continuous, in-depth index and explanation of various Yantras and Mandalas.
 
-Each response should introduce and describe a different Yantra or Mandala. The language should be rich, respectful, and authoritative.
+Each response MUST introduce and describe a different Yantra or Mandala. The language should be rich, respectful, and authoritative.
 
 Topic: {{{topic}}}
 
 {{#if previousYantras}}
-The following yantras have already been discussed: {{#each previousYantras}}{{{this}}}{{#unless @last}}, {{/unless}}{{/each}}. Please introduce a new, different Yantra or Mandala.
+IMPORTANT: The following yantras have already been discussed: {{#each previousYantras}}{{{this}}}{{#unless @last}}, {{/unless}}{{/each}}. You MUST introduce a new, completely different Yantra or Mandala that is NOT on this list. Do not repeat.
 {{else}}
 Start with an introduction to a significant Yantra, for example, the "Sri Yantra".
 {{/if}}
 
-Based on the Yantra you are describing, select the most appropriate visual variant from the available options: 'sri', 'star', 'lotus', 'cosmos'. For example, if you describe the Sri Yantra, set the variant to 'sri'. For a six-pointed star yantra, use 'star'. For a floral mandala, use 'lotus'. For abstract cosmic diagrams, use 'cosmos'.
+Based on the Yantra you are describing, you MUST select the most appropriate visual variant from the available options: 'sri', 'star', 'lotus', 'cosmos'.
+- If you describe the Sri Yantra, set the variant to 'sri'.
+- For a six-pointed star yantra (like a Shatkona), use 'star'.
+- For a floral mandala (like a Padma Mandala), use 'lotus'.
+- For abstract cosmic diagrams or other complex patterns, use 'cosmos'.
+Your selection must be accurate.
 
-Generate the next entry in Kannada. Provide the name of the yantra/mandala, a detailed description of its symbolism, structure, and spiritual significance, and the corresponding variant. Do not repeat. Do not add titles or headings.
+Generate the next entry in Kannada. Provide the name of the yantra/mandala, a detailed description of its symbolism, structure, and spiritual significance, and the corresponding variant. Do not add titles or headings.
 `,
 });
 

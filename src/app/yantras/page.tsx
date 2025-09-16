@@ -34,6 +34,14 @@ export default function YantrasPage() {
         topic: 'Yantras and Mandalas',
         previousYantras: previousYantras,
       });
+      
+      // Check for duplicates before adding. If a duplicate is found, try again.
+      if (content.some(c => c.data.name === result.name)) {
+        console.warn("Duplicate yantra received, reloading...");
+        setIsLoading(false); // Reset loading state to allow immediate recall
+        loadMoreContent(); // Retry loading
+        return;
+      }
 
       const animationClass = animations[content.length % animations.length];
 
@@ -43,10 +51,7 @@ export default function YantrasPage() {
         animationClass,
       };
 
-      // Check for duplicates before adding
-      if (!content.some(c => c.data.name === newContent.data.name)) {
-         setContent((prev) => [...prev, newContent]);
-      }
+      setContent((prev) => [...prev, newContent]);
 
     } catch (error) {
       console.error('Failed to load more content:', error);
