@@ -9,7 +9,7 @@ export function Logo(props: SVGProps<SVGSVGElement>) {
       height="30"
       {...props}
     >
-      <g className="fill-primary animate-flip" fill="hsl(var(--primary))" style={{ transformOrigin: '20px 25px' }}>
+      <g className="fill-primary" fill="hsl(var(--primary))">
         <g transform="rotate(180, 20, 25)">
           <path d="M20 10 Q 22 15, 20 22 L 20 40 L 18 40 L 18 22 Q 16 15, 18 10 Z" />
           <path d="M14 12 Q 15 16, 14 20 L 14 25 L 12 25 L 12 20 Q 11 16, 12 12 Z" />
