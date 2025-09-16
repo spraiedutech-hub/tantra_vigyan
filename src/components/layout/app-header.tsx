@@ -1,9 +1,13 @@
+
 'use client';
 
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { SidebarTrigger } from '@/components/ui/sidebar';
+import { Button } from '@/components/ui/button';
 import { navItems } from './app-sidebar';
 import { useMemo } from 'react';
+import { ArrowRight } from 'lucide-react';
 
 export default function AppHeader() {
   const pathname = usePathname();
@@ -24,6 +28,12 @@ export default function AppHeader() {
           </h1>
         )}
       </div>
+      <Button asChild className="bg-primary/80 hover:bg-primary text-primary-foreground animate-pulse">
+        <Link href="/initiation/process">
+          Initiation Process Started
+          <ArrowRight className="ml-2 h-4 w-4" />
+        </Link>
+      </Button>
     </header>
   );
 }
