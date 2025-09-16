@@ -1,3 +1,10 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-home",
+      "description": "A serene scene of a person meditating in a peaceful, natural environment, embodying spiritual practice.",
+      "imageUrl": "https://picsum.photos/seed/1/1200/600",
+      "imageHint": "spiritual meditation"
+    }
+  ]
 }
