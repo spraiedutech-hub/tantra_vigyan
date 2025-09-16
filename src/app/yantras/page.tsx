@@ -15,8 +15,8 @@ type YantraContent = {
 
 const animations = [
   'animate-rotate-slow',
-  'animate-rotate-slow-reverse',
   'animate-pulse-glow',
+  'animate-rotate-slow-reverse',
   'animate-glow',
 ];
 

@@ -30,13 +30,20 @@ const variants = {
           strokeWidth="0.5"
         />
       ))}
-      {/* Triangles */}
-      <polygon points="50,25 72,65 28,65" strokeWidth="0.5" />
-      <polygon points="50,75 28,35 72,35" strokeWidth="0.5" />
-      <polygon points="50,30 68,60 32,60" strokeWidth="0.5" />
-      <polygon points="50,70 32,40 68,40" strokeWidth="0.5" />
-       <polygon points="50,35 64,55 36,55" strokeWidth="0.5" />
-      <polygon points="50,65 36,45 64,45" strokeWidth="0.5" />
+      {/* Upward Triangles - rotating clockwise */}
+      <g>
+        <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="25s" repeatCount="indefinite" />
+        <polygon points="50,25 72,65 28,65" strokeWidth="0.5" />
+        <polygon points="50,30 68,60 32,60" strokeWidth="0.5" />
+        <polygon points="50,35 64,55 36,55" strokeWidth="0.5" />
+      </g>
+      {/* Downward Triangles - rotating counter-clockwise */}
+      <g>
+         <animateTransform attributeName="transform" type="rotate" from="360 50 50" to="0 50 50" dur="25s" repeatCount="indefinite" />
+        <polygon points="50,75 28,35 72,35" strokeWidth="0.5" />
+        <polygon points="50,70 32,40 68,40" strokeWidth="0.5" />
+        <polygon points="50,65 36,45 64,45" strokeWidth="0.5" />
+      </g>
       {/* Bindu */}
       <circle cx="50" cy="50" r="1.5" className="fill-current" />
     </g>
@@ -68,7 +75,9 @@ const variants = {
   cosmos: (
      <g>
       {[...Array(10)].map((_, i) => (
-        <circle key={i} cx="50" cy="50" r={4.5 * (i + 1)} strokeWidth="0.5" />
+        <circle key={i} cx="50" cy="50" r={4.5 * (i + 1)} strokeWidth="0.5">
+            <animate attributeName="r" values={`${4.5 * (i + 1)};${4.5 * (i + 1) * 1.1};${4.5 * (i + 1)}`} dur={`${5 + i * 0.5}s`} repeatCount="indefinite" />
+        </circle>
       ))}
        {[...Array(8)].map((_, i) => (
          <line key={i} x1="50" y1="2" x2="50" y2="98" transform={`rotate(${i * 22.5}, 50, 50)`} strokeWidth="0.5" />
