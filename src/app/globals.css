@@ -63,7 +63,7 @@ body {
   body {
     @apply text-foreground;
     background-size: 200% 200%;
-    background-image: linear-gradient(-45deg, hsl(var(--background)), hsl(var(--secondary)), hsl(var(--background)));
+    background-image: linear-gradient(-45deg, hsl(var(--background)), hsl(var(--muted)), hsl(var(--background)));
     animation: animated-gradient 15s ease infinite;
   }
 }
