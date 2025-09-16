@@ -48,32 +48,53 @@ const generateAudioFlow = ai.defineFlow(
     outputSchema: GenerateAudioOutputSchema,
   },
   async (query) => {
-    const { media } = await ai.generate({
-      model: googleAI.model('gemini-2.5-flash-preview-tts'),
-      config: {
-        responseModalities: ['AUDIO'],
-        speechConfig: {
-          voiceConfig: {
-            prebuiltVoiceConfig: { voiceName: 'Algenib' },
+    let retries = 3;
+    let lastError: any;
+
+    while (retries > 0) {
+      try {
+        const { media } = await ai.generate({
+          model: googleAI.model('gemini-2.5-flash-preview-tts'),
+          config: {
+            responseModalities: ['AUDIO'],
+            speechConfig: {
+              voiceConfig: {
+                prebuiltVoiceConfig: { voiceName: 'Algenib' },
+              },
+            },
           },
-        },
-      },
-      prompt: query,
-    });
+          prompt: query,
+        });
 
-    if (!media?.url) {
-      throw new Error('No media returned from the TTS model.');
+        if (!media?.url) {
+          throw new Error('No media returned from the TTS model.');
+        }
+
+        const audioBuffer = Buffer.from(
+          media.url.substring(media.url.indexOf(',') + 1),
+          'base64'
+        );
+        const wavData = await toWav(audioBuffer);
+
+        return {
+          media: 'data:audio/wav;base64,' + wavData,
+        };
+      } catch (e: any) {
+        lastError = e;
+        if (e.message && e.message.includes('503')) {
+          console.log('TTS model is overloaded, retrying...');
+          retries--;
+          if (retries > 0) {
+            await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1 second before retrying
+          }
+        } else {
+          // For other errors, don't retry
+          throw e;
+        }
+      }
     }
-
-    const audioBuffer = Buffer.from(
-      media.url.substring(media.url.indexOf(',') + 1),
-      'base64'
-    );
-    const wavData = await toWav(audioBuffer);
-
-    return {
-      media: 'data:audio/wav;base64,' + wavData,
-    };
+    // If all retries fail, throw the last error
+    throw lastError;
   }
 );
 
