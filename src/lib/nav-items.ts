@@ -1,7 +1,7 @@
 import {
   Home,
   BookAudio,
-  Activity,
+  Sunrise,
   Sparkles,
   TrendingUp,
   BookOpen,
@@ -17,7 +17,7 @@ import {
 export const navItems = [
   { href: '/', label: 'ಮುಖಪುಟ', icon: Home },
   { href: '/mantras', label: 'ಮಂತ್ರಗಳು', icon: BookAudio },
-  { href: '/activities', label: 'ಚಟುವಟಿಕೆಗಳು', icon: Activity },
+  { href: '/sadhana', label: 'ನಿತ್ಯ ಸಾಧನಾ', icon: Sunrise },
   { href: '/recommendations', label: 'ಶಿಫಾರಸುಗಳು', icon: Sparkles },
   { href: '/initiation', label: 'ದೀಕ್ಷೆ', icon: KeyRound },
   { href: '/knowledge', label: 'ಜ್ಞಾನ', icon: BookOpen },
