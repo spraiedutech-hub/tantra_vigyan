@@ -121,6 +121,10 @@ export default {
           '0%, 100%': { backgroundPosition: '50% 0%' },
           '50%': { backgroundPosition: '50% 100%' },
         },
+        'pulse-size': {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.05)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -132,6 +136,7 @@ export default {
         'glow': 'glow 6s ease-in-out infinite',
         'fiery-border-glow': 'fiery-border-glow 8s ease-in-out infinite',
         'breathing-cosmos': 'breathing-cosmos 20s ease-in-out infinite',
+        'pulse-size': 'pulse-size 6s ease-in-out infinite',
       },
     },
   },
