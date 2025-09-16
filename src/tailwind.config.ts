@@ -124,10 +124,10 @@ export default {
         },
         'fiery-border-glow': {
           '0%, 100%': {
-            'box-shadow': 'inset -20px -20px 20px 10px hsl(var(--destructive) / 0.2), inset -40px -40px 40px 20px hsl(var(--primary) / 0.15)',
+            'box-shadow': 'inset 0 0 10px 5px hsl(var(--destructive) / 0.1), inset 0 0 20px 10px hsl(var(--primary) / 0.08)',
           },
           '50%': {
-            'box-shadow': 'inset -30px -30px 30px 15px hsl(var(--destructive) / 0.3), inset -60px -60px 60px 30px hsl(var(--primary) / 0.25)',
+            'box-shadow': 'inset 0 0 15px 8px hsl(var(--destructive) / 0.15), inset 0 0 30px 15px hsl(var(--primary) / 0.12)',
           },
         },
         'chakra-spin': {
