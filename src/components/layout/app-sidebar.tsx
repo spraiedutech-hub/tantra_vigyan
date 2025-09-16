@@ -26,6 +26,7 @@ import {
   Library,
   ClipboardCheck,
   Shapes,
+  Compass,
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
@@ -41,6 +42,7 @@ export const navItems = [
   { href: '/duties', label: 'ಸಾಧಕನ ಕರ್ತವ್ಯಗಳು', icon: ClipboardCheck },
   { href: '/progress', label: 'ಪ್ರಗತಿ', icon: TrendingUp },
   { href: '/guidance', label: 'ಮಾರ್ಗದರ್ಶನ', icon: ShieldQuestion },
+  { href: '/tour', label: 'ಸೈಟ್ ಪ್ರವಾಸ', icon: Compass },
 ];
 
 export default function AppSidebar() {
