@@ -46,13 +46,13 @@ export default function ChakraPractitioner() {
         <g transform="translate(150, 115)" className="animate-chakra-pulse">
           <circle r="10" fill="#4B0082" className="animate-chakra-glow opacity-80" />
         </g>
-        <text x="170" y="120" className="text-xs fill-foreground">ಆಜ್ಞಾ</text>
+        <text x="175" y="120" className="text-xs fill-foreground">ಆಜ್ಞಾ</text>
         
         {/* 5. Vishuddha (Throat) */}
         <g transform="translate(150, 160)" className="animate-chakra-spin">
           <circle r="9" fill="#00BFFF" className="animate-chakra-glow opacity-80" />
         </g>
-        <text x="170" y="165" className="text-xs fill-foreground">ವಿಶುದ್ಧ</text>
+        <text x="175" y="165" className="text-xs fill-foreground">ವಿಶುದ್ಧ</text>
         
         {/* 4. Anahata (Heart) */}
         <g transform="translate(150, 210)" className="animate-chakra-pulse">
