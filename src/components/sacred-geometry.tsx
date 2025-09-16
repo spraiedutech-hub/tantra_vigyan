@@ -1,6 +1,6 @@
 export default function SacredGeometry() {
   return (
-    <div className="fixed top-6 right-6 z-50 pointer-events-none opacity-50">
+    <div className="fixed top-6 right-6 z-50 pointer-events-none">
       <div className="relative w-24 h-24 animate-rotate">
         <svg
           viewBox="0 0 100 100"
