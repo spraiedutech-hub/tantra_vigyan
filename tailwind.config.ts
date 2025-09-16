@@ -117,6 +117,10 @@ export default {
             'box-shadow': 'inset 0 0 30px 15px hsl(var(--destructive) / 0.6), inset 0 0 60px 30px hsl(var(--primary) / 0.5)',
           },
         },
+        'breathing-cosmos': {
+          '0%, 100%': { backgroundPosition: '50% 0%' },
+          '50%': { backgroundPosition: '50% 100%' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -127,6 +131,7 @@ export default {
         'animated-border': 'animated-border 4s linear infinite',
         'glow': 'glow 6s ease-in-out infinite',
         'fiery-border-glow': 'fiery-border-glow 8s ease-in-out infinite',
+        'breathing-cosmos': 'breathing-cosmos 20s ease-in-out infinite',
       },
     },
   },
