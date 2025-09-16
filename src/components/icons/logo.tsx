@@ -23,8 +23,8 @@ export function Logo(props: SVGProps<SVGSVGElement>) {
         fontFamily="'Literata', serif"
         fontSize="30"
         fontWeight="bold"
-        fill="hsl(var(--primary))"
-        className="fill-primary animate-pulse-size"
+        fill="#8B0000"
+        className="animate-pulse-size"
       >
         ತಂತ್ರ ವಿಜ್ಞಾನ
       </text>
