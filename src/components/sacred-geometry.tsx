@@ -2,9 +2,10 @@ import { cn } from "@/lib/utils";
 
 type SacredGeometryProps = {
   className?: string;
+  mantra?: string;
 };
 
-export default function SacredGeometry({ className }: SacredGeometryProps) {
+export default function SacredGeometry({ className, mantra = "ॐ" }: SacredGeometryProps) {
   return (
     <div className={cn("fixed z-50 pointer-events-none", className)}>
       <div className="relative w-24 h-24 animate-rotate">
@@ -26,7 +27,7 @@ export default function SacredGeometry({ className }: SacredGeometryProps) {
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
           <span className="text-3xl font-bold text-primary animate-pulse-slow">
-            ॐ
+            {mantra}
           </span>
         </div>
       </div>
