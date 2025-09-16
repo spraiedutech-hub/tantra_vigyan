@@ -4,36 +4,31 @@ import { useState, useRef } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Loader2, Wand2, Volume2, Info, AlertTriangle } from 'lucide-react';
-import { generateDailySadhana, type DailySadhanaOutput } from '@/ai/flows/generate-daily-sadhana';
+import type { DailySadhanaOutput } from '@/ai/flows/generate-daily-sadhana';
 import { generateSadhanaAudio } from '@/ai/flows/generate-sadhana-audio';
 import { useToast } from '@/hooks/use-toast';
 import { Alert, AlertDescription, AlertTitle } from './ui/alert';
 
+const preloadedSadhana: DailySadhanaOutput = {
+  intention: "ಇಂದು ನಾನು ನನ್ನ ಆಂತರಿಕ ಶಾಂತಿಯನ್ನು ಕಂಡುಕೊಳ್ಳುತ್ತೇನೆ ಮತ್ತು ನನ್ನ ಸುತ್ತಲೂ ಸಕಾರಾತ್ಮಕ ಶಕ್ತಿಯನ್ನು ಪ್ರಸರಿಸುತ್ತೇನೆ.",
+  mantra: "ಓಂ ಶಾಂತಿ ಮಂತ್ರ (ಓಂ ಶಾಂತಿಃ ಶಾಂತಿಃ ಶಾಂತಿಃ)",
+  breathingExercise: "ಸಮವೃತ್ತಿ ಪ್ರಾಣಾಯಾಮ: 4 ಸೆಕೆಂಡುಗಳ ಕಾಲ ಉಸಿರನ್ನು ಒಳಗೆ ತೆಗೆದುಕೊಳ್ಳಿ, 4 ಸೆಕೆಂಡುಗಳ ಕಾಲ ಹಿಡಿದಿಟ್ಟುಕೊಳ್ಳಿ, ಮತ್ತು 4 ಸೆಕೆಂಡುಗಳ ಕಾಲ ಹೊರಗೆ ಬಿಡಿ. 5-7 ಬಾರಿ ಪುನರಾವರ್ತಿಸಿ.",
+  meditationFocus: "ನಿಮ್ಮ ಹೃದಯದ ಮಧ್ಯದಲ್ಲಿ ಬೆಳಗುತ್ತಿರುವ ಚಿನ್ನದ ಬಣ್ಣದ ಬೆಳಕನ್ನು ಕಲ್ಪಿಸಿಕೊಳ್ಳಿ. ಪ್ರತಿ ಉಸಿರಿನೊಂದಿಗೆ, ಆ ಬೆಳಕು ಪ್ರಕಾಶಮಾನವಾಗಿ ಮತ್ತು ವಿಸ್ತಾರವಾಗಿ ಹರಡುತ್ತಿರುವುದನ್ನು ಅನುಭವಿಸಿ."
+};
+
+
 export default function SadhanaPreview() {
   const { toast } = useToast();
-  const [isLoading, setIsLoading] = useState(false);
   const [isListening, setIsListening] = useState(false);
   const [sadhana, setSadhana] = useState<DailySadhanaOutput | null>(null);
-  const [error, setError] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  const handleGenerate = async () => {
-    setIsLoading(true);
-    setError(null);
-    setSadhana(null);
-    try {
-      const result = await generateDailySadhana();
-      setSadhana(result);
-    } catch (err) {
-      console.error('Failed to generate Sadhana:', err);
-      setError('ದೈನಂದಿನ ಸಾಧನವನ್ನು ರಚಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಸ್ವಲ್ಪ ಸಮಯದ ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.');
-      toast({
-        variant: 'destructive',
-        title: 'ದೋಷ',
-        description: 'ಸಾಧನವನ್ನು ರಚಿಸುವಲ್ಲಿ ದೋಷ ಕಂಡುಬಂದಿದೆ.',
-      });
-    } finally {
-      setIsLoading(false);
+  const handleTogglePreview = () => {
+    // This will toggle the visibility of the preloaded sadhana
+    if (sadhana) {
+      setSadhana(null);
+    } else {
+      setSadhana(preloadedSadhana);
     }
   };
   
@@ -80,7 +75,7 @@ export default function SadhanaPreview() {
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
-        {!sadhana && !isLoading && (
+        {!sadhana && (
              <Alert>
                 <Info className="h-4 w-4" />
                 <AlertTitle>ಇದು ಒಂದು ಮುನ್ನೋಟ</AlertTitle>
@@ -90,23 +85,8 @@ export default function SadhanaPreview() {
             </Alert>
         )}
        
-        {isLoading && (
-          <div className="flex items-center justify-center p-8">
-            <Loader2 className="h-8 w-8 animate-spin text-primary" />
-            <p className="ml-4 text-muted-foreground">ನಿಮಗಾಗಿ ಇಂದಿನ ಸಾಧನವನ್ನು ರಚಿಸಲಾಗುತ್ತಿದೆ...</p>
-          </div>
-        )}
-
-        {error && (
-             <Alert variant="destructive">
-                <AlertTriangle className="h-4 w-4" />
-                <AlertTitle>ದೋಷ</AlertTitle>
-                <AlertDescription>{error}</AlertDescription>
-            </Alert>
-        )}
-
         {sadhana && (
-          <div className="space-y-6 p-4 border rounded-md bg-background/50">
+          <div className="space-y-6 p-4 border rounded-md bg-background/50 animate-fade-in">
             <div className="space-y-3">
                 <div>
                     <h4 className="font-headline text-lg text-accent">ಸಂಕಲ್ಪ (Intention)</h4>
@@ -138,13 +118,9 @@ export default function SadhanaPreview() {
 
       </CardContent>
       <CardFooter>
-        <Button onClick={handleGenerate} disabled={isLoading} className="w-full">
-          {isLoading ? (
-            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-          ) : (
-            <Wand2 className="mr-2 h-4 w-4" />
-          )}
-          {sadhana ? 'ಇನ್ನೊಂದು ಮುನ್ನೋಟವನ್ನು ರಚಿಸಿ' : 'ಇಂದಿನ ಸಾಧನಾ ಮುನ್ನೋಟವನ್ನು ರಚಿಸಿ'}
+        <Button onClick={handleTogglePreview} className="w-full">
+          <Wand2 className="mr-2 h-4 w-4" />
+          {sadhana ? 'ಮುನ್ನೋಟವನ್ನು ಮರೆಮಾಡಿ' : 'ಸಾಧನಾ ಮುನ್ನೋಟವನ್ನು ತೋರಿಸಿ'}
         </Button>
       </CardFooter>
     </Card>
