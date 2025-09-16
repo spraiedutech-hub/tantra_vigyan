@@ -34,8 +34,9 @@ export default function RootLayout({
               <div className="flex min-h-screen">
                 <AppSidebar />
                 <SidebarInset>
-                  <SacredGeometry />
+                  <SacredGeometry className="top-6 right-6" />
                   <main className="flex-1 p-4 sm:p-6 lg:p-8">{children}</main>
+                  <SacredGeometry className="bottom-6 left-6" />
                 </SidebarInset>
               </div>
             </SidebarProvider>

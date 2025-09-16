@@ -1,6 +1,12 @@
-export default function SacredGeometry() {
+import { cn } from "@/lib/utils";
+
+type SacredGeometryProps = {
+  className?: string;
+};
+
+export default function SacredGeometry({ className }: SacredGeometryProps) {
   return (
-    <div className="fixed top-6 right-6 z-50 pointer-events-none">
+    <div className={cn("fixed z-50 pointer-events-none", className)}>
       <div className="relative w-24 h-24 animate-rotate">
         <svg
           viewBox="0 0 100 100"
