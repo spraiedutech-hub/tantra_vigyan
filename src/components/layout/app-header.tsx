@@ -31,7 +31,7 @@ export default function AppHeader() {
       <div className="flex-1 flex justify-center">
         <Button asChild className="bg-primary/80 hover:bg-primary text-primary-foreground animate-pulse">
             <Link href="/initiation/process">
-            Initiation Process Started
+            ದೀಕ್ಷಾ ಪ್ರಕ್ರಿಯೆ ಪ್ರಾರಂಭವಾಗಿದೆ
             <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
         </Button>
