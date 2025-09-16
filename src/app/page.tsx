@@ -24,12 +24,14 @@ export default function Home() {
           ತಂತ್ರ ವಿಜ್ಞಾನಕ್ಕೆ ಸುಸ್ವಾಗತ
         </h1>
         <p className="text-lg text-muted-foreground">
-          ನಿಮ್ಮ ಆಧ್ಯಾತ್ಮಿಕ ಪಯಣವನ್ನು ಪ್ರಾರಂಭಿಸಲು ಸಹಾಯ ಮಾಡುವ ತಂತ್ರ ಚಟುವಟಿಕೆಗಳು ಮತ್ತು ಮಂತ್ರ ಅಭ್ಯಾಸಗಳನ್ನು ಅನ್ವೇಷಿಸಿ.
+          ನಿಮ್ಮ ಆಧ್ಯಾತ್ಮಿಕ ಪಯಣವನ್ನು ಪ್ರಾರಂಭಿಸಲು ಸಹಾಯ ಮಾಡುವ ತಂತ್ರ ಚಟಟುವಟಿಕೆಗಳು ಮತ್ತು ಮಂತ್ರ ಅಭ್ಯಾಸಗಳನ್ನು ಅನ್ವೇಷಿಸಿ.
         </p>
       </header>
 
       <div className="relative w-full h-96 md:h-[600px] flex items-center justify-center">
-          <ChakraPractitioner />
+          <div className="relative w-full h-full max-w-[450px] md:max-w-none md:max-h-[600px]">
+            <ChakraPractitioner />
+          </div>
       </div>
 
       <section>
