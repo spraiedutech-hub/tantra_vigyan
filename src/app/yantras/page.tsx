@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
@@ -78,7 +79,8 @@ export default function YantrasPage() {
      if (content.length === 0) {
         loadMoreContent();
      }
-  }, [loadMoreContent, content.length]);
+     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="space-y-8 animate-fade-in">

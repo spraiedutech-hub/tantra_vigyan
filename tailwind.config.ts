@@ -1,11 +1,13 @@
+
 import type {Config} from 'tailwindcss';
 
 export default {
   darkMode: ['class'],
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
@@ -129,13 +131,29 @@ export default {
             'box-shadow': 'inset 0 0 30px 15px hsl(var(--destructive) / 0.6), inset 0 0 60px 30px hsl(var(--primary) / 0.5)',
           },
         },
-        'breathing-cosmos': {
-          '0%, 100%': { backgroundPosition: '50% 0%' },
-          '50%': { backgroundPosition: '50% 100%' },
+        'chakra-spin': {
+          'from': { transform: 'rotate(0deg) scale(0.95)' },
+          'to': { transform: 'rotate(360deg) scale(0.95)' },
         },
-        'pulse-size': {
-          '0%, 100%': { transform: 'scale(1)' },
-          '50%': { transform: 'scale(1.05)' },
+        'chakra-spin-slow': {
+          'from': { transform: 'rotate(0deg) scale(1)' },
+          'to': { transform: 'rotate(360deg) scale(1)' },
+        },
+        'chakra-spin-slow-reverse': {
+            'from': { transform: 'rotate(360deg) scale(1)' },
+            'to': { transform: 'rotate(0deg) scale(1)' },
+        },
+        'chakra-pulse': {
+          '0%, 100%': { transform: 'scale(1)', opacity: '0.8' },
+          '50%': { transform: 'scale(1.1)', opacity: '1' },
+        },
+        'chakra-glow': {
+          '0%, 100%': { filter: 'drop-shadow(0 0 3px currentColor)' },
+          '50%': { filter: 'drop-shadow(0 0 8px currentColor)' },
+        },
+        'float-fade': {
+          '0%, 100%': { opacity: '0', transform: 'translateY(5px)' },
+          '50%': { opacity: '0.8', transform: 'translateY(-5px)' },
         },
       },
       animation: {
@@ -150,8 +168,12 @@ export default {
         'glow': 'glow 6s ease-in-out infinite',
         'pulse-glow': 'pulse-glow 8s ease-in-out infinite',
         'fiery-border-glow': 'fiery-border-glow 8s ease-in-out infinite',
-        'breathing-cosmos': 'breathing-cosmos 20s ease-in-out infinite',
-        'pulse-size': 'pulse-size 6s ease-in-out infinite',
+        'chakra-spin': 'chakra-spin 10s linear infinite',
+        'chakra-spin-slow': 'chakra-spin-slow 20s linear infinite',
+        'chakra-spin-slow-reverse': 'chakra-spin-slow-reverse 25s linear infinite',
+        'chakra-pulse': 'chakra-pulse 4s ease-in-out infinite',
+        'chakra-glow': 'chakra-glow 5s ease-in-out infinite',
+        'float-fade': 'float-fade 7s ease-in-out infinite',
       },
     },
   },
