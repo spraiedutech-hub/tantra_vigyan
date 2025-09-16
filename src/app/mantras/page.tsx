@@ -18,14 +18,16 @@ export default function MantrasPage() {
   const observer = useRef<IntersectionObserver>();
 
   const loadMoreMantras = useCallback(() => {
-    const currentLength = displayedMantras.length;
-    if (currentLength >= mantras.length) {
-      setHasMore(false);
-      return;
-    }
-    const nextBatch = mantras.slice(currentLength, currentLength + BATCH_SIZE);
-    setDisplayedMantras((prev) => [...prev, ...nextBatch]);
-  }, [displayedMantras.length]);
+    setDisplayedMantras((prev) => {
+      const currentLength = prev.length;
+      if (currentLength >= mantras.length) {
+        setHasMore(false);
+        return prev;
+      }
+      const nextBatch = mantras.slice(currentLength, currentLength + BATCH_SIZE);
+      return [...prev, ...nextBatch];
+    });
+  }, []);
   
   const lastElementRef = useCallback(
     (node: HTMLDivElement) => {
