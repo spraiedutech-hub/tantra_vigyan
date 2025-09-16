@@ -28,10 +28,10 @@ import {
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
-const navItems = [
+export const navItems = [
   { href: '/', label: 'ಮುಖಪುಟ', icon: Home },
   { href: '/mantras', label: 'ಮಂತ್ರಗಳು', icon: BookAudio },
-  { href: '/activities', label: 'ಚಟುವ_ಟಿಕೆಗಳು', icon: Activity },
+  { href: '/activities', label: 'ಚಟುವಟಿಕೆಗಳು', icon: Activity },
   { href: '/recommendations', label: 'ಶಿಫಾರಸುಗಳು', icon: Sparkles },
   { href: '/initiation', label: 'ದೀಕ್ಷೆ', icon: KeyRound },
   { href: '/knowledge', label: 'ಜ್ಞಾನ', icon: BookOpen },
