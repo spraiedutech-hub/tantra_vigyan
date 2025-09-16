@@ -4,15 +4,13 @@
 import { useState, useRef } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { mantras } from '@/lib/constants';
-import { Music, CheckCircle, PlayCircle, Loader2, PauseCircle } from 'lucide-react';
+import { Music, CheckCircle, PlayCircle, PauseCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { recordMantraPracticed } from '@/lib/progress-tracker';
 import { useToast } from '@/hooks/use-toast';
-import { generateAudio } from '@/ai/flows/text-to-speech';
 
 export default function MantrasPage() {
   const { toast } = useToast();
-  const [loadingAudioFor, setLoadingAudioFor] = useState<string | null>(null);
   const [playingMantra, setPlayingMantra] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -24,32 +22,17 @@ export default function MantrasPage() {
     });
   };
 
-  const handlePlayAudio = async (mantraName: string) => {
+  const handlePlayAudio = (mantraName: string, audioUrl: string) => {
     if (playingMantra === mantraName) {
       audioRef.current?.pause();
       setPlayingMantra(null);
       return;
     }
 
-    setLoadingAudioFor(mantraName);
-    setPlayingMantra(null);
-
-    try {
-      const { media } = await generateAudio(mantraName);
-      if (audioRef.current) {
-        audioRef.current.src = media;
-        audioRef.current.play();
-        setPlayingMantra(mantraName);
-      }
-    } catch (error) {
-      console.error('Error generating audio:', error);
-      toast({
-        variant: 'destructive',
-        title: 'ದೋಷ',
-        description: 'ಆಡಿಯೋ ಪ್ಲೇ ಮಾಡುವಲ್ಲಿ ದೋಷ ಕಂಡುಬಂದಿದೆ.',
-      });
-    } finally {
-      setLoadingAudioFor(null);
+    if (audioRef.current) {
+      audioRef.current.src = audioUrl;
+      audioRef.current.play();
+      setPlayingMantra(mantraName);
     }
   };
 
@@ -80,12 +63,9 @@ export default function MantrasPage() {
               <Button
                 variant="outline"
                 className="w-full"
-                onClick={() => handlePlayAudio(mantra.name)}
-                disabled={loadingAudioFor === mantra.name}
+                onClick={() => handlePlayAudio(mantra.name, mantra.audioUrl)}
               >
-                {loadingAudioFor === mantra.name ? (
-                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                ) : playingMantra === mantra.name ? (
+                {playingMantra === mantra.name ? (
                   <PauseCircle className="mr-2 h-5 w-5" />
                 ) : (
                   <PlayCircle className="mr-2 h-5 w-5" />
