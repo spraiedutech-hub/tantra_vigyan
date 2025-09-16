@@ -55,11 +55,11 @@ body {
     --sidebar-ring: 36 96% 51%;
   }
   .dark {
-    --background: 0 0% 5%;
+    --background: 0 0% 0%;
     --foreground: 0 0% 98%;
-    --card: 0 0% 8%;
+    --card: 0 0% 4%;
     --card-foreground: 0 0% 98%;
-    --popover: 0 0% 5%;
+    --popover: 0 0% 0%;
     --popover-foreground: 0 0% 98%;
     --primary: 36 96% 51%;
     --primary-foreground: 0 0% 10%;
@@ -79,7 +79,7 @@ body {
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
-    --sidebar-background: 0 0% 8%;
+    --sidebar-background: 0 0% 4%;
     --sidebar-foreground: 0 0% 98%;
     --sidebar-primary: 36 96% 51%;
     --sidebar-primary-foreground: 0 0% 10%;
