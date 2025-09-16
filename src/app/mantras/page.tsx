@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { mantras } from '@/lib/constants';
 import { Music, CheckCircle, PlayCircle, PauseCircle } from 'lucide-react';
@@ -23,18 +23,34 @@ export default function MantrasPage() {
   };
 
   const handlePlayAudio = (mantraName: string, audioUrl: string) => {
-    if (playingMantra === mantraName) {
-      audioRef.current?.pause();
-      setPlayingMantra(null);
-      return;
-    }
+    if (!audioRef.current) return;
 
-    if (audioRef.current) {
+    if (playingMantra === mantraName) {
+      // If the current mantra is playing, pause it
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0; // Reset for next play
+      setPlayingMantra(null);
+    } else {
+      // If another mantra is playing, stop it first
+      if (playingMantra) {
+        audioRef.current.pause();
+      }
+      
+      // Set the new source and play
       audioRef.current.src = audioUrl;
+      audioRef.current.loop = true; // Set audio to loop
       audioRef.current.play();
       setPlayingMantra(mantraName);
     }
   };
+
+  // Cleanup effect to stop audio when the component unmounts
+  useEffect(() => {
+    const audio = audioRef.current;
+    return () => {
+      audio?.pause();
+    };
+  }, []);
 
   return (
     <div className="space-y-8 animate-fade-in">
@@ -48,7 +64,7 @@ export default function MantrasPage() {
         </p>
       </header>
       
-      <audio ref={audioRef} onEnded={() => setPlayingMantra(null)} />
+      <audio ref={audioRef} />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {mantras.map((mantra, index) => (
@@ -70,7 +86,7 @@ export default function MantrasPage() {
                 ) : (
                   <PlayCircle className="mr-2 h-5 w-5" />
                 )}
-                ಕೇಳಿ
+                {playingMantra === mantra.name ? 'ವಿರಾಮ' : 'ಕೇಳಿ'}
               </Button>
               <Button
                 variant="outline"
