@@ -158,6 +158,10 @@ export default {
           '0%, 100%': { filter: 'drop-shadow(0 0 3px currentColor)' },
           '50%': { filter: 'drop-shadow(0 0 8px currentColor)' },
         },
+        'float': {
+            '0%, 100%': { transform: 'translateY(0px)' },
+            '50%': { transform: 'translateY(-5px)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -178,6 +182,7 @@ export default {
         'chakra-spin-slow-reverse': 'chakra-spin-slow-reverse 25s linear infinite',
         'chakra-pulse': 'chakra-pulse 4s ease-in-out infinite',
         'chakra-glow': 'chakra-glow 5s ease-in-out infinite',
+        'float': 'float 4s ease-in-out infinite',
       },
     },
   },
