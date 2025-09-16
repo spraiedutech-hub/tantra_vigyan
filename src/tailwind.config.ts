@@ -154,10 +154,6 @@ export default {
           '0%, 100%': { opacity: '0', transform: 'translateY(5px)' },
           '50%': { opacity: '0.8', transform: 'translateY(-5px)' },
         },
-        'scroll-left': {
-          'from': { transform: 'translateX(0)' },
-          'to': { transform: 'translateX(-50%)' },
-        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -177,7 +173,6 @@ export default {
         'chakra-pulse': 'chakra-pulse 4s ease-in-out infinite',
         'chakra-glow': 'chakra-glow 5s ease-in-out infinite',
         'float-fade': 'float-fade 7s ease-in-out infinite',
-        'scroll-left': 'scroll-left 40s linear infinite',
       },
     },
   },

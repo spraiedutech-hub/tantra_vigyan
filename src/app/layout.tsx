@@ -7,7 +7,6 @@ import { ThemeProvider } from '@/components/theme-provider';
 import SacredGeometry from '@/components/sacred-geometry';
 import AnimatedBackground from '@/components/animated-background';
 import AppHeader from '@/components/layout/app-header';
-import ScrollingBanner from '@/components/scrolling-banner';
 
 export const metadata: Metadata = {
   title: 'Tantra Vigyan',
@@ -39,7 +38,6 @@ export default function RootLayout({
                 <AppSidebar />
                 <SidebarInset>
                   <AppHeader />
-                  <ScrollingBanner />
                   <SacredGeometry className="top-6 right-6" />
                   <main className="flex-1 p-4 sm:p-6 lg:p-8">{children}</main>
                   <SacredGeometry className="bottom-6 left-6" mantra="श्रीं" />
