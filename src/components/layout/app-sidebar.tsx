@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -20,6 +21,7 @@ import {
   Sparkles,
   TrendingUp,
   Users,
+  Settings,
 } from 'lucide-react';
 import { Button } from '../ui/button';
 
@@ -30,6 +32,7 @@ const navItems = [
   { href: '/recommendations', label: 'ಶಿಫಾರಸುಗಳು', icon: Sparkles },
   { href: '/progress', label: 'ಪ್ರಗತಿ', icon: TrendingUp },
   { href: '/community', label: 'ಸಮುದಾಯ', icon: Users },
+  { href: '/settings', label: 'ಸೆಟ್ಟಿಂಗ್‌ಗಳು', icon: Settings },
 ];
 
 export default function AppSidebar() {
