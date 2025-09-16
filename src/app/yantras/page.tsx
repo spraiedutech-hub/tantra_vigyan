@@ -28,37 +28,52 @@ export default function YantrasPage() {
   const loadMoreContent = useCallback(async () => {
     if (isLoading) return;
     setIsLoading(true);
-    try {
-      const previousYantras = content.map(item => item.data.name);
-      
-      const result = await generateYantraText({
-        topic: 'Yantras and Mandalas',
-        previousYantras: previousYantras,
-      });
-      
-      // Check for duplicates before adding. If a duplicate is found, try again.
-      if (content.some(c => c.data.name === result.name)) {
-        console.warn("Duplicate yantra received, reloading...");
-        setIsLoading(false); // Reset loading state to allow immediate recall
-        loadMoreContent(); // Retry loading
-        return;
+
+    let result: YantraTextOutput | null = null;
+    let attempts = 0;
+    const maxAttempts = 3;
+
+    while (attempts < maxAttempts && !result) {
+      try {
+        attempts++;
+        const previousYantras = content.map(item => item.data.name);
+        
+        const generatedResult = await generateYantraText({
+          topic: 'Yantras and Mandalas',
+          previousYantras: previousYantras,
+        });
+
+        // Check for duplicates before adding.
+        if (!content.some(c => c.data.name === generatedResult.name)) {
+          result = generatedResult;
+        } else {
+           console.warn("Duplicate yantra received, retrying...");
+           // This counts as a failed attempt, so the loop will continue
+        }
+
+      } catch (error) {
+        console.error(`Attempt ${attempts} failed to load more content:`, error);
+        if (attempts >= maxAttempts) {
+          // You could add a user-facing error message here
+          console.error('Failed to load more content after multiple attempts.');
+        } else {
+          // Wait for a short period before retrying
+          await new Promise(resolve => setTimeout(resolve, 1000 * attempts));
+        }
       }
+    }
 
+    if (result) {
       const animationClass = animations[content.length % animations.length];
-
       const newContent: YantraContent = {
         id: content.length,
         data: result,
         animationClass,
       };
-
       setContent((prev) => [...prev, newContent]);
-
-    } catch (error) {
-      console.error('Failed to load more content:', error);
-    } finally {
-      setIsLoading(false);
     }
+
+    setIsLoading(false);
   }, [isLoading, content]);
 
   const lastElementRef = useCallback(
