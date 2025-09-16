@@ -1,17 +1,15 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
-import Image from 'next/image';
-import { generateYantraText, type YantraTextOutput } from '@/ai/flows/generate-yantra-text';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { generateYantraText } from '@/ai/flows/generate-yantra-text';
+import { YantraGeometry } from '@/components/yantra-geometry';
 import { Shapes, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 type YantraContent = {
   name: string;
   description: string;
-  imageUrl: string;
-  imageHint: string;
+  variant: 'sri' | 'star' | 'lotus' | 'cosmos';
   animationClass: string;
 };
 
@@ -19,7 +17,10 @@ const animations = [
   'animate-rotate-slow',
   'animate-rotate-slow-reverse',
   'animate-pulse-glow',
+  'animate-glow',
 ];
+
+const variants: Array<'sri' | 'star' | 'lotus' | 'cosmos'> = ['sri', 'star', 'lotus', 'cosmos'];
 
 export default function YantrasPage() {
   const [content, setContent] = useState<YantraContent[]>([]);
@@ -37,14 +38,13 @@ export default function YantrasPage() {
         previousText: lastYantra?.name,
       });
 
-      const placeholder = PlaceHolderImages.find(p => p.id.startsWith('yantra-')) ?? PlaceHolderImages[1];
       const animationClass = animations[content.length % animations.length];
+      const variant = variants[content.length % variants.length];
 
       const newContent: YantraContent = {
         name: result.name,
         description: result.description,
-        imageUrl: placeholder.imageUrl,
-        imageHint: placeholder.imageHint,
+        variant,
         animationClass,
       };
 
@@ -89,15 +89,8 @@ export default function YantrasPage() {
       <div className="space-y-12">
         {content.map((item, index) => (
           <div key={index} className="flex flex-col md:flex-row items-center gap-8 p-6 rounded-lg bg-card/80 backdrop-blur-sm shadow-md">
-            <div className="w-48 h-48 md:w-64 md:h-64 flex-shrink-0">
-              <Image
-                src={item.imageUrl}
-                alt={item.name}
-                width={256}
-                height={256}
-                data-ai-hint={item.imageHint}
-                className={cn("object-contain", item.animationClass)}
-              />
+            <div className={cn("w-48 h-48 md:w-64 md:h-64 flex-shrink-0", item.animationClass)}>
+              <YantraGeometry variant={item.variant} />
             </div>
             <div className="prose prose-lg dark:prose-invert max-w-full text-foreground/90">
                 <h2 className="text-2xl font-headline text-accent">{item.name}</h2>
