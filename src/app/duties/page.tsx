@@ -3,7 +3,7 @@ import { ClipboardCheck, UserCheck, Lock, HandHeart, Scale } from 'lucide-react'
 
 export default function DutiesPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 animate-fade-in">
       <header className="space-y-2">
         <h1 className="text-4xl font-bold font-headline text-primary flex items-center gap-2">
           <ClipboardCheck />
@@ -15,7 +15,7 @@ export default function DutiesPage() {
       </header>
 
       <div className="space-y-6">
-        <Card>
+        <Card className="transform hover:scale-[1.02] transition-transform duration-300 ease-in-out">
           <CardHeader>
             <CardTitle className="flex items-center gap-3"><UserCheck className="text-accent"/>ಗುರು ಸೇವೆ ಮತ್ತು ಅಚಲ ಶ್ರದ್ಧೆ</CardTitle>
           </CardHeader>
@@ -26,7 +26,7 @@ export default function DutiesPage() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="transform hover:scale-[1.02] transition-transform duration-300 ease-in-out">
           <CardHeader>
             <CardTitle className="flex items-center gap-3"><Lock className="text-accent"/>ಗোপনীয়ತೆ (ರಹಸ್ಯವನ್ನು ಕಾಪಾಡುವುದು)</CardTitle>
           </CardHeader>
@@ -37,7 +37,7 @@ export default function DutiesPage() {
           </CardContent>
         </Card>
         
-        <Card>
+        <Card className="transform hover:scale-[1.02] transition-transform duration-300 ease-in-out">
           <CardHeader>
             <CardTitle className="flex items-center gap-3"><HandHeart className="text-accent"/>ಸಮರ್ಪಣಾ ಭಾವ ಮತ್ತು ನಿರ್ಭಯತೆ</CardTitle>
           </CardHeader>
@@ -48,7 +48,7 @@ export default function DutiesPage() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="transform hover:scale-[1.02] transition-transform duration-300 ease-in-out">
           <CardHeader>
             <CardTitle className="flex items-center gap-3"><Scale className="text-accent"/>ಇಂದ್ರಿಯ ನಿಗ್ರಹ ಮತ್ತು ಶುದ್ಧತೆ</CardTitle>
           </CardHeader>

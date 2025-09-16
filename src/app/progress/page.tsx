@@ -42,7 +42,7 @@ export default function ProgressPage() {
   }, []);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 animate-fade-in">
       <header className="space-y-2">
         <h1 className="text-4xl font-bold font-headline text-primary flex items-center gap-2">
           <TrendingUp />

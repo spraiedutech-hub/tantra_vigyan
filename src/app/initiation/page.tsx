@@ -3,7 +3,7 @@ import { KeyRound, ShieldCheck, Waves, Sunrise, Sun, Sunset } from 'lucide-react
 
 export default function InitiationPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 animate-fade-in">
       <header className="space-y-2">
         <h1 className="text-4xl font-bold font-headline text-primary flex items-center gap-2">
           <KeyRound />
@@ -15,7 +15,7 @@ export default function InitiationPage() {
       </header>
 
       <div className="space-y-6">
-        <Card>
+        <Card className="transform hover:scale-[1.02] transition-transform duration-300 ease-in-out">
           <CardHeader>
             <CardTitle>ತಂತ್ರದಲ್ಲಿ ದೀಕ್ಷೆ ಏಕೆ ಕಡ್ಡಾಯ?</CardTitle>
           </CardHeader>
@@ -26,7 +26,7 @@ export default function InitiationPage() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="transform hover:scale-[1.02] transition-transform duration-300 ease-in-out">
           <CardHeader>
             <CardTitle>ದೀಕ್ಷೆ ಹೇಗೆ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ?</CardTitle>
           </CardHeader>
@@ -37,7 +37,7 @@ export default function InitiationPage() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="transform hover:scale-[1.02] transition-transform duration-300 ease-in-out">
           <CardHeader>
             <CardTitle>ದೀಕ್ಷೆಯ ವಿಧಗಳು</CardTitle>
           </CardHeader>
@@ -67,7 +67,7 @@ export default function InitiationPage() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="transform hover:scale-[1.02] transition-transform duration-300 ease-in-out">
           <CardHeader>
             <CardTitle>ದೀಕ್ಷೆಯ ಹಂತಗಳು</CardTitle>
           </CardHeader>

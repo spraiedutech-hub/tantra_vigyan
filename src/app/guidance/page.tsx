@@ -3,7 +3,7 @@ import { ShieldQuestion, UserCheck, BookCheck, HeartHandshake, CircleAlert } fro
 
 export default function GuidancePage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 animate-fade-in">
       <header className="space-y-2">
         <h1 className="text-4xl font-bold font-headline text-primary flex items-center gap-2">
           <ShieldQuestion />
@@ -15,7 +15,7 @@ export default function GuidancePage() {
       </header>
 
       <div className="space-y-6">
-        <Card>
+        <Card className="transform hover:scale-[1.02] transition-transform duration-300 ease-in-out">
           <CardHeader>
             <CardTitle className="flex items-center gap-3"><UserCheck className="text-accent"/>ಗುರು ಮತ್ತು ದೀಕ್ಷೆಯ ಅಭಾವ</CardTitle>
           </CardHeader>
@@ -26,7 +26,7 @@ export default function GuidancePage() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="transform hover:scale-[1.02] transition-transform duration-300 ease-in-out">
           <CardHeader>
             <CardTitle className="flex items-center gap-3"><BookCheck className="text-accent"/>ತಪ್ಪಾದ ಉಚ್ಚಾರಣೆ ಮತ್ತು ವಿಧಾನ</CardTitle>
           </CardHeader>
@@ -37,7 +37,7 @@ export default function GuidancePage() {
           </CardContent>
         </Card>
         
-        <Card>
+        <Card className="transform hover:scale-[1.02] transition-transform duration-300 ease-in-out">
           <CardHeader>
             <CardTitle className="flex items-center gap-3"><HeartHandshake className="text-accent"/>ಶ್ರದ್ಧೆ ಮತ್ತು ಏಕಾಗ್ರತೆಯ ಕೊರತೆ</CardTitle>
           </CardHeader>
@@ -48,7 +48,7 @@ export default function GuidancePage() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="transform hover:scale-[1.02] transition-transform duration-300 ease-in-out">
           <CardHeader>
             <CardTitle className="flex items-center gap-3"><CircleAlert className="text-accent"/>ತಕ್ಷಣದ ಫಲಿತಾಂಶಗಳ ನಿರೀಕ್ಷೆ</CardTitle>
           </CardHeader>

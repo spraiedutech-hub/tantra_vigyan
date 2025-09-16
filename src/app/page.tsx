@@ -20,7 +20,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 animate-fade-in">
       <header className="space-y-4">
         <h1 className="text-4xl font-bold font-headline text-primary">
           ತಂತ್ರ ವಿಜ್ಞಾನಕ್ಕೆ ಸುಸ್ವಾಗತ
