@@ -130,14 +130,6 @@ export default {
             'box-shadow': 'inset 0 0 30px 15px hsl(var(--destructive) / 0.6), inset 0 0 60px 30px hsl(var(--primary) / 0.5)',
           },
         },
-        'breathing-cosmos': {
-          '0%, 100%': { backgroundPosition: '50% 0%' },
-          '50%': { backgroundPosition: '50% 100%' },
-        },
-        'pulse-size': {
-          '0%, 100%': { transform: 'scale(1)' },
-          '50%': { transform: 'scale(1.05)' },
-        },
         'chakra-spin': {
           'from': { transform: 'rotate(0deg) scale(0.95)' },
           'to': { transform: 'rotate(360deg) scale(0.95)' },
@@ -175,8 +167,6 @@ export default {
         'glow': 'glow 6s ease-in-out infinite',
         'pulse-glow': 'pulse-glow 8s ease-in-out infinite',
         'fiery-border-glow': 'fiery-border-glow 8s ease-in-out infinite',
-        'breathing-cosmos': 'breathing-cosmos 20s ease-in-out infinite',
-        'pulse-size': 'pulse-size 6s ease-in-out infinite',
         'chakra-spin': 'chakra-spin 10s linear infinite',
         'chakra-spin-slow': 'chakra-spin-slow 20s linear infinite',
         'chakra-spin-slow-reverse': 'chakra-spin-slow-reverse 25s linear infinite',
