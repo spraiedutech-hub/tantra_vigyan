@@ -27,6 +27,7 @@ import {
   ClipboardCheck,
   Shapes,
   Compass,
+  Youtube,
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
@@ -43,6 +44,10 @@ export const navItems = [
   { href: '/progress', label: 'ಪ್ರಗತಿ', icon: TrendingUp },
   { href: '/guidance', label: 'ಮಾರ್ಗದರ್ಶನ', icon: ShieldQuestion },
   { href: '/tour', label: 'ಸೈಟ್ ಪ್ರವಾಸ', icon: Compass },
+];
+
+export const externalLinks = [
+    { href: 'https://www.youtube.com/@AmbikaDNagaraj', label: 'YouTube', icon: Youtube },
 ];
 
 export default function AppSidebar() {
@@ -79,6 +84,21 @@ export default function AppSidebar() {
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
+          {externalLinks.map((item) => (
+            <SidebarMenuItem key={item.href}>
+              <SidebarMenuButton 
+                asChild 
+                variant="ghost" 
+                className="w-full justify-start p-2 h-auto"
+                tooltip={item.label}
+              >
+                <a href={item.href} target="_blank" rel="noopener noreferrer">
+                    <item.icon className="mr-2 h-4 w-4" />
+                    <span className="group-data-[collapsible=icon]:hidden">{item.label}</span>
+                </a>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+            ))}
         </SidebarMenu>
       </SidebarContent>
       <SidebarFooter className="group-data-[collapsible=icon]:hidden">
