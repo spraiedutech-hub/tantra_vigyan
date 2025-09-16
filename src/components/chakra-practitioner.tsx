@@ -43,10 +43,10 @@ export default function ChakraPractitioner() {
         <text x="180" y="75" className="text-xs fill-foreground animate-float-fade" style={{ animationDelay: '0s' }}>ಸಹಸ್ರಾರ</text>
 
         {/* 6. Ajna (Third Eye) */}
-        <g transform="translate(150, 115)" className="animate-chakra-pulse">
+        <g transform="translate(150, 120)" className="animate-chakra-pulse">
           <circle r="10" fill="#4B0082" className="animate-chakra-glow opacity-80" />
         </g>
-        <text x="180" y="120" className="text-xs fill-foreground animate-float-fade" style={{ animationDelay: '1s' }}>ಆಜ್ಞಾ</text>
+        <text x="180" y="125" className="text-xs fill-foreground animate-float-fade" style={{ animationDelay: '1s' }}>ಆಜ್ಞಾ</text>
         
         {/* 5. Vishuddha (Throat) */}
         <g transform="translate(150, 160)" className="animate-chakra-spin">
@@ -55,30 +55,30 @@ export default function ChakraPractitioner() {
         <text x="180" y="165" className="text-xs fill-foreground animate-float-fade" style={{ animationDelay: '2s' }}>ವಿಶುದ್ಧ</text>
         
         {/* 4. Anahata (Heart) */}
-        <g transform="translate(150, 210)" className="animate-chakra-pulse">
+        <g transform="translate(150, 200)" className="animate-chakra-pulse">
           <polygon points="0,-12 10,5 -10,5" fill="#00FF00" className="animate-chakra-glow opacity-80" />
           <polygon points="0,12 10,-5 -10,-5" fill="#00FF00" className="animate-chakra-glow opacity-80" />
         </g>
-        <text x="180" y="215" className="text-xs fill-foreground animate-float-fade" style={{ animationDelay: '3s' }}>ಅನಾಹತ</text>
+        <text x="180" y="205" className="text-xs fill-foreground animate-float-fade" style={{ animationDelay: '3s' }}>ಅನಾಹತ</text>
         
         {/* 3. Manipura (Solar Plexus) */}
-        <g transform="translate(150, 260)" className="animate-chakra-spin-slow">
+        <g transform="translate(150, 250)" className="animate-chakra-spin-slow">
            <path d="M0 -10 L10 10 L-10 10 Z" fill="#FFFF00" className="animate-chakra-glow opacity-80" />
         </g>
-        <text x="180" y="265" className="text-xs fill-foreground animate-float-fade" style={{ animationDelay: '4s' }}>ಮಣಿಪುರ</text>
+        <text x="180" y="255" className="text-xs fill-foreground animate-float-fade" style={{ animationDelay: '4s' }}>ಮಣಿಪುರ</text>
         
         {/* 2. Svadhisthana (Sacral) */}
-        <g transform="translate(150, 310)" className="animate-chakra-pulse">
+        <g transform="translate(150, 300)" className="animate-chakra-pulse">
           <circle r="11" fill="#FF8C00" className="animate-chakra-glow opacity-80" />
           <circle r="5" fill="none" stroke="white" strokeWidth="1" />
         </g>
-        <text x="180" y="315" className="text-xs fill-foreground animate-float-fade" style={{ animationDelay: '5s' }}>ಸ್ವಾಧಿಷ್ಠಾನ</text>
+        <text x="180" y="305" className="text-xs fill-foreground animate-float-fade" style={{ animationDelay: '5s' }}>ಸ್ವಾಧಿಷ್ಠಾನ</text>
         
         {/* 1. Muladhara (Root) */}
-        <g transform="translate(150, 360)" className="animate-chakra-spin">
+        <g transform="translate(150, 350)" className="animate-chakra-spin">
           <rect x="-8" y="-8" width="16" height="16" fill="#FF0000" className="animate-chakra-glow opacity-80" />
         </g>
-        <text x="180" y="365" className="text-xs fill-foreground animate-float-fade" style={{ animationDelay: '6s' }}>ಮೂಲಾಧಾರ</text>
+        <text x="180" y="355" className="text-xs fill-foreground animate-float-fade" style={{ animationDelay: '6s' }}>ಮೂಲಾಧಾರ</text>
       </svg>
     </div>
   );
