@@ -22,6 +22,7 @@ import {
   TrendingUp,
   BookOpen,
   KeyRound,
+  ShieldQuestion,
 } from 'lucide-react';
 import { Button } from '../ui/button';
 
@@ -33,6 +34,7 @@ const navItems = [
   { href: '/initiation', label: 'ದೀಕ್ಷೆ', icon: KeyRound },
   { href: '/knowledge', label: 'ಜ್ಞಾನ', icon: BookOpen },
   { href: '/progress', label: 'ಪ್ರಗತಿ', icon: TrendingUp },
+  { href: '/guidance', label: 'ಮಾರ್ಗದರ್ಶನ', icon: ShieldQuestion },
 ];
 
 export default function AppSidebar() {
