@@ -13,7 +13,7 @@ const BATCH_SIZE = 6;
 
 export default function MantrasPage() {
   const { toast } = useToast();
-  const [displayedMantras, setDisplayedMantras] = useState<typeof mantras>([]);
+  const [displayedMantras, setDisplayedMantras] = useState<(typeof mantras)[0][]>([]);
   const [hasMore, setHasMore] = useState(true);
   const observer = useRef<IntersectionObserver>();
 
