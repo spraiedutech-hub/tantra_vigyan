@@ -1,0 +1,78 @@
+
+import { cn } from "@/lib/utils";
+
+export default function ChakraPractitioner() {
+  return (
+    <div className="w-full h-full flex items-center justify-center p-4">
+      <svg viewBox="0 0 300 400" className="w-full h-full max-w-sm max-h-full">
+        <defs>
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+            <feMerge>
+              <feMergeNode in="coloredBlur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+        
+        {/* Practitioner Silhouette */}
+        <path 
+          d="M150 150 
+             C 120 150, 110 180, 110 200 
+             L 110 280 
+             C 110 320, 100 350, 80 360 
+             A 40 40 0 0 0 100 380 
+             L 200 380 
+             A 40 40 0 0 0 220 360 
+             C 200 350, 190 320, 190 280 
+             L 190 200 
+             C 190 180, 180 150, 150 150 Z"
+          fill="none" 
+          stroke="hsl(var(--primary))" 
+          strokeWidth="1.5"
+          className="opacity-50"
+        />
+        <circle cx="150" cy="120" r="30" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5" className="opacity-50" />
+
+        {/* Chakras */}
+        {/* 7. Sahasrara (Crown) */}
+        <g transform="translate(150, 70)" className="animate-chakra-spin-slow-reverse">
+          <circle r="12" fill="#A468D3" className="animate-chakra-glow opacity-80" />
+          <text textAnchor="middle" dy="4" fill="white" fontSize="12">ॐ</text>
+        </g>
+
+        {/* 6. Ajna (Third Eye) */}
+        <g transform="translate(150, 115)" className="animate-chakra-pulse">
+          <circle r="10" fill="#4B0082" className="animate-chakra-glow opacity-80" />
+        </g>
+        
+        {/* 5. Vishuddha (Throat) */}
+        <g transform="translate(150, 160)" className="animate-chakra-spin">
+          <circle r="9" fill="#00BFFF" className="animate-chakra-glow opacity-80" />
+        </g>
+        
+        {/* 4. Anahata (Heart) */}
+        <g transform="translate(150, 210)" className="animate-chakra-pulse">
+          <polygon points="0,-12 10,5 -10,5" fill="#00FF00" className="animate-chakra-glow opacity-80" />
+          <polygon points="0,12 10,-5 -10,-5" fill="#00FF00" className="animate-chakra-glow opacity-80" />
+        </g>
+        
+        {/* 3. Manipura (Solar Plexus) */}
+        <g transform="translate(150, 260)" className="animate-chakra-spin-slow">
+           <path d="M0 -10 L10 10 L-10 10 Z" fill="#FFFF00" className="animate-chakra-glow opacity-80" />
+        </g>
+        
+        {/* 2. Svadhisthana (Sacral) */}
+        <g transform="translate(150, 310)" className="animate-chakra-pulse">
+          <circle r="11" fill="#FF8C00" className="animate-chakra-glow opacity-80" />
+          <circle r="5" fill="none" stroke="white" strokeWidth="1" />
+        </g>
+        
+        {/* 1. Muladhara (Root) */}
+        <g transform="translate(150, 360)" className="animate-chakra-spin">
+          <rect x="-8" y="-8" width="16" height="16" fill="#FF0000" className="animate-chakra-glow opacity-80" />
+        </g>
+      </svg>
+    </div>
+  );
+}

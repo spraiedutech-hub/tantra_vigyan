@@ -2,15 +2,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { dailyAffirmations } from '@/lib/constants';
 import { Heart } from 'lucide-react';
+import ChakraPractitioner from '@/components/chakra-practitioner';
 
 export default function Home() {
   const [affirmation, setAffirmation] = useState('');
-  const heroImage = PlaceHolderImages.find((img) => img.id === 'hero-home');
 
   useEffect(() => {
     // Select a random affirmation on client-side to avoid hydration mismatch
@@ -30,19 +28,9 @@ export default function Home() {
         </p>
       </header>
 
-      {heroImage && (
-        <div className="relative w-full h-96 md:h-[600px] rounded-lg overflow-hidden shadow-lg">
-          <Image
-            src={heroImage.imageUrl}
-            alt={heroImage.description}
-            fill
-            className="object-cover transition-transform duration-500 ease-in-out"
-            data-ai-hint={heroImage.imageHint}
-            priority
-          />
-           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-        </div>
-      )}
+      <div className="relative w-full h-96 md:h-[600px] rounded-lg overflow-hidden shadow-lg flex items-center justify-center bg-card/50">
+          <ChakraPractitioner />
+      </div>
 
       <section>
         <Card className="bg-card/80 backdrop-blur-sm border-primary/20 shadow-inner">

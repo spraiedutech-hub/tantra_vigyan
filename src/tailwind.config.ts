@@ -1,3 +1,4 @@
+
 import type {Config} from 'tailwindcss';
 
 export default {
@@ -96,6 +97,14 @@ export default {
           from: { transform: 'rotate(0deg)' },
           to: { transform: 'rotate(360deg)' },
         },
+        'rotate-slow': {
+          from: { transform: 'rotate(0deg)' },
+          to: { transform: 'rotate(360deg)' },
+        },
+        'rotate-slow-reverse': {
+          from: { transform: 'rotate(360deg)' },
+          to: { transform: 'rotate(0deg)' },
+        },
         'pulse-slow': {
           '0%, 100%': { opacity: '0.7' },
           '50%': { opacity: '1' },
@@ -108,6 +117,10 @@ export default {
         'glow': {
           '0%, 100%': { filter: 'drop-shadow(0 0 5px hsl(var(--primary)))' },
           '50%': { filter: 'drop-shadow(0 0 15px hsl(var(--primary)))' },
+        },
+        'pulse-glow': {
+          '0%, 100%': { filter: 'drop-shadow(0 0 7px hsl(var(--accent)))', opacity: '0.9' },
+          '50%': { filter: 'drop-shadow(0 0 20px hsl(var(--accent)))', opacity: '1' },
         },
         'fiery-border-glow': {
           '0%, 100%': {
@@ -125,18 +138,46 @@ export default {
           '0%, 100%': { transform: 'scale(1)' },
           '50%': { transform: 'scale(1.05)' },
         },
+        'chakra-spin': {
+          'from': { transform: 'rotate(0deg) scale(0.95)' },
+          'to': { transform: 'rotate(360deg) scale(0.95)' },
+        },
+        'chakra-spin-slow': {
+          'from': { transform: 'rotate(0deg) scale(1)' },
+          'to': { transform: 'rotate(360deg) scale(1)' },
+        },
+        'chakra-spin-slow-reverse': {
+            'from': { transform: 'rotate(360deg) scale(1)' },
+            'to': { transform: 'rotate(0deg) scale(1)' },
+        },
+        'chakra-pulse': {
+          '0%, 100%': { transform: 'scale(1)', opacity: '0.8' },
+          '50%': { transform: 'scale(1.1)', opacity: '1' },
+        },
+        'chakra-glow': {
+          '0%, 100%': { filter: 'drop-shadow(0 0 3px currentColor)' },
+          '50%': { filter: 'drop-shadow(0 0 8px currentColor)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'fade-in': 'fade-in 0.6s ease-out forwards',
         'rotate': 'rotate 30s linear infinite',
+        'rotate-slow': 'rotate-slow 45s linear infinite',
+        'rotate-slow-reverse': 'rotate-slow-reverse 45s linear infinite',
         'pulse-slow': 'pulse-slow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'animated-border': 'animated-border 4s linear infinite',
         'glow': 'glow 6s ease-in-out infinite',
+        'pulse-glow': 'pulse-glow 8s ease-in-out infinite',
         'fiery-border-glow': 'fiery-border-glow 8s ease-in-out infinite',
         'breathing-cosmos': 'breathing-cosmos 20s ease-in-out infinite',
         'pulse-size': 'pulse-size 6s ease-in-out infinite',
+        'chakra-spin': 'chakra-spin 10s linear infinite',
+        'chakra-spin-slow': 'chakra-spin-slow 20s linear infinite',
+        'chakra-spin-slow-reverse': 'chakra-spin-slow-reverse 25s linear infinite',
+        'chakra-pulse': 'chakra-pulse 4s ease-in-out infinite',
+        'chakra-glow': 'chakra-glow 5s ease-in-out infinite',
       },
     },
   },
