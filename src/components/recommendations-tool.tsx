@@ -1,3 +1,4 @@
+
 'use client';
 import { useState } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
@@ -37,8 +38,9 @@ import {
 } from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2, Wand2 } from 'lucide-react';
+import { Loader2, Wand2, AlertTriangle } from 'lucide-react';
 import { Separator } from './ui/separator';
+import { Alert, AlertDescription, AlertTitle } from './ui/alert';
 
 // Zod schemas for form validation
 const mantraSchema = z.object({
@@ -118,6 +120,16 @@ export default function RecommendationsTool() {
       setActivityLoading(false);
     }
   };
+
+  const Notice = () => (
+    <Alert variant="destructive" className="border-accent/50 text-accent [&>svg]:text-accent mt-4">
+        <AlertTriangle className="h-4 w-4" />
+        <AlertTitle>ಪ್ರಮುಖ ಸೂಚನೆ</AlertTitle>
+        <AlertDescription>
+          ಇಲ್ಲಿ ನೀಡಲಾದ ಶಿಫಾರಸುಗಳು ಸಾಮಾನ್ಯ ಮತ್ತು ಆರಂಭಿಕ ಮಾರ್ಗದರ್ಶನಗಳಾಗಿವೆ. ಮಂತ್ರ ಮತ್ತು ತಂತ್ರಗಳು ತಮ್ಮ ನಿಜವಾದ ಮತ್ತು ಸಂಪೂರ್ಣ ಪರಿಣಾಮವನ್ನು ಕರುಣಾಮಯಿ ಗುರುವಿನಿಂದ ದೀಕ್ಷೆ ಪಡೆದಾಗ ಮಾತ್ರ ತೋರಿಸುತ್ತವೆ.
+        </AlertDescription>
+    </Alert>
+  );
 
   return (
     <Tabs defaultValue="mantra" className="w-full">
@@ -213,11 +225,15 @@ export default function RecommendationsTool() {
                 </Button>
               </form>
             </Form>
-            {mantraLoading && <p className="text-center">ಲೋಡ್ ಆಗುತ್ತಿದೆ...</p>}
+            {mantraLoading && <div className="text-center pt-4">
+                <Loader2 className="h-6 w-6 animate-spin inline-block" />
+                <p>ಲೋಡ್ ಆಗುತ್ತಿದೆ...</p>
+            </div>}
             {mantraResult && (
               <div className="mt-6 space-y-4">
                 <Separator />
                 <h3 className="text-xl font-semibold">ನಿಮ್ಮ ಶಿಫಾರಸುಗಳು:</h3>
+                <Notice />
                 {mantraResult.mantraRecommendations.map((rec, index) => (
                   <Card key={index} className="bg-muted/50">
                     <CardHeader>
@@ -315,11 +331,15 @@ export default function RecommendationsTool() {
                 </Button>
               </form>
             </Form>
-            {activityLoading && <p className="text-center">ಲೋಡ್ ಆಗುತ್ತಿದೆ...</p>}
+            {activityLoading && <div className="text-center pt-4">
+                <Loader2 className="h-6 w-6 animate-spin inline-block" />
+                <p>ಲೋಡ್ ಆಗುತ್ತಿದೆ...</p>
+            </div>}
             {activityResult && (
               <div className="mt-6 space-y-4">
                 <Separator />
                 <h3 className="text-xl font-semibold">ನಿಮ್ಮ ಶಿಫಾರಸುಗಳು:</h3>
+                <Notice />
                 <Card className="bg-muted/50">
                     <CardContent className="p-6">
                       <p className="whitespace-pre-wrap">{activityResult.recommendations}</p>
