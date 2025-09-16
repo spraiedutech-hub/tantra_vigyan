@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { mantras } from '@/lib/constants';
-import { PlayCircle, Music } from 'lucide-react';
+import { Music, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { recordMantraPracticed } from '@/lib/progress-tracker';
 import { useToast } from '@/hooks/use-toast';
@@ -10,14 +10,12 @@ import { useToast } from '@/hooks/use-toast';
 export default function MantrasPage() {
   const { toast } = useToast();
 
-  const handlePlay = (mantraName: string, audioUrl: string) => {
+  const handlePractice = (mantraName: string) => {
     recordMantraPracticed();
     toast({
-        title: 'ಮಂತ್ರ ಪಠಣ',
-        description: `"${mantraName}" ಮಂತ್ರವನ್ನು ನಿಮ್ಮ ಪ್ರಗತಿಯಲ್ಲಿ ದಾಖಲಿಸಲಾಗಿದೆ.`,
+      title: 'ಅಭಿನಂದನೆಗಳು!',
+      description: `"${mantraName}" ಮಂತ್ರವನ್ನು ಅಭ್ಯಾಸ ಮಾಡಿದ್ದೀರಿ.`,
     });
-    // This is a placeholder for actual audio playback functionality
-    alert(`Playing mantra from: ${audioUrl}`);
   };
 
   return (
@@ -45,10 +43,10 @@ export default function MantrasPage() {
               <Button
                 variant="outline"
                 className="w-full border-accent text-accent hover:bg-accent hover:text-accent-foreground"
-                onClick={() => handlePlay(mantra.name, mantra.audioUrl)}
+                onClick={() => handlePractice(mantra.name)}
               >
-                <PlayCircle className="mr-2 h-5 w-5" />
-                ಕೇಳಿ
+                <CheckCircle className="mr-2 h-5 w-5" />
+                ಅಭ್ಯಾಸ ಮಾಡಿದ್ದೇನೆ
               </Button>
             </CardFooter>
           </Card>
