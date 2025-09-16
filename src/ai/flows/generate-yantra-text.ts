@@ -12,13 +12,14 @@ import {z} from 'genkit';
 
 const YantraTextInputSchema = z.object({
   topic: z.string().describe('The topic to generate text about, which should be Yantras and Mandalas.'),
-  previousText: z.string().optional().describe('The last yantra discussed to ensure variety and continuity.'),
+  previousYantras: z.array(z.string()).optional().describe('A list of yantras that have already been discussed to ensure variety.'),
 });
 export type YantraTextInput = z.infer<typeof YantraTextInputSchema>;
 
 const YantraTextOutputSchema = z.object({
   name: z.string().describe('The name of the Yantra or Mandala, for example, "Sri Yantra".'),
   description: z.string().describe('A new, detailed paragraph about a specific Yantra or Mandala in Kannada.'),
+  variant: z.enum(['sri', 'star', 'lotus', 'cosmos']).describe('The visual variant of the yantra to display.'),
 });
 export type YantraTextOutput = z.infer<typeof YantraTextOutputSchema>;
 
@@ -36,13 +37,15 @@ Each response should introduce and describe a different Yantra or Mandala. The l
 
 Topic: {{{topic}}}
 
-{{#if previousText}}
-The last one discussed was "{{{previousText}}}". Please introduce a new, different Yantra or Mandala.
+{{#if previousYantras}}
+The following yantras have already been discussed: {{#each previousYantras}}{{{this}}}{{#unless @last}}, {{/unless}}{{/each}}. Please introduce a new, different Yantra or Mandala.
 {{else}}
 Start with an introduction to a significant Yantra, for example, the "Sri Yantra".
 {{/if}}
 
-Generate the next entry in Kannada. Provide the name of the yantra/mandala and a detailed description of its symbolism, structure, and spiritual significance. Do not repeat. Do not add titles or headings.
+Based on the Yantra you are describing, select the most appropriate visual variant from the available options: 'sri', 'star', 'lotus', 'cosmos'. For example, if you describe the Sri Yantra, set the variant to 'sri'. For a six-pointed star yantra, use 'star'. For a floral mandala, use 'lotus'. For abstract cosmic diagrams, use 'cosmos'.
+
+Generate the next entry in Kannada. Provide the name of the yantra/mandala, a detailed description of its symbolism, structure, and spiritual significance, and the corresponding variant. Do not repeat. Do not add titles or headings.
 `,
 });
 

@@ -1,15 +1,14 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { generateYantraText } from '@/ai/flows/generate-yantra-text';
+import { generateYantraText, type YantraTextOutput } from '@/ai/flows/generate-yantra-text';
 import { YantraGeometry } from '@/components/yantra-geometry';
 import { Shapes, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 type YantraContent = {
-  name: string;
-  description: string;
-  variant: 'sri' | 'star' | 'lotus' | 'cosmos';
+  id: number;
+  data: YantraTextOutput;
   animationClass: string;
 };
 
@@ -20,8 +19,6 @@ const animations = [
   'animate-glow',
 ];
 
-const variants: Array<'sri' | 'star' | 'lotus' | 'cosmos'> = ['sri', 'star', 'lotus', 'cosmos'];
-
 export default function YantrasPage() {
   const [content, setContent] = useState<YantraContent[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -31,24 +28,26 @@ export default function YantrasPage() {
     if (isLoading) return;
     setIsLoading(true);
     try {
-      const lastYantra = content.length > 0 ? content[content.length - 1] : undefined;
+      const previousYantras = content.map(item => item.data.name);
       
       const result = await generateYantraText({
         topic: 'Yantras and Mandalas',
-        previousText: lastYantra?.name,
+        previousYantras: previousYantras,
       });
 
       const animationClass = animations[content.length % animations.length];
-      const variant = variants[content.length % variants.length];
 
       const newContent: YantraContent = {
-        name: result.name,
-        description: result.description,
-        variant,
+        id: content.length,
+        data: result,
         animationClass,
       };
 
-      setContent((prev) => [...prev, newContent]);
+      // Check for duplicates before adding
+      if (!content.some(c => c.data.name === newContent.data.name)) {
+         setContent((prev) => [...prev, newContent]);
+      }
+
     } catch (error) {
       console.error('Failed to load more content:', error);
     } finally {
@@ -71,8 +70,10 @@ export default function YantrasPage() {
   );
 
   useEffect(() => {
-    loadMoreContent();
-  }, [loadMoreContent]);
+     if (content.length === 0) {
+        loadMoreContent();
+     }
+  }, [loadMoreContent, content.length]);
 
   return (
     <div className="space-y-8 animate-fade-in">
@@ -87,14 +88,14 @@ export default function YantrasPage() {
       </header>
 
       <div className="space-y-12">
-        {content.map((item, index) => (
-          <div key={index} className="flex flex-col md:flex-row items-center gap-8 p-6 rounded-lg bg-card/80 backdrop-blur-sm shadow-md">
+        {content.map((item) => (
+          <div key={item.id} className="flex flex-col md:flex-row items-center gap-8 p-6 rounded-lg bg-card/80 backdrop-blur-sm shadow-md">
             <div className={cn("w-48 h-48 md:w-64 md:h-64 flex-shrink-0", item.animationClass)}>
-              <YantraGeometry variant={item.variant} />
+              <YantraGeometry variant={item.data.variant} />
             </div>
             <div className="prose prose-lg dark:prose-invert max-w-full text-foreground/90">
-                <h2 className="text-2xl font-headline text-accent">{item.name}</h2>
-                <p className="text-justify leading-relaxed">{item.description}</p>
+                <h2 className="text-2xl font-headline text-accent">{item.data.name}</h2>
+                <p className="text-justify leading-relaxed">{item.data.description}</p>
             </div>
           </div>
         ))}

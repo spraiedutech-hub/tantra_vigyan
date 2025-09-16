@@ -13,15 +13,17 @@ export default function LiteraturePage() {
     if (isLoading) return;
     setIsLoading(true);
     try {
-      const lastParagraph = content.length > 0 ? content[content.length - 1] : undefined;
-      // Extract the name of the last text to avoid repetition
-      const lastTextName = lastParagraph ? lastParagraph.split(' ')[0] : '';
+      const lastTextName = content.length > 0 ? content[content.length - 1].split(' ')[0] : undefined;
       
       const result = await generateLiteratureText({
         topic: 'Ancient Tantra Texts',
         previousText: lastTextName,
       });
-      setContent((prev) => [...prev, result.text]);
+
+      // Simple client-side check to prevent adding duplicates
+      if (!content.includes(result.text)) {
+        setContent((prev) => [...prev, result.text]);
+      }
     } catch (error) {
       console.error('Failed to load more content:', error);
     } finally {
@@ -45,8 +47,10 @@ export default function LiteraturePage() {
 
   useEffect(() => {
     // Load the initial content when the component mounts
-    loadMoreContent();
-  }, [loadMoreContent]);
+    if (content.length === 0) {
+        loadMoreContent();
+    }
+  }, [loadMoreContent, content.length]);
 
   return (
     <div className="space-y-8 animate-fade-in">
