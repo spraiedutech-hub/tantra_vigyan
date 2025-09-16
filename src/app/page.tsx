@@ -36,7 +36,7 @@ export default function Home() {
             src={heroImage.imageUrl}
             alt={heroImage.description}
             fill
-            className="object-cover"
+            className="object-cover transition-transform duration-500 ease-in-out hover:scale-105"
             data-ai-hint={heroImage.imageHint}
             priority
           />
