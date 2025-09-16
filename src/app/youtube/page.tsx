@@ -5,23 +5,22 @@ import { useState } from 'react';
 import { Youtube } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
-// Add your YouTube channels to this list
-// The 'id' is the part of your channel URL after '@' or the string starting with 'UC'
-// The playlist for all uploads is the channel ID with the first two letters 'UC' replaced with 'UU'
-const channels = [
+// Add your YouTube playlists to this list
+// You can find the playlist ID in the URL of the playlist page on YouTube
+const playlists = [
   {
-    name: 'Ambika D Nagaraj',
-    playlistId: 'UU2-w9YEt2_8a_TDIZoE-3_A', // Derived from channel ID UC2-w9YEt2_8a_TDIZoE-3_A
+    name: 'Ambika D Nagaraj - All Videos',
+    playlistId: 'UU2-w9YEt2_8a_TDIZoE-3_A', // This is the special ID for all of a channel's uploads
   },
-  // Example: Add another channel below
+  // Example: Add another playlist below
   // {
-  //   name: 'Another Channel',
-  //   playlistId: 'UUxxxxxxxxxxxxxxxxxxxxxx', 
+  //   name: 'My Awesome Playlist',
+  //   playlistId: 'PLxxxxxxxxxxxxxxxxxxxxxx', 
   // },
 ];
 
 export default function YouTubePage() {
-  const [selectedPlaylistId, setSelectedPlaylistId] = useState(channels[0].playlistId);
+  const [selectedPlaylistId, setSelectedPlaylistId] = useState(playlists[0].playlistId);
 
   const embedUrl = `https://www.youtube.com/embed/videoseries?list=${selectedPlaylistId}`;
 
@@ -31,17 +30,17 @@ export default function YouTubePage() {
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <h1 className="text-4xl font-bold font-headline text-primary flex items-center gap-2">
                 <Youtube />
-                YouTube ಚಾನೆಲ್‌ಗಳು
+                YouTube Playlists
             </h1>
             <div className="max-w-xs">
                 <Select onValueChange={setSelectedPlaylistId} defaultValue={selectedPlaylistId}>
                     <SelectTrigger>
-                        <SelectValue placeholder="ಚಾನೆಲ್ ಆಯ್ಕೆಮಾಡಿ" />
+                        <SelectValue placeholder="Playlist ಆಯ್ಕೆಮಾಡಿ" />
                     </SelectTrigger>
                     <SelectContent>
-                        {channels.map((channel) => (
-                        <SelectItem key={channel.playlistId} value={channel.playlistId}>
-                            {channel.name}
+                        {playlists.map((playlist) => (
+                        <SelectItem key={playlist.playlistId} value={playlist.playlistId}>
+                            {playlist.name}
                         </SelectItem>
                         ))}
                     </SelectContent>
@@ -49,7 +48,7 @@ export default function YouTubePage() {
             </div>
         </div>
         <p className="text-lg text-muted-foreground">
-          ನಮ್ಮ ಯೂಟ್ಯೂಬ್ ಚಾನೆಲ್‌ಗಳಿಂದ ನೇರವಾಗಿ ವೀಡಿಯೊಗಳನ್ನು ವೀಕ್ಷಿಸಿ.
+          ನಮ್ಮ ಯೂಟ್ಯೂಬ್ ಪ್ಲೇಲಿಸ್ಟ್‌ಗಳಿಂದ ನೇರವಾಗಿ ವೀಡಿಯೊಗಳನ್ನು ವೀಕ್ಷಿಸಿ.
         </p>
       </header>
 
