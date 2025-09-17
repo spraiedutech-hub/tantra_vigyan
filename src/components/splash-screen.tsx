@@ -25,12 +25,13 @@ export default function SplashScreen() {
       )}
     >
       <Image
-        src="https://picsum.photos/seed/sacred-geometry/1920/1080"
+        src="/images/splash-background.jpg"
         alt="Sacred Geometry Background"
         layout="fill"
         objectFit="cover"
         className="opacity-20 blur-sm"
         data-ai-hint="sacred geometry"
+        priority
       />
       <div className="absolute inset-0 bg-background/80" />
 
