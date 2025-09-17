@@ -159,6 +159,14 @@ export default {
           '0%, 100%': { opacity: '0.2' },
           '50%': { opacity: '1' },
         },
+        'logo-fade-in': {
+          '0%': { opacity: '0', transform: 'scale(0.8)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+        'background-zoom': {
+          '0%': { transform: 'scale(1)' },
+          '100%': { transform: 'scale(1.1)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -179,6 +187,8 @@ export default {
         'chakra-glow': 'chakra-glow 5s ease-in-out infinite',
         'float-fade': 'float-fade 7s ease-in-out infinite',
         'random-letter-fade': 'random-letter-fade 5s ease-in-out infinite',
+        'logo-fade-in': 'logo-fade-in 1.5s ease-out forwards',
+        'background-zoom': 'background-zoom 10s ease-out forwards',
       },
     },
   },
