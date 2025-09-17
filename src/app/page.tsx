@@ -29,10 +29,10 @@ export default function Home() {
     <div className="space-y-8 animate-fade-in">
       <header className="space-y-4 p-4 rounded-lg animated-border">
         <h1 className="text-4xl font-bold font-headline text-primary">
-          ಸಾಧಕ, ನಿಮಗೆ ಸುಸ್ವಾಗತ (Welcome, Practitioner)
+          ಸಾಧಕ, ನಿಮಗೆ ಸುಸ್ವಾಗತ
         </h1>
         <p className="text-lg text-muted-foreground">
-          ನಿಮ್ಮ ಆಧ್ಯಾತ್ಮಿಕ ಪಯಣವನ್ನು ಮುಂದುವರಿಸಲು ಇಲ್ಲಿ ಎಲ್ಲವೂ ಸಿದ್ಧವಾಗಿದೆ.
+          ತಂತ್ರ ವಿಜ್ಞಾನದ ಗುಪ್ತ ನಿಧಿಯನ್ನು ಅನ್ವೇಷಿಸಿ.
         </p>
       </header>
 
