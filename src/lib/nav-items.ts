@@ -17,6 +17,7 @@ import {
   CheckCircle,
   HeartHandshake,
   Headphones,
+  Users,
 } from 'lucide-react';
 
 export const navItems = [
@@ -35,6 +36,7 @@ export const navItems = [
   { href: '/literature', label: 'ಸಾಹಿತ್ಯ', icon: Library },
   { href: '/duties', label: 'ಸಾಧಕನ ಕರ್ತವ್ಯಗಳು', icon: ClipboardCheck },
   { href: '/progress', label: 'ಪ್ರಗತಿ', icon: TrendingUp },
+  { href: '/forum', label: 'ಸಮುದಾಯ ವೇದಿಕೆ', icon: Users },
   { href: '/tour', label: 'ಸೈಟ್ ಪ್ರವಾಸ', icon: Compass },
   { href: '/youtube', label: 'YouTube', icon: Youtube },
 ];
