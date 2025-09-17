@@ -50,21 +50,24 @@ export default function RootLayout({
             forcedTheme="dark"
             disableTransitionOnChange
         >
-          {isLoading && <SplashScreen />}
-            <AnimatedBackground />
-            <SidebarProvider>
-              <div className="flex min-h-screen">
-                <AppSidebar />
-                <SidebarInset>
-                  <AppHeader />
-                  <SacredGeometry className="top-6 right-6" />
-                  <main className="flex-1 p-4 sm:p-6 lg:p-8">{children}</main>
-                  <SacredGeometry className="bottom-6 left-6" mantra="श्रीं" />
-                  <AppFooter />
-                </SidebarInset>
-              </div>
-            </SidebarProvider>
-            <Toaster />
+          {isLoading ? <SplashScreen /> : (
+            <>
+              <AnimatedBackground />
+              <SidebarProvider>
+                <div className="flex min-h-screen">
+                  <AppSidebar />
+                  <SidebarInset>
+                    <AppHeader />
+                    <SacredGeometry className="top-6 right-6" />
+                    <main className="flex-1 p-4 sm:p-6 lg:p-8">{children}</main>
+                    <SacredGeometry className="bottom-6 left-6" mantra="श्रीं" />
+                    <AppFooter />
+                  </SidebarInset>
+                </div>
+              </SidebarProvider>
+              <Toaster />
+            </>
+          )}
         </ThemeProvider>
       </body>
     </html>
