@@ -28,21 +28,17 @@ export default function AppHeader() {
           </h1>
         )}
       </div>
-      <div className="flex-1 flex justify-center items-center gap-4">
-        <Button asChild className="bg-primary/80 hover:bg-primary text-primary-foreground animate-pulse">
+      <div className="flex items-center gap-4">
+        <Button asChild className="bg-primary/80 hover:bg-primary text-primary-foreground">
             <Link href="/initiation/process">
-            ದೀಕ್ಷಾ ಪ್ರಕ್ರಿಯೆ ಪ್ರಾರಂಭವಾಗಿದೆ
+            ದೀಕ್ಷಾ ಪ್ರಕ್ರಿಯೆ
             <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
         </Button>
-        <Button asChild variant="outline">
-            <Link href="/">
-                <User className="mr-2 h-4 w-4" />
-                Nagaraja D, Hosadurga
-            </Link>
+        <Button variant="outline" size="icon" aria-label="User Profile">
+            <User className="h-4 w-4" />
         </Button>
       </div>
-      <div className="flex-1" />
     </header>
   );
 }
