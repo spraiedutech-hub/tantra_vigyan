@@ -13,3 +13,4 @@ import '@/ai/flows/generate-sadhana-audio.ts';
 import '@/ai/flows/generate-article.ts';
 import '@/ai/flows/generate-article-image.ts';
 import '@/ai/flows/get-personalized-guidance.ts';
+import '@/ai/flows/generate-remedy-ritual.ts';
