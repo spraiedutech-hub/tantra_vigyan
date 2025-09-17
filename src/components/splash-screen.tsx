@@ -4,6 +4,7 @@
 import { useState, useEffect } from 'react';
 import { Logo } from '@/components/icons/logo';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 export default function SplashScreen() {
   const [isFadingOut, setIsFadingOut] = useState(false);
@@ -23,7 +24,17 @@ export default function SplashScreen() {
         isFadingOut ? 'opacity-0' : 'opacity-100'
       )}
     >
-      <div className="animate-logo-fade-in text-center">
+      <Image
+        src="https://picsum.photos/seed/sacred-geometry/1920/1080"
+        alt="Sacred Geometry Background"
+        layout="fill"
+        objectFit="cover"
+        className="opacity-20 blur-sm"
+        data-ai-hint="sacred geometry"
+      />
+      <div className="absolute inset-0 bg-background/80" />
+
+      <div className="animate-logo-fade-in text-center z-10">
         <div className="animate-glow">
           <Logo className="w-[240px] h-auto animate-pulse-slow" />
         </div>
