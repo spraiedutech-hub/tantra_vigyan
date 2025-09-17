@@ -1,14 +1,58 @@
 
 'use client';
 
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { ArrowLeft, CheckCircle, CreditCard, Send, TrendingUp, Phone } from 'lucide-react';
+import { ArrowLeft, CheckCircle, CreditCard, Send, TrendingUp, Phone, Timer } from 'lucide-react';
 import Link from 'next/link';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+
+const OFFER_DURATION = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+const REGULAR_PRICE = '₹11,111/-';
+const DISCOUNTED_PRICE = '₹5,555.5/-';
 
 export default function InitiationProcessPage() {
-  const initiationFee = '₹11,111/-';
+  const [offerEndTime, setOfferEndTime] = useState<number | null>(null);
+  const [timeRemaining, setTimeRemaining] = useState<string>('');
+  const [isOfferActive, setIsOfferActive] = useState(false);
+
+  useEffect(() => {
+    const storedEndTime = localStorage.getItem('initiationOfferEndTime');
+    let endTime: number;
+
+    if (storedEndTime) {
+      endTime = parseInt(storedEndTime, 10);
+    } else {
+      endTime = Date.now() + OFFER_DURATION;
+      localStorage.setItem('initiationOfferEndTime', endTime.toString());
+    }
+    setOfferEndTime(endTime);
+  }, []);
+
+  useEffect(() => {
+    if (!offerEndTime) return;
+
+    const interval = setInterval(() => {
+      const now = Date.now();
+      const remaining = offerEndTime - now;
+
+      if (remaining > 0) {
+        setIsOfferActive(true);
+        const hours = Math.floor((remaining / (1000 * 60 * 60)) % 24).toString().padStart(2, '0');
+        const minutes = Math.floor((remaining / 1000 / 60) % 60).toString().padStart(2, '0');
+        const seconds = Math.floor((remaining / 1000) % 60).toString().padStart(2, '0');
+        setTimeRemaining(`${hours}:${minutes}:${seconds}`);
+      } else {
+        setIsOfferActive(false);
+        setTimeRemaining('');
+        clearInterval(interval);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [offerEndTime]);
 
   return (
     <div className="space-y-8 animate-fade-in max-w-4xl mx-auto">
@@ -28,6 +72,17 @@ export default function InitiationProcessPage() {
             ನಿಮ್ಮ ಆಧ್ಯಾತ್ಮಿಕ ಪ್ರಯಾಣವನ್ನು ಪ್ರಾರಂಭಿಸಲು ಅನುಸರಿಸಬೇಕಾದ ಹಂತಗಳು.
             </p>
         </div>
+
+        {isOfferActive && (
+          <Alert variant="destructive" className="border-accent text-accent [&>svg]:text-accent animate-pulse-glow">
+            <Timer className="h-4 w-4" />
+            <AlertTitle className="font-bold text-lg">ವಿಶೇಷ ಕೊಡುಗೆ!</AlertTitle>
+            <AlertDescription>
+              ಈಗ ನೋಂದಾಯಿಸಿ ಮತ್ತು 50% ರಿಯಾಯಿತಿ ಪಡೆಯಿರಿ. ಈ ಕೊಡುಗೆಯು ಸೀಮಿತ ಅವಧಿಗೆ ಮಾತ್ರ.
+              <span className="block text-2xl font-bold mt-2 tracking-widest">{timeRemaining}</span>
+            </AlertDescription>
+          </Alert>
+        )}
 
         <Card className="border-primary/30 transform hover:scale-[1.02] transition-transform duration-300 ease-in-out">
           <CardHeader>
@@ -63,7 +118,14 @@ export default function InitiationProcessPage() {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="text-center">
-                <p className="text-5xl font-bold text-primary">{initiationFee}</p>
+                {isOfferActive ? (
+                  <>
+                    <p className="text-3xl font-bold text-muted-foreground line-through decoration-destructive decoration-2">{REGULAR_PRICE}</p>
+                    <p className="text-5xl font-bold text-primary">{DISCOUNTED_PRICE}</p>
+                  </>
+                ) : (
+                  <p className="text-5xl font-bold text-primary">{REGULAR_PRICE}</p>
+                )}
                 <p className="text-muted-foreground">(ಒಂದು ಬಾರಿಯ ಪಾವತಿ)</p>
             </div>
             <ul className="list-disc list-inside space-y-2 text-muted-foreground">
