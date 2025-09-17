@@ -12,6 +12,7 @@ import {
   Shapes,
   Compass,
   Youtube,
+  Feather,
 } from 'lucide-react';
 
 export const navItems = [
@@ -19,6 +20,7 @@ export const navItems = [
   { href: '/mantras', label: 'ಮಂತ್ರಗಳು', icon: BookAudio },
   { href: '/sadhana', label: 'ನಿತ್ಯ ಸಾಧನಾ', icon: Sunrise },
   { href: '/recommendations', label: 'ಶಿಫಾರಸುಗಳು', icon: Sparkles },
+  { href: '/articles', label: 'ಲೇಖನಗಳು', icon: Feather },
   { href: '/initiation', label: 'ದೀಕ್ಷೆ', icon: KeyRound },
   { href: '/knowledge', label: 'ಜ್ಞಾನ', icon: BookOpen },
   { href: '/literature', label: 'ಸಾಹಿತ್ಯ', icon: Library },
