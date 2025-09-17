@@ -1,4 +1,5 @@
 
+
 export const dailyAffirmations = [
   "ನಾನು ಶಾಂತಿ ಮತ್ತು ಸಮತೋಲನದಿಂದ ತುಂಬಿದ್ದೇನೆ.",
   "ನನ್ನ ಶಕ್ತಿಯು ಅಪಾರವಾಗಿದೆ ಮತ್ತು ನಾನು ಯಾವುದನ್ನಾದರೂ ಸಾಧಿಸಬಲ್ಲೆ.",
@@ -116,3 +117,111 @@ export const progressData = {
     { month: 'ಏಪ್ರಿಲ್', 'ಮಂತ್ರಗಳು': 7, 'ಚಟುವಟಿಕೆಗಳು': 4 },
   ],
 };
+
+export type Chakra = {
+  id: number;
+  name: string;
+  englishName: string;
+  meaning: string;
+  description: string;
+  location: string;
+  element: string;
+  bijaMantra: string;
+  color: string;
+  position: { x: number; y: number };
+  animationClass: string;
+};
+
+export const chakraData: Chakra[] = [
+  {
+    id: 7,
+    name: 'ಸಹಸ್ರಾರ',
+    englishName: 'Crown Chakra',
+    meaning: 'ಸಾವಿರ ದಳಗಳ ಪದ್ಮ',
+    description: 'ಇದು ಆಧ್ಯಾತ್ಮಿಕತೆಯ ಅತ್ಯುನ್ನತ ಕೇಂದ್ರವಾಗಿದೆ. ಇದು ಶುದ್ಧ ಚೈತನ್ಯ, ಜ್ಞಾನ ಮತ್ತು ಬ್ರಹ್ಮಾಂಡದೊಂದಿಗೆ ಏಕತೆಯನ್ನು ಪ್ರತಿನಿಧಿಸುತ್ತದೆ.',
+    location: 'ತಲೆಯ ಮೇಲ್ಭಾಗ',
+    element: 'ಯಾವುದೇ ತತ್ವವಿಲ್ಲ (ಚಿಂತನೆ)',
+    bijaMantra: 'ಓಂ (ॐ) or мೌನ',
+    color: '#A468D3',
+    position: { x: 150, y: 85 },
+    animationClass: 'animate-chakra-spin-slow-reverse',
+  },
+  {
+    id: 6,
+    name: 'ಆಜ್ಞಾ',
+    englishName: 'Third Eye Chakra',
+    meaning: 'ಆಜ್ಞಾ ಕೇಂದ್ರ',
+    description: 'ಇದು ಅಂತಃಪ್ರಜ್ಞೆ, ಜ್ಞಾನ ಮತ್ತು ದಿವ್ಯ ದೃಷ್ಟಿಯ ಕೇಂದ್ರವಾಗಿದೆ. ಇದು ನಮ್ಮನ್ನು ಭೌತಿಕ ಪ್ರಪಂಚದಾಚೆ ನೋಡಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.',
+    location: 'ಹುಬ್ಬುಗಳ ಮಧ್ಯೆ',
+    element: 'ಬೆಳಕು',
+    bijaMantra: 'ಓಂ (ॐ)',
+    color: '#4B0082',
+    position: { x: 150, y: 120 },
+    animationClass: 'animate-chakra-pulse',
+  },
+  {
+    id: 5,
+    name: 'ವಿಶುದ್ಧ',
+    englishName: 'Throat Chakra',
+    meaning: 'ಶುದ್ಧೀಕರಣ ಕೇಂದ್ರ',
+    description: 'ಇದು ಸಂವಹನ, ಸತ್ಯ ಮತ್ತು ಆತ್ಮ-ಅಭಿವ್ಯಕ್ತಿಯ ಕೇಂದ್ರ. ಇದು ನಮ್ಮ ಆಲೋಚನೆಗಳನ್ನು ಸ್ಪಷ್ಟವಾಗಿ ವ್ಯಕ್ತಪಡಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.',
+    location: 'ಗಂಟಲು',
+    element: 'ಆಕಾಶ',
+    bijaMantra: 'ಹಂ (हं)',
+    color: '#00BFFF',
+    position: { x: 150, y: 160 },
+    animationClass: 'animate-chakra-spin',
+  },
+  {
+    id: 4,
+    name: 'ಅನಾಹತ',
+    englishName: 'Heart Chakra',
+    meaning: 'ಹೊಡೆಯದ ನಾದ',
+    description: 'ಇದು ಪ್ರೀತಿ, ಕರುಣೆ, ಕ್ಷಮೆ ಮತ್ತು ಭಾವನಾತ್ಮಕ ಸಮತೋಲನದ ಕೇಂದ್ರ. ಇದು ನಮ್ಮನ್ನು ಇತರರೊಂದಿಗೆ ಸಂಪರ್ಕಿಸುತ್ತದೆ.',
+    location: 'ಹೃದಯದ ಮಧ್ಯಭಾಗ',
+    element: 'ವಾಯು',
+    bijaMantra: 'ಯಂ (यं)',
+    color: '#00FF00',
+    position: { x: 150, y: 205 },
+    animationClass: 'animate-chakra-pulse',
+  },
+  {
+    id: 3,
+    name: 'ಮಣಿಪುರ',
+    englishName: 'Solar Plexus Chakra',
+    meaning: 'ರತ್ನಗಳ ನಗರ',
+    description: 'ಇದು ನಮ್ಮ ಶಕ್ತಿ, ಆತ್ಮವಿಶ್ವಾಸ, ಇಚ್ಛಾಶಕ್ತಿ ಮತ್ತು ವೈಯಕ್ತಿಕ ಸಾಮರ್ಥ್ಯದ ಕೇಂದ್ರವಾಗಿದೆ. ಇದು ನಮ್ಮ ಜೀರ್ಣಕ್ರಿಯೆಯನ್ನು ನಿಯಂತ್ರಿಸುತ್ತದೆ.',
+    location: 'ಹೊಕ್ಕುಳಿನ ಮೇಲೆ',
+    element: 'ಅಗ್ನಿ',
+    bijaMantra: 'ರಂ (रं)',
+    color: '#FFFF00',
+    position: { x: 150, y: 255 },
+    animationClass: 'animate-chakra-spin-slow',
+  },
+  {
+    id: 2,
+    name: 'ಸ್ವಾಧಿಷ್ಠಾನ',
+    englishName: 'Sacral Chakra',
+    meaning: 'ಸ್ವಂತ ನೆಲೆ',
+    description: 'ಇದು ಸೃಜನಶೀಲತೆ, ಭಾವನೆಗಳು, ಲೈಂಗಿಕತೆ ಮತ್ತು ಆನಂದದ ಕೇಂದ್ರವಾಗಿದೆ. ಇದು ನಮ್ಮ ಜೀವನದಲ್ಲಿ ಪ್ರವಾಹ ಮತ್ತು ಹೊಂದಿಕೊಳ್ಳುವಿಕೆಯನ್ನು ತರುತ್ತದೆ.',
+    location: 'ಹೊಕ್ಕುಳಿನ ಕೆಳಗೆ',
+    element: 'ಜಲ',
+    bijaMantra: 'ವಂ (वं)',
+    color: '#FF8C00',
+    position: { x: 150, y: 295 },
+    animationClass: 'animate-chakra-pulse',
+  },
+  {
+    id: 1,
+    name: 'ಮೂಲಾಧಾರ',
+    englishName: 'Root Chakra',
+    meaning: 'ಮೂಲ ಆಧಾರ',
+    description: 'ಇದು ನಮ್ಮ ಅಡಿಪಾಯ, ಸ್ಥಿರತೆ, ಭದ್ರತೆ ಮತ್ತು ಬದುಕುಳಿಯುವಿಕೆಯ ಕೇಂದ್ರ. ಇದು ನಮ್ಮನ್ನು ಭೂಮಿಯೊಂದಿಗೆ ಸಂಪರ್ಕಿಸುತ್ತದೆ.',
+    location: 'ಬೆನ್ನುಮೂಳೆಯ ತಳ',
+    element: 'ಪೃಥ್ವಿ',
+    bijaMantra: 'ಲಂ (लं)',
+    color: '#FF0000',
+    position: { x: 150, y: 335 },
+    animationClass: 'animate-chakra-spin',
+  },
+];

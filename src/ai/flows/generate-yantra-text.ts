@@ -47,7 +47,7 @@ IMPORTANT: The following yantras have already been discussed: {{#each previousYa
 Start with an introduction to a significant Yantra, for example, the "Sri Yantra".
 {{/if}}
 
-Generate the next entry in Kannada. Provide the name of the yantra/mandala and a detailed description of its symbolism, structure, and spiritual significance. Do not add titles or headings.
+Generate the next entry in Kannada. Provide the name of the yantra/mandala and a detailed, comprehensive, and in-depth description. The description should be at least 3-4 sentences long, covering its symbolism, the meaning of its geometric shapes, its structure, and its spiritual significance or purpose. Do not add titles or headings.
 `,
 });
 
