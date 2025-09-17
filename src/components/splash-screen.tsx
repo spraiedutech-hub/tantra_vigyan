@@ -29,11 +29,11 @@ export default function SplashScreen() {
         alt="Sacred Geometry Background"
         layout="fill"
         objectFit="cover"
-        className="opacity-20 blur-sm"
+        className=""
         data-ai-hint="sacred geometry"
         priority
       />
-      <div className="absolute inset-0 bg-background/80" />
+      <div className="absolute inset-0 bg-background/60" />
 
       <div className="animate-logo-fade-in text-center z-10">
         <div className="animate-glow">
