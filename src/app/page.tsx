@@ -36,9 +36,9 @@ export default function Home() {
         </p>
       </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Daily Sadhana Card */}
-        <Card className="transform hover:scale-[1.02] transition-transform duration-300 ease-in-out flex flex-col justify-between bg-primary/10 border-primary/30">
+        <Card className="md:col-span-2 transform hover:scale-[1.02] transition-transform duration-300 ease-in-out flex flex-col justify-between bg-primary/10 border-primary/30">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 font-headline text-primary">
               <Sunrise />
