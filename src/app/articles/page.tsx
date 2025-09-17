@@ -13,6 +13,7 @@ import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2, Feather, CalendarDays } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
+import Image from 'next/image';
 
 const formSchema = z.object({
   topic: z.string().min(3, 'ವಿಷಯವು ಕನಿಷ್ಠ 3 ಅಕ್ಷರಗಳನ್ನು ಹೊಂದಿರಬೇಕು'),
@@ -131,7 +132,8 @@ export default function ArticleGeneratorPage() {
       {isLoading && (
         <Card>
           <CardHeader>
-            <Skeleton className="h-8 w-3/4" />
+             <Skeleton className="w-full h-64" />
+            <Skeleton className="h-8 w-3/4 mt-4" />
           </CardHeader>
           <CardContent className="space-y-4">
             <Skeleton className="h-4 w-full" />
@@ -142,7 +144,14 @@ export default function ArticleGeneratorPage() {
       )}
 
       {article && (
-        <Card className="animate-fade-in transform hover:scale-[1.01] transition-transform duration-300 ease-in-out">
+        <Card className="animate-fade-in transform hover:scale-[1.01] transition-transform duration-300 ease-in-out overflow-hidden">
+          <Image 
+            src={article.imageUrl}
+            alt={article.title}
+            width={800}
+            height={400}
+            className="w-full h-64 object-cover"
+          />
           <CardHeader>
             <CardTitle className="font-headline text-2xl text-accent">{article.title}</CardTitle>
           </CardHeader>

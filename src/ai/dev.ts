@@ -11,3 +11,4 @@ import '@/ai/flows/generate-yantra-svg.ts';
 import '@/ai/flows/generate-daily-sadhana.ts';
 import '@/ai/flows/generate-sadhana-audio.ts';
 import '@/ai/flows/generate-article.ts';
+import '@/ai/flows/generate-article-image.ts';
