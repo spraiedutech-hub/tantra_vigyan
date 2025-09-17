@@ -80,6 +80,12 @@ export default function Home() {
         </Card>
       </div>
       
+      <div className="relative w-full h-96 md:h-[500px] flex items-center justify-center">
+          <div className="relative w-full h-full max-w-[450px] md:max-w-none md:max-h-[500px]">
+            <ChakraPractitioner />
+          </div>
+      </div>
+      
       {/* Daily Affirmation Card */}
       <Card className="transform hover:scale-[1.02] transition-transform duration-300 ease-in-out flex flex-col justify-between bg-card/80 backdrop-blur-sm">
         <CardHeader>
@@ -98,12 +104,6 @@ export default function Home() {
           )}
         </CardContent>
       </Card>
-      
-      <div className="relative w-full h-96 md:h-[500px] flex items-center justify-center">
-          <div className="relative w-full h-full max-w-[450px] md:max-w-none md:max-h-[500px]">
-            <ChakraPractitioner />
-          </div>
-      </div>
 
     </div>
   );
