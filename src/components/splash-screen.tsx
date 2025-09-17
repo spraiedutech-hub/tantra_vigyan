@@ -20,7 +20,7 @@ export default function SplashScreen() {
   return (
     <div
       className={cn(
-        'fixed inset-0 z-[100] flex items-center justify-center bg-background transition-opacity duration-500 ease-in-out',
+        'fixed inset-0 z-[100] flex items-center justify-center bg-background transition-opacity duration-500 ease-in-out overflow-hidden',
         isFadingOut ? 'opacity-0' : 'opacity-100'
       )}
     >
@@ -29,7 +29,7 @@ export default function SplashScreen() {
         alt="Sacred Geometry Background"
         layout="fill"
         objectFit="contain"
-        className=""
+        className="animate-background-zoom"
         data-ai-hint="sacred geometry"
         priority
       />
