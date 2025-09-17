@@ -36,9 +36,9 @@ export default function Home() {
         </p>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Daily Sadhana Card */}
-        <Card className="lg:col-span-1 transform hover:scale-[1.02] transition-transform duration-300 ease-in-out flex flex-col justify-between bg-primary/10 border-primary/30">
+        <Card className="transform hover:scale-[1.02] transition-transform duration-300 ease-in-out flex flex-col justify-between bg-primary/10 border-primary/30">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 font-headline text-primary">
               <Sunrise />
@@ -56,7 +56,7 @@ export default function Home() {
         </Card>
 
         {/* Progress Streak Card */}
-        <Card className="lg:col-span-1 transform hover:scale-[1.02] transition-transform duration-300 ease-in-out flex flex-col justify-between bg-accent/10 border-accent/30">
+        <Card className="transform hover:scale-[1.02] transition-transform duration-300 ease-in-out flex flex-col justify-between bg-accent/10 border-accent/30">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 font-headline text-accent">
               <TrendingUp />
@@ -78,26 +78,26 @@ export default function Home() {
             )}
           </CardContent>
         </Card>
-
-        {/* Daily Affirmation Card */}
-        <Card className="lg:col-span-1 transform hover:scale-[1.02] transition-transform duration-300 ease-in-out flex flex-col justify-between bg-card/80 backdrop-blur-sm">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 font-headline">
-              <Heart className="text-destructive" />
-              ದಿನದ ದೃಢೀಕರಣ
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            {affirmation ? (
-               <blockquote className="text-lg italic text-foreground border-l-4 border-destructive pl-4">
-                {affirmation}
-              </blockquote>
-            ) : (
-                <Skeleton className="h-12 w-full" />
-            )}
-          </CardContent>
-        </Card>
       </div>
+      
+      {/* Daily Affirmation Card */}
+      <Card className="transform hover:scale-[1.02] transition-transform duration-300 ease-in-out flex flex-col justify-between bg-card/80 backdrop-blur-sm">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 font-headline">
+            <Heart className="text-destructive" />
+            ದಿನದ ದೃಢೀಕರಣ
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          {affirmation ? (
+              <blockquote className="text-lg italic text-foreground border-l-4 border-destructive pl-4">
+              {affirmation}
+            </blockquote>
+          ) : (
+              <Skeleton className="h-12 w-full" />
+          )}
+        </CardContent>
+      </Card>
       
       <div className="relative w-full h-96 md:h-[500px] flex items-center justify-center">
           <div className="relative w-full h-full max-w-[450px] md:max-w-none md:max-h-[500px]">
