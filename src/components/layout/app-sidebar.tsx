@@ -53,7 +53,10 @@ export default function AppSidebar() {
           ))}
         </SidebarMenu>
       </SidebarContent>
-      <SidebarFooter className="group-data-[collapsible=icon]:hidden">
+      <SidebarFooter className="group-data-[collapsible=icon]:hidden space-y-2">
+        <div className="text-xs text-muted-foreground text-center">
+            <span className="font-semibold text-foreground">Created by:</span><br/> Nagaraja D, Hosadurga
+        </div>
         <div className="text-xs text-muted-foreground text-center">
             © {new Date().getFullYear()} ತಂತ್ರ ವಿಜ್ಞಾನ
         </div>

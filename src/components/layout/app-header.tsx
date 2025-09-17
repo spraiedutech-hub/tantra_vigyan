@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { navItems } from '@/lib/nav-items';
 import { useMemo } from 'react';
 import { ArrowRight, User } from 'lucide-react';
+import ScrollingBanner from '../scrolling-banner';
 
 export default function AppHeader() {
   const pathname = usePathname();
