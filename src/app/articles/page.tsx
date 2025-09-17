@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useMemo } from 'react';
@@ -92,7 +93,7 @@ export default function ArticleGeneratorPage() {
         <CardContent className="space-y-6">
             <Button onClick={handleTopicOfTheDay} variant="outline" className="w-full">
                 <CalendarDays className="mr-2 h-4 w-4" />
-                <span>ಇಂದಿನ ವಿಷಯದ ಮೇಲೆ ರಚಿಸಿ: <strong>{topicOfTheDay}</strong></span>
+                <span>ಇಂದಿನ ವಿಷಯದ ಮೇಲೆ ಓದಿ: <strong>{topicOfTheDay}</strong></span>
             </Button>
 
             <div className="flex items-center space-x-4">
