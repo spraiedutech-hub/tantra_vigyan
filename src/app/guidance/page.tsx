@@ -1,6 +1,8 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ShieldQuestion, UserCheck, BookCheck, HeartHandshake, CircleAlert } from 'lucide-react';
+import { ShieldQuestion, UserCheck, BookCheck, HeartHandshake, CircleAlert, AlertTriangle } from 'lucide-react';
+import GuidanceTool from '@/components/guidance-tool';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 export default function GuidancePage() {
   return (
@@ -8,14 +10,17 @@ export default function GuidancePage() {
       <header className="space-y-2 p-4 rounded-lg animated-border">
         <h1 className="text-4xl font-bold font-headline text-primary flex items-center gap-2">
           <ShieldQuestion />
-          ಸಾಧನೆಯಲ್ಲಿನ ಅಡೆತಡೆಗಳು
+          ಮಾರ್ಗದರ್ಶನ
         </h1>
         <p className="text-lg text-muted-foreground">
-          ತಂತ್ರ ಮತ್ತು ಮಂತ್ರ ಸಾಧನೆಗಳು ಏಕೆ ಕೆಲವೊಮ್ಮೆ ವಿಫಲವಾಗುತ್ತವೆ? ಸಾಮಾನ್ಯ ಕಾರಣಗಳು ಮತ್ತು ಪರಿಹಾರಗಳನ್ನು ತಿಳಿಯಿರಿ.
+          ಸಾಧನೆಯಲ್ಲಿನ ಅಡೆತಡೆಗಳು ಮತ್ತು ವೈಯಕ್ತಿಕ ಮಾರ್ಗದರ್ಶನ.
         </p>
       </header>
 
+      <GuidanceTool />
+
       <div className="space-y-6">
+        <h2 className="text-2xl font-headline text-accent mt-12">ಸಾధನೆಯಲ್ಲಿನ ಸಾಮಾನ್ಯ ಅಡೆತಡೆಗಳು</h2>
         <Card className="transform hover:scale-[1.02] transition-transform duration-300 ease-in-out">
           <CardHeader>
             <CardTitle className="flex items-center gap-3"><UserCheck className="text-accent"/>ಗುರು ಮತ್ತು ದೀಕ್ಷೆಯ ಅಭಾವ</CardTitle>
