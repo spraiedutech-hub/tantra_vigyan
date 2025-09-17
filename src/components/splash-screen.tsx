@@ -25,7 +25,7 @@ export default function SplashScreen() {
       )}
     >
       <Image
-        src="/images/splash-background.jpg"
+        src="/images/splash-background.png"
         alt="Sacred Geometry Background"
         layout="fill"
         objectFit="cover"
