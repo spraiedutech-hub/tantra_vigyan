@@ -39,6 +39,7 @@ export default function RootLayout({
       <head>
         <title>Tantra Vigyan</title>
         <meta name="description" content="An app that teaches tantra activities and mantra practices in Kannada." />
+        <link rel="icon" href="/icon.png" sizes="any" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&display=swap" rel="stylesheet" />
