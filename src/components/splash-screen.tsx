@@ -28,7 +28,7 @@ export default function SplashScreen() {
         src="/images/splash-background.png"
         alt="Sacred Geometry Background"
         layout="fill"
-        objectFit="cover"
+        objectFit="contain"
         className=""
         data-ai-hint="sacred geometry"
         priority
