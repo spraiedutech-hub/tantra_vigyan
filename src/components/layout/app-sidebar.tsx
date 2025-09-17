@@ -12,6 +12,7 @@ import {
   SidebarMenuButton,
   SidebarFooter,
   SidebarTrigger,
+  useSidebar,
 } from '@/components/ui/sidebar';
 import { Logo } from '@/components/icons/logo';
 import { navItems } from '@/lib/nav-items';
@@ -20,10 +21,17 @@ import { useState, useEffect } from 'react';
 export default function AppSidebar() {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
+  const { setOpenMobile, isMobile } = useSidebar();
 
   useEffect(() => {
     setMounted(true);
   }, []);
+  
+  const handleLinkClick = () => {
+    if (isMobile) {
+      setOpenMobile(false);
+    }
+  };
 
   return (
     <Sidebar collapsible="icon">
@@ -43,6 +51,7 @@ export default function AppSidebar() {
                 className="w-full justify-start p-2 h-auto" 
                 isActive={mounted && pathname === item.href}
                 tooltip={item.label}
+                onClick={handleLinkClick}
               >
                 <Link href={item.href}>
                     <item.icon className="mr-2 h-4 w-4" />
