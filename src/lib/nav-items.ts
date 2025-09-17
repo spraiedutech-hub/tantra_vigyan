@@ -16,6 +16,7 @@ import {
   Feather,
   CheckCircle,
   HeartHandshake,
+  Headphones,
 } from 'lucide-react';
 
 export const navItems = [
@@ -29,6 +30,7 @@ export const navItems = [
   { href: '/remedies', label: 'ಪರಿಹಾರಗಳು', icon: HeartHandshake },
   { href: '/recommendations', label: 'ಶಿಫಾರಸುಗಳು', icon: Sparkles },
   { href: '/articles', label: 'ಲೇಖನಗಳು', icon: Feather },
+  { href: '/audio', label: 'ಆಡಿಯೋ ಲೈಬ್ರರಿ', icon: Headphones },
   { href: '/knowledge', label: 'ಜ್ಞಾನ', icon: BookOpen },
   { href: '/literature', label: 'ಸಾಹಿತ್ಯ', icon: Library },
   { href: '/duties', label: 'ಸಾಧಕನ ಕರ್ತವ್ಯಗಳು', icon: ClipboardCheck },
