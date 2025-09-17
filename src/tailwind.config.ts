@@ -4,9 +4,10 @@ import type {Config} from 'tailwindcss';
 export default {
   darkMode: ['class'],
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
@@ -154,6 +155,14 @@ export default {
           '0%, 100%': { opacity: '0', transform: 'translateY(5px)' },
           '50%': { opacity: '0.8', transform: 'translateY(-5px)' },
         },
+        'random-letter-fade': {
+          '0%, 100%': { opacity: '0.2' },
+          '50%': { opacity: '1' },
+        },
+        'logo-fade-in': {
+          '0%': { opacity: '0', transform: 'scale(0.8)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -173,6 +182,8 @@ export default {
         'chakra-pulse': 'chakra-pulse 4s ease-in-out infinite',
         'chakra-glow': 'chakra-glow 5s ease-in-out infinite',
         'float-fade': 'float-fade 7s ease-in-out infinite',
+        'random-letter-fade': 'random-letter-fade 5s ease-in-out infinite',
+        'logo-fade-in': 'logo-fade-in 1.5s ease-out forwards',
       },
     },
   },
