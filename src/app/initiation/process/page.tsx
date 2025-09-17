@@ -79,7 +79,6 @@ export default function InitiationProcessPage() {
             <AlertTitle className="font-bold text-lg">ವಿಶೇಷ ಕೊಡುಗೆ!</AlertTitle>
             <AlertDescription>
               ಈಗ ನೋಂದಾಯಿಸಿ ಮತ್ತು 50% ರಿಯಾಯಿತಿ ಪಡೆಯಿರಿ. ಈ ಕೊಡುಗೆಯು ಸೀಮಿತ ಅವಧಿಗೆ ಮಾತ್ರ.
-              <span className="block text-2xl font-bold mt-2 tracking-widest">{timeRemaining}</span>
             </AlertDescription>
           </Alert>
         )}
@@ -122,11 +121,15 @@ export default function InitiationProcessPage() {
                   <>
                     <p className="text-3xl font-bold text-muted-foreground line-through decoration-destructive decoration-2">{REGULAR_PRICE}</p>
                     <p className="text-5xl font-bold text-primary">{DISCOUNTED_PRICE}</p>
+                    <div className="mt-2 text-accent animate-pulse-glow">
+                        <p className="text-sm font-semibold">ಕೊಡುಗೆ ಮುಕ್ತಾಯಗೊಳ್ಳುತ್ತದೆ:</p>
+                        <span className="block text-2xl font-bold mt-1 tracking-widest">{timeRemaining}</span>
+                    </div>
                   </>
                 ) : (
                   <p className="text-5xl font-bold text-primary">{REGULAR_PRICE}</p>
                 )}
-                <p className="text-muted-foreground">(ಒಂದು ಬಾರಿಯ ಪಾವತಿ)</p>
+                <p className="text-muted-foreground mt-2">(ಒಂದು ಬಾರಿಯ ಪಾವತಿ)</p>
             </div>
             <ul className="list-disc list-inside space-y-2 text-muted-foreground">
                 <li>ವೈಯಕ್ತಿಕ ಮಂತ್ರೋಪದೇಶ</li>
