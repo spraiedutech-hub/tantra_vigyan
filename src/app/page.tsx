@@ -36,6 +36,39 @@ export default function Home() {
         </p>
       </header>
 
+      <Card className="transform hover:scale-[1.01] transition-transform duration-300 ease-in-out">
+        <CardHeader>
+          <CardTitle className="font-headline text-xl">ಚಕ್ರಗಳನ್ನು ಅನ್ವೇಷಿಸಿ</CardTitle>
+          <CardDescription>ದೇಹದಲ್ಲಿನ ಶಕ್ತಿ ಕೇಂದ್ರಗಳ ಬಗ್ಗೆ ತಿಳಿಯಲು ಚಕ್ರಗಳ ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡಿ.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="relative w-full h-96 md:h-[500px] flex items-center justify-center">
+              <div className="relative w-full h-full max-w-[450px] md:max-w-none md:max-h-[500px]">
+                <ChakraPractitioner />
+              </div>
+          </div>
+        </CardContent>
+      </Card>
+      
+      {/* Daily Affirmation Card */}
+      <Card className="transform hover:scale-[1.02] transition-transform duration-300 ease-in-out flex flex-col justify-between bg-card/80 backdrop-blur-sm">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 font-headline">
+            <Heart className="text-destructive" />
+            ದಿನದ ದೃಢೀಕರಣ
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          {affirmation ? (
+              <blockquote className="text-lg italic text-foreground border-l-4 border-destructive pl-4">
+              {affirmation}
+            </blockquote>
+          ) : (
+              <Skeleton className="h-12 w-full" />
+          )}
+        </CardContent>
+      </Card>
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Daily Sadhana Card */}
         <Card className="md:col-span-2 transform hover:scale-[1.02] transition-transform duration-300 ease-in-out flex flex-col justify-between bg-primary/10 border-primary/30">
@@ -79,39 +112,6 @@ export default function Home() {
           </CardContent>
         </Card>
       </div>
-      
-      <Card className="transform hover:scale-[1.01] transition-transform duration-300 ease-in-out">
-        <CardHeader>
-          <CardTitle className="font-headline text-xl">ಚಕ್ರಗಳನ್ನು ಅನ್ವೇಷಿಸಿ</CardTitle>
-          <CardDescription>ದೇಹದಲ್ಲಿನ ಶಕ್ತಿ ಕೇಂದ್ರಗಳ ಬಗ್ಗೆ ತಿಳಿಯಲು ಚಕ್ರಗಳ ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡಿ.</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="relative w-full h-96 md:h-[500px] flex items-center justify-center">
-              <div className="relative w-full h-full max-w-[450px] md:max-w-none md:max-h-[500px]">
-                <ChakraPractitioner />
-              </div>
-          </div>
-        </CardContent>
-      </Card>
-      
-      {/* Daily Affirmation Card */}
-      <Card className="transform hover:scale-[1.02] transition-transform duration-300 ease-in-out flex flex-col justify-between bg-card/80 backdrop-blur-sm">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 font-headline">
-            <Heart className="text-destructive" />
-            ದಿನದ ದೃಢೀಕರಣ
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          {affirmation ? (
-              <blockquote className="text-lg italic text-foreground border-l-4 border-destructive pl-4">
-              {affirmation}
-            </blockquote>
-          ) : (
-              <Skeleton className="h-12 w-full" />
-          )}
-        </CardContent>
-      </Card>
 
     </div>
   );
