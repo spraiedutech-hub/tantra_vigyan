@@ -23,8 +23,11 @@ export default function SplashScreen() {
         isFadingOut ? 'opacity-0' : 'opacity-100'
       )}
     >
-      <div className="animate-logo-fade-in">
+      <div className="animate-logo-fade-in text-center">
         <Logo className="w-[240px] h-auto" />
+        <p className="mt-4 text-lg text-primary/80 font-headline">
+          ಶಿವನ ಕೃಪೆಯಿಂದ
+        </p>
       </div>
     </div>
   );
