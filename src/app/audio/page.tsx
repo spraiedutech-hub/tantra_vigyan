@@ -159,7 +159,7 @@ export default function AudioLibraryPage() {
                 <AlertTriangle className="h-4 w-4" />
                 <AlertTitle>ಗಮನಿಸಿ</AlertTitle>
                 <AlertDescription>
-                    ಈ ಕಥೆಗಳನ್ನು ಕೃತಕ ಬುದ್ಧಿಮತ್ತೆಯಿಂದ ರಚಿಸಲಾಗಿದೆ ಮತ್ತು ಸ್ಫೂರ್ತಿಗಾಗಿ ಉದ್ದೇಶಿಸಲಾಗಿದೆ.
+                    ಈ ಕಥೆಗಳನ್ನು ಸುಧಾರಿತ ತಂತ್ರಜ್ಞಾನದಿಂದ ರಚಿಸಲಾಗಿದೆ ಮತ್ತು ಸ್ಫೂರ್ತಿಗಾಗಿ ಉದ್ದೇಶಿಸಲಾಗಿದೆ.
                 </AlertDescription>
             </Alert>
           {isLoadingStory && (
