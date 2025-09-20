@@ -4,9 +4,10 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { generateYantraText, type YantraTextOutput } from '@/ai/flows/generate-yantra-text';
 import { YantraGeometry } from '@/components/yantra-geometry';
-import { Shapes, Loader2 } from 'lucide-react';
+import { Shapes, Loader2, AlertTriangle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { preloadedYantras } from '@/lib/preloaded-yantras';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 type YantraContent = {
   id: number;
@@ -110,6 +111,14 @@ export default function YantrasPage() {
           ಪವಿತ್ರ ರೇಖಾಗಣಿತದ ನಿರಂತರ ಹರಿವು. ಇನ್ನಷ್ಟು ನೋಡಲು ಕೆಳಗೆ ಸ್ಕ್ರಾಲ್ ಮಾಡಿ.
         </p>
       </header>
+      
+      <Alert variant="destructive" className="border-accent/50 text-accent [&>svg]:text-accent">
+        <AlertTriangle className="h-4 w-4" />
+        <AlertTitle>ಗಮನಿಸಿ</AlertTitle>
+        <AlertDescription>
+            ಈ ರೇಖಾಚಿತ್ರಗಳು ಕೇವಲ ಪ್ರದರ್ಶನ ಉದ್ದೇಶಕ್ಕಾಗಿವೆ, ನಿಜವಾದ ರೇಖಾಚಿತ್ರಗಳನ್ನು ಪ್ರತಿನಿಧಿಸುವುದಿಲ್ಲ. ನಿಜವಾದ ಯಂತ್ರಗಳಿಗಾಗಿ, ದಯವಿಟ್ಟು ನಿಮ್ಮ ಗುರುಗಳನ್ನು ಸಂಪರ್ಕಿಸಿ.
+        </AlertDescription>
+      </Alert>
 
       <div className="space-y-12">
         {content.map((item) => (
