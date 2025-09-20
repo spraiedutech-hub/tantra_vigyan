@@ -7,7 +7,7 @@ import { SidebarTrigger } from '@/components/ui/sidebar';
 import { Button } from '@/components/ui/button';
 import { navItems } from '@/lib/nav-items';
 import { useMemo } from 'react';
-import { ArrowRight, User, Share2 } from 'lucide-react';
+import { ArrowRight, Share2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 export default function AppHeader() {
@@ -71,9 +71,6 @@ export default function AppHeader() {
         </Button>
         <Button variant="outline" size="icon" aria-label="Share App" onClick={handleShare}>
             <Share2 className="h-4 w-4" />
-        </Button>
-        <Button variant="outline" size="icon" aria-label="User Profile">
-            <User className="h-4 w-4" />
         </Button>
       </div>
     </header>
