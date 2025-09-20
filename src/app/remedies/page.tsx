@@ -65,7 +65,7 @@ export default function RemediesPage() {
       const result = await generateRemedyRitual(problem);
       setRitual(result);
       form.reset();
-    } catch (error)
+    } catch (error) {
       console.error('Error generating ritual:', error);
       toast({
         variant: 'destructive',
