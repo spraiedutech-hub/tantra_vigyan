@@ -12,6 +12,14 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { useToast } from '@/hooks/use-toast';
 import { recordActivityCompleted } from '@/lib/progress-tracker';
 
+const SADHANA_STORAGE_KEY = 'dailySadhana';
+
+type StoredSadhana = {
+  date: string;
+  sadhana: DailySadhanaOutput;
+  audioDataUri?: string;
+};
+
 export default function SadhanaPage() {
   const [sadhana, setSadhana] = useState<DailySadhanaOutput | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -23,10 +31,29 @@ export default function SadhanaPage() {
 
   useEffect(() => {
     const getSadhana = async () => {
+      setIsLoading(true);
+      const todayStr = new Date().toISOString().split('T')[0];
+      
       try {
-        setIsLoading(true);
+        const storedItem = localStorage.getItem(SADHANA_STORAGE_KEY);
+        if (storedItem) {
+          const storedSadhana: StoredSadhana = JSON.parse(storedItem);
+          if (storedSadhana.date === todayStr) {
+            setSadhana(storedSadhana.sadhana);
+            if (storedSadhana.audioDataUri) {
+              setAudioDataUri(storedSadhana.audioDataUri);
+            }
+            setIsLoading(false);
+            return;
+          }
+        }
+        
+        // If no valid sadhana in storage, generate a new one
         const result = await generateDailySadhana();
         setSadhana(result);
+        const newStoredSadhana: StoredSadhana = { date: todayStr, sadhana: result };
+        localStorage.setItem(SADHANA_STORAGE_KEY, JSON.stringify(newStoredSadhana));
+
       } catch (error) {
         console.error("Failed to generate daily sadhana:", error);
         toast({
@@ -44,7 +71,6 @@ export default function SadhanaPage() {
   const handleGenerateAudio = async () => {
     if (!sadhana) return;
     setIsLoadingAudio(true);
-    setAudioDataUri(null);
     try {
       const fullText = `
         ಇಂದಿನ ಸಂಕಲ್ಪ: ${sadhana.intention}.
@@ -54,6 +80,14 @@ export default function SadhanaPage() {
       `;
       const result = await generateSadhanaAudio(fullText);
       setAudioDataUri(result.audioDataUri);
+
+      // Save audio to local storage
+      const storedItem = localStorage.getItem(SADHANA_STORAGE_KEY);
+      if (storedItem) {
+        const storedSadhana: StoredSadhana = JSON.parse(storedItem);
+        storedSadhana.audioDataUri = result.audioDataUri;
+        localStorage.setItem(SADHANA_STORAGE_KEY, JSON.stringify(storedSadhana));
+      }
 
       // Record the activity and notify the user
       recordActivityCompleted();
@@ -87,8 +121,8 @@ export default function SadhanaPage() {
     const audio = audioRef.current;
     if (audioDataUri && audio) {
         audio.src = audioDataUri;
-        if (isPlaying) {
-            audio.play();
+        if (audio.paused && isPlaying) {
+          audio.play();
         }
     }
   }, [audioDataUri, isPlaying]);
