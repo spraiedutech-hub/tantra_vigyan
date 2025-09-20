@@ -44,8 +44,8 @@ export function ScrollAnimate({ children, className, delay = 0 }: ScrollAnimateP
     <div
       ref={ref}
       className={cn(
-        'transition-all duration-1000 ease-in-out',
-        isVisible ? 'animate-blur-in' : 'opacity-0',
+        'transition-all duration-1000 ease-out',
+        isVisible ? 'animate-fade-in-up' : 'opacity-0',
         className
       )}
       style={{ animationDelay: `${delay}ms` }}
