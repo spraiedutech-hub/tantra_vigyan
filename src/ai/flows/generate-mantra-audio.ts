@@ -54,8 +54,8 @@ const generateMantraAudioFlow = ai.defineFlow(
     }),
   },
   async ({ text, voice }) => {
-    // Male: Algenib, Female: Tiamat
-    const voiceName = voice === 'male' ? 'Algenib' : 'Tiamat';
+    // Male: Algenib, Female: Umbriel (Tiamat is deprecated)
+    const voiceName = voice === 'male' ? 'Algenib' : 'Umbriel';
 
     const { media } = await ai.generate({
       model: googleAI.model('gemini-2.5-flash-preview-tts'),
