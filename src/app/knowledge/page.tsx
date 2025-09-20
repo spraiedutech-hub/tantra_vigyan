@@ -23,7 +23,7 @@ export default function KnowledgePage() {
           ಜ್ಞಾನ ಭಂಡಾರ
         </h1>
         <p className="text-lg text-muted-foreground">
-          ತಂತ್ರ ಮತ್ತು ಮಂತ್ರಗಳ ಮೂಲಭೂತ ತತ್ವಗಳ ಬಗ್ಗೆ ಆಳವಾಗಿ ತಿಳಿಯಿರಿ.
+          ತಂತ್ರ ಮತ್ತು ಮಂತ್ರಗಳ ಮೂಲಭೂತ ತತ್ವಗಳ ಬಗ್ಗೆ ఆಳವಾಗಿ ತಿಳಿಯಿರಿ.
         </p>
       </header>
 
