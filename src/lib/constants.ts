@@ -240,3 +240,5 @@ export const chakraData: Chakra[] = [
 ];
 
     
+
+    
