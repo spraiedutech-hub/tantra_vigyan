@@ -62,9 +62,7 @@ const generateMantraAudioFlow = ai.defineFlow(
       config: {
         responseModalities: ['AUDIO'],
         speechConfig: {
-          voiceConfig: {
-            prebuiltVoiceConfig: { voiceName },
-          },
+          prebuiltVoice: voiceName,
         },
       },
       prompt: text,

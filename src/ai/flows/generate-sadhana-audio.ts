@@ -52,9 +52,7 @@ const generateSadhanaAudioFlow = ai.defineFlow(
       config: {
         responseModalities: ['AUDIO'],
         speechConfig: {
-          voiceConfig: {
-            prebuiltVoiceConfig: { voiceName: 'Algenib' }, // A calm voice
-          },
+          prebuiltVoice: 'Algenib', // A calm voice
         },
       },
       prompt: text,
