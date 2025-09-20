@@ -18,6 +18,7 @@ import {
   HeartHandshake,
   Headphones,
   Users,
+  Mic,
 } from 'lucide-react';
 
 export const navItems = [
@@ -32,6 +33,7 @@ export const navItems = [
   { href: '/recommendations', label: 'ಶಿಫಾರಸುಗಳು', icon: Sparkles },
   { href: '/articles', label: 'ಲೇಖನಗಳು', icon: Feather },
   { href: '/audio', label: 'ಆಡಿಯೋ ಲೈಬ್ರರಿ', icon: Headphones },
+  { href: '/mantra-generator', label: 'ಮಂತ್ರ ಆಡಿಯೋ', icon: Mic },
   { href: '/knowledge', label: 'ಜ್ಞಾನ', icon: BookOpen },
   { href: '/literature', label: 'ಸಾಹಿತ್ಯ', icon: Library },
   { href: '/duties', label: 'ಸಾಧಕನ ಕರ್ತವ್ಯಗಳು', icon: ClipboardCheck },
