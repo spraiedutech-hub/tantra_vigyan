@@ -14,6 +14,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Loader2, HeartHandshake, AlertTriangle, Wand2, Badge } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Skeleton } from '@/components/ui/skeleton';
+import preloadedRemedies from '@/lib/content/remedies-base.json';
 
 const commonProblems = [
     { id: 'financial', label: 'ಆರ್ಥಿಕ ಸ್ಥಿರತೆ', problem: 'Financial problems and stability' },
@@ -41,7 +42,22 @@ export default function RemediesPage() {
     },
   });
 
-  const handleGenerateRitual = async (problem: string, label: string) => {
+  const handlePreloadedRitual = (problemId: string, problemLabel: string) => {
+    setIsLoading(false);
+    const foundRemedy = preloadedRemedies.find(r => r.id === problemId);
+    if (foundRemedy) {
+        setRitual(foundRemedy.remedy);
+        setCurrentProblem(problemLabel);
+    } else {
+        toast({
+            variant: 'destructive',
+            title: 'ದೋಷ',
+            description: 'ಕ್ಷಮಿಸಿ, ಈ ಸಮಸ್ಯೆಗೆ ಪೂರ್ವ-ನಿರ್ಧರಿತ ಪರಿಹಾರ ಲಭ್ಯವಿಲ್ಲ.',
+        });
+    }
+  }
+
+  const handleAiRitual = async (problem: string, label: string) => {
     setIsLoading(true);
     setRitual(null);
     setCurrentProblem(label);
@@ -49,7 +65,7 @@ export default function RemediesPage() {
       const result = await generateRemedyRitual(problem);
       setRitual(result);
       form.reset();
-    } catch (error) {
+    } catch (error)
       console.error('Error generating ritual:', error);
       toast({
         variant: 'destructive',
@@ -62,7 +78,7 @@ export default function RemediesPage() {
   };
 
   const onFormSubmit: SubmitHandler<FormValues> = (data) => {
-    handleGenerateRitual(data.problem, "ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಸಮಸ್ಯೆ");
+    handleAiRitual(data.problem, "ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಸಮಸ್ಯೆ");
   };
 
   return (
@@ -89,7 +105,7 @@ export default function RemediesPage() {
         <CardHeader>
           <CardTitle>ನಿಮ್ಮ ಸಮಸ್ಯೆಯನ್ನು ವಿವರಿಸಿ</CardTitle>
           <CardDescription>
-            ಕೆಳಗಿನ ಪೆಟ್ಟಿಗೆಯಲ್ಲಿ ನಿಮ್ಮ ಸಮಸ್ಯೆಯನ್ನು ವಿವರಿಸಿ, ಅಥವಾ ಸಾಮಾನ್ಯ ಸಮಸ್ಯೆಗಳಿಂದ ಒಂದನ್ನು ಆಯ್ಕೆಮಾಡಿ.
+            ಕೆಳಗಿನ ಪೆಟ್ಟಿಗೆಯಲ್ಲಿ ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಸಮಸ್ಯೆಯನ್ನು ವಿವರಿಸಿ (AI ಬಳಸಿ), ಅಥವಾ ಸಾಮಾನ್ಯ ಸಮಸ್ಯೆಗಳಿಂದ ಒಂದನ್ನು ಆಯ್ಕೆಮಾಡಿ.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -100,7 +116,7 @@ export default function RemediesPage() {
                   name="problem"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>ನಿಮ್ಮ ಸಮಸ್ಯೆ (ಕನ್ನಡ ಅಥವಾ ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ವಿವರಿಸಿ)</FormLabel>
+                      <FormLabel>ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಸಮಸ್ಯೆ (ಕನ್ನಡ ಅಥವಾ ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ವಿವರಿಸಿ)</FormLabel>
                       <FormControl>
                         <Textarea
                           placeholder="ಉದಾ: ನನ್ನ ವ್ಯಾಪಾರದಲ್ಲಿ ಪ್ರಗತಿ ಕಾಣುತ್ತಿಲ್ಲ, ಅಡೆತಡೆಗಳು ಹೆಚ್ಚಾಗುತ್ತಿವೆ."
@@ -118,14 +134,14 @@ export default function RemediesPage() {
                   ) : (
                     <Wand2 className="mr-2 h-4 w-4" />
                   )}
-                  ಪರಿಹಾರ ಪಡೆಯಿರಿ
+                  AI ಮೂಲಕ ಪರಿಹಾರ ಪಡೆಯಿರಿ
                 </Button>
               </form>
             </Form>
             
             <div className="flex items-center space-x-4">
                 <div className="flex-1 border-t border-dashed"></div>
-                <span className="text-sm text-muted-foreground">ಅಥವಾ</span>
+                <span className="text-sm text-muted-foreground">ಅಥವಾ ಸಾಮಾನ್ಯ ಸಮಸ್ಯೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ</span>
                 <div className="flex-1 border-t border-dashed"></div>
             </div>
 
@@ -136,7 +152,7 @@ export default function RemediesPage() {
                   variant="outline"
                   size="lg"
                   className="justify-start text-left h-auto py-3"
-                  onClick={() => handleGenerateRitual(problem.problem, problem.label)}
+                  onClick={() => handlePreloadedRitual(problem.id, problem.label)}
                   disabled={isLoading}
                 >
                   <HeartHandshake className="mr-3 h-5 w-5 flex-shrink-0" />
