@@ -10,7 +10,7 @@ import Link from 'next/link';
 const weeklyDiscussion = {
   topic: "ಗುರು-ಶಿಷ್ಯ ಸಂಬಂಧದ ಮಹತ್ವ",
   prompt: "ನಿಮ್ಮ ಆಧ್ಯಾತ್ಮಿಕ ಪಯಣದಲ್ಲಿ ಗುರುವಿನ ಪಾತ್ರದ ಬಗ್ಗೆ ನಿಮ್ಮ ಆಲೋಚನೆಗಳೇನು? ಒಬ್ಬ ನಿಜವಾದ ಗುರುವನ್ನು ಹೇಗೆ ಗುರುತಿಸುವುದು? ನಿಮ್ಮ ಅನುಭವಗಳು ಅಥವಾ ಅನಿಸಿಕೆಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳಿ.",
-  mailto: "guruji@example.com?subject=Weekly%20Discussion:%20Guru-Shishya%20Relationship"
+  mailto: "nagmanasi@gmail.com?subject=Weekly%20Discussion:%20Guru-Shishya%20Relationship"
 };
 
 export default function ForumPage() {
