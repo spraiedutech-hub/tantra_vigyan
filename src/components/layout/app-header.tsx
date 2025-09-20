@@ -63,10 +63,10 @@ export default function AppHeader() {
         )}
       </div>
       <div className="flex items-center gap-2 sm:gap-4">
-        <Button asChild className="hidden sm:inline-flex bg-primary/80 hover:bg-primary text-primary-foreground">
+        <Button asChild className="bg-primary/80 hover:bg-primary text-primary-foreground">
             <Link href="/initiation/process">
-            ದೀಕ್ಷಾ ಪ್ರಕ್ರಿಯೆ
-            <ArrowRight className="ml-2 h-4 w-4" />
+            ದೀಕ್ಷೆ
+            <ArrowRight className="ml-2 h-4 w-4 hidden sm:inline" />
             </Link>
         </Button>
         <Button variant="outline" size="icon" aria-label="Share App" onClick={handleShare}>
