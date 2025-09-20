@@ -2,9 +2,14 @@
 'use client';
 
 import { useState } from 'react';
+import { useForm, type SubmitHandler } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import { generateRemedyRitual, type RemedyRitualOutput } from '@/ai/flows/generate-remedy-ritual';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2, HeartHandshake, AlertTriangle, Wand2, Badge } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
@@ -17,11 +22,24 @@ const commonProblems = [
     { id: 'peace', label: 'ಮನೆಯಲ್ಲಿ ಶಾಂತಿ', problem: 'Peace and harmony at home' },
 ];
 
+const formSchema = z.object({
+  problem: z.string().min(10, 'ದಯವಿಟ್ಟು ನಿಮ್ಮ ಸಮಸ್ಯೆಯನ್ನು ಕನಿಷ್ಠ 10 ಅಕ್ಷರಗಳಲ್ಲಿ ವಿವರಿಸಿ'),
+});
+type FormValues = z.infer<typeof formSchema>;
+
+
 export default function RemediesPage() {
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [ritual, setRitual] = useState<RemedyRitualOutput | null>(null);
   const [currentProblem, setCurrentProblem] = useState<string | null>(null);
+
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      problem: '',
+    },
+  });
 
   const handleGenerateRitual = async (problem: string, label: string) => {
     setIsLoading(true);
@@ -30,6 +48,7 @@ export default function RemediesPage() {
     try {
       const result = await generateRemedyRitual(problem);
       setRitual(result);
+      form.reset();
     } catch (error) {
       console.error('Error generating ritual:', error);
       toast({
@@ -40,6 +59,10 @@ export default function RemediesPage() {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const onFormSubmit: SubmitHandler<FormValues> = (data) => {
+    handleGenerateRitual(data.problem, "ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಸಮಸ್ಯೆ");
   };
 
   return (
@@ -64,25 +87,63 @@ export default function RemediesPage() {
 
       <Card>
         <CardHeader>
-          <CardTitle>ನಿಮ್ಮ ಸಮಸ್ಯೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ</CardTitle>
+          <CardTitle>ನಿಮ್ಮ ಸಮಸ್ಯೆಯನ್ನು ವಿವರಿಸಿ</CardTitle>
           <CardDescription>
-            ಕೆಳಗಿನವುಗಳಿಂದ ಒಂದು ಸಮಸ್ಯೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ ಅಥವಾ ನಿಮಗೆ ಬೇಕಾದ ಪರಿಹಾರವನ್ನು ಹುಡುಕಿ.
+            ಕೆಳಗಿನ ಪೆಟ್ಟಿಗೆಯಲ್ಲಿ ನಿಮ್ಮ ಸಮಸ್ಯೆಯನ್ನು ವಿವರಿಸಿ, ಅಥವಾ ಸಾಮಾನ್ಯ ಸಮಸ್ಯೆಗಳಿಂದ ಒಂದನ್ನು ಆಯ್ಕೆಮಾಡಿ.
           </CardDescription>
         </CardHeader>
-        <CardContent className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {commonProblems.map((problem) => (
-            <Button
-              key={problem.id}
-              variant="outline"
-              size="lg"
-              className="justify-start text-left h-auto py-3"
-              onClick={() => handleGenerateRitual(problem.problem, problem.label)}
-              disabled={isLoading}
-            >
-              <Wand2 className="mr-3 h-5 w-5 flex-shrink-0" />
-              <span>{problem.label}</span>
-            </Button>
-          ))}
+        <CardContent className="space-y-6">
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onFormSubmit)} className="space-y-4">
+                <FormField
+                  control={form.control}
+                  name="problem"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>ನಿಮ್ಮ ಸಮಸ್ಯೆ (ಕನ್ನಡ ಅಥವಾ ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ವಿವರಿಸಿ)</FormLabel>
+                      <FormControl>
+                        <Textarea
+                          placeholder="ಉದಾ: ನನ್ನ ವ್ಯಾಪಾರದಲ್ಲಿ ಪ್ರಗತಿ ಕಾಣುತ್ತಿಲ್ಲ, ಅಡೆತಡೆಗಳು ಹೆಚ್ಚಾಗುತ್ತಿವೆ."
+                          className="min-h-[100px]"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button type="submit" disabled={isLoading} className="w-full">
+                  {isLoading ? (
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  ) : (
+                    <Wand2 className="mr-2 h-4 w-4" />
+                  )}
+                  ಪರಿಹಾರ ಪಡೆಯಿರಿ
+                </Button>
+              </form>
+            </Form>
+            
+            <div className="flex items-center space-x-4">
+                <div className="flex-1 border-t border-dashed"></div>
+                <span className="text-sm text-muted-foreground">ಅಥವಾ</span>
+                <div className="flex-1 border-t border-dashed"></div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {commonProblems.map((problem) => (
+                <Button
+                  key={problem.id}
+                  variant="outline"
+                  size="lg"
+                  className="justify-start text-left h-auto py-3"
+                  onClick={() => handleGenerateRitual(problem.problem, problem.label)}
+                  disabled={isLoading}
+                >
+                  <HeartHandshake className="mr-3 h-5 w-5 flex-shrink-0" />
+                  <span>{problem.label}</span>
+                </Button>
+              ))}
+            </div>
         </CardContent>
       </Card>
       
