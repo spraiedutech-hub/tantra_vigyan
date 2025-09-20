@@ -20,6 +20,7 @@ const noto_sans = Noto_Sans({
 export const metadata: Metadata = {
   title: 'Tantra Vigyan',
   description: 'An app that teaches tantra activities and mantra practices in Kannada.',
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({

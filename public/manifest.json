@@ -1,0 +1,16 @@
+{
+  "name": "Tantra Vigyan",
+  "short_name": "TantraVigyan",
+  "description": "An app that teaches tantra activities and mantra practices in Kannada.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#ff6600",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
