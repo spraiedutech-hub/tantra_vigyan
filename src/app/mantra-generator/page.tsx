@@ -27,9 +27,13 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2, Mic, Download, Volume2 } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 
 const formSchema = z.object({
   mantraText: z.string().min(3, 'ಮಂತ್ರವು ಕನಿಷ್ಠ 3 ಅಕ್ಷರಗಳನ್ನು ಹೊಂದಿರಬೇಕು').max(500, 'ಮಂತ್ರವು 500 ಅಕ್ಷರಗಳನ್ನು ಮೀರಬಾರದು'),
+  voice: z.enum(['male', 'female'], {
+    required_error: 'ದಯವಿಟ್ಟು ಧ್ವನಿಯನ್ನು ಆಯ್ಕೆಮಾಡಿ',
+  }),
 });
 type FormValues = z.infer<typeof formSchema>;
 
@@ -42,6 +46,7 @@ export default function MantraAudioGeneratorPage() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       mantraText: '',
+      voice: 'male',
     },
   });
 
@@ -49,7 +54,7 @@ export default function MantraAudioGeneratorPage() {
     setIsLoading(true);
     setAudioDataUri(null);
     try {
-      const result = await generateMantraAudio(data.mantraText);
+      const result = await generateMantraAudio({ text: data.mantraText, voice: data.voice });
       setAudioDataUri(result.audioDataUri);
     } catch (error) {
       console.error('Error generating audio:', error);
@@ -95,7 +100,7 @@ export default function MantraAudioGeneratorPage() {
         </CardHeader>
         <CardContent>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <FormField
                 control={form.control}
                 name="mantraText"
@@ -108,6 +113,40 @@ export default function MantraAudioGeneratorPage() {
                         className="min-h-[120px]"
                         {...field}
                       />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="voice"
+                render={({ field }) => (
+                  <FormItem className="space-y-3">
+                    <FormLabel>ಧ್ವನಿಯನ್ನು ಆಯ್ಕೆಮಾಡಿ</FormLabel>
+                    <FormControl>
+                      <RadioGroup
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                        className="flex flex-col space-y-1"
+                      >
+                        <FormItem className="flex items-center space-x-3 space-y-0">
+                          <FormControl>
+                            <RadioGroupItem value="male" />
+                          </FormControl>
+                          <FormLabel className="font-normal">
+                            ಪುರುಷ ಧ್ವನಿ (Male Voice)
+                          </FormLabel>
+                        </FormItem>
+                        <FormItem className="flex items-center space-x-3 space-y-0">
+                          <FormControl>
+                            <RadioGroupItem value="female" />
+                          </FormControl>
+                          <FormLabel className="font-normal">
+                            ಮಹಿಳಾ ಧ್ವನಿ (Female Voice)
+                          </FormLabel>
+                        </FormItem>
+                      </RadioGroup>
                     </FormControl>
                     <FormMessage />
                   </FormItem>

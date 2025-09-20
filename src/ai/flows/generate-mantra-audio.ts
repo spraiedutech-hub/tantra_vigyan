@@ -38,23 +38,32 @@ async function toWav(
   });
 }
 
+const GenerateMantraAudioInputSchema = z.object({
+  text: z.string(),
+  voice: z.enum(['male', 'female']),
+});
+export type GenerateMantraAudioInput = z.infer<typeof GenerateMantraAudioInputSchema>;
+
+
 const generateMantraAudioFlow = ai.defineFlow(
   {
     name: 'generateMantraAudioFlow',
-    inputSchema: z.string(),
+    inputSchema: GenerateMantraAudioInputSchema,
     outputSchema: z.object({
       audioDataUri: z.string(),
     }),
   },
-  async (text) => {
+  async ({ text, voice }) => {
+    // Male: Algenib, Female: Tiamat
+    const voiceName = voice === 'male' ? 'Algenib' : 'Tiamat';
+
     const { media } = await ai.generate({
       model: googleAI.model('gemini-2.5-flash-preview-tts'),
       config: {
         responseModalities: ['AUDIO'],
         speechConfig: {
           voiceConfig: {
-            // A clear, calm voice suitable for mantras
-            prebuiltVoiceConfig: { voiceName: 'Algenib' }, 
+            prebuiltVoiceConfig: { voiceName },
           },
         },
       },
@@ -74,6 +83,6 @@ const generateMantraAudioFlow = ai.defineFlow(
   }
 );
 
-export async function generateMantraAudio(text: string): Promise<{ audioDataUri: string }> {
-    return generateMantraAudioFlow(text);
+export async function generateMantraAudio(input: GenerateMantraAudioInput): Promise<{ audioDataUri: string }> {
+    return generateMantraAudioFlow(input);
 }
