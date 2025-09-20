@@ -12,8 +12,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['Literata', 'serif'],
-        headline: ['Literata', 'serif'],
+        body: ['var(--font-noto-sans-kannada)', 'var(--font-noto-sans)', 'sans-serif'],
+        headline: ['var(--font-noto-sans-kannada)', 'var(--font-noto-sans)', 'serif'],
         code: ['monospace'],
       },
       colors: {
