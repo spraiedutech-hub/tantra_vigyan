@@ -54,7 +54,7 @@ const generateMantraAudioFlow = ai.defineFlow(
     }),
   },
   async ({ text, voice }) => {
-    // Male: Algenib, Female: Umbriel (Tiamat is deprecated)
+    // Male: Algenib (calm), Female: Umbriel (calm)
     const voiceName = voice === 'male' ? 'Algenib' : 'Umbriel';
 
     const { media } = await ai.generate({
