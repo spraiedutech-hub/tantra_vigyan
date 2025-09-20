@@ -7,7 +7,7 @@
  */
 
 import {ai} from '@/ai/genkit';
-import {googleAI} from '@genkit-ai/googleai';
+import {googleAI} from '@gen-sdk/googleai';
 import {z} from 'genkit';
 import wav from 'wav';
 
@@ -58,17 +58,19 @@ const generateMantraAudioFlow = ai.defineFlow(
     const voiceName = voice === 'male' ? 'Algenib' : 'Leda';
 
     const { media } = await ai.generate({
-      model: googleAI.model('gemini-2.5-flash-preview-tts'),
+      model: googleAI.model('gemini-2.5-flash-preview-tts', {
+        speechConfig: {
+            voiceConfig: {
+                prebuiltVoiceConfig: { voiceName: voiceName },
+            },
+        },
+      }),
       config: {
         responseModalities: ['AUDIO'],
-        speechConfig: {
-          voiceConfig: {
-            prebuiltVoiceConfig: { voiceName: voiceName },
-          },
-        },
       },
-      prompt: text,
+      prompt: { text },
     });
+
     if (!media) {
       throw new Error('No audio media returned from the model.');
     }
