@@ -1,14 +1,11 @@
 
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import type { SpiritualStoryOutput } from '@/ai/flows/generate-spiritual-story';
-import { generateSadhanaAudio } from '@/ai/flows/generate-sadhana-audio';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Headphones, Loader2, PlayCircle, PauseCircle, BookUp, AlertTriangle } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
-import { Skeleton } from '@/components/ui/skeleton';
+import { Headphones, BookUp, AlertTriangle, PlayCircle } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { weeklyStories } from '@/lib/constants';
 
@@ -29,89 +26,21 @@ const guidedSessions = [
 ];
 
 export default function AudioLibraryPage() {
-  const { toast } = useToast();
   const [story, setStory] = useState<SpiritualStoryOutput | null>(null);
-  const [isLoadingAudio, setIsLoadingAudio] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [audioDataUri, setAudioDataUri] = useState<string | null>(null);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-
-  const handleGenerateStory = () => {
-    setStory(null);
-    setAudioDataUri(null);
-    setIsPlaying(false);
-    if(audioRef.current) audioRef.current.src = '';
-    
-    // Select a random story from the pre-loaded list
-    const randomIndex = Math.floor(Math.random() * weeklyStories.length);
-    const newStory = weeklyStories[randomIndex];
-
-    // Optional: Prevent showing the same story twice in a row
-    if (story && newStory.title === story.title && weeklyStories.length > 1) {
-        handleGenerateStory(); // Recurse to get a different one
-        return;
-    }
-
-    setStory(newStory);
-  };
-
-  const handleGenerateAudio = async () => {
-    if (!story) return;
-    setIsLoadingAudio(true);
-    try {
-      const fullText = `${story.title}. ${story.story}`;
-      const result = await generateSadhanaAudio(fullText);
-      setAudioDataUri(result.audioDataUri);
-    } catch (err) {
-      console.error('Failed to generate audio:', err);
-      toast({
-        variant: 'destructive',
-        title: 'ಆಡಿಯೋ ದೋಷ',
-        description: 'ಆಡಿಯೋ ರಚಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ನಿಮ್ಮ ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.',
-      });
-    } finally {
-      setIsLoadingAudio(false);
-    }
-  };
-
-  const handlePlayPause = () => {
-    if (!audioRef.current) return;
-    if (isPlaying) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play();
-    }
-  };
-
-  useEffect(() => {
-    const audio = audioRef.current;
-    if (audioDataUri && audio) {
-        audio.src = audioDataUri;
-        audio.play();
-    }
-  }, [audioDataUri]);
   
-  useEffect(() => {
-    const audio = audioRef.current;
-    if (audio) {
-      const onPlay = () => setIsPlaying(true);
-      const onPause = () => setIsPlaying(false);
-      const onEnded = () => setIsPlaying(false);
-      audio.addEventListener('play', onPlay);
-      audio.addEventListener('pause', onPause);
-      audio.addEventListener('ended', onEnded);
-      return () => {
-        audio.removeEventListener('play', onPlay);
-        audio.removeEventListener('pause', onPause);
-        audio.removeEventListener('ended', onEnded);
-      };
-    }
+  const storyOfTheDay = useMemo(() => {
+    // This creates a consistent story for each day of the week
+    const dayOfWeek = new Date().getDay(); // 0 for Sunday, 1 for Monday, etc.
+    return weeklyStories[dayOfWeek];
   }, []);
 
 
+  const handleShowStory = () => {
+    setStory(storyOfTheDay);
+  };
+
   return (
     <div className="space-y-8 animate-fade-in">
-       <audio ref={audioRef} />
       <header className="space-y-2 p-4 rounded-lg animated-border">
         <h1 className="text-4xl font-bold font-headline text-primary flex items-center gap-2">
           <Headphones />
@@ -146,9 +75,9 @@ export default function AudioLibraryPage() {
 
       <Card>
         <CardHeader>
-          <CardTitle>ಆಧ್ಯಾತ್ಮಿಕ ಕಥೆಗಳು</CardTitle>
+          <CardTitle>ದಿನಕ್ಕೊಂದು ಕಥೆ (Story of the Day)</CardTitle>
           <CardDescription>
-            ಹೊಸ, ಸ್ಪೂರ್ತಿದಾಯಕ ಆಧ್ಯಾತ್ಮಿಕ ಕಥೆಯನ್ನು ಕೇಳಲು ಕೆಳಗಿನ ಬಟನ್ ಕ್ಲಿಕ್ ಮಾಡಿ.
+            ಹೊಸ, ಸ್ಪೂರ್ತಿದಾಯಕ ಆಧ್ಯಾತ್ಮಿಕ ಕಥೆಯನ್ನು ಓದಲು ಕೆಳಗಿನ ಬಟನ್ ಕ್ಲಿಕ್ ಮಾಡಿ.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -161,7 +90,7 @@ export default function AudioLibraryPage() {
             </Alert>
           {!story && (
             <div className="text-center text-muted-foreground p-8">
-                <p>ಹೊಸ ಕಥೆಯನ್ನು ಕೇಳಲು ಕೆಳಗಿನ ಬಟನ್ ಕ್ಲಿಕ್ ಮಾಡಿ.</p>
+                <p>ಇಂದಿನ ಕಥೆಯನ್ನು ಓದಲು ಕೆಳಗಿನ ಬಟನ್ ಕ್ಲಿಕ್ ಮಾಡಿ.</p>
             </div>
           )}
           {story && (
@@ -171,26 +100,11 @@ export default function AudioLibraryPage() {
             </div>
           )}
         </CardContent>
-        <CardFooter className="flex flex-col sm:flex-row gap-2">
-            <Button onClick={handleGenerateStory} className="w-full">
+        <CardFooter>
+            <Button onClick={handleShowStory} className="w-full">
                 <BookUp className="mr-2 h-4 w-4" />
-                ಹೊಸ ಕಥೆಯನ್ನು ತೋರಿಸಿ
+                {story ? "ಇಂದಿನ ಕಥೆ" : "ಇಂದಿನ ಕಥೆಯನ್ನು ತೋರಿಸಿ"}
             </Button>
-             <Button 
-                onClick={audioDataUri ? handlePlayPause : handleGenerateAudio} 
-                disabled={!story || isLoadingAudio} 
-                className="w-full"
-                variant="outline"
-            >
-                {isLoadingAudio ? (
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                ) : isPlaying ? (
-                <PauseCircle className="mr-2 h-4 w-4" />
-                ) : (
-                <PlayCircle className="mr-2 h-4 w-4" />
-                )}
-                {isLoadingAudio ? 'ಆಡಿಯೋ ಸಿದ್ಧಪಡಿಸಲಾಗುತ್ತಿದೆ...' : isPlaying ? 'ವಿರಾಮ' : 'ಕಥೆಯನ್ನು ಕೇಳಿ'}
-          </Button>
         </CardFooter>
       </Card>
 
