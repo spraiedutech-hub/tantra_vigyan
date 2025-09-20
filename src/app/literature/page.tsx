@@ -1,57 +1,12 @@
+
 'use client';
 
-import { useState, useEffect, useRef, useCallback } from 'react';
-import { generateLiteratureText } from '@/ai/flows/generate-literature-text';
-import { Library, Loader2 } from 'lucide-react';
+import { Library, AlertTriangle } from 'lucide-react';
+import literatureData from '@/lib/content/literature-base.json';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 export default function LiteraturePage() {
-  const [content, setContent] = useState<string[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const observer = useRef<IntersectionObserver>();
-
-  const loadMoreContent = useCallback(async () => {
-    if (isLoading) return;
-    setIsLoading(true);
-    try {
-      const lastTextName = content.length > 0 ? content[content.length - 1].split(' ')[0] : undefined;
-      
-      const result = await generateLiteratureText({
-        topic: 'Ancient Tantra Texts',
-        previousText: lastTextName,
-      });
-
-      // Simple client-side check to prevent adding duplicates
-      if (!content.includes(result.text)) {
-        setContent((prev) => [...prev, result.text]);
-      }
-    } catch (error) {
-      console.error('Failed to load more content:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  }, [isLoading, content]);
-
-  const lastElementRef = useCallback(
-    (node: HTMLDivElement) => {
-      if (isLoading) return;
-      if (observer.current) observer.current.disconnect();
-      observer.current = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-          loadMoreContent();
-        }
-      });
-      if (node) observer.current.observe(node);
-    },
-    [isLoading, loadMoreContent]
-  );
-
-  useEffect(() => {
-    // Load the initial content when the component mounts
-    if (content.length === 0) {
-        loadMoreContent();
-    }
-  }, [loadMoreContent, content.length]);
-
   return (
     <div className="space-y-8 animate-fade-in">
       <header className="space-y-2 p-4 rounded-lg animated-border">
@@ -60,28 +15,35 @@ export default function LiteraturePage() {
           ಪ್ರಾಚೀನ ತಂತ್ರ ಸಾಹಿತ್ಯ
         </h1>
         <p className="text-lg text-muted-foreground">
-          ಪ್ರಾಚೀನ ತಂತ್ರ ಗ್ರಂಥಗಳ ನಿರಂತರ ಜ್ಞಾನ ಸಾಗರ. ಇನ್ನಷ್ಟು ತಿಳಿಯಲು ಕೆಳಗೆ ಸ್ಕ್ರಾಲ್ ಮಾಡಿ.
+          ಪ್ರಾಚೀನ ಮತ್ತು ಮಹತ್ವಪೂರ್ಣ ತಂತ್ರ ಗ್ರಂಥಗಳ ಬಗ್ಗೆ ಪರಿಚಯ ಮತ್ತು ವಿವರಣೆಗಳನ್ನು ಇಲ್ಲಿ ಓದಿ.
         </p>
       </header>
 
-      <div className="prose prose-lg dark:prose-invert max-w-full text-foreground/90 space-y-6">
-        {content.map((paragraph, index) => (
-          <div key={index} className="p-6 rounded-lg bg-card/80 backdrop-blur-sm shadow-md">
-            <p className="text-justify leading-relaxed">
-              {paragraph}
-            </p>
-          </div>
+      <div className="space-y-6">
+        {literatureData.map((item, index) => (
+          <Card key={index} className="transform hover:scale-[1.01] transition-transform duration-300 ease-in-out">
+            <CardHeader>
+              <CardTitle className="font-headline text-2xl text-accent">{item.title}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="prose prose-lg dark:prose-invert max-w-full text-foreground/90 space-y-4 text-justify leading-relaxed">
+                {item.content.split('\n\n').map((paragraph, pIndex) => (
+                  <p key={pIndex}>{paragraph}</p>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
         ))}
       </div>
 
-      <div ref={lastElementRef} className="h-10" />
+      <Alert variant="default" className="mt-8 border-accent/30 text-accent [&>svg]:text-accent">
+        <AlertTriangle className="h-4 w-4" />
+        <AlertTitle className="font-bold">ಪ್ರಮುಖ ಸೂಚನೆ</AlertTitle>
+        <AlertDescription>
+          ತಂತ್ರ ಸಾಹಿತ್ಯದ ಗ್ರಂಥಗಳನ್ನು ಗುರುಗಳು ದೀಕ್ಷೆ ಪಡೆದ ಶಿಷ್ಯರಿಗೆ ಮಾತ್ರ ನೀಡುತ್ತಾರೆ. ಹೆಚ್ಚಿನ ಜ್ಞಾನವನ್ನು ಪಡೆಯಲು ಮತ್ತು ಸತ್ಯ ಜ್ಞಾನದ ಸಾರವನ್ನು ಕಾಪಾಡಿಕೊಳ್ಳಲು ಗುರುವಿನ ಮಾರ್ಗದರ್ಶನ ಅತ್ಯಗತ್ಯ.
+        </AlertDescription>
+      </Alert>
 
-      {isLoading && (
-        <div className="flex justify-center items-center py-8">
-          <Loader2 className="h-8 w-8 text-primary animate-spin" />
-          <p className="ml-4 text-muted-foreground">ಇನ್ನಷ್ಟು ಸಾಹಿತ್ಯವನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ...</p>
-        </div>
-      )}
     </div>
   );
 }
