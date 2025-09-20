@@ -14,17 +14,13 @@ import { useToast } from '@/hooks/use-toast';
 import { Loader2, Feather, CalendarDays } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 import Image from 'next/image';
+import { weeklyArticles } from '@/lib/constants';
 
 const formSchema = z.object({
   topic: z.string().min(3, 'ವಿಷಯವು ಕನಿಷ್ಠ 3 ಅಕ್ಷರಗಳನ್ನು ಹೊಂದಿರಬೇಕು'),
 });
 type FormValues = z.infer<typeof formSchema>;
 
-const dailyTopics = [
-    "ಕುಂಡಲಿನೀ ಶಕ್ತಿಯ ರಹಸ್ಯ", "ಮಂತ್ರ ಜಪದ ವೈಜ್ಞಾನಿಕ ಮಹತ್ವ", "ಯಂತ್ರಗಳ ಆಧ್ಯಾತ್ಮಿಕ ಅರ್ಥ",
-    "ಪಂಚಮಕಾರ ಸಾಧನೆ", "ಗುರು-ಶಿಷ್ಯ ಪರಂಪರೆ", "ದೇಹವೇ ದೇವಾಲಯ", "ತಾಂತ್ರಿಕ ದೃಷ್ಟಿಯಲ್ಲಿನ ಬ್ರಹ್ಮಾಂಡ",
-    "ಚಕ್ರಗಳ ಜಾಗೃತಿ", "ಬೀಜ ಮಂತ್ರಗಳ ಶಕ್ತಿ", "ದೀಕ್ಷೆಯ ಮಹತ್ವ"
-];
 
 export default function ArticleGeneratorPage() {
   const { toast } = useToast();
@@ -38,10 +34,10 @@ export default function ArticleGeneratorPage() {
     },
   });
   
-  const topicOfTheDay = useMemo(() => {
+  const articleOfTheDay = useMemo(() => {
     // This creates a pseudo-random topic that changes daily
-    const dayOfYear = Math.floor((new Date().getTime() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 86400000);
-    return dailyTopics[dayOfYear % dailyTopics.length];
+    const dayOfWeek = new Date().getDay(); // 0 for Sunday, 1 for Monday, etc.
+    return weeklyArticles[dayOfWeek];
   }, []);
 
   const handleGenerateArticle = async (topic: string) => {
@@ -66,9 +62,9 @@ export default function ArticleGeneratorPage() {
     handleGenerateArticle(data.topic);
   };
 
-  const handleTopicOfTheDay = () => {
-    form.setValue('topic', topicOfTheDay);
-    handleGenerateArticle(topicOfTheDay);
+  const handleArticleOfTheDay = () => {
+    setIsLoading(false);
+    setArticle(articleOfTheDay);
   };
 
 
@@ -88,13 +84,13 @@ export default function ArticleGeneratorPage() {
         <CardHeader>
           <CardTitle>ಹೊಸ ಲೇಖನವನ್ನು ರಚಿಸಿ</CardTitle>
           <CardDescription>
-            ಕೆಳಗಿನ ಇಂದಿನ ವಿಷಯವನ್ನು ಬಳಸಿ ಅಥವಾ ನಿಮ್ಮ ಸ್ವಂತ ವಿಷಯವನ್ನು ನಮೂದಿಸಿ.
+            ಕೆಳಗಿನ ಇಂದಿನ ಲೇಖನವನ್ನು ಓದಿರಿ ಅಥವಾ ನಿಮ್ಮ ಸ್ವಂತ ವಿಷಯವನ್ನು ನಮೂದಿಸಿ.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
-            <Button onClick={handleTopicOfTheDay} variant="outline" className="w-full">
+            <Button onClick={handleArticleOfTheDay} variant="outline" className="w-full">
                 <CalendarDays className="mr-2 h-4 w-4" />
-                <span>ಇಂದಿನ ವಿಷಯದ ಮೇಲೆ ಓದಿ: <strong>{topicOfTheDay}</strong></span>
+                <span>ಇಂದಿನ ಲೇಖನ: <strong>{articleOfTheDay.title}</strong></span>
             </Button>
 
             <div className="flex items-center space-x-4">
