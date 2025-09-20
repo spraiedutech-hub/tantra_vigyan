@@ -23,6 +23,7 @@ import {
 
 export const navItems = [
   { href: '/', label: 'ಮುಖಪುಟ', icon: Home },
+  { href: '/tour', label: 'ಸೈಟ್ ಪ್ರವಾಸ', icon: Compass },
   { href: '/yantras', label: 'ಯಂತ್ರಗಳು', icon: Shapes },
   { href: '/mantras', label: 'ಮಂತ್ರಗಳು', icon: BookAudio },
   { href: '/sadhana', label: 'ನಿತ್ಯ ಸಾಧನಾ', icon: Sunrise },
@@ -39,6 +40,5 @@ export const navItems = [
   { href: '/duties', label: 'ಸಾಧಕನ ಕರ್ತವ್ಯಗಳು', icon: ClipboardCheck },
   { href: '/progress', label: 'ಪ್ರಗತಿ', icon: TrendingUp },
   { href: '/forum', label: 'ಸಮುದಾಯ ವೇದಿಕೆ', icon: Users },
-  { href: '/tour', label: 'ಸೈಟ್ ಪ್ರವಾಸ', icon: Compass },
   { href: '/youtube', label: 'YouTube', icon: Youtube },
 ];
