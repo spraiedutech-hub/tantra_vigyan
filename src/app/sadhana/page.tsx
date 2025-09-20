@@ -10,17 +10,9 @@ import { Loader2, Sunrise, AlertTriangle, PlayCircle, PauseCircle } from 'lucide
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { useToast } from '@/hooks/use-toast';
 import { recordActivityCompleted } from '@/lib/progress-tracker';
+import { monthlySadhana } from '@/lib/constants';
 
 const SADHANA_STORAGE_KEY = 'monthlySadhanaAudio';
-
-// Pre-loaded Sadhana for consistency, as you suggested.
-// To change this, you can simply edit the text below.
-const monthlySadhana: DailySadhanaOutput = {
-  intention: "ನಾನು ನನ್ನ ಆಂತರಿಕ ಶಕ್ತಿಯೊಂದಿಗೆ ಸಂಪರ್ಕ ಸಾಧಿಸುತ್ತೇನೆ ಮತ್ತು ನನ್ನ ಜೀವನದ ಪ್ರತಿಯೊಂದು ಕ್ಷಣವನ್ನು ಪೂರ್ಣ ಅರಿವಿನಿಂದ ಬದುಕುತ್ತೇನೆ.",
-  mantra: "ಓಂ ಹ್ರೀಂ ಕ್ಲೀಂ ಚಾಮುಂಡಾಯೈ ವಿಚ್ಚೇ ನಮಃ",
-  breathingExercise: "ಅನುಲೋಮ-ವಿಲೋಮ ಪ್ರಾಣಾಯಾಮ: ಬಲ ಮೂಗಿನ ಹೊಳ್ಳೆಯನ್ನು ಮುಚ್ಚಿ ಎಡದಿಂದ ಉಸಿರಾಡಿ. ನಂತರ ಎಡವನ್ನು ಮುಚ್ಚಿ ಬಲದಿಂದ ಉಸಿರು ಬಿಡಿ. ಇದೇ ರೀತಿ 10 ಸುತ್ತು ಮಾಡಿ.",
-  meditationFocus: "ನಿಮ್ಮ ಆಜ್ಞಾ ಚಕ್ರದಲ್ಲಿ (ಹುಬ್ಬುಗಳ ಮಧ್ಯೆ) ಒಂದು ಪ್ರಕಾಶಮಾನವಾದ ಜ್ಯೋತಿಯನ್ನು ಕಲ್ಪಿಸಿಕೊಳ್ಳಿ. ಆ ಜ್ಯೋತಿಯು ನಿಮ್ಮ ಸಂಪೂರ್ಣ ದೇಹ ಮತ್ತು ಮನಸ್ಸನ್ನು ಬೆಳಗುತ್ತಿದೆ ಎಂದು ಭಾವಿಸಿ."
-};
 
 type StoredAudio = {
   audioDataUri: string;

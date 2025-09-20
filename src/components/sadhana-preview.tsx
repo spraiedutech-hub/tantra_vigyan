@@ -4,19 +4,17 @@
 import { useState, useRef, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Loader2, Wand2, Volume2, Info, AlertTriangle, PlayCircle, PauseCircle } from 'lucide-react';
+import { Loader2, Wand2, Info, PlayCircle, PauseCircle } from 'lucide-react';
 import type { DailySadhanaOutput } from '@/ai/flows/generate-daily-sadhana';
 import { generateSadhanaAudio } from '@/ai/flows/generate-sadhana-audio';
 import { useToast } from '@/hooks/use-toast';
 import { Alert, AlertDescription, AlertTitle } from './ui/alert';
+import { monthlySadhana } from '@/lib/constants';
 
-const preloadedSadhana: DailySadhanaOutput = {
-  intention: "ಇಂದು ನಾನು ನನ್ನ ಆಂತರಿಕ ಶಾಂತಿಯನ್ನು ಕಂಡುಕೊಳ್ಳುತ್ತೇನೆ ಮತ್ತು ನನ್ನ ಸುತ್ತಲೂ ಸಕಾರಾತ್ಮ-ಕ ಶಕ್ತಿಯನ್ನು ಪ್ರಸರಿಸುತ್ತೇನೆ.",
-  mantra: "ಓಂ ಶಾಂತಿ ಮಂತ್ರ (ಓಂ ಶಾಂತಿಃ ಶಾಂತಿಃ ಶಾಂತಿಃ)",
-  breathingExercise: "ಸಮವೃತ್ತಿ ಪ್ರಾಣಾಯಾಮ: 4 ಸೆಕೆಂಡುಗಳ ಕಾಲ ಉಸಿರನ್ನು ಒಳಗೆ ತೆಗೆದುಕೊಳ್ಳಿ, 4 ಸೆಕೆಂಡುಗಳ ಕಾಲ ಹಿಡಿದಿಟ್ಟುಕೊಳ್ಳಿ, ಮತ್ತು 4 ಸೆಕೆಂಡುಗಳ ಕಾಲ ಹೊರಗೆ ಬಿಡಿ. 5-7 ಬಾರಿ ಪುನರಾವರ್ತಿಸಿ.",
-  meditationFocus: "ನಿಮ್ಮ ಹೃದಯದ ಮಧ್ಯದಲ್ಲಿ ಬೆಳಗುತ್ತಿರುವ ಚಿನ್ನದ ಬಣ್ಣದ ಬೆಳಕನ್ನು ಕಲ್ಪಿಸಿಕೊಳ್ಳಿ. ಪ್ರತಿ ಉಸಿರಿನೊಂದಿಗೆ, ಆ ಬೆಳಕು ಪ್ರಕಾಶಮಾನವಾಗಿ ಮತ್ತು ವಿಸ್ತಾರವಾಗಿ ಹರಡುತ್ತಿರುವುದನ್ನು ಅನುಭವಿಸಿ."
+const SADHANA_STORAGE_KEY = 'monthlySadhanaAudio';
+type StoredAudio = {
+  audioDataUri: string;
 };
-
 
 export default function SadhanaPreview() {
   const { toast } = useToast();
@@ -27,6 +25,19 @@ export default function SadhanaPreview() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const generateAndPreloadAudio = async (sadhanaData: DailySadhanaOutput) => {
+    // First, check if audio already exists in localStorage
+    try {
+      const storedItem = localStorage.getItem(SADHANA_STORAGE_KEY);
+      if (storedItem) {
+        const storedAudio: StoredAudio = JSON.parse(storedItem);
+        setAudioDataUri(storedAudio.audioDataUri);
+        return; // Exit if we found cached audio
+      }
+    } catch (error) {
+      console.error("Failed to load audio from localStorage:", error);
+    }
+    
+    // If no cached audio, generate it
     setIsLoadingAudio(true);
     setAudioDataUri(null);
     try {
@@ -38,6 +49,11 @@ export default function SadhanaPreview() {
       `;
       const result = await generateSadhanaAudio(fullText);
       setAudioDataUri(result.audioDataUri);
+      
+      // Save the newly generated audio to localStorage
+      const newStoredAudio: StoredAudio = { audioDataUri: result.audioDataUri };
+      localStorage.setItem(SADHANA_STORAGE_KEY, JSON.stringify(newStoredAudio));
+
     } catch (err) {
         console.error('Failed to generate audio:', err);
         toast({
@@ -60,8 +76,8 @@ export default function SadhanaPreview() {
       }
       setIsPlaying(false);
     } else {
-      setSadhana(preloadedSadhana);
-      generateAndPreloadAudio(preloadedSadhana);
+      setSadhana(monthlySadhana);
+      generateAndPreloadAudio(monthlySadhana);
     }
   };
 
