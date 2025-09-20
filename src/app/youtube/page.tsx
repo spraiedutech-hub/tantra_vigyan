@@ -1,8 +1,10 @@
 
 'use client';
 
-import { Youtube } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Youtube, BellRing } from 'lucide-react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 //
 // How to add a new YouTube Playlist:
@@ -25,6 +27,8 @@ const playlists = [
   // },
 ];
 
+const YOUTUBE_CHANNEL_URL = 'https://www.youtube.com/@YourChannelNameHere'; // <<<<< PLEASE UPDATE THIS LINK!
+
 export default function YouTubePage() {
   return (
     <div className="space-y-8 animate-fade-in">
@@ -38,11 +42,28 @@ export default function YouTubePage() {
         </p>
       </header>
 
+      <Card className="bg-destructive/10 border-destructive/30">
+        <CardHeader>
+            <CardTitle>ನಮ್ಮ ಚಾನೆಲ್‌ಗೆ ಚಂದಾದಾರರಾಗಿ</CardTitle>
+            <CardDescription>
+            ನಮ್ಮ ಚಾನೆಲ್‌ನಲ್ಲಿ ಇನ್ನಷ್ಟು ವೀಡಿಯೊಗಳನ್ನು ವೀಕ್ಷಿಸಿ. ಮುಂಬರುವ ವೀಡಿಯೊಗಳನ್ನು ತಪ್ಪಿಸಿಕೊಳ್ಳದಿರಲು, ಚಂದಾದಾರರಾಗಿ ಮತ್ತು ನೋಟಿಫಿಕೇಶನ್‌ಗಳಿಗಾಗಿ ಬೆಲ್ ಬಟನ್ ಒತ್ತಿ.
+            </CardDescription>
+        </CardHeader>
+        <CardContent>
+            <Button asChild className="bg-destructive text-destructive-foreground hover:bg-destructive/90 w-full sm:w-auto">
+                <Link href={YOUTUBE_CHANNEL_URL} target="_blank" rel="noopener noreferrer">
+                    <BellRing className="mr-2" />
+                    ಈಗ ಚಂದಾದಾರರಾಗಿ
+                </Link>
+            </Button>
+        </CardContent>
+      </Card>
+
       <div className="space-y-10">
         {playlists.map((playlist) => {
           const embedUrl = `https://www.youtube.com/embed/videoseries?list=${playlist.playlistId}`;
           return (
-            <Card key={playlist.playlistId} className="transform hover:scale-[1.02] transition-transform duration-300 ease-in-out shadow-lg hover:shadow-primary/20">
+            <Card key={playlist.playlistId} className="transform hover:scale-[1.01] transition-transform duration-300 ease-in-out shadow-lg hover:shadow-primary/20">
               <CardHeader>
                 <CardTitle className="font-headline text-2xl text-accent">{playlist.name}</CardTitle>
               </CardHeader>
