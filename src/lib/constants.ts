@@ -1,8 +1,10 @@
 
 import type { DailySadhanaOutput } from "@/ai/flows/generate-daily-sadhana";
 import type { ArticleOutput } from "@/ai/flows/generate-article";
+import type { SpiritualStoryOutput } from "@/ai/flows/generate-spiritual-story";
 import weeklyArticlesData from '@/lib/content/weekly-articles.json';
 import monthlySadhanaData from '@/lib/content/monthly-sadhana.json';
+import weeklyStoriesData from '@/lib/content/weekly-stories.json';
 
 
 export const dailyAffirmations = [
@@ -16,6 +18,8 @@ export const dailyAffirmations = [
 export const monthlySadhana: DailySadhanaOutput = monthlySadhanaData;
 
 export const weeklyArticles: ArticleOutput[] = weeklyArticlesData;
+
+export const weeklyStories: SpiritualStoryOutput[] = weeklyStoriesData;
 
 export const mantras = [
   {

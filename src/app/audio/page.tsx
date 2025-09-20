@@ -2,7 +2,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { generateSpiritualStory, type SpiritualStoryOutput } from '@/ai/flows/generate-spiritual-story';
+import type { SpiritualStoryOutput } from '@/ai/flows/generate-spiritual-story';
 import { generateSadhanaAudio } from '@/ai/flows/generate-sadhana-audio';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -10,6 +10,7 @@ import { Headphones, Loader2, PlayCircle, PauseCircle, BookUp, AlertTriangle } f
 import { useToast } from '@/hooks/use-toast';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { weeklyStories } from '@/lib/constants';
 
 // Placeholder for professionally recorded tracks
 const guidedSessions = [
@@ -30,32 +31,28 @@ const guidedSessions = [
 export default function AudioLibraryPage() {
   const { toast } = useToast();
   const [story, setStory] = useState<SpiritualStoryOutput | null>(null);
-  const [isLoadingStory, setIsLoadingStory] = useState(false);
   const [isLoadingAudio, setIsLoadingAudio] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [audioDataUri, setAudioDataUri] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  const handleGenerateStory = async () => {
-    setIsLoadingStory(true);
+  const handleGenerateStory = () => {
     setStory(null);
     setAudioDataUri(null);
     setIsPlaying(false);
     if(audioRef.current) audioRef.current.src = '';
+    
+    // Select a random story from the pre-loaded list
+    const randomIndex = Math.floor(Math.random() * weeklyStories.length);
+    const newStory = weeklyStories[randomIndex];
 
-    try {
-      const result = await generateSpiritualStory();
-      setStory(result);
-    } catch (error) {
-      console.error('Error generating story:', error);
-      toast({
-        variant: 'destructive',
-        title: 'ದೋಷ',
-        description: 'ಕಥೆಯನ್ನು ರಚಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ನಿಮ್ಮ ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.',
-      });
-    } finally {
-      setIsLoadingStory(false);
+    // Optional: Prevent showing the same story twice in a row
+    if (story && newStory.title === story.title && weeklyStories.length > 1) {
+        handleGenerateStory(); // Recurse to get a different one
+        return;
     }
+
+    setStory(newStory);
   };
 
   const handleGenerateAudio = async () => {
@@ -149,7 +146,7 @@ export default function AudioLibraryPage() {
 
       <Card>
         <CardHeader>
-          <CardTitle>AI-ರಚಿತ ಆಧ್ಯಾತ್ಮಿಕ ಕಥೆ</CardTitle>
+          <CardTitle>ಆಧ್ಯಾತ್ಮಿಕ ಕಥೆಗಳು</CardTitle>
           <CardDescription>
             ಹೊಸ, ಸ್ಪೂರ್ತಿದಾಯಕ ಆಧ್ಯಾತ್ಮಿಕ ಕಥೆಯನ್ನು ಕೇಳಲು ಕೆಳಗಿನ ಬಟನ್ ಕ್ಲಿಕ್ ಮಾಡಿ.
           </CardDescription>
@@ -159,15 +156,12 @@ export default function AudioLibraryPage() {
                 <AlertTriangle className="h-4 w-4" />
                 <AlertTitle>ಗಮನಿಸಿ</AlertTitle>
                 <AlertDescription>
-                    ಈ ಕಥೆಗಳನ್ನು ಸುಧಾರಿತ ತಂತ್ರಜ್ಞಾನದಿಂದ ರಚಿಸಲಾಗಿದೆ ಮತ್ತು ಸ್ಫೂರ್ತಿಗಾಗಿ ಉದ್ದೇಶಿಸಲಾಗಿದೆ.
+                    ಈ ಕಥೆಗಳನ್ನು ಸ್ಫೂರ್ತಿಗಾಗಿ ಸಂಗ್ರಹಿಸಲಾಗಿದೆ.
                 </AlertDescription>
             </Alert>
-          {isLoadingStory && (
-            <div className="space-y-4">
-              <Skeleton className="h-6 w-3/4" />
-              <Skeleton className="h-4 w-full" />
-              <Skeleton className="h-4 w-full" />
-              <Skeleton className="h-4 w-5/6" />
+          {!story && (
+            <div className="text-center text-muted-foreground p-8">
+                <p>ಹೊಸ ಕಥೆಯನ್ನು ಕೇಳಲು ಕೆಳಗಿನ ಬಟನ್ ಕ್ಲಿಕ್ ಮಾಡಿ.</p>
             </div>
           )}
           {story && (
@@ -178,9 +172,9 @@ export default function AudioLibraryPage() {
           )}
         </CardContent>
         <CardFooter className="flex flex-col sm:flex-row gap-2">
-            <Button onClick={handleGenerateStory} disabled={isLoadingStory} className="w-full">
+            <Button onClick={handleGenerateStory} className="w-full">
                 <BookUp className="mr-2 h-4 w-4" />
-                {isLoadingStory ? 'ರಚಿಸಲಾಗುತ್ತಿದೆ...' : 'ಹೊಸ ಕಥೆಯನ್ನು ರಚಿಸಿ'}
+                ಹೊಸ ಕಥೆಯನ್ನು ತೋರಿಸಿ
             </Button>
              <Button 
                 onClick={audioDataUri ? handlePlayPause : handleGenerateAudio} 
