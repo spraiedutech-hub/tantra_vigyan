@@ -46,14 +46,14 @@ export default function YouTubePage() {
         <CardHeader>
             <CardTitle>ನಮ್ಮ ಚಾನೆಲ್‌ಗೆ ಚಂದಾದಾರರಾಗಿ</CardTitle>
             <CardDescription>
-            ನಮ್ಮ ಚಾನೆಲ್‌ನಲ್ಲಿ ಇನ್ನಷ್ಟು ವೀಡಿಯೊಗಳನ್ನು ವೀಕ್ಷಿಸಿ. ಮುಂಬರುವ ವೀಡಿಯೊಗಳನ್ನು ತಪ್ಪಿಸಿಕೊಳ್ಳದಿರಲು, ಚಂದಾದಾರರಾಗಿ ಮತ್ತು ನೋಟಿಫಿಕೇಶನ್‌ಗಳಿಗಾಗಿ ಬೆಲ್ ಬಟನ್ ಒತ್ತಿ.
+            ನಮ್ಮ ಚಾನೆಲ್‌ನಲ್ಲಿ ಇನ್ನಷ್ಟು ವೀಡಿಯೊಗಳನ್ನು ವೀಕ್ಷಿಸಿ. ಮುಂಬರುವ ವೀಡಿಯೊಗಳನ್ನು ತಪ್ಪಿಸಿಕೊಳ್ಳದಿರಲು, ದಯವಿಟ್ಟು Subscribe ಮಾಡಿ ಮತ್ತು ನೋಟಿಫಿಕೇಶನ್‌ಗಳಿಗಾಗಿ ಬೆಲ್ ಬಟನ್ ಒತ್ತಿ.
             </CardDescription>
         </CardHeader>
         <CardContent>
             <Button asChild className="bg-destructive text-destructive-foreground hover:bg-destructive/90 w-full sm:w-auto">
                 <Link href={YOUTUBE_CHANNEL_URL} target="_blank" rel="noopener noreferrer">
-                    <BellRing className="mr-2" />
-                    ಈಗ ಚಂದಾದಾರರಾಗಿ
+                    <Youtube className="mr-2" />
+                    Visit my channel
                 </Link>
             </Button>
         </CardContent>
