@@ -54,8 +54,8 @@ const generateMantraAudioFlow = ai.defineFlow(
     }),
   },
   async ({ text, voice }) => {
-    // Male: Algenib (calm), Female: Umbriel (calm)
-    const voiceName = voice === 'male' ? 'Algenib' : 'Umbriel';
+    // Male: Algenib (calm), Female: Leda (calm)
+    const voiceName = voice === 'male' ? 'Algenib' : 'Leda';
 
     const { media } = await ai.generate({
       model: googleAI.model('gemini-2.5-flash-preview-tts'),
