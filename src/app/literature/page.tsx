@@ -19,6 +19,14 @@ export default function LiteraturePage() {
         </p>
       </header>
 
+      <Alert variant="destructive" className="border-accent/50 text-accent [&>svg]:text-accent">
+        <AlertTriangle className="h-4 w-4" />
+        <AlertTitle>ಪ್ರಮುಖ ಸೂಚನೆ: ಜ್ಞಾನದ ಪರಂಪರೆ</AlertTitle>
+        <AlertDescription>
+         ತಂತ್ರ ಸಾಹಿತ್ಯದ ಗ್ರಂಥಗಳನ್ನು ಗುರುಗಳು ದೀಕ್ಷೆ ಪಡೆದ ಶಿಷ್ಯರಿಗೆ ಮಾತ್ರ ನೀಡುತ್ತಾರೆ. ಹೆಚ್ಚಿನ ಜ್ಞಾನವನ್ನು ಪಡೆಯಲು ಮತ್ತು ಸತ್ಯ ಜ್ಞಾನದ ಸಾರವನ್ನು ಕಾಪಾಡಿಕೊಳ್ಳಲು ಗುರುವಿನ ಮಾರ್ಗದರ್ಶನ ಅತ್ಯಗತ್ಯ.
+        </AlertDescription>
+      </Alert>
+
       <div className="space-y-6">
         {literatureData.map((item, index) => (
           <Card key={index} className="transform hover:scale-[1.01] transition-transform duration-300 ease-in-out">
@@ -36,14 +44,9 @@ export default function LiteraturePage() {
         ))}
       </div>
 
-      <Alert variant="default" className="mt-8 border-accent/30 text-accent [&>svg]:text-accent">
-        <AlertTriangle className="h-4 w-4" />
-        <AlertTitle className="font-bold">ಪ್ರಮುಖ ಸೂಚನೆ</AlertTitle>
-        <AlertDescription>
-          ತಂತ್ರ ಸಾಹಿತ್ಯದ ಗ್ರಂಥಗಳನ್ನು ಗುರುಗಳು ದೀಕ್ಷೆ ಪಡೆದ ಶಿಷ್ಯರಿಗೆ ಮಾತ್ರ ನೀಡುತ್ತಾರೆ. ಹೆಚ್ಚಿನ ಜ್ಞಾನವನ್ನು ಪಡೆಯಲು ಮತ್ತು ಸತ್ಯ ಜ್ಞಾನದ ಸಾರವನ್ನು ಕಾಪಾಡಿಕೊಳ್ಳಲು ಗುರುವಿನ ಮಾರ್ಗದರ್ಶನ ಅತ್ಯಗತ್ಯ.
-        </AlertDescription>
-      </Alert>
-
+      <div className="text-center text-muted-foreground italic mt-8">
+        <p>ಇನ್ನಷ್ಟು ಸಾಹಿತ್ಯ ಶೀಘ್ರದಲ್ಲೇ ಬರಲಿದೆ, ನಿರೀಕ್ಷಿಸಿ...</p>
+      </div>
     </div>
   );
 }
