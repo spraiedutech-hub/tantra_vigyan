@@ -27,7 +27,7 @@ const playlists = [
   // },
 ];
 
-const YOUTUBE_CHANNEL_URL = 'https://www.youtube.com/@YourChannelNameHere'; // <<<<< PLEASE UPDATE THIS LINK!
+const YOUTUBE_CHANNEL_URL = 'https://www.youtube.com/@AmbikaDNagaraj';
 
 export default function YouTubePage() {
   return (
