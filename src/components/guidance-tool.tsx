@@ -122,7 +122,7 @@ export default function GuidanceTool() {
       toast({
         variant: 'destructive',
         title: 'ದೋಷ',
-        description: 'ಮಾರ್ಗದರ್ಶನವನ್ನು ಪಡೆಯಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.',
+        description: 'ಮಾರ್ಗದರ್ಶನವನ್ನು ಪಡೆಯಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ನಿಮ್ಮ ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.',
       });
     } finally {
       setIsLoading(false);
