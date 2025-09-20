@@ -1,7 +1,7 @@
 
 'use client';
 
-import { BookOpen } from 'lucide-react';
+import { BookOpen, AlertTriangle } from 'lucide-react';
 import knowledgeData from '@/lib/content/knowledge-base.json';
 import {
   Accordion,
@@ -9,6 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 
 export default function KnowledgePage() {
@@ -24,6 +25,14 @@ export default function KnowledgePage() {
           ತಂತ್ರ ಮತ್ತು ಮಂತ್ರಗಳ ಮೂಲಭೂತ ತತ್ವಗಳ ಬಗ್ಗೆ ಆಳವಾಗಿ ತಿಳಿಯಿರಿ.
         </p>
       </header>
+
+      <Alert variant="destructive" className="border-accent/50 text-accent [&>svg]:text-accent">
+        <AlertTriangle className="h-4 w-4" />
+        <AlertTitle>ಪ್ರಮುಖ ಸೂಚನೆ: ತಂತ್ರದ ಗೋಪ್ಯತೆ</AlertTitle>
+        <AlertDescription>
+          ತಂತ್ರದಲ್ಲಿನ ಗೋಪ್ಯತೆಯ ತತ್ವದ ಕಾರಣ, ನಾವು ಸಾಮಾನ್ಯ ಜನರಿಗೆ ಅರ್ಥವಾಗುವಂತಹ ವಿಷಯವನ್ನು ಮಾತ್ರ ಪ್ರದರ್ಶಿಸುತ್ತಿದ್ದೇವೆ. ತಂತ್ರದ ಪ್ರತಿಯೊಂದು ತತ್ವದ ಆಳವಾದ ಸತ್ಯಗಳನ್ನು ತಿಳಿಯಲು, ದಯವಿಟ್ಟು ಗುರುವನ್ನು ಭೇಟಿ ಮಾಡಿ. ನಾವು ತಂತ್ರದ ತತ್ವಗಳನ್ನು ಗೌರವಿಸಬೇಕು.
+        </AlertDescription>
+      </Alert>
 
       <Accordion type="single" collapsible className="w-full">
          {knowledgeData.map((item, index) => (
