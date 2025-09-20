@@ -50,6 +50,10 @@ export default function KnowledgePage() {
           </AccordionItem>
          ))}
       </Accordion>
+
+      <div className="text-center text-muted-foreground italic mt-8">
+        <p>ಇನ್ನಷ್ಟು ಜ್ಞಾನ ಶೀಘ್ರದಲ್ಲೇ ಬರಲಿದೆ, ನಿರೀಕ್ಷಿಸಿ...</p>
+      </div>
     </div>
   );
 }
