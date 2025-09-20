@@ -2,27 +2,32 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { generateDailySadhana, type DailySadhanaOutput } from '@/ai/flows/generate-daily-sadhana';
+import type { DailySadhanaOutput } from '@/ai/flows/generate-daily-sadhana';
 import { generateSadhanaAudio } from '@/ai/flows/generate-sadhana-audio';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Loader2, Sunrise, AlertTriangle, PlayCircle, PauseCircle } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Skeleton } from '@/components/ui/skeleton';
 import { useToast } from '@/hooks/use-toast';
 import { recordActivityCompleted } from '@/lib/progress-tracker';
 
-const SADHANA_STORAGE_KEY = 'dailySadhana';
+const SADHANA_STORAGE_KEY = 'monthlySadhanaAudio';
 
-type StoredSadhana = {
-  date: string;
-  sadhana: DailySadhanaOutput;
-  audioDataUri?: string;
+// Pre-loaded Sadhana for consistency, as you suggested.
+// To change this, you can simply edit the text below.
+const monthlySadhana: DailySadhanaOutput = {
+  intention: "ನಾನು ನನ್ನ ಆಂತರಿಕ ಶಕ್ತಿಯೊಂದಿಗೆ ಸಂಪರ್ಕ ಸಾಧಿಸುತ್ತೇನೆ ಮತ್ತು ನನ್ನ ಜೀವನದ ಪ್ರತಿಯೊಂದು ಕ್ಷಣವನ್ನು ಪೂರ್ಣ ಅರಿವಿನಿಂದ ಬದುಕುತ್ತೇನೆ.",
+  mantra: "ಓಂ ಹ್ರೀಂ ಕ್ಲೀಂ ಚಾಮುಂಡಾಯೈ ವಿಚ್ಚೇ ನಮಃ",
+  breathingExercise: "ಅನುಲೋಮ-ವಿಲೋಮ ಪ್ರಾಣಾಯಾಮ: ಬಲ ಮೂಗಿನ ಹೊಳ್ಳೆಯನ್ನು ಮುಚ್ಚಿ ಎಡದಿಂದ ಉಸಿರಾಡಿ. ನಂತರ ಎಡವನ್ನು ಮುಚ್ಚಿ ಬಲದಿಂದ ಉಸಿರು ಬಿಡಿ. ಇದೇ ರೀತಿ 10 ಸುತ್ತು ಮಾಡಿ.",
+  meditationFocus: "ನಿಮ್ಮ ಆಜ್ಞಾ ಚಕ್ರದಲ್ಲಿ (ಹುಬ್ಬುಗಳ ಮಧ್ಯೆ) ಒಂದು ಪ್ರಕಾಶಮಾನವಾದ ಜ್ಯೋತಿಯನ್ನು ಕಲ್ಪಿಸಿಕೊಳ್ಳಿ. ಆ ಜ್ಯೋತಿಯು ನಿಮ್ಮ ಸಂಪೂರ್ಣ ದೇಹ ಮತ್ತು ಮನಸ್ಸನ್ನು ಬೆಳಗುತ್ತಿದೆ ಎಂದು ಭಾವಿಸಿ."
+};
+
+type StoredAudio = {
+  audioDataUri: string;
 };
 
 export default function SadhanaPage() {
-  const [sadhana, setSadhana] = useState<DailySadhanaOutput | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [sadhana] = useState<DailySadhanaOutput>(monthlySadhana);
   const [isLoadingAudio, setIsLoadingAudio] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [audioDataUri, setAudioDataUri] = useState<string | null>(null);
@@ -30,43 +35,17 @@ export default function SadhanaPage() {
   const { toast } = useToast();
 
   useEffect(() => {
-    const getSadhana = async () => {
-      setIsLoading(true);
-      const todayStr = new Date().toISOString().split('T')[0];
-      
-      try {
-        const storedItem = localStorage.getItem(SADHANA_STORAGE_KEY);
-        if (storedItem) {
-          const storedSadhana: StoredSadhana = JSON.parse(storedItem);
-          if (storedSadhana.date === todayStr) {
-            setSadhana(storedSadhana.sadhana);
-            if (storedSadhana.audioDataUri) {
-              setAudioDataUri(storedSadhana.audioDataUri);
-            }
-            setIsLoading(false);
-            return;
-          }
-        }
-        
-        // If no valid sadhana in storage, generate a new one
-        const result = await generateDailySadhana();
-        setSadhana(result);
-        const newStoredSadhana: StoredSadhana = { date: todayStr, sadhana: result };
-        localStorage.setItem(SADHANA_STORAGE_KEY, JSON.stringify(newStoredSadhana));
-
-      } catch (error) {
-        console.error("Failed to generate daily sadhana:", error);
-        toast({
-          variant: 'destructive',
-          title: 'ದೋಷ',
-          description: 'ದೈನಂದಿನ ಸಾಧನವನ್ನು ರಚಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಪುಟವನ್ನು ರಿಫ್ರೆಶ್ ಮಾಡಿ.',
-        });
-      } finally {
-        setIsLoading(false);
+    // On component mount, check if audio is already in localStorage.
+    try {
+      const storedItem = localStorage.getItem(SADHANA_STORAGE_KEY);
+      if (storedItem) {
+        const storedAudio: StoredAudio = JSON.parse(storedItem);
+        setAudioDataUri(storedAudio.audioDataUri);
       }
-    };
-    getSadhana();
-  }, [toast]);
+    } catch (error) {
+      console.error("Failed to load audio from localStorage:", error);
+    }
+  }, []);
 
   const handleGenerateAudio = async () => {
     if (!sadhana) return;
@@ -79,15 +58,12 @@ export default function SadhanaPage() {
         ಧ್ಯಾನ: ${sadhana.meditationFocus}.
       `;
       const result = await generateSadhanaAudio(fullText);
-      setAudioDataUri(result.audioDataUri);
+      const audioUri = result.audioDataUri;
+      setAudioDataUri(audioUri);
 
       // Save audio to local storage
-      const storedItem = localStorage.getItem(SADHANA_STORAGE_KEY);
-      if (storedItem) {
-        const storedSadhana: StoredSadhana = JSON.parse(storedItem);
-        storedSadhana.audioDataUri = result.audioDataUri;
-        localStorage.setItem(SADHANA_STORAGE_KEY, JSON.stringify(storedSadhana));
-      }
+      const newStoredAudio: StoredAudio = { audioDataUri: audioUri };
+      localStorage.setItem(SADHANA_STORAGE_KEY, JSON.stringify(newStoredAudio));
 
       // Record the activity and notify the user
       recordActivityCompleted();
@@ -116,15 +92,15 @@ export default function SadhanaPage() {
       audioRef.current.play();
     }
   };
-
+  
   useEffect(() => {
-    const audio = audioRef.current;
-    if (audioDataUri && audio) {
-        audio.src = audioDataUri;
-        if (audio.paused && isPlaying) {
-          audio.play();
-        }
-    }
+      const audio = audioRef.current;
+      if (audioDataUri && audio) {
+          audio.src = audioDataUri;
+          if (audio.paused && isPlaying) {
+            audio.play().catch(e => console.error("Audio play failed:", e));
+          }
+      }
   }, [audioDataUri, isPlaying]);
 
   useEffect(() => {
@@ -153,7 +129,7 @@ export default function SadhanaPage() {
           ನಿತ್ಯ ಸಾಧನಾ
         </h1>
         <p className="text-lg text-muted-foreground">
-          ನಿಮಗಾಗಿ ಇಂದಿನ ದೈನಂದಿನ ಆಧ್ಯಾತ್ಮಿಕ ಅಭ್ಯಾಸ.
+          ನಿಮ್ಮ ದೈನಂದಿನ ಆಧ್ಯಾತ್ಮಿಕ ಅಭ್ಯಾಸ.
         </p>
       </header>
 
@@ -167,43 +143,30 @@ export default function SadhanaPage() {
 
       <Card className="transform hover:scale-[1.01] transition-transform duration-300 ease-in-out">
         <CardHeader>
-          <CardTitle className="text-2xl font-headline text-accent">ಇಂದಿನ ಅಭ್ಯಾಸ</CardTitle>
+          <CardTitle className="text-2xl font-headline text-accent">ದೈನಂದಿನ ಅಭ್ಯಾಸ</CardTitle>
           <CardDescription>ಈ ಅಭ್ಯಾಸವು ನಿಮ್ಮ ದಿನವನ್ನು ಚೈತನ್ಯ ಮತ್ತು ಶಾಂತಿಯಿಂದ ತುಂಬಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
-          {isLoading ? (
-            <div className="space-y-4">
-              <Skeleton className="h-6 w-1/3" />
-              <Skeleton className="h-4 w-full" />
-              <Skeleton className="h-6 w-1/3" />
-              <Skeleton className="h-4 w-full" />
-              <Skeleton className="h-6 w-1/3" />
-              <Skeleton className="h-4 w-full" />
-              <Skeleton className="h-6 w-1/3" />
-              <Skeleton className="h-4 w-full" />
+          <div className="space-y-4">
+            <div>
+              <h3 className="font-semibold text-lg text-primary">ಸಂಕಲ್ಪ (Intention)</h3>
+              <p className="text-muted-foreground">{sadhana.intention}</p>
             </div>
-          ) : sadhana ? (
-            <div className="space-y-4">
-              <div>
-                <h3 className="font-semibold text-lg text-primary">ಸಂಕಲ್ಪ (Intention)</h3>
-                <p className="text-muted-foreground">{sadhana.intention}</p>
-              </div>
-              <div>
-                <h3 className="font-semibold text-lg text-primary">ಮಂತ್ರ (Mantra)</h3>
-                <p className="text-muted-foreground">{sadhana.mantra}</p>
-              </div>
-              <div>
-                <h3 className="font-semibold text-lg text-primary">ಪ್ರಾಣಾಯಾಮ (Breathing)</h3>
-                <p className="text-muted-foreground">{sadhana.breathingExercise}</p>
-              </div>
-              <div>
-                <h3 className="font-semibold text-lg text-primary">ಧ್ಯಾನ (Meditation)</h3>
-                <p className="text-muted-foreground">{sadhana.meditationFocus}</p>
-              </div>
+            <div>
+              <h3 className="font-semibold text-lg text-primary">ಮಂತ್ರ (Mantra)</h3>
+              <p className="text-muted-foreground">{sadhana.mantra}</p>
             </div>
-          ) : null}
+            <div>
+              <h3 className="font-semibold text-lg text-primary">ಪ್ರಾಣಾಯಾಮ (Breathing)</h3>
+              <p className="text-muted-foreground">{sadhana.breathingExercise}</p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-lg text-primary">ಧ್ಯಾನ (Meditation)</h3>
+              <p className="text-muted-foreground">{sadhana.meditationFocus}</p>
+            </div>
+          </div>
 
-          <Button onClick={audioDataUri ? handlePlayPause : handleGenerateAudio} disabled={isLoading || isLoadingAudio} className="w-full">
+          <Button onClick={audioDataUri ? handlePlayPause : handleGenerateAudio} disabled={isLoadingAudio} className="w-full">
             {isLoadingAudio ? (
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
             ) : isPlaying ? (
