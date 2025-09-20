@@ -1,7 +1,7 @@
 
 'use client';
 
-import { Library, AlertTriangle } from 'lucide-react';
+import { Library, AlertTriangle, Lightbulb } from 'lucide-react';
 import literatureData from '@/lib/content/literature-base.json';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
@@ -18,6 +18,14 @@ export default function LiteraturePage() {
           ಪ್ರಾಚೀನ ಮತ್ತು ಮಹತ್ವಪೂರ್ಣ ತಂತ್ರ ಗ್ರಂಥಗಳ ಬಗ್ಗೆ ಪರಿಚಯ ಮತ್ತು ವಿವರಣೆಗಳನ್ನು ಇಲ್ಲಿ ಓದಿ.
         </p>
       </header>
+      
+      <Alert>
+        <Lightbulb className="h-4 w-4" />
+        <AlertTitle>ನೆನಪಿಡಿ</AlertTitle>
+        <AlertDescription>
+         ಪದಗಳು ಕೇವಲ ಪಾತ್ರೆಗಳು, ನಿಜವಾದ ಜ್ಞಾನವು ಪಾತ್ರೆಯೊಳಗೆ ಇರುತ್ತದೆ. ಈ ಆಳವಾದ ಜ್ಞಾನವನ್ನು ಪಡೆಯಲು ಇರುವ ಏಕೈಕ ಮಾರ್ಗವೆಂದರೆ ಗುರುವಿನ ಮೂಲಕ ಮಾತ್ರ.
+        </AlertDescription>
+      </Alert>
 
       <div className="space-y-6">
         {literatureData.map((item, index) => (
