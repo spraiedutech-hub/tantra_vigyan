@@ -101,7 +101,7 @@ export default function TantraAndMoneyPage() {
                 </p>
             </CardContent>
             <CardFooter className="flex-col sm:flex-row items-center gap-4">
-                <p className="text-xl font-bold text-primary">ಶುಲ್ಕ: ₹1,111</p>
+                <p className="text-xl font-bold text-primary">ಶುಲ್ಕ: ₹2,222</p>
                 <Button asChild size="lg" className="w-full sm:w-auto">
                     <Link href={WHATSAPP_URL} target="_blank">
                     <Phone className="mr-2 h-5 w-5" />
