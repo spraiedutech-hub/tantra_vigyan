@@ -4,6 +4,7 @@ import { KeyRound, ShieldCheck, Waves, Sunrise, Sun, Sunset, Sparkles, ArrowRigh
 import SadhanaPreview from '@/components/sadhana-preview';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import DeekshaAnimation from '@/components/deeksha-animation';
 
 export default function InitiationPage() {
   return (
@@ -17,6 +18,14 @@ export default function InitiationPage() {
           ತಂತ್ರದಲ್ಲಿ ದೀಕ್ಷೆಯ ಮಹತ್ವ, ಕಾರ್ಯವಿಧಾನ ಮತ್ತು ಪ್ರಕಾರಗಳ ಬಗ್ಗೆ ತಿಳಿಯಿರಿ.
         </p>
       </header>
+
+      <Card>
+        <CardContent className="p-6">
+           <div className="relative w-full h-64 md:h-80 flex items-center justify-center my-4">
+                <DeekshaAnimation />
+            </div>
+        </CardContent>
+      </Card>
 
       <div className="space-y-6">
         <Card className="transform hover:scale-[1.02] transition-transform duration-300 ease-in-out">

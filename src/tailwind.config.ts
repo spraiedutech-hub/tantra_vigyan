@@ -127,6 +127,10 @@ export default {
           '0%, 100%': { filter: 'drop-shadow(0 0 7px hsl(var(--accent)))', opacity: '0.9' },
           '50%': { filter: 'drop-shadow(0 0 20px hsl(var(--accent)))', opacity: '1' },
         },
+        'pulse-glow-strong': {
+          '0%, 100%': { filter: 'drop-shadow(0 0 8px hsl(var(--primary)))', opacity: '1' },
+          '50%': { filter: 'drop-shadow(0 0 25px hsl(var(--primary)))', opacity: '0.7' },
+        },
         'fiery-border-glow': {
           '0%, 100%': {
             'box-shadow': 'inset 0 0 10px 5px hsl(var(--destructive) / 0.1), inset 0 0 20px 10px hsl(var(--primary) / 0.08)',
@@ -203,6 +207,7 @@ export default {
         'animated-border': 'animated-border 4s linear infinite',
         'glow': 'glow 6s ease-in-out infinite',
         'pulse-glow': 'pulse-glow 8s ease-in-out infinite',
+        'pulse-glow-strong': 'pulse-glow-strong 3s ease-in-out infinite',
         'fiery-border-glow': 'fiery-border-glow 8s ease-in-out infinite',
         'chakra-spin': 'chakra-spin 10s linear infinite',
         'chakra-spin-slow': 'chakra-spin-slow 20s linear infinite',
