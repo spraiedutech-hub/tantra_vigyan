@@ -98,7 +98,7 @@ export default function NavagrahaSystem() {
           return (
              <PlanetInfoDialog key={index} planet={{...planetData, color: p.color}}>
                 <g className="cursor-pointer group">
-                    <circle cx={p.cx} cy={p.cy} r={p.r} fill={p.color} className="animate-pulse-slow group-hover:stroke-2 group-hover:stroke-white" />
+                    <circle cx={p.cx} cy={p.cy} r={p.r} fill={p.color} className="animate-pulse-glow group-hover:stroke-2 group-hover:stroke-white" style={{ animationDuration: '6s' }}/>
                     <text x={p.cx + p.r + 5} y={p.cy + 4} fontSize="10" fill="hsl(var(--muted-foreground))" className="group-hover:fill-primary">{p.name}</text>
                 </g>
              </PlanetInfoDialog>
