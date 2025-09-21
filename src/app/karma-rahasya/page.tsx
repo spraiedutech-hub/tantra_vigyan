@@ -1,7 +1,7 @@
 
 'use client';
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Orbit, AlertTriangle, Lightbulb, UserCheck, Phone } from 'lucide-react';
 import { ScrollAnimate } from '@/components/ui/scroll-animate';
