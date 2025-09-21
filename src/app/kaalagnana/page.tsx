@@ -1,10 +1,12 @@
 
 'use client';
 
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Clock, AlertTriangle } from 'lucide-react';
+import { Clock, AlertTriangle, Library, ArrowRight } from 'lucide-react';
 import { ScrollAnimate } from '@/components/ui/scroll-animate';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 const prophecies = [
   {
@@ -103,6 +105,28 @@ export default function KaalagnanaPage() {
       </div>
       
       <ScrollAnimate delay={300 + prophecies.length * 150}>
+         <Card className="bg-gradient-to-r from-primary/10 via-card to-accent/10 animated-border">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Library className="text-primary"/>
+              ಹೆಚ್ಚಿನ ಜ್ಞಾನಕ್ಕಾಗಿ
+            </CardTitle>
+            <CardDescription>
+              ಈ ಪುಟದಲ್ಲಿ ಉಲ್ಲೇಖಿಸಲಾದ ಗ್ರಂಥಗಳು ಮತ್ತು ಇತರ ಪ್ರಾಚೀನ ತಂತ್ರ ಸಾಹಿತ್ಯದ ಬಗ್ಗೆ ಆಳವಾಗಿ ತಿಳಿಯಲು, ದಯವಿಟ್ಟು ನಮ್ಮ ಸಾಹಿತ್ಯ ವಿಭಾಗಕ್ಕೆ ಭೇಟಿ ನೀಡಿ.
+            </CardDescription>
+          </CardHeader>
+          <CardFooter>
+            <Button asChild>
+                <Link href="/literature">
+                    ಸಾಹಿತ್ಯ ವಿಭಾಗಕ್ಕೆ ಭೇಟಿ ನೀಡಿ
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+            </Button>
+          </CardFooter>
+        </Card>
+      </ScrollAnimate>
+
+      <ScrollAnimate delay={400 + prophecies.length * 150}>
         <div className="text-center text-muted-foreground italic mt-8">
           <p>ಇನ್ನಷ್ಟು ಜ್ಞಾನ ಶೀಘ್ರದಲ್ಲೇ ಬರಲಿದೆ, ನಿರೀಕ್ಷಿಸಿ...</p>
         </div>
