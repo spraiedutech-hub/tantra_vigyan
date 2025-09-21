@@ -37,10 +37,6 @@ type Horoscope = {
   forecast: string;
 };
 
-const WHATSAPP_NUMBER = "917022070287";
-const WHATSAPP_MESSAGE = "ನಮಸ್ಕಾರ, ನಾನು ತಂತ್ರ ವಿಜ್ಞಾನ ಅಪ್ಲಿಕೇಶನ್‌ನಿಂದ ಜನ್ಮ ಕುಂಡಲಿ ವಿಶ್ಲೇಷಣೆಗಾಗಿ ಸಂಪರ್ಕಿಸುತ್ತಿದ್ದೇನೆ.";
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
-
 export default function AstrologyPage() {
   const { toast } = useToast();
   const [isChartLoading, setIsChartLoading] = useState(false);
@@ -164,15 +160,15 @@ export default function AstrologyPage() {
 
       <Card>
         <CardHeader>
-          <CardTitle>ಸಂಪೂರ್ಣ ಜನ್ಮ ಕುಂಡಲಿ ವಿಶ್ಲೇಷಣೆ</CardTitle>
+          <CardTitle>AI-ಚಾಲಿತ ಜನ್ಮ ಕುಂಡಲಿ ವಿಶ್ಲೇಷಣೆ</CardTitle>
           <CardDescription>
-            ನಿಮ್ಮ ಜನ್ಮ ವಿವರಗಳನ್ನು ನಮೂದಿಸಿ ಮತ್ತು AI ವಿಶ್ಲೇಷಣೆ ಪಡೆಯಿರಿ ಅಥವಾ ನೇರ ಸಮಾಲೋಚನೆಗಾಗಿ ಗುರುಗಳನ್ನು ಸಂಪರ್ಕಿಸಿ.
+            ನಿಮ್ಮ ಜನ್ಮ ವಿವರಗಳನ್ನು ನಮೂದಿಸಿ ಮತ್ತು ಭೃಗು ನಂದಿ ನಾಡಿ ಪದ್ಧತಿಯ ಆಧಾರದ ಮೇಲೆ ಉಚಿತ AI ವಿಶ್ಲೇಷಣೆಯನ್ನು ಪಡೆಯಿರಿ.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <Form {...birthChartForm}>
             <form onSubmit={birthChartForm.handleSubmit(onBirthChartSubmit)} className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
                 <FormField
                   control={birthChartForm.control}
                   name="dateOfBirth"
@@ -212,12 +208,6 @@ export default function AstrologyPage() {
                     </FormItem>
                   )}
                 />
-                 <Button asChild variant="outline" className="w-full border-accent text-accent hover:bg-accent hover:text-accent-foreground">
-                    <Link href={WHATSAPP_URL} target="_blank">
-                        <Phone className="mr-2 h-4 w-4" />
-                        ಗುರುಗಳೊಂದಿಗೆ ಸಮಾಲೋಚಿಸಿ
-                    </Link>
-                </Button>
               </div>
               <Button type="submit" disabled={isChartLoading} className="w-full">
                 {isChartLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Sparkles className="mr-2 h-4 w-4" />}
@@ -225,7 +215,6 @@ export default function AstrologyPage() {
               </Button>
             </form>
           </Form>
-
         </CardContent>
       </Card>
 

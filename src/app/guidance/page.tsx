@@ -1,14 +1,7 @@
 
-import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
-import { ShieldQuestion, UserCheck, BookCheck, HeartHandshake, CircleAlert, Phone } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { ShieldQuestion, UserCheck, BookCheck, HeartHandshake, CircleAlert } from 'lucide-react';
 import ConsultationPricing from '@/components/consultation-pricing';
-
-const WHATSAPP_NUMBER = "917022070287"; // Using the number from the initiation page
-const WHATSAPP_MESSAGE = "ನಮಸ್ಕಾರ, ನಾನು ತಂತ್ರ ವಿಜ್ಞಾನ ಅಪ್ಲಿಕೇಶನ್‌ನಿಂದ ವೈಯಕ್ತಿಕ ಮಾರ್ಗದರ್ಶನಕ್ಕಾಗಿ ಸಂಪರ್ಕಿಸುತ್ತಿದ್ದೇನೆ.";
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
-
 
 export default function GuidancePage() {
   return (
@@ -23,35 +16,10 @@ export default function GuidancePage() {
         </p>
       </header>
       
-      <Card className="bg-gradient-to-br from-primary/10 to-accent/10 animated-border transform hover:scale-[1.01] transition-transform duration-300">
-        <CardHeader>
-          <CardTitle className="text-2xl font-headline text-accent flex items-center gap-3">
-            <UserCheck />
-            ನಿಮಗಾಗಿ ವೈಯಕ್ತಿಕ ಸಮಾಲೋಚನೆ
-          </CardTitle>
-          <CardDescription>
-            AI-ಚಾಲಿತ ಸಾಮಾನ್ಯ ಸಲಹೆಗಳಿಗಿಂತ ಹೆಚ್ಚಾಗಿ, ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಜಾತಕ ಮತ್ತು ಪ್ರಸ್ತುತ ಸಂದರ್ಭಗಳನ್ನು ಆಧರಿಸಿ ನೇರವಾಗಿ ಗುರೂಜಿಯವರಿಂದ ಮಾರ್ಗದರ್ಶನ ಮತ್ತು ಪರಿಹಾರಗಳನ್ನು ಪಡೆಯಿರಿ.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <p className="prose prose-lg dark:prose-invert max-w-full text-foreground/90">
-            ನಿಮ್ಮ ಆಧ್ಯಾತ್ಮಿಕ ಅಭ್ಯಾಸದಲ್ಲಿ ನಿರ್ದಿಷ್ಟ ಅಡೆತಡೆಗಳನ್ನು ಎದುರಿಸುತ್ತಿದ್ದೀರಾ? ಅಥವಾ ಜೀವನದಲ್ಲಿ ಬಗೆಹರಿಯದ ಸಮಸ್ಯೆಗಳಿಂದ ಬಳಲುತ್ತಿದ್ದೀರಾ? ನಿಮಗಾಗಿ ವಿಶೇಷವಾಗಿ ವಿಶ್ಲೇಷಿಸಿ, ಸರಳ ಮತ್ತು ಪರಿಣಾಮಕಾರಿ ತಾಂತ್ರಿಕ ಪರಿಹಾರಗಳನ್ನು ಒದಗಿಸಲಾಗುವುದು.
-          </p>
-        </CardContent>
-        <CardFooter>
-          <Button asChild size="lg" className="w-full">
-            <Link href={WHATSAPP_URL} target="_blank">
-              <Phone className="mr-2 h-5 w-5" />
-              WhatsApp ಮೂಲಕ ಸಮಾಲೋಚನೆಗೆ ವಿನಂತಿಸಿ
-            </Link>
-          </Button>
-        </CardFooter>
-      </Card>
-
       <ConsultationPricing />
 
       <div className="space-y-6">
-        <h2 className="text-2xl font-headline text-accent mt-12">ಸಾధನೆಯಲ್ಲಿನ ಸಾಮಾನ್ಯ ಅಡೆತಡೆಗಳು</h2>
+        <h2 className="text-3xl font-bold font-headline text-primary text-center mt-12">ಸಾధನೆಯಲ್ಲಿನ ಸಾಮಾನ್ಯ ಅಡೆತಡೆಗಳು</h2>
         <Card className="transform hover:scale-[1.02] transition-transform duration-300 ease-in-out">
           <CardHeader>
             <CardTitle className="flex items-center gap-3"><UserCheck className="text-accent"/>ಗುರು ಮತ್ತು ದೀಕ್ಷೆಯ ಅಭಾವ</CardTitle>
