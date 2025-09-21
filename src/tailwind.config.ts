@@ -231,6 +231,15 @@ export default {
           from: { transform: 'rotate(0deg)' },
           to: { transform: 'rotate(360deg)' },
         },
+        'blueprint-draw': {
+          from: { 'stroke-dashoffset': '1000' },
+          to: { 'stroke-dashoffset': '0' },
+        },
+        'blueprint-glow': {
+          '0%': { opacity: '0', transform: 'scale(0.5)' },
+          '50%': { opacity: '1', transform: 'scale(1)' },
+          '100%': { opacity: '0', transform: 'scale(0.5)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -268,6 +277,13 @@ export default {
         'karma-rotate': 'karma-rotate var(--duration, 20s) linear infinite',
         'karma-particle': 'karma-particle 8s ease-in-out infinite',
         'chariot-wheel-rotate': 'chariot-wheel-rotate 20s linear infinite',
+        'blueprint-draw': {
+          'animation-name': 'blueprint-draw',
+          'animation-fill-mode': 'forwards',
+          'stroke-dasharray': '1000',
+          'stroke-dashoffset': '1000',
+        },
+        'blueprint-glow': 'blueprint-glow var(--duration, 3s) ease-in-out infinite',
       },
     },
   },

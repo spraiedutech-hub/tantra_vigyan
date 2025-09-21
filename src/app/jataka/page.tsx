@@ -8,6 +8,7 @@ import { ScrollAnimate } from '@/components/ui/scroll-animate';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import jatakaData from '@/lib/content/jataka-blueprint.json';
+import JatakaBlueprintAnimation from '@/components/jataka-blueprint-animation';
 
 const WHATSAPP_NUMBER = "917022070287";
 const WHATSAPP_MESSAGE = "ನಮಸ್ಕಾರ, ನಾನು ತಂತ್ರ ವಿಜ್ಞಾನ ಅಪ್ಲಿಕೇಶನ್‌ನಿಂದ ವೈಯಕ್ತಿಕ ಜಾತಕ ವಿಶ್ಲೇಷಣೆಗಾಗಿ ಸಂಪರ್ಕಿಸುತ್ತಿದ್ದೇನೆ.";
@@ -25,6 +26,10 @@ export default function JatakaPage() {
           ನಿಮ್ಮ ಜನ್ಮ ಕುಂಡಲಿಯು ನಿಮ್ಮ ಜೀವನದ ಬಗ್ಗೆ ಏನು ಹೇಳುತ್ತದೆ ಎಂಬುದನ್ನು ಅರಿಯಿರಿ.
         </p>
       </header>
+
+      <div className="relative w-full h-80 md:h-96 flex items-center justify-center my-4 overflow-hidden rounded-lg">
+          <JatakaBlueprintAnimation />
+      </div>
       
       <ScrollAnimate delay={150}>
         <Alert>
