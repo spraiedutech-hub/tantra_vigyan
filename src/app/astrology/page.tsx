@@ -17,6 +17,7 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Skeleton } from '@/components/ui/skeleton';
 import dailyHoroscopes from '@/lib/content/daily-horoscopes.json';
 import Link from 'next/link';
+import RemedySchoolsInfo from '@/components/remedy-schools-info';
 
 const birthChartSchema = z.object({
   dateOfBirth: z.string().min(1, 'ದಯವಿಟ್ಟು ಜನ್ಮ ದಿನಾಂಕವನ್ನು ನಮೂದಿಸಿ'),
@@ -253,6 +254,8 @@ export default function AstrologyPage() {
           </CardContent>
         </Card>
       )}
+
+      <RemedySchoolsInfo />
     </div>
   );
 }
