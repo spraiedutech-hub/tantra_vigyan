@@ -222,9 +222,10 @@ export default {
           to: { transform: 'rotate(360deg)' },
         },
         'karma-particle': {
-          '0%, 20%': { opacity: '0', r: '1' },
-          '50%': { opacity: '1', r: 'var(--size, 2)' },
-          '80%, 100%': { opacity: '0', r: '1' },
+          '0%': { opacity: '0', r: '1' },
+          '20%': { opacity: '1', r: 'var(--size, 2px)' },
+          '80%': { opacity: '1', r: 'var(--size, 2px)' },
+          '100%': { opacity: '0', r: '1' },
         },
       },
       animation: {
@@ -261,7 +262,7 @@ export default {
         'script-glow': 'script-glow 4s ease-in-out infinite',
         'line-draw': 'line-draw 3s ease-out forwards',
         'karma-rotate': 'karma-rotate var(--duration, 20s) linear infinite',
-        'karma-particle': 'karma-particle var(--duration, 8s) ease-in-out infinite',
+        'karma-particle': 'karma-particle 8s ease-in-out infinite',
       },
     },
   },

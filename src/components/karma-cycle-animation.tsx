@@ -4,34 +4,45 @@
 export default function KarmaCycleAnimation() {
   const orbits = [
     {
-      rx: 60,
-      ry: 120,
-      duration: '20s',
+      id: "orbit1",
+      rx: 80,
+      ry: 130,
+      duration: "22s",
       particles: [
-        { size: 1.5, offset: '0s', duration: '8s' },
-        { size: 2, offset: '4s', duration: '8s' },
+        { size: 2, offset: "0s", duration: "11s" },
+        { size: 1.5, offset: "5.5s", duration: "11s" },
       ],
     },
     {
-      rx: 120,
-      ry: 60,
-      duration: '25s',
+      id: "orbit2",
+      rx: 130,
+      ry: 80,
+      duration: "28s",
       particles: [
-        { size: 2.5, offset: '2s', duration: '10s' },
-        { size: 1, offset: '7s', duration: '10s' },
+        { size: 2.5, offset: "2s", duration: "14s" },
+        { size: 1.8, offset: "9s", duration: "14s" },
       ],
     },
     {
-      rx: 90,
-      ry: 90,
-      duration: '15s',
-      particles: [{ size: 2, offset: '1s', duration: '6s' }],
+      id: "orbit3",
+      rx: 110,
+      ry: 110,
+      duration: "18s",
+      particles: [{ size: 2.2, offset: "1s", duration: "9s" }],
     },
   ];
 
   return (
     <svg viewBox="0 0 300 300" className="w-full h-full">
       <defs>
+        {orbits.map((orbit) => (
+             <path 
+                key={orbit.id} 
+                id={orbit.id} 
+                d={`M ${150 + orbit.rx},150 A ${orbit.rx},${orbit.ry} 0 1,1 ${150 - orbit.rx},150 A ${orbit.rx},${orbit.ry} 0 1,1 ${150 + orbit.rx},150`} 
+                fill="none" 
+            />
+        ))}
         <radialGradient id="gradKarmaCenter" cx="50%" cy="50%" r="50%">
           <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.4" />
           <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
@@ -52,10 +63,12 @@ export default function KarmaCycleAnimation() {
       <circle cx="150" cy="150" r="10" fill="hsl(var(--accent))" filter="url(#karmaGlow)" />
 
       {/* Orbits and Karmic Particles */}
-      <g transform="translate(150, 150)">
-        {orbits.map((orbit, i) => (
-          <g key={i}>
+      <g>
+        {orbits.map((orbit) => (
+          <g key={orbit.id}>
             <ellipse
+              cx="150"
+              cy="150"
               rx={orbit.rx}
               ry={orbit.ry}
               fill="none"
@@ -63,7 +76,7 @@ export default function KarmaCycleAnimation() {
               strokeWidth="0.5"
               strokeDasharray="2 4"
               className="animate-karma-rotate"
-              style={{ animationDuration: orbit.duration }}
+              style={{ animationDuration: orbit.duration, transformOrigin: '150px 150px' }}
             />
             {orbit.particles.map((particle, pIndex) => (
               <circle
@@ -72,21 +85,19 @@ export default function KarmaCycleAnimation() {
                 fill="hsl(var(--primary))"
                 className="animate-karma-particle"
                 style={{
-                  animationDuration: particle.duration,
-                  animationDelay: particle.offset,
-                }}
+                  '--size': `${particle.size}px`
+                } as React.CSSProperties}
               >
                 <animateMotion
-                  dur={`${particle.duration}s`}
-                  begin={`${particle.offset}s`}
+                  dur={particle.duration}
+                  begin={particle.offset}
                   repeatCount="indefinite"
                   rotate="auto"
                 >
-                  <mpath href={`#orbitPath${i}`} />
+                  <mpath href={`#${orbit.id}`} />
                 </animateMotion>
               </circle>
             ))}
-            <path id={`orbitPath${i}`} d={`M 0,${-orbit.ry} A ${orbit.rx},${orbit.ry} 0 1,0 0,${orbit.ry} A ${orbit.rx},${orbit.ry} 0 1,0 0,${-orbit.ry}`} fill="none" />
           </g>
         ))}
       </g>
