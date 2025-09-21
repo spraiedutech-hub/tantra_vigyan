@@ -212,6 +212,11 @@ export default {
             '50%': { opacity: '1', filter: 'drop-shadow(0 0 10px hsl(var(--primary)))' },
             '100%': { opacity: '0', filter: 'drop-shadow(0 0 2px hsl(var(--primary)))' },
         },
+         'line-draw': {
+          to: {
+            'stroke-dashoffset': '0',
+          },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -245,6 +250,7 @@ export default {
         'knowledge-particle': 'knowledge-particle 5s ease-in-out infinite',
         'unfurl': 'unfurl 2s ease-out forwards',
         'script-glow': 'script-glow 4s ease-in-out infinite',
+        'line-draw': 'line-draw 3s ease-out forwards',
       },
     },
   },
