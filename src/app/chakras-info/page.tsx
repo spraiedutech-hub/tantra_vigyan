@@ -20,13 +20,13 @@ export default function ChakrasInfoPage() {
           ನಿಮ್ಮ ದೇಹದಲ್ಲಿರುವ ಏಳು ಪ್ರಮುಖ ಶಕ್ತಿ ಕೇಂದ್ರಗಳ ರಹಸ್ಯವನ್ನು ಅನ್ವೇಷಿಸಿ.
         </p>
       </header>
-
+      
       <ScrollAnimate delay={150}>
-        <Alert>
-          <Activity className="h-4 w-4" />
-          <AlertTitle className="font-bold">ಪ್ರಾಯೋಗಿಕ ಅನ್ವೇಷಣೆ</AlertTitle>
+        <Alert variant="destructive" className="border-destructive/50 text-destructive [&>svg]:text-destructive">
+          <AlertTriangle className="h-4 w-4" />
+          <AlertTitle className="font-bold text-lg">ಅತ್ಯಂತ ಪ್ರಮುಖ ಎಚ್ಚರಿಕೆ!</AlertTitle>
           <AlertDescription>
-            ಈ ಪುಟವು ಚಕ್ರಗಳ ಬಗ್ಗೆ ಸೈದ್ಧಾಂತಿಕ ಜ್ಞಾನವನ್ನು ನೀಡುತ್ತದೆ. ಮುಖಪುಟದಲ್ಲಿರುವ ಸಂವಾದಾತ್ಮಕ ಚಕ್ರ ವ್ಯವಸ್ಥೆಯ ಮೂಲಕ ನೀವು ಅವುಗಳ ಸ್ಥಾನ ಮತ್ತು ಮೂಲ ಮಾಹಿತಿಯನ್ನು ದೃಶ್ಯೀಕರಿಸಬಹುದು.
+            ಚಕ್ರಗಳನ್ನು ಜಾಗೃತಗೊಳಿಸುವುದು ಅತ್ಯಂತ ಶಕ್ತಿಶಾಲಿಯಾದ ಪ್ರಕ್ರಿಯೆ. ಇದನ್ನು ತಜ್ಞ ಗುರುವಿನ ನೇರ ಮಾರ್ಗದರ್ಶನವಿಲ್ಲದೆ ಅಭ್ಯಾಸ ಮಾಡುವುದು ಅಪಾಯಕಾರಿ. ಸರಿಯಾದ ಜ್ಞಾನವಿಲ್ಲದೆ ಚಕ್ರಗಳೊಂದಿಗೆ ಕೆಲಸ ಮಾಡುವುದು, ವಿದ್ಯುತ್ ಜ್ಞಾನವಿಲ್ಲದ ಸಾಮಾನ್ಯ ವ್ಯಕ್ತಿ ಪವರ್ ಸ್ಟೇಷನ್‌ನಲ್ಲಿ ಕೆಲಸ ಮಾಡಿದಂತೆ. ಇದು ಗಂಭೀರ ದೈಹಿಕ ಮತ್ತು ಮಾನಸಿಕ ಅಸಮತೋಲನಕ್ಕೆ ಕಾರಣವಾಗಬಹುದು. ದಯವಿಟ್ಟು ಸ್ವಯಂ-ಪ್ರಯೋಗ ಮಾಡಬೇಡಿ.
           </AlertDescription>
         </Alert>
       </ScrollAnimate>

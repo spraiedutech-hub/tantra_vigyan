@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { dailyAffirmations } from '@/lib/constants';
-import { Heart, TrendingUp, Sunrise, ArrowRight } from 'lucide-react';
+import { Heart, TrendingUp, Sunrise, ArrowRight, Zap } from 'lucide-react';
 import ChakraPractitioner from '@/components/chakra-practitioner';
 import { getProgressData, type ProgressData } from '@/lib/progress-tracker';
 import Link from 'next/link';
@@ -48,6 +48,14 @@ export default function Home() {
                 <ChakraPractitioner />
               </div>
           </div>
+        </CardContent>
+         <CardContent>
+           <Button asChild className="w-full" variant="outline">
+              <Link href="/chakras-info">
+                <Zap className="mr-2 h-4 w-4" />
+                ಚಕ್ರಗಳ ಬಗ್ಗೆ ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ
+              </Link>
+            </Button>
         </CardContent>
       </Card>
       

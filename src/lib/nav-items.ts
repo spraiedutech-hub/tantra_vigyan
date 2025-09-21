@@ -69,8 +69,9 @@ export const astrologyPages = [
 
 export const dailyPracticePages = [
     { href: '/yantras', label: 'ಯಂತ್ರಗಳು', icon: Shapes },
-    { href: '/mantras', label: 'ಮಂತ್ರಗಳು', icon: BookAudio },
+    { href: ' /mantras', label: 'ಮಂತ್ರಗಳು', icon: BookAudio },
     { href: '/activities', label: 'ಚಟುವಿಕೆಗಳು', icon: CheckCircle },
+    { href: '/audio', label: 'ಆಡಿಯೋ ಲೈಬ್ರರಿ', icon: BookAudio },
 ];
 
 export const aiToolsPages = [
