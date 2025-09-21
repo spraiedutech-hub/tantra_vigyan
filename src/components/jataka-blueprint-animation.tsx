@@ -36,10 +36,10 @@ export default function JatakaBlueprintAnimation() {
       {/* Grid Lines */}
       <g stroke="hsl(var(--border))" strokeWidth="0.2" strokeOpacity="0.5">
         {Array.from({ length: 15 }).map((_, i) => (
-          <path key={i} d={`M ${i * 20} 0 L ${i * 20} 300`} className="animate-blueprint-draw" style={{ animationDelay: `${i * 0.05}s`, animationDuration: '1s' }} />
+          <path key={`grid-v-${i}`} d={`M ${i * 20} 0 L ${i * 20} 300`} className="animate-blueprint-draw" style={{ animationDelay: `${i * 0.05}s`, animationDuration: '1s' }} />
         ))}
         {Array.from({ length: 15 }).map((_, i) => (
-          <path key={i} d={`M 0 ${i * 20} L 300 ${i * 20}`} className="animate-blueprint-draw" style={{ animationDelay: `${i * 0.05 + 0.5}s`, animationDuration: '1s' }} />
+          <path key={`grid-h-${i}`} d={`M 0 ${i * 20} L 300 ${i * 20}`} className="animate-blueprint-draw" style={{ animationDelay: `${i * 0.05 + 0.5}s`, animationDuration: '1s' }} />
         ))}
       </g>
       
@@ -68,6 +68,12 @@ export default function JatakaBlueprintAnimation() {
         {/* Roof */}
         <path d="M 100 160 L 200 160" className="animate-blueprint-draw" style={{ animationDelay: '6s', animationDuration: '1.5s' }} />
         <path d="M 90 160 L 150 110 L 210 160 Z" className="animate-blueprint-draw" style={{ animationDelay: '6.5s', animationDuration: '1.5s' }} />
+      </g>
+
+      {/* Shivalingam appearing at the end */}
+      <g transform="translate(150, 195) scale(0.6)" fill="hsl(var(--accent))" stroke="hsl(var(--accent))" strokeWidth="2" className="animate-shivalingam-appear" style={{ animationDelay: '7.5s' }}>
+        <path d="M -25,20 A 25,10 0 0,0 25,20 Z" />
+        <path d="M -15,20 Q 0,30 15,20 L 15,5 Q 0,-20 -15,5 Z" />
       </g>
     </svg>
   );

@@ -204,8 +204,9 @@ export default {
           '50%': { opacity: '1' },
         },
         'unfurl': {
-            from: { 'stroke-dashoffset': '1' },
-            to: { 'stroke-dashoffset': '0' },
+            '0%': { 'stroke-dasharray': '0, 1000', opacity: '0' },
+            '50%': { 'stroke-dasharray': '500, 1000', opacity: '1' },
+            '100%': { 'stroke-dasharray': '1000, 1000', opacity: '1' },
         },
         'script-glow': {
             '0%': { opacity: '0', filter: 'drop-shadow(0 0 2px hsl(var(--primary)))' },
@@ -213,6 +214,9 @@ export default {
             '100%': { opacity: '0', filter: 'drop-shadow(0 0 2px hsl(var(--primary)))' },
         },
          'line-draw': {
+          from: {
+            'stroke-dashoffset': '1000',
+          },
           to: {
             'stroke-dashoffset': '0',
           },
@@ -239,6 +243,10 @@ export default {
           '0%': { opacity: '0', transform: 'scale(0.5)' },
           '50%': { opacity: '1', transform: 'scale(1)' },
           '100%': { opacity: '0', transform: 'scale(0.5)' },
+        },
+         'shivalingam-appear': {
+          '0%': { opacity: '0', transform: 'scale(0.5) translateY(20px)' },
+          '100%': { opacity: '1', transform: 'scale(0.6) translateY(0)' },
         },
       },
       animation: {
@@ -279,6 +287,7 @@ export default {
         'chariot-wheel-rotate': 'chariot-wheel-rotate 20s linear infinite',
         'blueprint-draw': 'blueprint-draw 1.5s ease-out forwards',
         'blueprint-glow': 'blueprint-glow 3s ease-in-out infinite',
+        'shivalingam-appear': 'shivalingam-appear 1.5s ease-out forwards',
       },
     },
   },
