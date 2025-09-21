@@ -26,6 +26,7 @@ import {
   Dices,
   ShieldOff,
   Recycle,
+  Gem,
 } from 'lucide-react';
 
 export const navItems = [
@@ -46,6 +47,7 @@ export const navItems = [
   { href: '/mantras', label: 'ಮಂತ್ರಗಳು', icon: BookAudio },
   { href: '/activities', label: 'ಚಟುವಟಿಕೆಗಳು', icon: CheckCircle },
   { href: '/remedies', label: 'ಪರಿಹಾರಗಳು', icon: HeartHandshake },
+  { href: '/energized-items', label: 'ಶಕ್ತಿ ತುಂಬಿದ ಸಾಧನಗಳು', icon: Gem },
   { href: '/recommendations', label: 'ಶಿಫಾರಸುಗಳು', icon: Sparkles },
   { href: '/articles', label: 'ಲೇಖನಗಳು', icon: Feather },
   { href: '/audio', label: 'ಆಡಿಯೋ ಲೈಬ್ರರಿ', icon: Headphones },
