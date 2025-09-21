@@ -6,6 +6,12 @@ import literatureData from '@/lib/content/literature-base.json';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { ScrollAnimate } from '@/components/ui/scroll-animate';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 
 export default function LiteraturePage() {
   return (
@@ -30,24 +36,26 @@ export default function LiteraturePage() {
         </Alert>
       </ScrollAnimate>
 
-      <div className="space-y-6">
-        {literatureData.map((item, index) => (
-          <ScrollAnimate key={index} delay={index * 150}>
-            <Card className="transform hover:scale-[1.01] transition-transform duration-300 ease-in-out">
-              <CardHeader>
-                <CardTitle className="font-headline text-2xl text-accent">{item.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="prose prose-lg dark:prose-invert max-w-full text-foreground/90 space-y-4 text-justify leading-relaxed">
-                  {item.content.split('\n\n').map((paragraph, pIndex) => (
-                    <p key={pIndex}>{paragraph}</p>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </ScrollAnimate>
-        ))}
-      </div>
+      <Accordion type="single" collapsible className="w-full space-y-4">
+         {literatureData.map((item, index) => (
+           <ScrollAnimate key={index} delay={index * 100}>
+              <Card className="transform hover:scale-[1.01] transition-transform duration-300 ease-in-out">
+                <AccordionItem value={`item-${index}`} className="border-b-0">
+                  <AccordionTrigger className="text-xl font-headline text-accent hover:no-underline p-6 text-left">
+                    {item.title}
+                  </AccordionTrigger>
+                  <AccordionContent className="p-6 pt-0">
+                      <div className="prose prose-lg dark:prose-invert max-w-full text-foreground/90 space-y-6 text-justify leading-relaxed">
+                          {item.content.split('\n\n').map((paragraph, pIndex) => (
+                              <p key={pIndex}>{paragraph}</p>
+                          ))}
+                      </div>
+                  </AccordionContent>
+                </AccordionItem>
+              </Card>
+           </ScrollAnimate>
+         ))}
+      </Accordion>
       
       <ScrollAnimate delay={literatureData.length * 150}>
         <Alert variant="destructive" className="border-accent/50 text-accent [&>svg]:text-accent">
