@@ -3,7 +3,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Clock, AlertTriangle, Library, ArrowRight } from 'lucide-react';
+import { Clock, AlertTriangle, Library, ArrowRight, Star } from 'lucide-react';
 import { ScrollAnimate } from '@/components/ui/scroll-animate';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -11,7 +11,7 @@ import Link from 'next/link';
 const prophecies = [
   {
     title: "ಜ್ಞಾನದ ಪ್ರಾಮುಖ್ಯತೆ",
-    prophecy: "ಕಲಿಯುಗದ ಅಂತ್ಯದಲ್ಲಿ, ಜ್นานವು ಎಲ್ಲಕ್ಕಿಂತ ಮಿಗಿಲಾದ ಶಕ್ತಿಯಾಗುತ್ತದೆ. ಯಾರು ಜ್ಞಾನವನ್ನು ಹೊಂದಿರುವರೋ, ಅವರೇ ಜಗತ್ತನ್ನು ಆಳುವರು. ಭೌತಿಕ ಶಕ್ತಿಯು ಜ್ಞಾನದ ಮುಂದೆ ಮಂಡಿಯೂರಲಿದೆ.",
+    prophecy: "ಕಲಿಯುಗದ ಅಂತ್ಯದಲ್ಲಿ, ಜ್ಞಾನವು ಎಲ್ಲಕ್ಕಿಂತ ಮಿಗಿಲಾದ ಶಕ್ತಿಯಾಗುತ್ತದೆ. ಯಾರು ಜ್ಞಾನವನ್ನು ಹೊಂದಿರುವರೋ, ಅವರೇ ಜಗತ್ತನ್ನು ಆಳುವರು. ಭೌತಿಕ ಶಕ್ತಿಯು ಜ್ಞಾನದ ಮುಂದೆ ಮಂಡಿಯೂರಲಿದೆ.",
     source: "ಶ್ರೀ ಪೋತುಲೂರಿ ವೀರಬ್ರಹ್ಮೇಂದ್ರ ಸ್ವಾಮಿಗಳ ಕಾಲಜ್ಞಾನ"
   },
   {
@@ -103,8 +103,24 @@ export default function KaalagnanaPage() {
           </ScrollAnimate>
         ))}
       </div>
-      
+
       <ScrollAnimate delay={300 + prophecies.length * 150}>
+        <Card className="transform hover:scale-[1.01] transition-transform duration-300 ease-in-out bg-card/80 backdrop-blur-sm shadow-md">
+            <CardHeader>
+                <CardTitle className="font-headline text-2xl text-primary flex items-center gap-3">
+                    <Star />
+                    ಮುಂಬರುವ ವರ್ಷಗಳ ಕಾಲಜ್ಞಾನ (ನಮ್ಮ ಗುರುಗಳಿಂದ)
+                </CardTitle>
+            </CardHeader>
+            <CardContent>
+                <p className="text-muted-foreground">
+                ಈ ವಿಭಾಗದಲ್ಲಿ, ನಮ್ಮ ಗುರುಗಳಾದ ಶ್ರೀ ನಾಗರಾಜ ಡಿ. ರವರು ಮುಂಬರುವ ವರ್ಷಗಳ ಬಗ್ಗೆ ನೀಡುವ ಕಾಲಜ್ಞಾನದ ಮಾಹಿತಿಯನ್ನು ಶೀಘ್ರದಲ್ಲೇ ನವೀಕರಿಸಲಾಗುವುದು. ನಿರೀಕ್ಷಿಸಿ...
+                </p>
+            </CardContent>
+        </Card>
+      </ScrollAnimate>
+      
+      <ScrollAnimate delay={400 + prophecies.length * 150}>
          <Card className="bg-gradient-to-r from-primary/10 via-card to-accent/10 animated-border">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -126,7 +142,7 @@ export default function KaalagnanaPage() {
         </Card>
       </ScrollAnimate>
 
-      <ScrollAnimate delay={400 + prophecies.length * 150}>
+      <ScrollAnimate delay={500 + prophecies.length * 150}>
         <div className="text-center text-muted-foreground italic mt-8">
           <p>ಇನ್ನಷ್ಟು ಜ್ಞಾನ ಶೀಘ್ರದಲ್ಲೇ ಬರಲಿದೆ, ನಿರೀಕ್ಷಿಸಿ...</p>
         </div>
