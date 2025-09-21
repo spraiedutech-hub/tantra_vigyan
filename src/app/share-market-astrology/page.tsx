@@ -127,7 +127,6 @@ export default function ShareMarketAstrologyPage() {
       
        <ScrollAnimate delay={150}>
         <Alert variant="destructive" className="border-accent/50 text-accent [&>svg]:text-accent">
-          <AlertTriangle className="h-4 w-4" />
           <AlertTitle>ಹಕ್ಕು ನಿರಾಕರಣೆ (Disclaimer)</AlertTitle>
           <AlertDescription>
             ಇಲ್ಲಿ ನೀಡಲಾದ ಮಾಹಿತಿಯು ಕೇವಲ ಜ್ಯೋತಿಷ್ಯದ ಶೈಕ್ಷಣಿಕ ಉದ್ದೇಶಕ್ಕಾಗಿ ಮಾತ್ರ. ಇದು ಯಾವುದೇ ರೀತಿಯ ಹಣಕಾಸು ಸಲಹೆ ಅಥವಾ ಹೂಡಿಕೆಯ ಶಿಫಾರಸು ಅಲ್ಲ. ಶೇರು ಮಾರುಕಟ್ಟೆಯಲ್ಲಿ ಹೂಡಿಕೆ ಮಾಡುವುದು ಅಪಾಯಗಳಿಗೆ ಒಳಪಟ್ಟಿರುತ್ತದೆ. ದಯವಿಟ್ಟು ಹೂಡಿಕೆ ಮಾಡುವ ಮೊದಲು ಅರ್ಹ ಹಣಕಾಸು ಸಲಹೆಗಾರರನ್ನು ಸಂಪರ್ಕಿಸಿ. ಹಠಾತ್ ಘಟನೆಗಳು ಮತ್ತು ಸುದ್ದಿಗಳು ಮಾರುಕಟ್ಟೆಯಲ್ಲಿನ ಜ್ಯೋತಿಷ್ಯದ ಮುನ್ಸೂಚನೆಗಳನ್ನು ಬದಲಾಯಿಸಬಹುದು.
@@ -138,7 +137,7 @@ export default function ShareMarketAstrologyPage() {
        <Tabs defaultValue="forecast" className="w-full">
             <TabsList className="grid w-full grid-cols-2">
                 <TabsTrigger value="forecast">ದೈನಂದಿನ ಮುನ್ಸೂಚನೆ</TabsTrigger>
-                <TabsTrigger value="learn">ಜ್ಯೋತಿಷ್ಯ ಕಲಿಯಿರಿ</TabsTrigger>
+                <TabsTrigger value="learn">jyothisyada drustiyalli</TabsTrigger>
             </TabsList>
             <TabsContent value="forecast">
                 <Card className="mt-4">
@@ -299,5 +298,3 @@ export default function ShareMarketAstrologyPage() {
     </div>
   );
 }
-
-    
