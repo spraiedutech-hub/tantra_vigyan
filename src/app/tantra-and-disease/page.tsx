@@ -8,6 +8,7 @@ import { ScrollAnimate } from '@/components/ui/scroll-animate';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import tantraAndDiseaseData from '@/lib/content/tantra-and-disease.json';
+import HealingEnergyAnimation from '@/components/healing-energy-animation';
 
 const WHATSAPP_NUMBER = "917022070287";
 const WHATSAPP_MESSAGE = "ನಮಸ್ಕಾರ, ನಾನು ತಂತ್ರ ವಿಜ್ಞಾನ ಅಪ್ಲಿಕೇಶನ್‌ನಿಂದ ಆರೋಗ್ಯಕ್ಕೆ ಸಂಬಂಧಿಸಿದಂತೆ ವೈಯಕ್ತಿಕ ಮಾರ್ಗದರ್ಶನಕ್ಕಾಗಿ ಸಂಪರ್ಕಿಸುತ್ತಿದ್ದೇನೆ.";
@@ -26,6 +27,10 @@ export default function TantraAndDiseasePage() {
         </p>
       </header>
       
+      <div className="relative w-full h-80 md:h-96 flex items-center justify-center my-4 overflow-hidden rounded-lg bg-muted/30">
+        <HealingEnergyAnimation />
+      </div>
+
       <ScrollAnimate delay={150}>
         <Alert variant="destructive" className="border-destructive/50 text-destructive [&>svg]:text-destructive">
           <AlertTriangle className="h-4 w-4" />
