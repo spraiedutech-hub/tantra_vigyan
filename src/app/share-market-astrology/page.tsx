@@ -206,8 +206,8 @@ export default function ShareMarketAstrologyPage() {
             </CardContent>
             <CardFooter className="flex-col sm:flex-row items-center gap-4">
                 <div className="flex-1 text-center sm:text-left">
-                    <p className="text-xl font-bold text-primary">ಶುಲ್ಕ: ಲಾಭದಲ್ಲಿ ಪಾಲು (Profit Sharing)</p>
-                    <p className="text-sm text-muted-foreground">Fee is only applicable if the user makes a profit.</p>
+                    <p className="text-md font-semibold text-primary">ಬಳಕೆದಾರರು ಲಾಭ ಗಳಿಸಿದರೆ ಮಾತ್ರ ಶುಲ್ಕ ಅನ್ವಯಿಸುತ್ತದೆ.</p>
+                    <p className="text-xs text-muted-foreground italic">Fee is only applicable if the user makes a profit.</p>
                 </div>
                 <Button asChild size="lg" className="w-full sm:w-auto mt-4 sm:mt-0">
                     <Link href={WHATSAPP_URL_DAILY} target="_blank">
