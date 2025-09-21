@@ -3,10 +3,13 @@
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { LineChart, AlertTriangle, Lightbulb, UserCheck, Phone } from 'lucide-react';
+import { LineChart, AlertTriangle, Lightbulb, UserCheck, Phone, TrendingUp, CalendarDays } from 'lucide-react';
 import { ScrollAnimate } from '@/components/ui/scroll-animate';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import marketPredictions from '@/lib/content/market-predictions.json';
+import { Badge } from '@/components/ui/badge';
 
 const WHATSAPP_NUMBER = "917022070287";
 const WHATSAPP_MESSAGE = "ನಮಸ್ಕಾರ, ನಾನು ತಂತ್ರ ವಿಜ್ಞಾನ ಅಪ್ಲಿಕೇಶನ್‌ನಿಂದ ಶೇರು ಮಾರುಕಟ್ಟೆ ಜ್ಯೋತಿಷ್ಯ ವರದಿಗಾಗಿ ಸಂಪರ್ಕಿಸುತ್ತಿದ್ದೇನೆ.";
@@ -44,7 +47,75 @@ export default function ShareMarketAstrologyPage() {
         </p>
       </header>
       
-      <ScrollAnimate>
+       <ScrollAnimate delay={150}>
+        <Alert variant="destructive" className="border-accent/50 text-accent [&>svg]:text-accent">
+          <AlertTriangle className="h-4 w-4" />
+          <AlertTitle>ಹಕ್ಕು ನಿರಾಕರಣೆ (Disclaimer)</AlertTitle>
+          <AlertDescription>
+            ಇಲ್ಲಿ ನೀಡಲಾದ ಮಾಹಿತಿಯು ಕೇವಲ ಜ್ಯೋತಿಷ್ಯದ ಶೈಕ್ಷಣಿಕ ಉದ್ದೇಶಕ್ಕಾಗಿ ಮಾತ್ರ. ಇದು ಯಾವುದೇ ರೀತಿಯ ಹಣಕಾಸು ಸಲಹೆ ಅಥವಾ ಹೂಡಿಕೆಯ ಶಿಫಾರಸು ಅಲ್ಲ. ಶೇರು ಮಾರುಕಟ್ಟೆಯಲ್ಲಿ ಹೂಡಿಕೆ ಮಾಡುವುದು ಅಪಾಯಗಳಿಗೆ ಒಳಪಟ್ಟಿರುತ್ತದೆ. ದಯವಿಟ್ಟು ಹೂಡಿಕೆ ಮಾಡುವ ಮೊದಲು ಅರ್ಹ ಹಣಕಾಸು ಸಲಹೆಗಾರರನ್ನು ಸಂಪರ್ಕಿಸಿ.
+          </AlertDescription>
+        </Alert>
+      </ScrollAnimate>
+
+      <ScrollAnimate delay={300}>
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-3">
+              <CalendarDays className="text-primary"/>
+              ಇಂದಿನ ಮಾರುಕಟ್ಟೆ ಜ್ಯೋತಿಷ್ಯ ಮುನ್ಸೂಚನೆ
+            </CardTitle>
+            <CardDescription>ದಿನಾಂಕ: {marketPredictions.date}</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Tabs defaultValue="nifty" className="w-full">
+              <TabsList className="grid w-full grid-cols-2">
+                <TabsTrigger value="nifty">ನಿಫ್ಟಿ</TabsTrigger>
+                <TabsTrigger value="banknifty">ಬ್ಯಾಂಕ್ ನಿಫ್ಟಿ</TabsTrigger>
+              </TabsList>
+              <TabsContent value="nifty" className="mt-4">
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="font-semibold text-accent">ಒಟ್ಟಾರೆ ಪ್ರವೃತ್ತಿ:</h3>
+                    <p className="text-muted-foreground">{marketPredictions.nifty.trend}</p>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-accent">ಗಂಟೆಯ ವಿಶ್ಲೇಷಣೆ:</h3>
+                    <ul className="space-y-3 mt-2">
+                      {marketPredictions.nifty.hourly.map((item, index) => (
+                        <li key={index} className="flex items-start gap-3 p-2 rounded-md bg-muted/50">
+                          <Badge variant="outline" className="mt-1">{item.time}</Badge>
+                          <p className="text-sm text-foreground/90">{item.prediction}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </TabsContent>
+              <TabsContent value="banknifty" className="mt-4">
+                 <div className="space-y-4">
+                  <div>
+                    <h3 className="font-semibold text-accent">ಒಟ್ಟಾರೆ ಪ್ರವೃತ್ತಿ:</h3>
+                    <p className="text-muted-foreground">{marketPredictions.banknifty.trend}</p>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-accent">ಗಂಟೆಯ ವಿಶ್ಲೇಷಣೆ:</h3>
+                    <ul className="space-y-3 mt-2">
+                      {marketPredictions.banknifty.hourly.map((item, index) => (
+                        <li key={index} className="flex items-start gap-3 p-2 rounded-md bg-muted/50">
+                          <Badge variant="outline" className="mt-1">{item.time}</Badge>
+                          <p className="text-sm text-foreground/90">{item.prediction}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </TabsContent>
+            </Tabs>
+          </CardContent>
+        </Card>
+      </ScrollAnimate>
+
+      <ScrollAnimate delay={450}>
         <Card>
             <CardHeader>
                 <CardTitle>ಹಣಕಾಸು ಜ್ಯೋತಿಷ್ಯ ಎಂದರೇನು?</CardTitle>
@@ -57,19 +128,10 @@ export default function ShareMarketAstrologyPage() {
         </Card>
       </ScrollAnimate>
 
-      <ScrollAnimate delay={150}>
-        <Alert variant="destructive" className="border-accent/50 text-accent [&>svg]:text-accent">
-          <AlertTriangle className="h-4 w-4" />
-          <AlertTitle>ಹಕ್ಕು ನಿರಾಕರಣೆ (Disclaimer)</AlertTitle>
-          <AlertDescription>
-            ಇಲ್ಲಿ ನೀಡಲಾದ ಮಾಹಿತಿಯು ಕೇವಲ ಜ್ಯೋತಿಷ್ಯದ ಶೈಕ್ಷಣಿಕ ಉದ್ದೇಶಕ್ಕಾಗಿ ಮಾತ್ರ. ಇದು ಯಾವುದೇ ರೀತಿಯ ಹಣಕಾಸು ಸಲಹೆ ಅಥವಾ ಹೂಡಿಕೆಯ ಶಿಫಾರಸು ಅಲ್ಲ. ಶೇರು ಮಾರುಕಟ್ಟೆಯಲ್ಲಿ ಹೂಡಿಕೆ ಮಾಡುವುದು ಅಪಾಯಗಳಿಗೆ ಒಳಪಟ್ಟಿರುತ್ತದೆ. ದಯವಿಟ್ಟು ಹೂಡಿಕೆ ಮಾಡುವ ಮೊದಲು ಅರ್ಹ ಹಣಕಾಸು ಸಲಹೆಗಾರರನ್ನು ಸಂಪರ್ಕಿಸಿ.
-          </AlertDescription>
-        </Alert>
-      </ScrollAnimate>
-
       <div className="space-y-6">
+        <h2 className="text-3xl font-bold font-headline text-primary mt-12">ಮಾರುಕಟ್ಟೆಯ ಮೇಲೆ ಗ್ರಹಗಳ ಪ್ರಭಾವ</h2>
         {planetaryInfluences.map((item, index) => (
-          <ScrollAnimate key={index} delay={300 + index * 150}>
+          <ScrollAnimate key={index} delay={600 + index * 150}>
             <Card className="transform hover:scale-[1.01] transition-transform duration-300 ease-in-out">
               <CardHeader>
                 <CardTitle className="font-headline text-2xl text-accent">{item.title}</CardTitle>
@@ -84,7 +146,7 @@ export default function ShareMarketAstrologyPage() {
         ))}
       </div>
       
-      <ScrollAnimate delay={400 + planetaryInfluences.length * 150}>
+      <ScrollAnimate delay={700 + planetaryInfluences.length * 150}>
         <Card className="bg-gradient-to-br from-primary/10 to-accent/10 animated-border transform hover:scale-[1.01] transition-transform duration-300">
             <CardHeader>
                 <CardTitle className="text-2xl font-headline text-accent flex items-center gap-3">
