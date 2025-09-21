@@ -204,8 +204,8 @@ export default {
           '50%': { opacity: '1' },
         },
         'unfurl': {
-            '0%': { 'stroke-dashoffset': '1' },
-            '100%': { 'stroke-dashoffset': '0' },
+            from: { 'stroke-dashoffset': '1' },
+            to: { 'stroke-dashoffset': '0' },
         },
         'script-glow': {
             '0%': { opacity: '0', filter: 'drop-shadow(0 0 2px hsl(var(--primary)))' },
@@ -277,13 +277,8 @@ export default {
         'karma-rotate': 'karma-rotate var(--duration, 20s) linear infinite',
         'karma-particle': 'karma-particle 8s ease-in-out infinite',
         'chariot-wheel-rotate': 'chariot-wheel-rotate 20s linear infinite',
-        'blueprint-draw': {
-          'animation-name': 'blueprint-draw',
-          'animation-fill-mode': 'forwards',
-          'stroke-dasharray': '1000',
-          'stroke-dashoffset': '1000',
-        },
-        'blueprint-glow': 'blueprint-glow var(--duration, 3s) ease-in-out infinite',
+        'blueprint-draw': 'blueprint-draw 1.5s ease-out forwards',
+        'blueprint-glow': 'blueprint-glow 3s ease-in-out infinite',
       },
     },
   },
