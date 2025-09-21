@@ -21,7 +21,7 @@ export default function SadhanaAnimation() {
       {/* Pulsating background glow */}
       <circle cx="100" cy="100" r="80" fill="url(#gradLotus)" className="animate-pulse-slow" />
 
-      <g transform="translate(100, 100)" filter="url(#glow)">
+      <g transform="translate(100, 100)" filter="url(#glow)" className="animate-sadhana-rotate-pulse">
         {/* Outer Lotus Petals */}
         {Array.from({ length: 12 }).map((_, i) => (
           <path
@@ -29,8 +29,8 @@ export default function SadhanaAnimation() {
             d="M 0 -80 C 20 -60, 20 -20, 0 0 C -20 -20, -20 -60, 0 -80 Z"
             transform={`rotate(${i * 30})`}
             fill="hsl(var(--primary))"
-            className="opacity-50 animate-lotus-open"
-            style={{ animationDelay: `${i * 0.15}s`, transformOrigin: '0 0' }}
+            className="opacity-50"
+            style={{ transformOrigin: '0 0' }}
           />
         ))}
 
@@ -41,8 +41,8 @@ export default function SadhanaAnimation() {
             d="M 0 -50 C 15 -40, 15 -15, 0 0 C -15 -15, -15 -40, 0 -50 Z"
             transform={`rotate(${i * 45 + 22.5})`}
             fill="hsl(var(--accent))"
-            className="opacity-70 animate-lotus-open-slow"
-             style={{ animationDelay: `${i * 0.2}s`, transformOrigin: '0 0' }}
+            className="opacity-70"
+             style={{ transformOrigin: '0 0' }}
           />
         ))}
 

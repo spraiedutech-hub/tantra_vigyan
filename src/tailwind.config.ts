@@ -182,6 +182,11 @@ export default {
           '0%': { transform: 'scale(0) rotate(var(--initial-rotate, 22.5deg))', opacity: '0' },
           '100%': { transform: 'scale(1) rotate(var(--final-rotate, 22.5deg))', opacity: '0.7' },
         },
+        'sadhana-rotate-pulse': {
+            '0%': { transform: 'rotate(0deg) scale(1)' },
+            '50%': { transform: 'rotate(180deg) scale(0.85)' },
+            '100%': { transform: 'rotate(360deg) scale(1)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -208,6 +213,7 @@ export default {
         'line-draw': 'line-draw 1.5s ease-in-out forwards',
         'lotus-open': 'lotus-open 2s ease-out forwards',
         'lotus-open-slow': 'lotus-open-slow 2.5s ease-out forwards',
+        'sadhana-rotate-pulse': 'sadhana-rotate-pulse 15s linear infinite',
       },
     },
   },
