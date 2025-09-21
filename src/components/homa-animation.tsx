@@ -9,6 +9,10 @@ export default function HomaAnimation() {
           <stop offset="0%" stopColor="hsl(var(--muted-foreground))" stopOpacity="0.8" />
           <stop offset="100%" stopColor="hsl(var(--muted-foreground))" stopOpacity="0" />
         </radialGradient>
+        <radialGradient id="gradFullMoon" cx="50%" cy="50%" r="50%">
+          <stop offset="70%" stopColor="hsl(60, 80%, 95%)" stopOpacity="0.9" />
+          <stop offset="100%" stopColor="hsl(60, 80%, 95%)" stopOpacity="0" />
+        </radialGradient>
         <filter id="fireGlow" x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur stdDeviation="3" result="coloredBlur" />
           <feMerge>
@@ -22,10 +26,12 @@ export default function HomaAnimation() {
       <rect width="300" height="300" fill="hsl(var(--background))" />
       <rect width="300" height="300" fill="url(#gradMoon)" className="opacity-30" />
       
-      {/* Moon */}
-      <circle cx="250" cy="50" r="20" fill="hsl(var(--muted))" />
-      <circle cx="260" cy="45" r="20" fill="hsl(var(--background))" />
-
+      {/* Full Moon */}
+      <g transform="translate(250, 50)" className="animate-pulse-slow">
+        <circle cx="0" cy="0" r="25" fill="url(#gradFullMoon)" />
+        <circle cx="0" cy="0" r="18" fill="hsl(60, 50%, 90%)" />
+      </g>
+      
       {/* Graveyard elements */}
       <g fill="hsl(var(--border))" className="opacity-40">
         <path d="M 50 250 L 50 180 Q 55 175, 60 180 L 60 250 Z" />
