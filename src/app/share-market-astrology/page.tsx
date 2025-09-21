@@ -205,8 +205,11 @@ export default function ShareMarketAstrologyPage() {
                 </p>
             </CardContent>
             <CardFooter className="flex-col sm:flex-row items-center gap-4">
-                <p className="text-xl font-bold text-primary">ಶುಲ್ಕ: ಲಾಭದಲ್ಲಿ ಪಾಲು (Profit Sharing)</p>
-                <Button asChild size="lg" className="w-full sm:w-auto">
+                <div className="flex-1 text-center sm:text-left">
+                    <p className="text-xl font-bold text-primary">ಶುಲ್ಕ: ಲಾಭದಲ್ಲಿ ಪಾಲು (Profit Sharing)</p>
+                    <p className="text-sm text-muted-foreground">Fee is only applicable if the user makes a profit.</p>
+                </div>
+                <Button asChild size="lg" className="w-full sm:w-auto mt-4 sm:mt-0">
                     <Link href={WHATSAPP_URL_DAILY} target="_blank">
                     <Phone className="mr-2 h-5 w-5" />
                     ದೈನಂದಿನ ಸೇವೆಗೆ ವಿನಂತಿಸಿ
@@ -246,3 +249,4 @@ export default function ShareMarketAstrologyPage() {
     </div>
   );
 }
+
