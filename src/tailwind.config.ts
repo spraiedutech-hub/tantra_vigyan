@@ -217,6 +217,15 @@ export default {
             'stroke-dashoffset': '0',
           },
         },
+        'karma-rotate': {
+          from: { transform: 'rotate(0deg)' },
+          to: { transform: 'rotate(360deg)' },
+        },
+        'karma-particle': {
+          '0%, 20%': { opacity: '0', r: '1' },
+          '50%': { opacity: '1', r: 'var(--size, 2)' },
+          '80%, 100%': { opacity: '0', r: '1' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -251,6 +260,8 @@ export default {
         'unfurl': 'unfurl 2s ease-out forwards',
         'script-glow': 'script-glow 4s ease-in-out infinite',
         'line-draw': 'line-draw 3s ease-out forwards',
+        'karma-rotate': 'karma-rotate var(--duration, 20s) linear infinite',
+        'karma-particle': 'karma-particle var(--duration, 8s) ease-in-out infinite',
       },
     },
   },

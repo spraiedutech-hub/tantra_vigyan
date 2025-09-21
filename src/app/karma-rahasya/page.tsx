@@ -8,6 +8,7 @@ import { ScrollAnimate } from '@/components/ui/scroll-animate';
 import karmaData from '@/lib/content/karma-rahasya.json';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import KarmaCycleAnimation from '@/components/karma-cycle-animation';
 
 const WHATSAPP_NUMBER = "917022070287";
 const WHATSAPP_MESSAGE = "ನಮಸ್ಕಾರ, ನಾನು ತಂತ್ರ ವಿಜ್ಞಾನ ಅಪ್ಲಿಕೇಶನ್‌ನಿಂದ ವೈಯಕ್ತಿಕ ಕರ್ಮ ರಹಸ್ಯ ವರದಿಗಾಗಿ ಸಂಪರ್ಕಿಸುತ್ತಿದ್ದೇನೆ.";
@@ -26,6 +27,10 @@ export default function KarmaRahasyaPage() {
         </p>
       </header>
       
+      <div className="relative w-full h-80 md:h-96 flex items-center justify-center my-4 overflow-hidden rounded-lg">
+          <KarmaCycleAnimation />
+      </div>
+
       <ScrollAnimate>
         <Card>
             <CardHeader>
