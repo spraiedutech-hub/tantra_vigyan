@@ -238,7 +238,3 @@ export const chakraData: Chakra[] = [
     animationClass: 'animate-chakra-spin',
   },
 ];
-
-    
-
-    
