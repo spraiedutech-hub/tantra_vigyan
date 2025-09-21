@@ -32,6 +32,7 @@ import {
   Ghost,
   Stars,
   GraduationCap,
+  HeartCrack,
 } from 'lucide-react';
 
 export const navItems = [
@@ -44,6 +45,7 @@ export const navItems = [
   { href: '/navagraha', label: 'ನವಗ್ರಹಗಳು', icon: Stars },
   { href: '/kaalagnana', label: 'ಕಾಲಜ್ಞಾನ', icon: Clock },
   { href: '/karma-rahasya', label: 'ಕರ್ಮ ರಹಸ್ಯ', icon: Orbit },
+  { href: '/overcoming-sad-memories', label: 'ದುಃಖದ ನೆನಪುಗಳು', icon: HeartCrack },
   { href: '/tantra-and-disease', label: 'ತಂತ್ರ ಮತ್ತು ರೋಗ', icon: HeartPulse },
   { href: '/tantra-and-money', label: 'ತಂತ್ರ ಮತ್ತು ಸಂಪತ್ತು', icon: Coins },
   { href: '/tantra-for-students', label: 'ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ತಂತ್ರ', icon: GraduationCap },
