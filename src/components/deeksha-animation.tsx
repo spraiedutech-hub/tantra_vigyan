@@ -56,10 +56,8 @@ export default function DeekshaAnimation() {
 
       {/* Energy Particles */}
       {Array.from({ length: 5 }).map((_, i) => (
-        <circle
+        <g 
           key={i}
-          r="2.5"
-          fill="hsl(var(--primary))"
           className="animate-pulse-glow-strong"
           style={{ animationDelay: `${i * 0.6}s` }}
         >
@@ -68,7 +66,17 @@ export default function DeekshaAnimation() {
             repeatCount="indefinite"
             path="M 100 85 C 150 50, 170 150, 232 94"
           />
-        </circle>
+          <circle r="2.5" fill="hsl(var(--primary))" />
+          <text 
+            x="5" 
+            y="4" 
+            fontSize="8" 
+            fill="hsl(var(--primary))"
+            className="font-headline"
+          >
+            ॐ
+          </text>
+        </g>
       ))}
 
       {/* Sahasrara glow on disciple */}
