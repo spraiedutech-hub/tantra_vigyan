@@ -105,6 +105,9 @@ export default function HomaYagnaPage() {
                     <p>
                     ನಿಮ್ಮ ಜೀವನದ ಅಡೆತಡೆಗಳನ್ನು ನಿವಾರಿಸಲು, ಗ್ರಹ ದೋಷಗಳನ್ನು ಶಾಂತಗೊಳಿಸಲು, ಅಥವಾ ನಿರ್ದಿಷ್ಟ ದೇವತೆಯ ಅನುಗ್ರಹವನ್ನು ಪಡೆಯಲು, ನಮ್ಮ ಅನುಭವಿ ಗುರುಗಳು ಶಾಸ್ತ್ರೋಕ್ತವಾಗಿ ಹೋಮವನ್ನು ನಡೆಸಿಕೊಡುತ್ತಾರೆ. ನಿಮ್ಮ ಅಗತ್ಯಗಳನ್ನು ಚರ್ಚಿಸಲು ಮತ್ತು ಸೂಕ್ತವಾದ ಹೋಮವನ್ನು ಆಯ್ಕೆ ಮಾಡಲು ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ.
                     </p>
+                    <p className="font-semibold text-center text-lg">
+                    ಸಂಪರ್ಕಿಸಿ: 7022070287
+                    </p>
                     <Alert variant="destructive" className="border-accent/50 text-accent [&>svg]:text-accent">
                         <AlertTitle className="font-bold">ಗೌಪ್ಯತೆಯ ಸೂಚನೆ</AlertTitle>
                         <AlertDescription>
