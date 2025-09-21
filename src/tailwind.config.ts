@@ -174,18 +174,21 @@ export default {
         'line-draw': {
             'to': { 'stroke-dashoffset': '0' },
         },
-        'lotus-open': {
-          '0%': { transform: 'scale(0) rotate(var(--initial-rotate, 0deg))', opacity: '0' },
-          '100%': { transform: 'scale(1) rotate(var(--final-rotate, 0deg))', opacity: '0.5' },
+        'sadhana-rotate': {
+            from: { transform: 'rotate(0deg)' },
+            to: { transform: 'rotate(360deg)' },
         },
-        'lotus-open-slow': {
-          '0%': { transform: 'scale(0) rotate(var(--initial-rotate, 22.5deg))', opacity: '0' },
-          '100%': { transform: 'scale(1) rotate(var(--final-rotate, 22.5deg))', opacity: '0.7' },
+        'sadhana-rotate-reverse': {
+            from: { transform: 'rotate(360deg)' },
+            to: { transform: 'rotate(0deg)' },
         },
-        'sadhana-rotate-pulse': {
-            '0%': { transform: 'rotate(0deg) scale(1)' },
-            '50%': { transform: 'rotate(180deg) scale(0.85)' },
-            '100%': { transform: 'rotate(360deg) scale(1)' },
+        'sadhana-breathe-outer': {
+            '0%, 100%': { transform: 'scale(1) rotate(var(--tw-rotate))' },
+            '50%': { transform: 'scale(0.85) rotate(calc(var(--tw-rotate) + 15deg))' },
+        },
+        'sadhana-breathe-inner': {
+            '0%, 100%': { transform: 'scale(1) rotate(var(--tw-rotate))' },
+            '50%': { transform: 'scale(0.75) rotate(calc(var(--tw-rotate) - 15deg))' },
         },
       },
       animation: {
@@ -194,7 +197,7 @@ export default {
         'fade-in': 'fade-in 0.6s ease-out forwards',
         'fade-in-up': 'fade-in-up 0.8s ease-out forwards',
         'rotate': 'rotate 30s linear infinite',
-        'rotate-slow': 'rotate-slow 45s linear infinite',
+        'rotate-slow': 'rotate-slow 20s linear infinite forwards',
         'rotate-slow-reverse': 'rotate-slow-reverse 45s linear infinite',
         'pulse-slow': 'pulse-slow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'animated-border': 'animated-border 4s linear infinite',
@@ -210,10 +213,11 @@ export default {
         'random-letter-fade': 'random-letter-fade 5s ease-in-out infinite',
         'logo-fade-in': 'logo-fade-in 1.5s ease-out forwards',
         'background-zoom': 'background-zoom 10s ease-out forwards',
-        'line-draw': 'line-draw 1.5s ease-in-out forwards',
-        'lotus-open': 'lotus-open 2s ease-out forwards',
-        'lotus-open-slow': 'lotus-open-slow 2.5s ease-out forwards',
-        'sadhana-rotate-pulse': 'sadhana-rotate-pulse 15s linear infinite',
+        'line-draw': 'line-draw 1.5s ease-in-out 1',
+        'sadhana-rotate': 'sadhana-rotate 30s linear infinite',
+        'sadhana-rotate-reverse': 'sadhana-rotate-reverse 35s linear infinite',
+        'sadhana-breathe-outer': 'sadhana-breathe-outer 8s ease-in-out infinite',
+        'sadhana-breathe-inner': 'sadhana-breathe-inner 8s ease-in-out infinite',
       },
     },
   },
