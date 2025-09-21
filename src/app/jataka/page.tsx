@@ -100,14 +100,17 @@ export default function JatakaPage() {
                 ನಿಮ್ಮ ಜನ್ಮ ಕುಂಡಲಿಯ ಆಳವಾದ, ವೈಯಕ್ತಿಕ ವಿಶ್ಲೇಷಣೆ ಮತ್ತು ಪರಿಹಾರಗಳಿಗಾಗಿ ನಮ್ಮ ಪರಿಣಿತರನ್ನು ಸಂಪರ್ಕಿಸಿ.
                 </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="space-y-4 text-center">
                  <Button asChild size="lg">
                     <Link href="/astrology">
                     AI ಆಧಾರಿತ ಕುಂಡಲಿ ವಿಶ್ಲೇಷಣೆ ಪಡೆಯಿರಿ <ArrowRight className="ml-2" />
                     </Link>
                 </Button>
+                <p className="mt-4 font-semibold text-lg">
+                ಸಂಪರ್ಕಿಸಿ: 7022070287
+                </p>
             </CardContent>
-            <CardFooter className="flex-col sm:flex-row items-center gap-4">
+            <CardFooter className="flex-col sm:flex-row items-center gap-4 pt-4">
                 <p className="text-xl font-bold text-primary">ವೈಯಕ್ತಿಕ ಸಮಾಲೋಚನೆಗೆ: ₹1,111</p>
                 <Button asChild size="lg" className="w-full sm:w-auto">
                     <Link href={WHATSAPP_URL} target="_blank">
