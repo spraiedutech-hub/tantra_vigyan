@@ -83,19 +83,18 @@ export default function TourPage() {
 
   return (
     <div className="space-y-8 animate-fade-in">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <header className="space-y-2 p-4 rounded-lg animated-border flex-1 w-full">
-                <h1 className="text-4xl font-bold font-headline text-primary flex items-center gap-2">
-                <Compass />
-                ಅಪ್ಲಿಕೇಶನ್ ಪ್ರವಾಸ
-                </h1>
-                <p className="text-lg text-muted-foreground">
-                ಈ ಅಪ್ಲಿಕೇಶನ್‌ನಲ್ಲಿ ಲಭ್ಯವಿರುವ ಎಲ್ಲಾ ವೈಶಿಷ್ಟ್ಯಗಳು ಮತ್ತು ವಿಭಾಗಗಳ ಅವಲೋಕನ.
-                </p>
-            </header>
-            <div className="w-48 h-48 md:w-56 md:h-56 flex-shrink-0">
-                <AppTourAnimation />
-            </div>
+        <header className="space-y-2 p-4 rounded-lg animated-border">
+            <h1 className="text-4xl font-bold font-headline text-primary flex items-center gap-2">
+            <Compass />
+            ಅಪ್ಲಿಕೇಶನ್ ಪ್ರವಾಸ
+            </h1>
+            <p className="text-lg text-muted-foreground">
+            ಈ ಅಪ್ಲಿಕೇಶನ್‌ನಲ್ಲಿ ಲಭ್ಯವಿರುವ ಎಲ್ಲಾ ವೈಶಿಷ್ಟ್ಯಗಳು ಮತ್ತು ವಿಭಾಗಗಳ ಅವಲೋಕನ.
+            </p>
+        </header>
+
+        <div className="relative w-full h-96 md:h-[500px] flex items-center justify-center my-8">
+            <AppTourAnimation />
         </div>
 
       <div className="space-y-6">
