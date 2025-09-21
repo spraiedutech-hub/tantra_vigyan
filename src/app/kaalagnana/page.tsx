@@ -166,6 +166,9 @@ export default function KaalagnanaPage() {
                 <p className="prose prose-lg dark:prose-invert max-w-full text-foreground/90">
                 ಕಾಲಜ್ಞಾನದ ಸಾಮಾನ್ಯ ಭವಿಷ್ಯವಾಣಿಗಳ ಆಚೆಗೆ, ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಜೀವನಕ್ಕೆ ಸಂಬಂಧಿಸಿದಂತೆ ಮುಂಬರುವ ಅವಕಾಶಗಳು, ಸವಾಲುಗಳು ಮತ್ತು ತೆಗೆದುಕೊಳ್ಳಬೇಕಾದ ಮುನ್ನೆಚ್ಚರಿಕೆಗಳ ಬಗ್ಗೆ ಆಳವಾದ ಒಳನೋಟಗಳನ್ನು ನೇರವಾಗಿ ಗುರೂಜಿಯವರಿಂದ ಪಡೆಯಿರಿ.
                 </p>
+                <p className="mt-4 font-semibold text-center text-lg">
+                ಸಂಪರ್ಕಿಸಿ: 7022070287
+                </p>
             </CardContent>
             <CardFooter className="flex-col sm:flex-row items-center gap-4">
                 <p className="text-xl font-bold text-primary">ಶುಲ್ಕ: ₹1,111</p>
