@@ -11,10 +11,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2, HeartHandshake, AlertTriangle, Wand2, Badge } from 'lucide-react';
+import { Loader2, HeartHandshake, AlertTriangle, Wand2 } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Skeleton } from '@/components/ui/skeleton';
 import preloadedRemedies from '@/lib/content/remedies-base.json';
+import { Badge } from '@/components/ui/badge';
 
 const commonProblems = [
     { id: 'financial', label: 'ಆರ್ಥಿಕ ಸ್ಥಿರತೆ', problem: 'Financial problems and stability' },
