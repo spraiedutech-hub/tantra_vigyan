@@ -44,28 +44,30 @@ export default function AppTourAnimation() {
         ಜ್ಞಾನ
       </text>
 
-      {/* Nodes and Icons */}
-      {nodes.map((node, i) => (
-        <g key={i}>
-          {/* Pulsating energy lines */}
-          <line
-            x1="125"
-            y1="125"
-            x2={node.x}
-            y2={node.y}
-            stroke="hsl(var(--accent))"
-            strokeWidth="0.5"
-            className="animate-line-draw"
-            strokeDasharray="200"
-            style={{ animationDelay: `${node.delay}s`, animationDuration: `3s` }}
-          />
-          {/* Icon nodes */}
-          <g transform={`translate(${node.x - 10}, ${node.y - 10})`} className="animate-float-fade" style={{ animationDelay: `${node.delay}s`, animationDuration: `${node.duration}s`}}>
-            <circle cx="10" cy="10" r="12" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1" />
-            <node.Icon x="4" y="4" width="12" height="12" className="text-accent" />
+      {/* Rotating Group for Nodes and Lines */}
+      <g className="animate-rotate-slow">
+        {nodes.map((node, i) => (
+          <g key={i}>
+            {/* Pulsating energy lines */}
+            <line
+              x1="125"
+              y1="125"
+              x2={node.x}
+              y2={node.y}
+              stroke="hsl(var(--accent))"
+              strokeWidth="0.5"
+              className="animate-line-draw"
+              strokeDasharray="200"
+              style={{ animationDelay: `${node.delay}s`, animationDuration: `3s` }}
+            />
+            {/* Icon nodes */}
+            <g transform={`translate(${node.x - 10}, ${node.y - 10})`} className="animate-float-fade" style={{ animationDelay: `${node.delay}s`, animationDuration: `${node.duration}s`}}>
+              <circle cx="10" cy="10" r="12" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1" />
+              <node.Icon x="4" y="4" width="12" height="12" className="text-accent" />
+            </g>
           </g>
-        </g>
-      ))}
+        ))}
+      </g>
     </svg>
   );
 }

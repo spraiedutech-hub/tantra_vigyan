@@ -172,9 +172,7 @@ export default {
           '100%': { transform: 'scale(1.1)' },
         },
         'line-draw': {
-            '0%': { 'stroke-dashoffset': '1000' },
-            '50%': { 'stroke-dashoffset': '0' },
-            '100%': { 'stroke-dashoffset': '-1000' },
+            'to': { 'stroke-dashoffset': '0' },
         },
       },
       animation: {
@@ -199,7 +197,7 @@ export default {
         'random-letter-fade': 'random-letter-fade 5s ease-in-out infinite',
         'logo-fade-in': 'logo-fade-in 1.5s ease-out forwards',
         'background-zoom': 'background-zoom 10s ease-out forwards',
-        'line-draw': 'line-draw 5s ease-in-out infinite',
+        'line-draw': 'line-draw 1.5s ease-in-out forwards',
       },
     },
   },
