@@ -1,9 +1,11 @@
+
 import RecommendationsTool from "@/components/recommendations-tool";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Sparkles, AlertTriangle, ArrowRight, HeartHandshake } from "lucide-react";
 import Link from 'next/link';
+import RemedySchoolsInfo from '@/components/remedy-schools-info';
 
 export default function RecommendationsPage() {
   return (
@@ -46,6 +48,8 @@ export default function RecommendationsPage() {
       </Card>
       
       <RecommendationsTool />
+
+      <RemedySchoolsInfo />
     </div>
   );
 }
