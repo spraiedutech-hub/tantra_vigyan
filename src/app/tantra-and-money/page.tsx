@@ -99,6 +99,9 @@ export default function TantraAndMoneyPage() {
                 <p className="prose prose-lg dark:prose-invert max-w-full text-foreground/90">
                   ನಿಮ್ಮ ಆರ್ಥಿಕ ಅಡೆತಡೆಗಳ ಹಿಂದಿನ ಕರ್ಮದ ಅಥವಾ ಶಕ್ತಿಯ ಅಸಮತೋಲನದ ಕಾರಣಗಳನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಿ. ಗುರೂಜಿಯವರಿಂದ ವೈಯಕ್ತಿಕ ಸಲಹೆ ಪಡೆದು, ಸಮೃದ್ಧಿಯನ್ನು ಆಕರ್ಷಿಸಲು ಸೂಕ್ತವಾದ ಮಂತ್ರ, ಯಂತ್ರ ಮತ್ತು ಪರಿಹಾರ ಕ್ರಮಗಳನ್ನು ತಿಳಿಯಿರಿ.
                 </p>
+                <p className="mt-4 font-semibold text-center text-lg">
+                    ಸಂಪರ್ಕಿಸಿ: 7022070287
+                </p>
             </CardContent>
             <CardFooter className="flex-col sm:flex-row items-center gap-4">
                 <p className="text-xl font-bold text-primary">ಶುಲ್ಕ: ₹2,222</p>
