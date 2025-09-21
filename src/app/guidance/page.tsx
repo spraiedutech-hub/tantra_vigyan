@@ -1,9 +1,9 @@
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { ShieldQuestion, UserCheck, BookCheck, HeartHandshake, CircleAlert, Phone } from 'lucide-react';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import ConsultationPricing from '@/components/consultation-pricing';
 
 const WHATSAPP_NUMBER = "917022070287"; // Using the number from the initiation page
 const WHATSAPP_MESSAGE = "ನಮಸ್ಕಾರ, ನಾನು ತಂತ್ರ ವಿಜ್ಞಾನ ಅಪ್ಲಿಕೇಶನ್‌ನಿಂದ ವೈಯಕ್ತಿಕ ಮಾರ್ಗದರ್ಶನಕ್ಕಾಗಿ ಸಂಪರ್ಕಿಸುತ್ತಿದ್ದೇನೆ.";
@@ -48,6 +48,7 @@ export default function GuidancePage() {
         </CardFooter>
       </Card>
 
+      <ConsultationPricing />
 
       <div className="space-y-6">
         <h2 className="text-2xl font-headline text-accent mt-12">ಸಾధನೆಯಲ್ಲಿನ ಸಾಮಾನ್ಯ ಅಡೆತಡೆಗಳು</h2>
