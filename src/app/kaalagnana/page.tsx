@@ -162,11 +162,12 @@ export default function KaalagnanaPage() {
                 ಕಾಲಜ್ಞಾನದ ಸಾಮಾನ್ಯ ಭವಿಷ್ಯವಾಣಿಗಳ ಆಚೆಗೆ, ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಜೀವನಕ್ಕೆ ಸಂಬಂಧಿಸಿದಂತೆ ಮುಂಬರುವ ಅವಕಾಶಗಳು, ಸವಾಲುಗಳು ಮತ್ತು ತೆಗೆದುಕೊಳ್ಳಬೇಕಾದ ಮುನ್ನೆಚ್ಚರಿಕೆಗಳ ಬಗ್ಗೆ ಆಳವಾದ ಒಳನೋಟಗಳನ್ನು ನೇರವಾಗಿ ಗುರೂಜಿಯವರಿಂದ ಪಡೆಯಿರಿ.
                 </p>
             </CardContent>
-            <CardFooter>
-                <Button asChild size="lg" className="w-full">
+            <CardFooter className="flex-col sm:flex-row items-center gap-4">
+                <p className="text-xl font-bold text-primary">ಶುಲ್ಕ: ₹1,111</p>
+                <Button asChild size="lg" className="w-full sm:w-auto">
                     <Link href={WHATSAPP_URL} target="_blank">
                     <Phone className="mr-2 h-5 w-5" />
-                    ಸಮಾಲೋಚನೆಗೆ ವಿನಂತಿಸಿ
+                    WhatsApp ಮೂಲಕ ವಿನಂತಿಸಿ
                     </Link>
                 </Button>
             </CardFooter>
