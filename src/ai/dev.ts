@@ -17,4 +17,5 @@ import '@/ai/flows/generate-remedy-ritual.ts';
 import '@/ai/flows/generate-spiritual-story.ts';
 import '@/ai/flows/generate-mantra-audio.ts';
 import '@/ai/flows/generate-birth-chart-analysis.ts';
+import '@/ai/flows/generate-prashna-analysis.ts';
     
