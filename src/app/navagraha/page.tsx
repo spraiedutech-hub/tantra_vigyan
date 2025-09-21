@@ -3,20 +3,15 @@
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Stars, AlertTriangle, UserCheck, Phone, Sun, Moon } from 'lucide-react';
+import { Stars, AlertTriangle, UserCheck, Phone } from 'lucide-react';
 import { ScrollAnimate } from '@/components/ui/scroll-animate';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import navagrahaData from '@/lib/content/navagraha-impact.json';
+import NavagrahaSystem from '@/components/navagraha-system';
 
 const WHATSAPP_NUMBER = "917022070287";
 const WHATSAPP_MESSAGE = "ನಮಸ್ಕಾರ, ನಾನು ತಂತ್ರ ವಿಜ್ಞಾನ ಅಪ್ಲಿಕೇಶನ್‌ನಿಂದ ವೈಯಕ್ತಿಕ ಜಾತಕ ವಿಶ್ಲೇಷಣೆಗಾಗಿ ಸಂಪರ್ಕಿಸುತ್ತಿದ್ದೇನೆ.";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
-
-const planetIcons: { [key: string]: React.ElementType } = {
-    "ಸೂರ್ಯ (Sun)": Sun,
-    "ಚಂದ್ರ (Moon)": Moon,
-};
 
 export default function NavagrahaPage() {
   return (
@@ -31,19 +26,18 @@ export default function NavagrahaPage() {
         </p>
       </header>
       
-      <ScrollAnimate>
-        <Card>
-            <CardHeader>
-                <CardTitle>{navagrahaData.introduction.title}</CardTitle>
-            </CardHeader>
-            <CardContent className="prose prose-lg dark:prose-invert max-w-full text-foreground/90 text-justify leading-relaxed">
-                {navagrahaData.introduction.content.split('\n\n').map((paragraph, index) => (
-                    <p key={index}>{paragraph}</p>
-                ))}
-            </CardContent>
-        </Card>
-      </ScrollAnimate>
-
+      <Card className="transform hover:scale-[1.01] transition-transform duration-300 ease-in-out">
+        <CardHeader>
+          <CardTitle className="font-headline text-xl">ನವಗ್ರಹ ಮಂಡಲ</CardTitle>
+          <CardDescription>ಗ್ರಹಗಳ ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡಿ ಅವುಗಳ ಪ್ರಭಾವದ ಬಗ್ಗೆ ತಿಳಿಯಿರಿ.</CardDescription>
+        </CardHeader>
+        <CardContent>
+            <div className="relative w-full h-96 md:h-[500px] flex items-center justify-center">
+                <NavagrahaSystem />
+            </div>
+        </CardContent>
+      </Card>
+      
       <ScrollAnimate delay={150}>
         <Alert>
           <AlertTriangle className="h-4 w-4" />
@@ -54,32 +48,7 @@ export default function NavagrahaPage() {
         </Alert>
       </ScrollAnimate>
 
-      <div className="space-y-6">
-        {navagrahaData.planets.map((planet, index) => {
-            const Icon = planetIcons[planet.title] || Stars;
-            return (
-              <ScrollAnimate key={index} delay={300 + index * 100}>
-                <Card className="transform hover:scale-[1.01] transition-transform duration-300 ease-in-out">
-                  <CardHeader>
-                    <CardTitle className="font-headline text-2xl text-accent flex items-center gap-3">
-                        <Icon className="h-6 w-6"/>
-                        {planet.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="prose prose-lg dark:prose-invert max-w-full text-foreground/90 space-y-4 text-justify leading-relaxed">
-                      {planet.content.split('\n\n').map((paragraph, pIndex) => (
-                        <p key={pIndex}>{paragraph}</p>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </ScrollAnimate>
-            )
-        })}
-      </div>
-
-      <ScrollAnimate delay={500 + navagrahaData.planets.length * 100}>
+      <ScrollAnimate delay={500}>
         <Card className="bg-gradient-to-br from-primary/10 to-accent/10 animated-border transform hover:scale-[1.01] transition-transform duration-300">
             <CardHeader>
                 <CardTitle className="text-2xl font-headline text-accent flex items-center gap-3">

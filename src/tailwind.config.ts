@@ -102,6 +102,10 @@ export default {
           from: { transform: 'rotate(0deg)' },
           to: { transform: 'rotate(360deg)' },
         },
+        'orbit': {
+          from: { transform: 'rotate(0deg)' },
+          to: { transform: 'rotate(360deg)' },
+        },
         'rotate-slow': {
           from: { transform: 'rotate(0deg)' },
           to: { transform: 'rotate(360deg)' },
@@ -178,6 +182,7 @@ export default {
         'fade-in': 'fade-in 0.6s ease-out forwards',
         'fade-in-up': 'fade-in-up 0.8s ease-out forwards',
         'rotate': 'rotate 30s linear infinite',
+        'orbit': 'orbit 30s linear infinite',
         'rotate-slow': 'rotate-slow 45s linear infinite',
         'rotate-slow-reverse': 'rotate-slow-reverse 45s linear infinite',
         'pulse-slow': 'pulse-slow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
