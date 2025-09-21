@@ -3,7 +3,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Clock, AlertTriangle, Library, ArrowRight, Star } from 'lucide-react';
+import { Clock, AlertTriangle, Library, ArrowRight, Star, UserCheck, Phone } from 'lucide-react';
 import { ScrollAnimate } from '@/components/ui/scroll-animate';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -45,6 +45,10 @@ const prophecies = [
     source: "ವಿವಿಧ ಆಧ್ಯಾತ್ಮಿಕ ಸಂಪ್ರದಾಯಗಳು"
   }
 ];
+
+const WHATSAPP_NUMBER = "917022070287";
+const WHATSAPP_MESSAGE = "ನಮಸ್ಕಾರ, ನಾನು ತಂತ್ರ ವಿಜ್ಞಾನ ಅಪ್ಲಿಕೇಶನ್‌ನಿಂದ ವೈಯಕ್ತಿಕ ಕಾಲಜ್ಞಾನ ವರದಿಗಾಗಿ ಸಂಪರ್ಕಿಸುತ್ತಿದ್ದೇನೆ.";
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
 
 export default function KaalagnanaPage() {
@@ -143,6 +147,33 @@ export default function KaalagnanaPage() {
       </ScrollAnimate>
 
       <ScrollAnimate delay={500 + prophecies.length * 150}>
+        <Card className="bg-gradient-to-br from-primary/10 to-accent/10 animated-border transform hover:scale-[1.01] transition-transform duration-300">
+            <CardHeader>
+                <CardTitle className="text-2xl font-headline text-accent flex items-center gap-3">
+                    <UserCheck />
+                    ವೈಯಕ್ತಿಕ ಕಾಲಜ್ಞಾನ ವರದಿ
+                </CardTitle>
+                <CardDescription>
+                ನಿಮ್ಮ ಜನ್ಮ ಕುಂಡಲಿ ಮತ್ತು ಪ್ರಸ್ತುತ ಗ್ರಹಸ್ಥಿತಿಗಳ ಆಧಾರದ ಮೇಲೆ, ಮುಂಬರುವ ಸಮಯದ ಬಗ್ಗೆ ವೈಯಕ್ತಿಕ ಮಾರ್ಗದರ್ಶನ ಮತ್ತು ವರದಿಯನ್ನು ಪಡೆಯಿರಿ.
+                </CardDescription>
+            </CardHeader>
+            <CardContent>
+                <p className="prose prose-lg dark:prose-invert max-w-full text-foreground/90">
+                ಕಾಲಜ್ಞಾನದ ಸಾಮಾನ್ಯ ಭವಿಷ್ಯವಾಣಿಗಳ ಆಚೆಗೆ, ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಜೀವನಕ್ಕೆ ಸಂಬಂಧಿಸಿದಂತೆ ಮುಂಬರುವ ಅವಕಾಶಗಳು, ಸವಾಲುಗಳು ಮತ್ತು ತೆಗೆದುಕೊಳ್ಳಬೇಕಾದ ಮುನ್ನೆಚ್ಚರಿಕೆಗಳ ಬಗ್ಗೆ ಆಳವಾದ ಒಳನೋಟಗಳನ್ನು ನೇರವಾಗಿ ಗುರೂಜಿಯವರಿಂದ ಪಡೆಯಿರಿ.
+                </p>
+            </CardContent>
+            <CardFooter>
+                <Button asChild size="lg" className="w-full">
+                    <Link href={WHATSAPP_URL} target="_blank">
+                    <Phone className="mr-2 h-5 w-5" />
+                    ಸಮಾಲೋಚನೆಗೆ ವಿನಂತಿಸಿ
+                    </Link>
+                </Button>
+            </CardFooter>
+        </Card>
+      </ScrollAnimate>
+
+      <ScrollAnimate delay={600 + prophecies.length * 150}>
         <div className="text-center text-muted-foreground italic mt-8">
           <p>ಇನ್ನಷ್ಟು ಜ್ಞಾನ ಶೀಘ್ರದಲ್ಲೇ ಬರಲಿದೆ, ನಿರೀಕ್ಷಿಸಿ...</p>
         </div>
