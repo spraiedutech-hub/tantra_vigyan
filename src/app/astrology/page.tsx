@@ -12,10 +12,11 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2, Star, Sparkles, AlertTriangle, CalendarDays } from 'lucide-react';
+import { Loader2, Star, Sparkles, AlertTriangle, CalendarDays, Phone } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Skeleton } from '@/components/ui/skeleton';
 import dailyHoroscopes from '@/lib/content/daily-horoscopes.json';
+import Link from 'next/link';
 
 const birthChartSchema = z.object({
   dateOfBirth: z.string().min(1, 'ದಯವಿಟ್ಟು ಜನ್ಮ ದಿನಾಂಕವನ್ನು ನಮೂದಿಸಿ'),
@@ -33,6 +34,10 @@ type Horoscope = {
   lagna: string;
   forecast: string;
 };
+
+const WHATSAPP_NUMBER = "917022070287";
+const WHATSAPP_MESSAGE = "ನಮಸ್ಕಾರ, ನಾನು ತಂತ್ರ ವಿಜ್ಞಾನ ಅಪ್ಲಿಕೇಶನ್‌ನಿಂದ ಜನ್ಮ ಕುಂಡಲಿ ವಿಶ್ಲೇಷಣೆಗಾಗಿ ಸಂಪರ್ಕಿಸುತ್ತಿದ್ದೇನೆ.";
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
 export default function AstrologyPage() {
   const { toast } = useToast();
@@ -208,10 +213,24 @@ export default function AstrologyPage() {
               </div>
               <Button type="submit" disabled={isChartLoading} className="w-full">
                 {isChartLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Sparkles className="mr-2 h-4 w-4" />}
-                ವಿಶ್ಲೇಷಣೆ ಪಡೆಯಿರಿ
+                AI ವಿಶ್ಲೇಷಣೆ ಪಡೆಯಿರಿ
               </Button>
             </form>
           </Form>
+
+          <div className="flex items-center space-x-4 my-4">
+            <div className="flex-1 border-t border-dashed"></div>
+            <span className="text-sm text-muted-foreground">ಅಥವಾ</span>
+            <div className="flex-1 border-t border-dashed"></div>
+          </div>
+          
+          <Button asChild variant="outline" className="w-full border-accent text-accent hover:bg-accent hover:text-accent-foreground">
+            <Link href={WHATSAPP_URL} target="_blank">
+                <Phone className="mr-2 h-4 w-4" />
+                ಗುರುಗಳೊಂದಿಗೆ ನೇರ ಸಮಾಲೋಚನೆ (WhatsApp)
+            </Link>
+          </Button>
+
         </CardContent>
       </Card>
 
