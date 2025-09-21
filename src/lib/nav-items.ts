@@ -37,7 +37,7 @@ export const navItems = [
   { href: '/astrology', label: 'ಜ್ಯೋತಿಷ್ಯ', icon: Star },
   { href: '/kaalagnana', label: 'ಕಾಲಜ್ಞಾನ', icon: Clock },
   { href: '/karma-rahasya', label: 'ಕರ್ಮ ರಹಸ್ಯ', icon: Orbit },
-  { href: '/shatkarma-rahasya', label: 'ಷಟ್ಕರ್ಮ ರಹಸ್ಯ', icon: Recycle },
+  { href: '/shatkriya-rahasya', label: 'ಷಟ್ಕ್ರಿಯಾ ರಹಸ್ಯ', icon: Recycle },
   { href: '/share-market-astrology', label: 'ಶೇರು ಮಾರುಕಟ್ಟೆ ಜ್ಯೋತಿಷ್ಯ', icon: LineChart },
   { href: '/gambling', label: 'ಜೂಜು ಮತ್ತು ಅದೃಷ್ಟ', icon: Dices },
   { href: '/black-magic', label: 'ಮಾಟ ಮಂತ್ರ', icon: ShieldOff },
