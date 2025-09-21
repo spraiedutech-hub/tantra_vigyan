@@ -34,6 +34,18 @@ const services = [
             "ದೋಷಗಳು ಮತ್ತು ಯೋಗಗಳ ವಿಶ್ಲೇಷಣೆ",
             "ವೈಯಕ್ತಿಕಗೊಳಿಸಿದ ಪರಿಹಾರಗಳು"
         ]
+    },
+    {
+        icon: FileText,
+        title: "1 ವರ್ಷದ ವಾರ್ಷಿಕ ಭವಿಷ್ಯ",
+        englishTitle: "1-Year Detailed Forecast",
+        price: "₹5,555",
+        description: "ಮುಂಬರುವ ಒಂದು ವರ್ಷದ ಆಳವಾದ, ಲಿಖಿತ ವಿಶ್ಲೇಷಣೆ.",
+        features: [
+            "ಮಾಸಿಕ ಮುನ್ಸೂಚನೆಗಳು",
+            "ಪ್ರಮುಖ ಗ್ರಹ ಸಂಚಾರಗಳ ವಿಶ್ಲೇಷಣೆ",
+            "ವೈಯಕ್ತಿಕಗೊಳಿಸಿದ ಪರಿಹಾರಗಳು"
+        ]
     }
 ];
 
@@ -41,7 +53,7 @@ export default function ConsultationPricing() {
   return (
     <section className="space-y-6 mt-12">
       <h2 className="text-3xl font-bold font-headline text-primary text-center">ಸಮಾಲೋಚನೆ ಶುಲ್ಕಗಳು</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((service, index) => (
           <Card key={index} className="flex flex-col transform hover:scale-[1.02] transition-transform duration-300 ease-in-out">
             <CardHeader className="text-center">
