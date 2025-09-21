@@ -24,6 +24,7 @@ import {
   Orbit,
   LineChart,
   Dices,
+  ShieldOff,
 } from 'lucide-react';
 
 export const navItems = [
@@ -37,6 +38,7 @@ export const navItems = [
   { href: '/karma-rahasya', label: 'ಕರ್ಮ ರಹಸ್ಯ', icon: Orbit },
   { href: '/share-market-astrology', label: 'ಶೇರು ಮಾರುಕಟ್ಟೆ ಜ್ಯೋತಿಷ್ಯ', icon: LineChart },
   { href: '/gambling', label: 'ಜೂಜು ಮತ್ತು ಅದೃಷ್ಟ', icon: Dices },
+  { href: '/black-magic', label: 'ಮಾಟ ಮಂತ್ರ', icon: ShieldOff },
   { href: '/yantras', label: 'ಯಂತ್ರಗಳು', icon: Shapes },
   { href: '/mantras', label: 'ಮಂತ್ರಗಳು', icon: BookAudio },
   { href: '/activities', label: 'ಚಟುವಟಿಕೆಗಳು', icon: CheckCircle },
@@ -52,5 +54,3 @@ export const navItems = [
   { href: '/forum', label: 'ಸಮುದಾಯ ವೇದಿಕೆ', icon: Users },
   { href: '/youtube', label: 'YouTube', icon: Youtube },
 ];
-
-    
