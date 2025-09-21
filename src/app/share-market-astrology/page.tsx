@@ -205,7 +205,7 @@ export default function ShareMarketAstrologyPage() {
                 </p>
             </CardContent>
             <CardFooter className="flex-col sm:flex-row items-center gap-4">
-                <p className="text-xl font-bold text-primary">ಶುಲ್ಕ: ₹555 / ದಿನ</p>
+                <p className="text-xl font-bold text-primary">ಶುಲ್ಕ: ಲಾಭದಲ್ಲಿ ಪಾಲು (Profit Sharing)</p>
                 <Button asChild size="lg" className="w-full sm:w-auto">
                     <Link href={WHATSAPP_URL_DAILY} target="_blank">
                     <Phone className="mr-2 h-5 w-5" />
