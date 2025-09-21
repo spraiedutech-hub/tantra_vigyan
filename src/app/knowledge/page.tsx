@@ -11,6 +11,8 @@ import {
 } from "@/components/ui/accordion"
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { ScrollAnimate } from '@/components/ui/scroll-animate';
+import { Card, CardContent } from '@/components/ui/card';
+import KnowledgeBookAnimation from '@/components/knowledge-book-animation';
 
 
 export default function KnowledgePage() {
@@ -23,9 +25,17 @@ export default function KnowledgePage() {
           ಜ್ಞಾನ ಭಂಡಾರ
         </h1>
         <p className="text-lg text-muted-foreground">
-          ತಂತ್ರ ಮತ್ತು ಮಂತ್ರಗಳ ಮೂಲಭೂತ ತತ್ವಗಳ ಬಗ್ಗೆ ఆಳವಾಗಿ ತಿಳಿಯಿರಿ.
+          ತಂತ್ರ ಮತ್ತು ಮಂತ್ರಗಳ ಮೂಲಭೂತ ತತ್ವಗಳ ಬಗ್ಗೆ ಆಳವಾಗಿ ತಿಳಿಯಿರಿ.
         </p>
       </header>
+
+      <Card>
+        <CardContent className="p-0">
+           <div className="relative w-full h-64 md:h-80 flex items-center justify-center my-4">
+              <KnowledgeBookAnimation />
+            </div>
+        </CardContent>
+      </Card>
 
       <ScrollAnimate>
         <Alert variant="destructive" className="border-accent/50 text-accent [&>svg]:text-accent">

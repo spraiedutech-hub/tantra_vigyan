@@ -103,8 +103,8 @@ export default {
           to: { transform: 'rotate(360deg)' },
         },
         'rotate-slow': {
-          from: { transform: 'rotate(0deg)' },
-          to: { transform: 'rotate(360deg)' },
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
         },
         'rotate-slow-reverse': {
           from: { transform: 'rotate(360deg)' },
@@ -175,7 +175,7 @@ export default {
           '0%': { transform: 'scale(1)' },
           '100%': { transform: 'scale(1.1)' },
         },
-        'line-draw': {
+        'line-draw-once': {
             'to': { 'stroke-dashoffset': '0' },
         },
         'sadhana-rotate': {
@@ -188,12 +188,16 @@ export default {
         },
         'sadhana-breathe-outer': {
             '0%, 100%': { transform: 'scale(1) rotate(var(--tw-rotate))' },
-            '50%': { transform: 'scale(0.85) rotate(calc(var(--tw-rotate) + 15deg))' },
+            '50%': { transform: 'scale(0.85) rotate(calc(var(--tw-rotate) + 5deg))' },
         },
         'sadhana-breathe-inner': {
             '0%, 100%': { transform: 'scale(1) rotate(var(--tw-rotate))' },
-            '50%': { transform: 'scale(0.75) rotate(calc(var(--tw-rotate) - 15deg))' },
+            '50%': { transform: 'scale(0.75) rotate(calc(var(--tw-rotate) - 5deg))' },
         },
+        'script-fade': {
+          '0%, 100%': { opacity: '0' },
+          '50%': { opacity: '1' },
+        }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -201,7 +205,7 @@ export default {
         'fade-in': 'fade-in 0.6s ease-out forwards',
         'fade-in-up': 'fade-in-up 0.8s ease-out forwards',
         'rotate': 'rotate 30s linear infinite',
-        'rotate-slow': 'rotate-slow 20s linear infinite forwards',
+        'rotate-slow': 'rotate-slow 60s linear infinite forwards',
         'rotate-slow-reverse': 'rotate-slow-reverse 45s linear infinite',
         'pulse-slow': 'pulse-slow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'animated-border': 'animated-border 4s linear infinite',
@@ -218,11 +222,12 @@ export default {
         'random-letter-fade': 'random-letter-fade 5s ease-in-out infinite',
         'logo-fade-in': 'logo-fade-in 1.5s ease-out forwards',
         'background-zoom': 'background-zoom 10s ease-out forwards',
-        'line-draw': 'line-draw 1.5s ease-in-out 1',
+        'line-draw-once': 'line-draw-once 1.5s ease-in-out forwards',
         'sadhana-rotate': 'sadhana-rotate 30s linear infinite',
         'sadhana-rotate-reverse': 'sadhana-rotate-reverse 35s linear infinite',
         'sadhana-breathe-outer': 'sadhana-breathe-outer 8s ease-in-out infinite',
         'sadhana-breathe-inner': 'sadhana-breathe-inner 8s ease-in-out infinite',
+        'script-fade': 'script-fade 4s ease-in-out infinite',
       },
     },
   },
