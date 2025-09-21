@@ -96,15 +96,18 @@ export default function HomaAnimation() {
         {Array.from({ length: sparkCount }).map((_, i) => (
             <circle
                 key={`spark-${i}`}
-                cx={(Math.random() - 0.5) * 30}
-                cy={Math.random() * 10}
+                cx="0"
+                cy="0"
                 r={Math.random() * 1.2 + 0.5}
                 fill="hsl(var(--accent))"
                 className="animate-sparks-fly"
-                style={{
-                    animationDelay: `${Math.random() * 3}s`,
-                    animationDuration: `${2 + Math.random() * 2}s`
-                }}
+                style={
+                  {
+                    '--tx': `${(Math.random() - 0.5) * 60}px`,
+                    animationDelay: `${Math.random() * 2}s`,
+                    animationDuration: `${1.5 + Math.random() * 1.5}s`,
+                  } as React.CSSProperties
+                }
             />
         ))}
       </g>

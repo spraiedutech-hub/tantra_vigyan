@@ -260,7 +260,7 @@ export default {
         },
         'sparks-fly': {
           '0%': { transform: 'translateY(0) translateX(0)', opacity: '1' },
-          '100%': { transform: 'translateY(-120px) translateX(var(--tw-translate-x))', opacity: '0' },
+          '100%': { transform: 'translateY(-120px) translateX(var(--tx, 0))', opacity: '0' },
         },
         'star-twinkle': {
           '0%, 100%': { opacity: '0.3' },
