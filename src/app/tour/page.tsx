@@ -4,10 +4,14 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { navGroups } from '@/lib/nav-items';
 import { Compass } from 'lucide-react';
+import Link from 'next/link';
 
 export default function TourPage() {
   // Flatten the navGroups into a single array, excluding home and the tour page itself
-  const tourSections = navGroups.flatMap(group => group.items).filter(item => item.href !== '/' && item.href !== '/tour');
+  const tourSections = navGroups.flatMap(group => 
+      group.items.map(item => ({ ...item, groupTitle: group.title }))
+    ).filter(item => item.href !== '/' && item.href !== '/tour');
+    
 
   function getPageDescription(href: string): string {
     switch (href) {
@@ -16,7 +20,7 @@ export default function TourPage() {
         case '/mantras':
             return "ವಿವಿಧ ಸಾಂಪ್ರದಾಯಿಕ ತಂತ್ರ ಮಂತ್ರಗಳು ಮತ್ತು ಅವುಗಳ ಮಹತ್ವವನ್ನು ಅನ್ವೇಷಿಸಿ. ನಿಮ್ಮ ದೈನಂದಿನ ಅಭ್ಯಾಸಕ್ಕಾಗಿ ಇಲ್ಲಿಂದ ಮಂತ್ರಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಿಕೊಳ್ಳಬಹುದು.";
         case '/sadhana':
-            return "ಪ್ರತಿದಿನ ನಿಮಗಾಗಿ ವಿಶೇಷವಾಗಿ ರಚಿಸಲಾದ ಹೊಸ, AI-ಚಾಲಿತ ಆಧ್ಯಾತ್ಮಿಕ ಅಭ್ಯಾಸವನ್ನು (ಸಾಧನಾ) ಪಡೆಯಿರಿ. ಇದು ನಿಮ್ಮ ದಿನವನ್ನು ಶಾಂತಿ ಮತ್ತು ಉದ್ದೇಶದಿಂದ ಪ್ರಾರಂಭಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.";
+            return "ಪ್ರತಿದิน ನಿಮಗಾಗಿ ವಿಶೇಷವಾಗಿ ರಚಿಸಲಾದ ಹೊಸ, AI-ಚಾಲಿತ ಆಧ್ಯಾತ್ಮಿಕ ಅಭ್ಯಾಸವನ್ನು (ಸಾಧನಾ) ಪಡೆಯಿರಿ. ಇದು ನಿಮ್ಮ ದಿನವನ್ನು ಶಾಂತಿ ಮತ್ತು ಉದ್ದೇಶದಿಂದ ಪ್ರಾರಂಭಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.";
         case '/activities':
             return "ನಿಮ್ಮ ಆಧ್ಯಾತ್ಮಿಕ ಅಭ್ಯಾಸವನ್ನು ಹೆಚ್ಚಿಸಲು ಸರಳವಾದ ತಾಂತ್ರಿಕ ಕ್ರಿಯೆಗಳು ಮತ್ತು ಆಚರಣೆಗಳನ್ನು ಕಲಿಯಿರಿ.";
         case '/recommendations':
@@ -65,7 +69,51 @@ export default function TourPage() {
             return "ದೇವತೆಗಳು, ಯಕ್ಷಿಣಿಯರು, ಭೂತ-ಪ್ರೇತಗಳಂತಹ ವಿವಿಧ ಶಕ್ತಿಗಳ ಸ್ವರೂಪ ಮತ್ತು ಅವುಗಳ ಅಸ್ತಿತ್ವದ ಬಗ್ಗೆ ತಂತ್ರವು ಏನು ಹೇಳುತ್ತದೆ ಎಂಬುದನ್ನು ಅರಿಯಿರಿ.";
         case '/overcoming-sad-memories':
             return "ಹಳೆಯ ನೋವಿನ ನೆನಪುಗಳಿಂದ ಮತ್ತು ಭಾವನಾತ್ಮಕ ಗಾಯಗಳಿಂದ ಮುಕ್ತರಾಗಲು ಸಹಾಯ ಮಾಡುವ ತಾಂತ್ರಿಕ ಮತ್ತು ಮಾನಸಿಕ ತಂತ್ರಗಳನ್ನು ಕಲಿಯಿರಿ.";
+        case '/jataka':
+            return "ನಿಮ್ಮ ಜನ್ಮ ಕುಂಡಲಿ ಅಥವಾ ಜಾತಕವು ನಿಮ್ಮ ಜೀವನದ ನೀಲನಕ್ಷೆಯಾಗಿದೆ. ಅದರ ಮೂಲಭೂತ ಅಂಶಗಳಾದ ಮನೆಗಳು, ಗ್ರಹಗಳು ಮತ್ತು ದಶಾಗಳ ಬಗ್ಗೆ ತಿಳಿಯಿರಿ.";
+        case '/chakras-info':
+            return "ನಿಮ್ಮ ಸೂಕ್ಷ್ಮ ಶರೀರದಲ್ಲಿರುವ ಏಳು ಪ್ರಮುಖ ಶಕ್ತಿ ಕೇಂದ್ರಗಳಾದ ಚಕ್ರಗಳ ಬಗ್ಗೆ ಆಳವಾಗಿ ಅರಿಯಿರಿ. ಅವುಗಳ ಕಾರ್ಯ, ಗುಣಲಕ್ಷಣಗಳು ಮತ್ತು ಸಮತೋಲನಗೊಳಿಸುವ ವಿಧಾನಗಳನ್ನು ತಿಳಿಯಿರಿ.";
         default:
             return "ಈ ವಿಭಾಗದ ಬಗ್ಗೆ ಹೆಚ್ಚಿನ ಮಾಹಿತಿ ಶೀಘ್ರದಲ್ಲೇ ಬರಲಿದೆ.";
     }
+  }
+
+  return (
+    <div className="space-y-8 animate-fade-in">
+      <header className="space-y-2 p-4 rounded-lg animated-border">
+        <h1 className="text-4xl font-bold font-headline text-primary flex items-center gap-2">
+          <Compass />
+          ಅಪ್ಲಿಕೇಶನ್ ಪ್ರವಾಸ
+        </h1>
+        <p className="text-lg text-muted-foreground">
+          ಈ ಅಪ್ಲಿಕೇಶನ್‌ನಲ್ಲಿ ಲಭ್ಯವಿರುವ ಎಲ್ಲಾ ವೈಶಿಷ್ಟ್ಯಗಳು ಮತ್ತು ವಿಭಾಗಗಳ ಅವಲೋಕನ.
+        </p>
+      </header>
+
+      <div className="space-y-6">
+        {navGroups.map((group) => (
+          <div key={group.title}>
+            <h2 className="text-2xl font-bold font-headline text-primary mb-4">{group.title}</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {group.items.filter(item => item.href !== '/' && item.href !== '/tour').map((item) => (
+                <Link href={item.href} key={item.href} passHref>
+                  <Card className="h-full flex flex-col transform hover:scale-105 transition-transform duration-300 ease-in-out hover:border-primary">
+                    <CardHeader className="flex-row items-center gap-4">
+                        <item.icon className="w-8 h-8 text-accent" />
+                        <CardTitle className="text-lg font-semibold">{item.label}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-muted-foreground">
+                        {getPageDescription(item.href)}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
