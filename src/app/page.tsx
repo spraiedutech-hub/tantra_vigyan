@@ -10,6 +10,7 @@ import { getProgressData, type ProgressData } from '@/lib/progress-tracker';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
+import HumanTechnologyExplainer from '@/components/human-technology-explainer';
 
 export default function Home() {
   const [affirmation, setAffirmation] = useState('');
@@ -112,6 +113,8 @@ export default function Home() {
           </CardContent>
         </Card>
       </div>
+
+      <HumanTechnologyExplainer />
 
     </div>
   );
