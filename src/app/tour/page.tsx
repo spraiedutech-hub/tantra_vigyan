@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { navGroups } from '@/lib/nav-items';
 import { Compass } from 'lucide-react';
 import Link from 'next/link';
+import AppTourAnimation from '@/components/app-tour-animation';
 
 export default function TourPage() {
   // Flatten the navGroups into a single array, excluding home and the tour page itself
@@ -73,6 +74,8 @@ export default function TourPage() {
             return "ನಿಮ್ಮ ಜನ್ಮ ಕುಂಡಲಿ ಅಥವಾ ಜಾತಕವು ನಿಮ್ಮ ಜೀವನದ ನೀಲನಕ್ಷೆಯಾಗಿದೆ. ಅದರ ಮೂಲಭೂತ ಅಂಶಗಳಾದ ಮನೆಗಳು, ಗ್ರಹಗಳು ಮತ್ತು ದಶಾಗಳ ಬಗ್ಗೆ ತಿಳಿಯಿರಿ.";
         case '/chakras-info':
             return "ನಿಮ್ಮ ಸೂಕ್ಷ್ಮ ಶರೀರದಲ್ಲಿರುವ ಏಳು ಪ್ರಮುಖ ಶಕ್ತಿ ಕೇಂದ್ರಗಳಾದ ಚಕ್ರಗಳ ಬಗ್ಗೆ ಆಳವಾಗಿ ಅರಿಯಿರಿ. ಅವುಗಳ ಕಾರ್ಯ, ಗುಣಲಕ್ಷಣಗಳು ಮತ್ತು ಸಮತೋಲನಗೊಳಿಸುವ ವಿಧಾನಗಳನ್ನು ತಿಳಿಯಿರಿ.";
+        case '/homa-yagna':
+            return "ಬ್ರಹ್ಮಾಂಡದ ಶಕ್ತಿಗಳೊಂದಿಗೆ ಸಂಪರ್ಕ ಸಾಧಿಸುವ ಪವಿತ್ರ ಅಗ್ನಿ ಆಚರಣೆಗಳು.";
         default:
             return "ಈ ವಿಭಾಗದ ಬಗ್ಗೆ ಹೆಚ್ಚಿನ ಮಾಹಿತಿ ಶೀಘ್ರದಲ್ಲೇ ಬರಲಿದೆ.";
     }
@@ -80,14 +83,21 @@ export default function TourPage() {
 
   return (
     <div className="space-y-8 animate-fade-in">
-      <header className="space-y-2 p-4 rounded-lg animated-border">
-        <h1 className="text-4xl font-bold font-headline text-primary flex items-center gap-2">
-          <Compass />
-          ಅಪ್ಲಿಕೇಶನ್ ಪ್ರವಾಸ
-        </h1>
-        <p className="text-lg text-muted-foreground">
-          ಈ ಅಪ್ಲಿಕೇಶನ್‌ನಲ್ಲಿ ಲಭ್ಯವಿರುವ ಎಲ್ಲಾ ವೈಶಿಷ್ಟ್ಯಗಳು ಮತ್ತು ವಿಭಾಗಗಳ ಅವಲೋಕನ.
-        </p>
+      <header className="space-y-2 p-4 rounded-lg animated-border overflow-hidden">
+        <div className="flex flex-col md:flex-row items-center gap-4">
+            <div className="flex-1 space-y-2">
+                <h1 className="text-4xl font-bold font-headline text-primary flex items-center gap-2">
+                <Compass />
+                ಅಪ್ಲಿಕೇಶನ್ ಪ್ರವಾಸ
+                </h1>
+                <p className="text-lg text-muted-foreground">
+                ಈ ಅಪ್ಲಿಕೇಶನ್‌ನಲ್ಲಿ ಲಭ್ಯವಿರುವ ಎಲ್ಲಾ ವೈಶಿಷ್ಟ್ಯಗಳು ಮತ್ತು ವಿಭಾಗಗಳ ಅವಲೋಕನ.
+                </p>
+            </div>
+            <div className="w-48 h-48 md:w-56 md:h-56">
+                <AppTourAnimation />
+            </div>
+        </div>
       </header>
 
       <div className="space-y-6">
