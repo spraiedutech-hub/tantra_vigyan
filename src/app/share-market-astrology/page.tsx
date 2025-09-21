@@ -3,7 +3,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { LineChart, AlertTriangle, UserCheck, Phone, TrendingUp, CalendarDays, Star, Loader2, BookOpen } from 'lucide-react';
+import { LineChart, AlertTriangle, UserCheck, Phone, TrendingUp, CalendarDays, Star, Loader2, BookOpen, Sun, Moon, Link as LinkIcon, Rss } from 'lucide-react';
 import { ScrollAnimate } from '@/components/ui/scroll-animate';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -15,31 +15,22 @@ import { generateMarketPrediction, type MarketPredictionOutput } from '@/ai/flow
 import { useToast } from '@/hooks/use-toast';
 import { Skeleton } from '@/components/ui/skeleton';
 import personalizedForecastInfo from '@/lib/content/personalized-forecast-info.json';
-
+import planetaryInfluences from '@/lib/content/planetary-influences.json';
 
 const WHATSAPP_NUMBER = "917022070287";
 const WHATSAPP_MESSAGE = "ನಮಸ್ಕಾರ, ನಾನು ತಂತ್ರ ವಿಜ್ಞಾನ ಅಪ್ಲಿಕೇಶನ್‌ನಿಂದ ಶೇರು ಮಾರುಕಟ್ಟೆ ಜ್ಯೋತಿಷ್ಯ ವರದಿಗಾಗಿ ಸಂಪರ್ಕಿಸುತ್ತಿದ್ದೇನೆ.";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 const PREDICTION_STORAGE_KEY = 'marketPrediction';
 
-const planetaryInfluences = [
-    {
-        title: "ಗುರು (Jupiter): ಸಂಪತ್ತು ಮತ್ತು ವಿಸ್ತರಣೆ",
-        content: "ಗುರುವು ಜ್ಯೋತಿಷ್ಯದಲ್ಲಿ ಸಂಪತ್ತು, ಅದೃಷ್ಟ ಮತ್ತು ವಿಸ್ತರಣೆಯ ಕಾರಕ. ಜಾತಕದಲ್ಲಿ ಗುರುವಿನ ಬಲವಾದ ಸ್ಥಾನವು ಹೂಡಿಕೆಗಳಲ್ಲಿ ಯಶಸ್ಸು ಮತ್ತು ಆರ್ಥಿಕ ಬೆಳವಣಿಗೆಯನ್ನು ಸೂಚಿಸುತ್ತದೆ. ಗುರುವಿನ ಅನುಕೂಲಕರ ಸಂಚಾರವು ದೀರ್ಘಾವಧಿಯ ಹೂಡಿಕೆಗಳಿಗೆ ಮತ್ತು ಮಾರುಕಟ್ಟೆಯ ಸಕಾರಾತ್ಮಕ ಪ್ರವೃತ್ತಿಗಳಿಗೆ ಕಾರಣವಾಗಬಹುದು."
-    },
-    {
-        title: "ಬುಧ (Mercury): ವ್ಯಾಪಾರ ಮತ್ತು ಸಂವಹನ",
-        content: "ಬುಧನು ವ್ಯಾಪಾರ, ವಾಣಿಜ್ಯ, ಮತ್ತು ತ್ವರಿತ ನಿರ್ಧಾರ ತೆಗೆದುಕೊಳ್ಳುವಿಕೆಯ ಗ್ರಹ. ಶೇರು ಮಾರುಕಟ್ಟೆಯು ವೇಗದ ವಹಿವಾಟುಗಳನ್ನು ಒಳಗೊಂಡಿರುವುದರಿಂದ, ಬುಧನ ಬಲವಾದ ಸ್ಥಾನವು ಅಲ್ಪಾವಧಿಯ ವ್ಯಾಪಾರ (intraday trading) ಮತ್ತು ತ್ವರಿತ ಲಾಭಗಳಿಗೆ ಸಹಾಯ ಮಾಡುತ್ತದೆ. ಬುಧನ ವಕ್ರ ಸಂಚಾರದ ಸಮಯದಲ್ಲಿ ಮಾರುಕಟ್ಟೆಯಲ್ಲಿ ಗೊಂದಲ ಮತ್ತು ಅನಿರೀಕ್ಷಿತ ಏರಿಳಿತಗಳು ಉಂಟಾಗಬಹುದು."
-    },
-    {
-        title: "ರಾಹು (Rahu): ಆಕಸ್ಮಿಕ ಲಾಭ ಮತ್ತು ಊಹಾಪೋಹ",
-        content: "ರಾಹುವು ವಿದೇಶಿ ಅಂಶಗಳು, ತಂತ್ರಜ್ಞಾನ ಮತ್ತು ಆಕಸ್ಮಿಕ, ಅನಿರೀಕ್ಷಿತ ಘಟನೆಗಳ ಕಾರಕ. ಶೇರು ಮಾರುಕಟ್ಟೆಯಲ್ಲಿ, ರಾಹುವು ಊಹಾಪೋಹ (speculation), ಆಕಸ್ಮಿಕ ಲಾಭ ಅಥವಾ ನಷ್ಟಗಳನ್ನು ಸೂಚಿಸುತ್ತಾನೆ. ಬಲವಾದ ರಾಹುವು ತಂತ್ರಜ್ಞಾನ ಸಂಬಂಧಿತ ಷೇರುಗಳಲ್ಲಿ ಮತ್ತು ವಿದೇಶಿ ಮಾರುಕಟ್ಟೆಗಳಲ್ಲಿ ಲಾಭವನ್ನು ತರಬಲ್ಲದು, ಆದರೆ ಇದು ಅಪಾಯಕಾರಿಯೂ ಆಗಿರಬಹುದು."
-    },
-    {
-        title: "ಶನಿ (Saturn): ಸ್ಥಿರತೆ ಮತ್ತು ವಿಳಂಬ",
-        content: "ಶನಿಯು ಶಿಸ್ತು, ತಾಳ್ಮೆ ಮತ್ತು ದೀರ್ಘಾವಧಿಯ ರಚನೆಗಳ ಕಾರಕ. ಶನಿಯ ಪ್ರಭಾವವು ಮಾರುಕಟ್ಟೆಯಲ್ಲಿ ನಿಧಾನಗತಿಯ ಆದರೆ ಸ್ಥಿರವಾದ ಬೆಳವಣಿಗೆಯನ್ನು ಸೂಚಿಸುತ್ತದೆ. ಕಬ್ಬಿಣ, ಕಲ್ಲಿದ್ದಲು ಮತ್ತು ರಿಯಲ್ ಎಸ್ಟೇಟ್‌ನಂತಹ ಕ್ಷೇತ್ರಗಳ ಮೇಲೆ ಶನಿಯು ಪ್ರಭಾವ ಬೀರುತ್ತಾನೆ. ಶನಿಯ ಅನುಕೂಲಕರ ಸ್ಥಾನವಿಲ್ಲದಿದ್ದರೆ, ಹೂಡಿಕೆಗಳಲ್ಲಿ ವಿಳಂಬ ಅಥವಾ ನಷ್ಟಗಳು ಉಂಟಾಗಬಹುದು."
-    }
-];
+const planetIcons: { [key: string]: React.ElementType } = {
+    "ಗುರು": TrendingUp,
+    "ಬುಧ": Rss,
+    "ರಾಹು": LinkIcon,
+    "ಶನಿ": Loader2,
+    "ಸೂರ್ಯ": Sun,
+    "ಚಂದ್ರ": Moon,
+};
+
 
 function getLatestTradingDay(): Date {
     const today = new Date();
@@ -76,7 +67,6 @@ export default function ShareMarketAstrologyPage() {
           }
         }
         
-        // If not cached or date is old, fetch new prediction
         const result = await generateMarketPrediction(dateString);
         setPrediction(result);
         localStorage.setItem(PREDICTION_STORAGE_KEY, JSON.stringify(result));
@@ -145,133 +135,141 @@ export default function ShareMarketAstrologyPage() {
         </Alert>
       </ScrollAnimate>
 
-      <ScrollAnimate delay={300}>
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-3">
-              <CalendarDays className="text-primary"/>
-              ಇಂದಿನ ಮಾರುಕಟ್ಟೆ ಜ್ಯೋತಿಷ್ಯ ಮುನ್ಸೂಚನೆ
-            </CardTitle>
-            <CardDescription>ದಿನಾಂಕ: {displayDate}</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Tabs defaultValue="nifty" className="w-full">
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="nifty">ನಿಫ್ಟಿ</TabsTrigger>
-                <TabsTrigger value="banknifty">ಬ್ಯಾಂಕ್ ನಿಫ್ಟಿ</TabsTrigger>
-              </TabsList>
-              <TabsContent value="nifty" className="mt-4">
-                {isLoading ? <PredictionSkeleton /> : prediction && (
-                  <div className="space-y-4">
-                    <div>
-                      <h3 className="font-semibold text-accent">ಒಟ್ಟಾರೆ ಪ್ರವೃತ್ತಿ:</h3>
-                      <p className="text-muted-foreground">{prediction.nifty.trend}</p>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-accent">ಗಂಟೆಯ ವಿಶ್ಲೇಷಣೆ:</h3>
-                      <ul className="space-y-3 mt-2">
-                        {prediction.nifty.hourly.map((item, index) => (
-                          <li key={index} className="flex items-start gap-3 p-2 rounded-md bg-muted/50">
-                            <Badge variant="outline" className="mt-1">{item.time}</Badge>
-                            <p className="text-sm text-foreground/90">{item.prediction}</p>
-                          </li>
+       <Tabs defaultValue="forecast" className="w-full">
+            <TabsList className="grid w-full grid-cols-2">
+                <TabsTrigger value="forecast">ದೈನಂದಿನ ಮುನ್ಸೂಚನೆ</TabsTrigger>
+                <TabsTrigger value="learn">ಜ್ಯೋತಿಷ್ಯ ಕಲಿಯಿರಿ</TabsTrigger>
+            </TabsList>
+            <TabsContent value="forecast">
+                <Card className="mt-4">
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-3">
+                        <CalendarDays className="text-primary"/>
+                        ಇಂದಿನ ಮಾರುಕಟ್ಟೆ ಜ್ಯೋತಿಷ್ಯ ಮುನ್ಸೂಚನೆ
+                        </CardTitle>
+                        <CardDescription>ದಿನಾಂಕ: {displayDate}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <Tabs defaultValue="nifty" className="w-full">
+                            <TabsList className="grid w-full grid-cols-2">
+                                <TabsTrigger value="nifty">ನಿಫ್ಟಿ</TabsTrigger>
+                                <TabsTrigger value="banknifty">ಬ್ಯಾಂಕ್ ನಿಫ್ಟಿ</TabsTrigger>
+                            </TabsList>
+                            <TabsContent value="nifty" className="mt-4">
+                                {isLoading ? <PredictionSkeleton /> : prediction && (
+                                <div className="space-y-4">
+                                    <div>
+                                    <h3 className="font-semibold text-accent">ಒಟ್ಟಾರೆ ಪ್ರವೃತ್ತಿ:</h3>
+                                    <p className="text-muted-foreground">{prediction.nifty.trend}</p>
+                                    </div>
+                                    <div>
+                                    <h3 className="font-semibold text-accent">ಗಂಟೆಯ ವಿಶ್ಲೇಷಣೆ:</h3>
+                                    <ul className="space-y-3 mt-2">
+                                        {prediction.nifty.hourly.map((item, index) => (
+                                        <li key={index} className="flex items-start gap-3 p-2 rounded-md bg-muted/50">
+                                            <Badge variant="outline" className="mt-1">{item.time}</Badge>
+                                            <p className="text-sm text-foreground/90">{item.prediction}</p>
+                                        </li>
+                                        ))}
+                                    </ul>
+                                    </div>
+                                    <Separator className="my-6" />
+                                    <div className="space-y-4">
+                                    <h3 className="font-semibold text-accent flex items-center gap-2">
+                                        <Star className="h-4 w-4" />
+                                        ನಿಫ್ಟಿ ಸ್ಟಾಕ್‌ಗಳು (Stocks of the day)
+                                    </h3>
+                                    <ul className="space-y-3">
+                                        {prediction.nifty.stocksToWatch.map((stock, index) => (
+                                        <li key={index} className="p-3 rounded-md border bg-muted/30">
+                                            <p className="font-bold text-foreground">{stock.name}</p>
+                                            <p className="text-sm text-muted-foreground">{stock.reason}</p>
+                                        </li>
+                                        ))}
+                                    </ul>
+                                    </div>
+                                </div>
+                                )}
+                            </TabsContent>
+                            <TabsContent value="banknifty" className="mt-4">
+                                {isLoading ? <PredictionSkeleton /> : prediction && (
+                                <div className="space-y-4">
+                                    <div>
+                                    <h3 className="font-semibold text-accent">ಒಟ್ಟಾರೆ ಪ್ರವೃತ್ತಿ:</h3>
+                                    <p className="text-muted-foreground">{prediction.banknifty.trend}</p>
+                                    </div>
+                                    <div>
+                                    <h3 className="font-semibold text-accent">ಗಂಟೆಯ ವಿಶ್ಲೇಷಣೆ:</h3>
+                                    <ul className="space-y-3 mt-2">
+                                        {prediction.banknifty.hourly.map((item, index) => (
+                                        <li key={index} className="flex items-start gap-3 p-2 rounded-md bg-muted/50">
+                                            <Badge variant="outline" className="mt-1">{item.time}</Badge>
+                                            <p className="text-sm text-foreground/90">{item.prediction}</p>
+                                        </li>
+                                        ))}
+                                    </ul>
+                                    </div>
+                                    <Separator className="my-6" />
+                                    <div className="space-y-4">
+                                    <h3 className="font-semibold text-accent flex items-center gap-2">
+                                        <Star className="h-4 w-4" />
+                                        ಬ್ಯಾಂಕ್ ನಿಫ್ಟಿ ಸ್ಟಾಕ್‌ಗಳು (Stocks of the day)
+                                    </h3>
+                                    <ul className="space-y-3">
+                                        {prediction.banknifty.stocksToWatch.map((stock, index) => (
+                                        <li key={index} className="p-3 rounded-md border bg-muted/30">
+                                            <p className="font-bold text-foreground">{stock.name}</p>
+                                            <p className="text-sm text-muted-foreground">{stock.reason}</p>
+                                        </li>
+                                        ))}
+                                    </ul>
+                                    </div>
+                                </div>
+                                )}
+                            </TabsContent>
+                        </Tabs>
+                    </CardContent>
+                </Card>
+            </TabsContent>
+             <TabsContent value="learn" className="space-y-6">
+                <Card className="mt-4">
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-3">
+                            <BookOpen className="text-primary"/>
+                            {personalizedForecastInfo.title}
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="prose prose-lg dark:prose-invert max-w-full text-foreground/90 text-justify leading-relaxed">
+                        {personalizedForecastInfo.content.split('\n\n').map((paragraph, index) => (
+                            <p key={index}>{paragraph}</p>
                         ))}
-                      </ul>
-                    </div>
-                    <Separator className="my-6" />
-                    <div className="space-y-4">
-                      <h3 className="font-semibold text-accent flex items-center gap-2">
-                        <Star className="h-4 w-4" />
-                        ನಿಫ್ಟಿ ಸ್ಟಾಕ್‌ಗಳು (Stocks of the day)
-                      </h3>
-                      <ul className="space-y-3">
-                        {prediction.nifty.stocksToWatch.map((stock, index) => (
-                          <li key={index} className="p-3 rounded-md border bg-muted/30">
-                            <p className="font-bold text-foreground">{stock.name}</p>
-                            <p className="text-sm text-muted-foreground">{stock.reason}</p>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                )}
-              </TabsContent>
-              <TabsContent value="banknifty" className="mt-4">
-                {isLoading ? <PredictionSkeleton /> : prediction && (
-                   <div className="space-y-4">
-                    <div>
-                      <h3 className="font-semibold text-accent">ಒಟ್ಟಾರೆ ಪ್ರವೃತ್ತಿ:</h3>
-                      <p className="text-muted-foreground">{prediction.banknifty.trend}</p>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-accent">ಗಂಟೆಯ ವಿಶ್ಲೇಷಣೆ:</h3>
-                      <ul className="space-y-3 mt-2">
-                        {prediction.banknifty.hourly.map((item, index) => (
-                          <li key={index} className="flex items-start gap-3 p-2 rounded-md bg-muted/50">
-                            <Badge variant="outline" className="mt-1">{item.time}</Badge>
-                            <p className="text-sm text-foreground/90">{item.prediction}</p>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <Separator className="my-6" />
-                     <div className="space-y-4">
-                      <h3 className="font-semibold text-accent flex items-center gap-2">
-                        <Star className="h-4 w-4" />
-                        ಬ್ಯಾಂಕ್ ನಿಫ್ಟಿ ಸ್ಟಾಕ್‌ಗಳು (Stocks of the day)
-                      </h3>
-                      <ul className="space-y-3">
-                        {prediction.banknifty.stocksToWatch.map((stock, index) => (
-                          <li key={index} className="p-3 rounded-md border bg-muted/30">
-                            <p className="font-bold text-foreground">{stock.name}</p>
-                            <p className="text-sm text-muted-foreground">{stock.reason}</p>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                )}
-              </TabsContent>
-            </Tabs>
-          </CardContent>
-        </Card>
-      </ScrollAnimate>
+                    </CardContent>
+                </Card>
+                 <div className="space-y-6 mt-6">
+                    <h2 className="text-3xl font-bold font-headline text-primary">ಮಾರುಕಟ್ಟೆಯ ಮೇಲೆ ಗ್ರಹಗಳ ಪ್ರಭಾವ</h2>
+                    {planetaryInfluences.map((item, index) => {
+                        const Icon = planetIcons[item.planet] || Star;
+                        return (
+                        <Card key={index} className="transform hover:scale-[1.01] transition-transform duration-300 ease-in-out">
+                            <CardHeader>
+                                <CardTitle className="font-headline text-2xl text-accent flex items-center gap-3">
+                                    <Icon className="h-6 w-6"/>
+                                    {item.title}
+                                </CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <p className="prose prose-lg dark:prose-invert max-w-full text-foreground/90 text-justify leading-relaxed">
+                                {item.content}
+                                </p>
+                            </CardContent>
+                        </Card>
+                        )
+                    })}
+                </div>
+            </TabsContent>
+       </Tabs>
 
-      <ScrollAnimate delay={450}>
-        <Card>
-            <CardHeader>
-                <CardTitle className="flex items-center gap-3">
-                    <BookOpen className="text-primary"/>
-                    {personalizedForecastInfo.title}
-                </CardTitle>
-            </CardHeader>
-            <CardContent className="prose prose-lg dark:prose-invert max-w-full text-foreground/90 text-justify leading-relaxed">
-                 {personalizedForecastInfo.content.split('\n\n').map((paragraph, index) => (
-                    <p key={index}>{paragraph}</p>
-                ))}
-            </CardContent>
-        </Card>
-      </ScrollAnimate>
-
-      <div className="space-y-6 mt-12">
-        <h2 className="text-3xl font-bold font-headline text-primary">ಮಾರುಕಟ್ಟೆಯ ಮೇಲೆ ಗ್ರಹಗಳ ಪ್ರಭಾವ</h2>
-        {planetaryInfluences.map((item, index) => (
-          <ScrollAnimate key={index} delay={600 + index * 150}>
-            <Card className="transform hover:scale-[1.01] transition-transform duration-300 ease-in-out">
-              <CardHeader>
-                <CardTitle className="font-headline text-2xl text-accent">{item.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="prose prose-lg dark:prose-invert max-w-full text-foreground/90 text-justify leading-relaxed">
-                  {item.content}
-                </p>
-              </CardContent>
-            </Card>
-          </ScrollAnimate>
-        ))}
-      </div>
-      
-      <ScrollAnimate delay={700 + planetaryInfluences.length * 150}>
+      <ScrollAnimate delay={700}>
         <Card className="bg-gradient-to-br from-primary/10 to-accent/10 animated-border transform hover:scale-[1.01] transition-transform duration-300">
             <CardHeader>
                 <CardTitle className="text-2xl font-headline text-accent flex items-center gap-3">
@@ -301,3 +299,5 @@ export default function ShareMarketAstrologyPage() {
     </div>
   );
 }
+
+    
