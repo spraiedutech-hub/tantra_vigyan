@@ -28,6 +28,7 @@ import {
   Recycle,
   Gem,
   HeartPulse,
+  Coins,
 } from 'lucide-react';
 
 export const navItems = [
@@ -40,6 +41,7 @@ export const navItems = [
   { href: '/kaalagnana', label: 'ಕಾಲಜ್ಞಾನ', icon: Clock },
   { href: '/karma-rahasya', label: 'ಕರ್ಮ ರಹಸ್ಯ', icon: Orbit },
   { href: '/tantra-and-disease', label: 'ತಂತ್ರ ಮತ್ತು ರೋಗ', icon: HeartPulse },
+  { href: '/tantra-and-money', label: 'ತಂತ್ರ ಮತ್ತು ಸಂಪತ್ತು', icon: Coins },
   { href: '/shatkriya-rahasya', label: 'ಷಟ್ಕ್ರಿಯಾ ರಹಸ್ಯ', icon: Recycle },
   { href: '/shatkarma-rahasya', label: 'ಷಟ್ಕರ್ಮ ರಹಸ್ಯ', icon: Recycle },
   { href: '/share-market-astrology', label: 'ಶೇರು ಮಾರುಕಟ್ಟೆ ಜ್ಯೋತಿಷ್ಯ', icon: LineChart },
