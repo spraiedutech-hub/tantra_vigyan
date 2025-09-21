@@ -34,6 +34,7 @@ import {
   HeartCrack,
   Binary,
   Zap,
+  Flame,
 } from 'lucide-react';
 
 export const mainPages = [
@@ -50,6 +51,7 @@ export const knowledgePages = [
     { href: '/kaalagnana', label: 'ಕಾಲಜ್ಞಾನ', icon: Clock },
     { href: '/jataka', label: "ಜಾತಕ - ಜೀವನದ ನೀಲನಕ್ಷೆ", icon: Binary },
     { href: '/chakras-info', label: 'ಚಕ್ರಗಳು - ಶಕ್ತಿ ಕೇಂದ್ರಗಳು', icon: Zap },
+    { href: '/homa-yagna', label: 'ಹೋಮ ಮತ್ತು ಯಜ್ಞ', icon: Flame },
     { href: '/tantra-and-disease', label: 'ತಂತ್ರ ಮತ್ತು ರೋಗ', icon: HeartPulse },
     { href: '/tantra-and-money', label: 'ತಂತ್ರ ಮತ್ತು ಸಂಪತ್ತು', icon: Coins },
     { href: '/tantra-for-students', label: 'ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ತಂತ್ರ', icon: GraduationCap },
