@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/accordion"
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { ScrollAnimate } from '@/components/ui/scroll-animate';
-import { Card, CardContent } from '@/components/ui/card';
 import KnowledgeFlowAnimation from '@/components/knowledge-flow-animation';
 
 
@@ -29,13 +28,9 @@ export default function KnowledgePage() {
         </p>
       </header>
 
-      <Card>
-        <CardContent className="p-0">
-           <div className="relative w-full h-64 md:h-80 flex items-center justify-center my-4 overflow-hidden">
-              <KnowledgeFlowAnimation />
-            </div>
-        </CardContent>
-      </Card>
+      <div className="relative w-full h-64 md:h-80 flex items-center justify-center my-4 overflow-hidden rounded-lg">
+          <KnowledgeFlowAnimation />
+      </div>
 
       <ScrollAnimate>
         <Alert variant="destructive" className="border-accent/50 text-accent [&>svg]:text-accent">
