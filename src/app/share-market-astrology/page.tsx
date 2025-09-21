@@ -3,7 +3,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { LineChart, AlertTriangle, UserCheck, Phone, TrendingUp, CalendarDays, Star, Loader2, BookOpen, Sun, Moon, Link as LinkIcon, Rss } from 'lucide-react';
+import { LineChart, AlertTriangle, UserCheck, Phone, TrendingUp, CalendarDays, Star, BookOpen, Sun, Moon, Link as LinkIcon, Rss, Loader2 } from 'lucide-react';
 import { ScrollAnimate } from '@/components/ui/scroll-animate';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -11,16 +11,15 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { useState, useEffect } from 'react';
-import { generateMarketPrediction, type MarketPredictionOutput } from '@/ai/flows/generate-market-prediction';
-import { useToast } from '@/hooks/use-toast';
-import { Skeleton } from '@/components/ui/skeleton';
 import personalizedForecastInfo from '@/lib/content/personalized-forecast-info.json';
 import planetaryInfluences from '@/lib/content/planetary-influences.json';
+import dailyPrediction from '@/lib/content/market-predictions.json';
+import type { MarketPredictionOutput } from '@/lib/types';
+
 
 const WHATSAPP_NUMBER = "917022070287";
 const WHATSAPP_MESSAGE = "ನಮಸ್ಕಾರ, ನಾನು ತಂತ್ರ ವಿಜ್ಞಾನ ಅಪ್ಲಿಕೇಶನ್‌ನಿಂದ ಶೇರು ಮಾರುಕಟ್ಟೆ ಜ್ಯೋತಿಷ್ಯ ವರದಿಗಾಗಿ ಸಂಪರ್ಕಿಸುತ್ತಿದ್ದೇನೆ.";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
-const PREDICTION_STORAGE_KEY = 'marketPrediction';
 
 const planetIcons: { [key: string]: React.ElementType } = {
     "ಗುರು": TrendingUp,
@@ -32,88 +31,8 @@ const planetIcons: { [key: string]: React.ElementType } = {
 };
 
 
-function getLatestTradingDay(): Date {
-    const today = new Date();
-    const dayOfWeek = today.getDay(); // 0 = Sunday, 6 = Saturday
-
-    if (dayOfWeek === 0) { // If Sunday, show Friday's date
-        today.setDate(today.getDate() - 2);
-    } else if (dayOfWeek === 6) { // If Saturday, show Friday's date
-        today.setDate(today.getDate() - 1);
-    }
-    return today;
-}
-
 export default function ShareMarketAstrologyPage() {
-  const { toast } = useToast();
-  const [prediction, setPrediction] = useState<MarketPredictionOutput | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [tradingDate, setTradingDate] = useState<Date | null>(null);
-
-  useEffect(() => {
-    const date = getLatestTradingDay();
-    setTradingDate(date);
-    const dateString = date.toISOString().split('T')[0];
-
-    const fetchPrediction = async () => {
-      setIsLoading(true);
-      try {
-        const cachedPrediction = localStorage.getItem(PREDICTION_STORAGE_KEY);
-        if (cachedPrediction) {
-          const parsed = JSON.parse(cachedPrediction) as MarketPredictionOutput;
-          if (parsed.date === dateString) {
-            setPrediction(parsed);
-            setIsLoading(false); // Stop loading if cached data is valid
-            return; // Exit the function
-          }
-        }
-        
-        // If no valid cache, generate a new prediction
-        const result = await generateMarketPrediction(dateString);
-        setPrediction(result);
-        localStorage.setItem(PREDICTION_STORAGE_KEY, JSON.stringify(result));
-
-      } catch (error) {
-        console.error("Failed to generate market prediction:", error);
-        toast({
-          variant: 'destructive',
-          title: 'ದೋಷ',
-          description: 'AI ಮುನ್ಸೂಚನೆಯನ್ನು ಪಡೆಯಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಪುಟವನ್ನು ರಿಫ್ರೆಶ್ ಮಾಡಿ.',
-        });
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchPrediction();
-  }, [toast]);
-  
-  const displayDate = tradingDate ? `${String(tradingDate.getDate()).padStart(2, '0')}-${String(tradingDate.getMonth() + 1).padStart(2, '0')}-${tradingDate.getFullYear()}` : '...';
-
-  const PredictionSkeleton = () => (
-    <div className="space-y-4">
-      <Skeleton className="h-6 w-3/4" />
-      <div className="space-y-3 mt-2">
-        {[...Array(4)].map((_, i) => (
-            <div key={i} className="flex items-start gap-3 p-2">
-                <Skeleton className="h-6 w-24" />
-                <Skeleton className="h-6 w-full" />
-            </div>
-        ))}
-      </div>
-      <Separator />
-      <Skeleton className="h-6 w-1/2 mt-4" />
-      <div className="space-y-3 mt-2">
-        {[...Array(2)].map((_, i) => (
-            <div key={i} className="p-3 border rounded-md">
-                <Skeleton className="h-5 w-1/3 mb-2" />
-                <Skeleton className="h-4 w-full" />
-            </div>
-        ))}
-      </div>
-    </div>
-  );
-
+  const [prediction] = useState<MarketPredictionOutput>(dailyPrediction);
 
   return (
     <div className="space-y-8 animate-fade-in">
@@ -148,7 +67,7 @@ export default function ShareMarketAstrologyPage() {
                         <CalendarDays className="text-primary"/>
                         ಇಂದಿನ ಮಾರುಕಟ್ಟೆ ಜ್ಯೋತಿಷ್ಯ ಮುನ್ಸೂಚನೆ
                         </CardTitle>
-                        <CardDescription>ದಿನಾಂಕ: {displayDate}</CardDescription>
+                        <CardDescription>ದಿನಾಂಕ: {prediction.date}</CardDescription>
                     </CardHeader>
                     <CardContent>
                         <Tabs defaultValue="nifty" className="w-full">
@@ -157,7 +76,6 @@ export default function ShareMarketAstrologyPage() {
                                 <TabsTrigger value="banknifty">ಬ್ಯಾಂಕ್ ನಿಫ್ಟಿ</TabsTrigger>
                             </TabsList>
                             <TabsContent value="nifty" className="mt-4">
-                                {isLoading ? <PredictionSkeleton /> : prediction && (
                                 <div className="space-y-4">
                                     <div>
                                     <h3 className="font-semibold text-accent">ಒಟ್ಟಾರೆ ಪ್ರವೃತ್ತಿ:</h3>
@@ -190,10 +108,8 @@ export default function ShareMarketAstrologyPage() {
                                     </ul>
                                     </div>
                                 </div>
-                                )}
                             </TabsContent>
                             <TabsContent value="banknifty" className="mt-4">
-                                {isLoading ? <PredictionSkeleton /> : prediction && (
                                 <div className="space-y-4">
                                     <div>
                                     <h3 className="font-semibold text-accent">ಒಟ್ಟಾರೆ ಪ್ರವೃತ್ತಿ:</h3>
@@ -226,7 +142,6 @@ export default function ShareMarketAstrologyPage() {
                                     </ul>
                                     </div>
                                 </div>
-                                )}
                             </TabsContent>
                         </Tabs>
                     </CardContent>
