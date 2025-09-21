@@ -254,8 +254,17 @@ export default {
           '100%': { opacity: '0' },
         },
         'fire-flicker': {
-          '0%, 100%': { transform: 'scale(1, 1) translateY(0)', opacity: '1' },
-          '50%': { transform: 'scale(1.1, 0.85) translateY(5px)', opacity: '0.8' },
+          '0%, 100%': { transform: 'scale(1, 1) translateY(0)', opacity: '0.9' },
+          '25%': { transform: 'scale(1.1, 0.9) translateY(-10px) skewX(-5deg)', opacity: '1' },
+          '75%': { transform: 'scale(0.9, 1.1) translateY(5px) skewX(5deg)', opacity: '0.8' },
+        },
+        'sparks-fly': {
+          '0%': { transform: 'translateY(0) translateX(0)', opacity: '1' },
+          '100%': { transform: 'translateY(-120px) translateX(var(--tw-translate-x))', opacity: '0' },
+        },
+        'star-twinkle': {
+          '0%, 100%': { opacity: '0.3' },
+          '50%': { opacity: '1' },
         },
       },
       animation: {
@@ -299,6 +308,8 @@ export default {
         'shivalingam-appear': 'shivalingam-appear 1.5s ease-out forwards',
         'prana-flow': 'prana-flow 5s ease-in-out infinite',
         'fire-flicker': 'fire-flicker 1.5s ease-in-out infinite',
+        'sparks-fly': 'sparks-fly linear infinite',
+        'star-twinkle': 'star-twinkle 4s ease-in-out infinite',
       },
     },
   },

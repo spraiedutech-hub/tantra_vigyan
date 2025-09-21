@@ -2,6 +2,9 @@
 'use client';
 
 export default function HomaAnimation() {
+  const starCount = 30;
+  const sparkCount = 15;
+
   return (
     <svg viewBox="0 0 300 300" className="w-full h-full">
       <defs>
@@ -25,6 +28,21 @@ export default function HomaAnimation() {
       {/* Background */}
       <rect width="300" height="300" fill="hsl(var(--background))" />
       <rect width="300" height="300" fill="url(#gradMoon)" className="opacity-30" />
+      
+      {/* Stars */}
+      <g>
+        {Array.from({ length: starCount }).map((_, i) => (
+          <circle
+            key={`star-${i}`}
+            cx={Math.random() * 300}
+            cy={Math.random() * 150} // only in the upper half
+            r={Math.random() * 0.8 + 0.2}
+            fill="hsl(var(--primary))"
+            className="animate-star-twinkle"
+            style={{ animationDelay: `${Math.random() * 5}s` }}
+          />
+        ))}
+      </g>
       
       {/* Full Moon */}
       <g transform="translate(250, 50)" className="animate-pulse-slow">
@@ -55,22 +73,40 @@ export default function HomaAnimation() {
             d="M 0 0 Q -10 -20, -5 -40 Q 0 -60, 5 -40 Q 10 -20, 0 0 Z" 
             fill="hsl(var(--primary))" 
             className="animate-fire-flicker" 
-            style={{ animationDelay: '0s', animationDuration: '0.8s' }}
+            style={{ animationDelay: '0s', animationDuration: '0.9s' }}
         />
         {/* Flames Layer 2 (Middle, Orange) */}
         <path 
             d="M -10 0 Q -20 -15, -15 -30 Q -10 -45, 0 -30 Q 5 -20, -10 0 Z" 
             fill="hsl(var(--accent))" 
             className="animate-fire-flicker" 
-            style={{ animationDelay: '0.2s', animationDuration: '0.6s' }}
+            style={{ animationDelay: '0.2s', animationDuration: '0.7s' }}
         />
         {/* Flames Layer 3 (Front, Red) */}
         <path 
             d="M 10 0 Q 20 -10, 15 -25 Q 10 -40, 0 -25 Q -5 -15, 10 0 Z" 
             fill="hsl(var(--destructive))" 
             className="animate-fire-flicker" 
-            style={{ animationDelay: '0.1s', animationDuration: '0.9s' }}
+            style={{ animationDelay: '0.1s', animationDuration: '1s' }}
         />
+      </g>
+      
+      {/* Sparks */}
+      <g transform="translate(150, 200)">
+        {Array.from({ length: sparkCount }).map((_, i) => (
+            <circle
+                key={`spark-${i}`}
+                cx={(Math.random() - 0.5) * 30}
+                cy={Math.random() * 10}
+                r={Math.random() * 1.2 + 0.5}
+                fill="hsl(var(--accent))"
+                className="animate-sparks-fly"
+                style={{
+                    animationDelay: `${Math.random() * 3}s`,
+                    animationDuration: `${2 + Math.random() * 2}s`
+                }}
+            />
+        ))}
       </g>
     </svg>
   );
