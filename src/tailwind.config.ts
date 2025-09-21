@@ -253,6 +253,10 @@ export default {
           '50%': { opacity: '1' },
           '100%': { opacity: '0' },
         },
+        'fire-flicker': {
+          '0%, 100%': { transform: 'scale(1, 1) translateY(0)', opacity: '1' },
+          '50%': { transform: 'scale(1.1, 0.85) translateY(5px)', opacity: '0.8' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -294,6 +298,7 @@ export default {
         'blueprint-glow': 'blueprint-glow 3s ease-in-out infinite',
         'shivalingam-appear': 'shivalingam-appear 1.5s ease-out forwards',
         'prana-flow': 'prana-flow 5s ease-in-out infinite',
+        'fire-flicker': 'fire-flicker 1.5s ease-in-out infinite',
       },
     },
   },
