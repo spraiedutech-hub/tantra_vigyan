@@ -11,6 +11,7 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { useToast } from '@/hooks/use-toast';
 import { recordActivityCompleted } from '@/lib/progress-tracker';
 import { monthlySadhana } from '@/lib/constants';
+import SadhanaAnimation from '@/components/sadhana-animation';
 
 const SADHANA_STORAGE_KEY = 'monthlySadhanaAudio';
 
@@ -132,6 +133,14 @@ export default function SadhanaPage() {
           ಇಲ್ಲಿ ನೀಡಲಾದ ಶಿಫಾರಸುಗಳು ಸಾಮಾನ್ಯ ಮತ್ತು ಆರಂಭಿಕ ಮಾರ್ಗದರ್ಶನಗಳಾಗಿವೆ. ಮಂತ್ರ ಮತ್ತು ತಂತ್ರಗಳು ತಮ್ಮ ನಿಜವಾದ ಮತ್ತು ಸಂಪೂರ್ಣ ಪರಿಣಾಮವನ್ನು ಕರುಣಾಮಯಿ ಗುರುವಿನಿಂದ ದೀಕ್ಷೆ ಪಡೆದಾಗ ಮಾತ್ರ ತೋರಿಸುತ್ತವೆ.
         </AlertDescription>
       </Alert>
+
+      <Card>
+        <CardContent className="p-6">
+           <div className="relative w-full h-64 md:h-80 flex items-center justify-center my-4">
+                <SadhanaAnimation />
+            </div>
+        </CardContent>
+      </Card>
 
       <Card className="transform hover:scale-[1.01] transition-transform duration-300 ease-in-out">
         <CardHeader>

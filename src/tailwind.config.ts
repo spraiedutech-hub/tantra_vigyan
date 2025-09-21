@@ -174,6 +174,14 @@ export default {
         'line-draw': {
             'to': { 'stroke-dashoffset': '0' },
         },
+        'lotus-open': {
+          '0%': { transform: 'scale(0) rotate(var(--initial-rotate, 0deg))', opacity: '0' },
+          '100%': { transform: 'scale(1) rotate(var(--final-rotate, 0deg))', opacity: '0.5' },
+        },
+        'lotus-open-slow': {
+          '0%': { transform: 'scale(0) rotate(var(--initial-rotate, 22.5deg))', opacity: '0' },
+          '100%': { transform: 'scale(1) rotate(var(--final-rotate, 22.5deg))', opacity: '0.7' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -198,6 +206,8 @@ export default {
         'logo-fade-in': 'logo-fade-in 1.5s ease-out forwards',
         'background-zoom': 'background-zoom 10s ease-out forwards',
         'line-draw': 'line-draw 1.5s ease-in-out forwards',
+        'lotus-open': 'lotus-open 2s ease-out forwards',
+        'lotus-open-slow': 'lotus-open-slow 2.5s ease-out forwards',
       },
     },
   },
