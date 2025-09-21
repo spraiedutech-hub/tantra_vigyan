@@ -11,6 +11,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import marketPredictions from '@/lib/content/market-predictions.json';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
+import { useState, useEffect } from 'react';
 
 const WHATSAPP_NUMBER = "917022070287";
 const WHATSAPP_MESSAGE = "ನಮಸ್ಕಾರ, ನಾನು ತಂತ್ರ ವಿಜ್ಞಾನ ಅಪ್ಲಿಕೇಶನ್‌ನಿಂದ ಶೇರು ಮಾರುಕಟ್ಟೆ ಜ್ಯೋತಿಷ್ಯ ವರದಿಗಾಗಿ ಸಂಪರ್ಕಿಸುತ್ತಿದ್ದೇನೆ.";
@@ -36,6 +37,24 @@ const planetaryInfluences = [
 ];
 
 export default function ShareMarketAstrologyPage() {
+  const [displayDate, setDisplayDate] = useState('');
+
+  useEffect(() => {
+    const today = new Date();
+    const dayOfWeek = today.getDay(); // 0 = Sunday, 6 = Saturday
+
+    let dateToDisplay = today;
+
+    if (dayOfWeek === 0) { // If Sunday
+      dateToDisplay.setDate(today.getDate() - 2);
+    } else if (dayOfWeek === 6) { // If Saturday
+      dateToDisplay.setDate(today.getDate() - 1);
+    }
+
+    const formattedDate = `${String(dateToDisplay.getDate()).padStart(2, '0')}-${String(dateToDisplay.getMonth() + 1).padStart(2, '0')}-${dateToDisplay.getFullYear()}`;
+    setDisplayDate(formattedDate);
+  }, []);
+
   return (
     <div className="space-y-8 animate-fade-in">
       <header className="space-y-2 p-4 rounded-lg animated-border">
@@ -65,7 +84,7 @@ export default function ShareMarketAstrologyPage() {
               <CalendarDays className="text-primary"/>
               ಇಂದಿನ ಮಾರುಕಟ್ಟೆ ಜ್ಯೋತಿಷ್ಯ ಮುನ್ಸೂಚನೆ
             </CardTitle>
-            <CardDescription>ದಿನಾಂಕ: {marketPredictions.date}</CardDescription>
+            <CardDescription>ದಿನಾಂಕ: {displayDate || marketPredictions.date}</CardDescription>
           </CardHeader>
           <CardContent>
             <Tabs defaultValue="nifty" className="w-full">
