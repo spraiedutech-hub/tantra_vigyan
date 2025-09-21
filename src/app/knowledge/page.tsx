@@ -12,7 +12,7 @@ import {
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { ScrollAnimate } from '@/components/ui/scroll-animate';
 import { Card, CardContent } from '@/components/ui/card';
-import KnowledgeBookAnimation from '@/components/knowledge-book-animation';
+import KnowledgeFlowAnimation from '@/components/knowledge-flow-animation';
 
 
 export default function KnowledgePage() {
@@ -31,8 +31,8 @@ export default function KnowledgePage() {
 
       <Card>
         <CardContent className="p-0">
-           <div className="relative w-full h-64 md:h-80 flex items-center justify-center my-4">
-              <KnowledgeBookAnimation />
+           <div className="relative w-full h-64 md:h-80 flex items-center justify-center my-4 overflow-hidden">
+              <KnowledgeFlowAnimation />
             </div>
         </CardContent>
       </Card>
