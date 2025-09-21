@@ -23,7 +23,16 @@ export default function ChariotWheelAnimation() {
       {/* Background glow */}
       <circle cx="100" cy="100" r="95" fill="url(#gradWheel)" className="animate-pulse-slow" />
 
-      <g className="animate-chariot-wheel-rotate" style={{ transformOrigin: '100px 100px' }}>
+      <g>
+         <animateTransform
+            attributeName="transform"
+            attributeType="XML"
+            type="rotate"
+            from="0 100 100"
+            to="360 100 100"
+            dur="20s"
+            repeatCount="indefinite"
+        />
         {/* Outer Rim */}
         <circle cx="100" cy="100" r="90" stroke="hsl(var(--primary))" strokeWidth="2" fill="none" filter="url(#wheelGlow)" />
         <circle cx="100" cy="100" r="85" stroke="hsl(var(--border))" strokeWidth="0.5" fill="none" />
