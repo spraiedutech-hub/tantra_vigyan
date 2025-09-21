@@ -69,4 +69,16 @@
     mask-composite: exclude;
     animation: animated-border 4s linear infinite;
   }
+  .animate-orbit {
+    animation: orbit linear infinite;
+  }
+}
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
