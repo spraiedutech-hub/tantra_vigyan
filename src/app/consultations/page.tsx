@@ -20,7 +20,7 @@ export default function ConsultationsPage() {
 
       <Card className="transform hover:scale-[1.02] transition-transform duration-300 ease-in-out">
         <CardHeader>
-          <CardTitle className="font-headline text-2xl text-accent">ಸಮಾಲೋಚನೆ ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ?</CardTitle>
+          <CardTitle className="font-headline text-2xl text-accent">ಸಮಾಲೋಚನೆ ಕಾರ್ಯ ವಿಧಾನ</CardTitle>
           <CardDescription>How the Consultation Works</CardDescription>
         </CardHeader>
         <CardContent>
