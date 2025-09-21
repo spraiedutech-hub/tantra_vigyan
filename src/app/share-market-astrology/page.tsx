@@ -288,7 +288,7 @@ export default function ShareMarketAstrologyPage() {
                 </p>
             </CardContent>
             <CardFooter className="flex-col sm:flex-row items-center gap-4">
-                <p className="text-xl font-bold text-primary">ಶುಲ್ಕ: ₹2,222</p>
+                <p className="text-xl font-bold text-primary">ಶುಲ್ಕ: ₹3,333</p>
                 <Button asChild size="lg" className="w-full sm:w-auto">
                     <Link href={WHATSAPP_URL} target="_blank">
                     <Phone className="mr-2 h-5 w-5" />
@@ -301,7 +301,3 @@ export default function ShareMarketAstrologyPage() {
     </div>
   );
 }
-
-    
-
-    
