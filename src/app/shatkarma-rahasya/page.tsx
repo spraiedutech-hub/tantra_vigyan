@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import shatkarmaData from '@/lib/content/shatkarma-rahasya.json';
 
-const WHATSAPP_NUMBER = "917204676465";
+const WHATSAPP_NUMBER = "917022070287";
 const WHATSAPP_MESSAGE = "ನಮಸ್ಕಾರ, ನಾನು ತಂತ್ರ ವಿಜ್ಞಾನ ಅಪ್ಲಿಕೇಶನ್‌ನಿಂದ ಷಟ್ಕರ್ಮಗಳ ಬಗ್ಗೆ ವೈಯಕ್ತಿಕ ಮಾರ್ಗದರ್ಶನಕ್ಕಾಗಿ ಸಂಪರ್ಕಿಸುತ್ತಿದ್ದೇನೆ.";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
@@ -22,7 +22,7 @@ export default function ShatkarmaRahasyaPage() {
           ಷಟ್ಕರ್ಮ ರಹಸ್ಯ
         </h1>
         <p className="text-lg text-muted-foreground">
-          ಹಠ ಯೋಗದ ಆರು ಶುದ್ಧೀಕರಣ ಕ್ರಿಯೆಗಳ ಆಳವಾದ ಜ್ಞಾನ.
+          ತಂತ್ರ ಶಾಸ್ತ್ರದಲ್ಲಿನ ಆರು ಶಕ್ತಿಶಾಲಿ ಕ್ರಿಯೆಗಳ ಜ್ಞಾನ.
         </p>
       </header>
       
@@ -31,7 +31,7 @@ export default function ShatkarmaRahasyaPage() {
             <CardHeader>
                 <CardTitle>{shatkarmaData.introduction.title}</CardTitle>
             </CardHeader>
-            <CardContent className="prose prose-lg dark:prose-invert max-w-full text-foreground/90 text-justify leading-relaxed">
+            <CardContent className="prose prose-lg dark:prose-invert max-w-full text-foreground/ ৯০ text-justify leading-relaxed">
                 {shatkarmaData.introduction.content.split('\n\n').map((paragraph, index) => (
                     <p key={index}>{paragraph}</p>
                 ))}
@@ -42,9 +42,9 @@ export default function ShatkarmaRahasyaPage() {
       <ScrollAnimate delay={150}>
         <Alert variant="destructive" className="border-destructive/50 text-destructive [&>svg]:text-destructive">
           <AlertTriangle className="h-4 w-4" />
-          <AlertTitle className="font-bold text-lg">ಅತ್ಯಂತ ಪ್ರಮುಖ ಸೂಚನೆ</AlertTitle>
+          <AlertTitle className="font-bold text-lg">ಅತ್ಯಂತ ಪ್ರಮುಖ ಎಚ್ಚರಿಕೆ</AlertTitle>
           <AlertDescription>
-            ಷಟ್ಕರ್ಮಗಳು ಅತ್ಯಂತ ಶಕ್ತಿಶಾಲಿ ಕ್ರಿಯೆಗಳಾಗಿವೆ. ಇವುಗಳನ್ನು ತಪ್ಪಾಗಿ ಅಭ್ಯಾಸ ಮಾಡಿದರೆ ದೈಹಿಕ ಮತ್ತು ಮಾನಸಿಕ ಹಾನಿ ಉಂಟಾಗಬಹುದು. ದಯವಿಟ್ಟು ಈ ಕ್ರಿಯೆಗಳನ್ನು ಪುಸ್ತಕ ಅಥವಾ ವೀಡಿಯೊ ನೋಡಿ ಕಲಿಯಲು ಪ್ರಯತ್ನಿಸಬೇಡಿ. ಯಾವಾಗಲೂ ಅರ್ಹ ಮತ್ತು ಅನುಭವಿ ಗುರುವಿನ ನೇರ ಮಾರ್ಗದರ್ಶನದಲ್ಲಿ ಮಾತ್ರ ಕಲಿಯಿರಿ.
+            ಷಟ್ಕರ್ಮಗಳು ಅತ್ಯಂತ ಶಕ್ತಿಶಾಲಿ ಮತ್ತು ಅಪಾಯಕಾರಿ ತಾಂತ್ರಿಕ ಕ್ರಿಯೆಗಳಾಗಿವೆ. ಇವುಗಳ ಜ್ಞಾನವನ್ನು ಕೇವಲ ಶೈಕ್ಷಣಿಕ ಉದ್ದೇಶಕ್ಕಾಗಿ ನೀಡಲಾಗಿದೆ. ಇವುಗಳನ್ನು ದುರುಪಯೋಗಪಡಿಸಿಕೊಳ್ಳುವುದು ತಂತ್ರದ ಮೂಲ ತತ್ವಗಳಿಗೆ ವಿರುದ್ಧವಾಗಿದೆ ಮತ್ತು ಮಾಡುವವನಿಗೆ ಗಂಭೀರ ಕರ್ಮದ ಪರಿಣಾಮಗಳನ್ನು ಉಂಟುಮಾಡುತ್ತದೆ. ಈ ಕ್ರಿಯೆಗಳನ್ನು ಎಂದಿಗೂ ಸ್ವಂತವಾಗಿ ಪ್ರಯತ್ನಿಸಬಾರದು. ಇವುಗಳ ಬಗ್ಗೆ ಆಳವಾದ ಜ್ಞಾನ ಮತ್ತು ಸಾಧನೆಗೆ ಅರ್ಹ ಗುರುವಿನ ಮಾರ್ಗದರ್ಶನ ಕಡ್ಡಾಯ.
           </AlertDescription>
         </Alert>
       </ScrollAnimate>
@@ -89,19 +89,19 @@ export default function ShatkarmaRahasyaPage() {
             <CardHeader>
                 <CardTitle className="text-2xl font-headline text-accent flex items-center gap-3">
                     <UserCheck />
-                    ವೈಯಕ್ತಿಕ ಮಾರ್ಗದರ್ಶನ ಮತ್ತು ತರಬೇತಿ
+                    ವೈಯಕ್ತಿಕ ಮಾರ್ಗದರ್ಶನ
                 </CardTitle>
                 <CardDescription>
-                ನಿಮ್ಮ ದೇಹ ಪ್ರಕೃತಿಗೆ ಅನುಗುಣವಾಗಿ ಷಟ್ಕರ್ಮಗಳನ್ನು ಸುರಕ್ಷಿತವಾಗಿ ಕಲಿಯಲು ಮತ್ತು ಅಭ್ಯಾಸ ಮಾಡಲು ನೇರ ಮಾರ್ಗದರ್ಶನ ಪಡೆಯಿರಿ.
+                  ಈ ಶಕ್ತಿಶಾಲಿ ಜ್ಞಾನದ ನೈತಿಕ ಮತ್ತು ಆಧ್ಯಾತ್ಮಿಕ ಅಂಶಗಳ ಬಗ್ಗೆ ಸರಿಯಾದ ಮಾರ್ಗದರ್ಶನವನ್ನು ಪಡೆಯಿರಿ.
                 </CardDescription>
             </CardHeader>
             <CardContent>
                 <p className="prose prose-lg dark:prose-invert max-w-full text-foreground/90">
-                ನಿಮ್ಮ ಆರೋಗ್ಯ, ವಯಸ್ಸು ಮತ್ತು ಆಧ್ಯಾತ್ಮಿಕ ಗುರಿಗಳನ್ನು ಪರಿಗಣಿಸಿ, ನಿಮಗೆ ಯಾವ ಷಟ್ಕರ್ಮವು ಹೆಚ್ಚು ಸೂಕ್ತ ಮತ್ತು ಅದನ್ನು ಹೇಗೆ ಸರಿಯಾಗಿ ಮಾಡುವುದು ಎಂಬುದರ ಕುರಿತು ಗುರೂಜಿಯವರಿಂದ ವೈಯಕ್ತಿಕ ತರಬೇತಿ ಪಡೆಯಿರಿ.
+                  ಷಟ್ಕರ್ಮಗಳ ಹಿಂದಿನ ನಿಜವಾದ ತತ್ವ ಮತ್ತು ಅವುಗಳ ಆಧ್ಯಾತ್ಮಿಕ ಉದ್ದೇಶವನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು, ಮತ್ತು ಶಕ್ತಿಯನ್ನು ಜವಾಬ್ದಾರಿಯುತವಾಗಿ ಹೇಗೆ ಬಳಸುವುದು ಎಂಬುದನ್ನು ತಿಳಿಯಲು ಗುರೂಜಿಯವರಿಂದ ವೈಯಕ್ತಿಕ ಸಮಾಲೋಚನೆ ಪಡೆಯಿರಿ.
                 </p>
             </CardContent>
             <CardFooter className="flex-col sm:flex-row items-center gap-4">
-                <p className="text-xl font-bold text-primary">ಶುಲ್ಕವು ತರಬೇತಿಯನ್ನು ಅವಲಂಬಿಸಿರುತ್ತದೆ</p>
+                <p className="text-xl font-bold text-primary">ಶುಲ್ಕವು ಸಮಾಲೋಚನೆಯನ್ನು ಅವಲಂಬಿಸಿರುತ್ತದೆ</p>
                 <Button asChild size="lg" className="w-full sm:w-auto">
                     <Link href={WHATSAPP_URL} target="_blank">
                     <Phone className="mr-2 h-5 w-5" />
