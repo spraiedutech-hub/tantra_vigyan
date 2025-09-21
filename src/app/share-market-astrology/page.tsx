@@ -137,7 +137,7 @@ export default function ShareMarketAstrologyPage() {
        <Tabs defaultValue="forecast" className="w-full">
             <TabsList className="grid w-full grid-cols-2">
                 <TabsTrigger value="forecast">ದೈನಂದಿನ ಮುನ್ಸೂಚನೆ</TabsTrigger>
-                <TabsTrigger value="learn">jyothisyada drustiyalli</TabsTrigger>
+                <TabsTrigger value="learn">ಜ್ಯೋತಿಷ್ಯದ ದೃಷ್ಟಿಯಲ್ಲಿ</TabsTrigger>
             </TabsList>
             <TabsContent value="forecast">
                 <Card className="mt-4">
