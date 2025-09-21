@@ -21,7 +21,8 @@ export default function AppTourAnimation() {
         x,
         y,
         Icon,
-        delay: Math.random() * 5,
+        // Cascading delay for wave effect
+        delay: i * 0.15, 
         duration: 5 + Math.random() * 5,
       };
     });
@@ -55,7 +56,8 @@ export default function AppTourAnimation() {
             stroke="hsl(var(--accent))"
             strokeWidth="0.5"
             className="animate-line-draw"
-            style={{ animationDelay: `${node.delay}s`, animationDuration: `${node.duration}s` }}
+            strokeDasharray="200"
+            style={{ animationDelay: `${node.delay}s`, animationDuration: `3s` }}
           />
           {/* Icon nodes */}
           <g transform={`translate(${node.x - 10}, ${node.y - 10})`} className="animate-float-fade" style={{ animationDelay: `${node.delay}s`, animationDuration: `${node.duration}s`}}>
