@@ -73,15 +73,15 @@ export default function GamblingPage() {
             <CardHeader>
                 <CardTitle className="text-2xl font-headline text-accent flex items-center gap-3">
                     <UserCheck />
-                    ವೈಯಕ್ತಿಕ ಅದೃಷ್ಟ ವರದಿ (Personal Luck Report)
+                    ವೈಯಕ್ತಿಕ ತಾಂತ್ರಿಕ ಮತ್ತು ಜ್ಯೋತಿಷ್ಯ ಸಲಹೆ
                 </CardTitle>
                 <CardDescription>
-                ನಿಮ್ಮ ಜನ್ಮ ಕುಂಡಲಿಯ ಆಧಾರದ ಮೇಲೆ ಆಕಸ್ಮಿಕ ಧನಲಾಭದ ಯೋಗಗಳನ್ನು ಮತ್ತು ಅದೃಷ್ಟದ ಸಮಯವನ್ನು ತಿಳಿಯಿರಿ.
+                ನಿಮ್ಮ ಜನ್ಮ ಕುಂಡಲಿಯ ಆಧಾರದ ಮೇಲೆ ನಿಮ್ಮ ಅದೃಷ್ಟವನ್ನು ಹೆಚ್ಚಿಸಲು ವೈಯಕ್ತಿಕ ಮಾರ್ಗದರ್ಶನ ಪಡೆಯಿರಿ.
                 </CardDescription>
             </CardHeader>
             <CardContent>
                 <p className="prose prose-lg dark:prose-invert max-w-full text-foreground/90">
-                ನಿಮ್ಮ ಜಾತಕದಲ್ಲಿನ ಯಾವ ಗ್ರಹಗಳು ನಿಮಗೆ ಆಕಸ್ಮಿಕ ಲಾಭವನ್ನು ತರಬಲ್ಲವು? ಯಾವ ದಶಾ-ಭುಕ್ತಿಗಳು ನಿಮಗೆ ಅನುಕೂಲಕರವಾಗಿವೆ? ನಿಮ್ಮ ಅದೃಷ್ಟ ಸಂಖ್ಯೆಗಳು ಮತ್ತು ಬಣ್ಣಗಳು ಯಾವುವು? ಈ ಎಲ್ಲಾ ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಗಳನ್ನು ಗುರೂಜಿಯವರಿಂದ ವೈಯಕ್ತಿಕ ವಿಶ್ಲೇಷಣೆಯ ಮೂಲಕ ಪಡೆಯಿರಿ.
+                ನಿಮ್ಮ ಜಾತಕವನ್ನು ವಿಶ್ಲೇಷಿಸಿ, ನಿಮಗೆ ಯಾವ ಯಂತ್ರ (ಲಕ್ಷ್ಮೀ, ಕುಬೇರ), ಬೀಜ ಮಂತ್ರಗಳು (ಶ್ರೀಂ, ಕ್ಲೀಂ), ಮತ್ತು ರತ್ನಗಳು ಹೆಚ್ಚು ಅನುಕೂಲಕರವೆಂದು ತಿಳಿಯಿರಿ. ಗುರೂಜಿಯವರಿಂದ ವೈಯಕ್ತಿಕ ಸಲಹೆ ಪಡೆದು ನಿಮ್ಮ ಆರ್ಥಿಕ ಅಭಿವೃದ್ಧಿಗೆ ಸರಿಯಾದ ಆಧ್ಯಾತ್ಮಿಕ ಮಾರ್ಗವನ್ನು ಕಂಡುಕೊಳ್ಳಿ.
                 </p>
             </CardContent>
             <CardFooter className="flex-col sm:flex-row items-center gap-4">
