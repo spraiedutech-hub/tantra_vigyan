@@ -17,6 +17,7 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Skeleton } from '@/components/ui/skeleton';
 import dailyHoroscopes from '@/lib/content/daily-horoscopes.json';
 import Link from 'next/link';
+import { Separator } from '@/components/ui/separator';
 
 const birthChartSchema = z.object({
   dateOfBirth: z.string().min(1, 'ದಯವಿಟ್ಟು ಜನ್ಮ ದಿನಾಂಕವನ್ನು ನಮೂದಿಸಿ'),
@@ -164,10 +165,19 @@ export default function AstrologyPage() {
         <CardHeader>
           <CardTitle>ಸಂಪೂರ್ಣ ಜನ್ಮ ಕುಂಡಲಿ ವಿಶ್ಲೇಷಣೆ</CardTitle>
           <CardDescription>
-            ಆಳವಾದ ವಿಶ್ಲೇಷಣೆಗಾಗಿ, ದಯವಿಟ್ಟು ನಿಮ್ಮ ಜನ್ಮ ವಿವರಗಳನ್ನು ಒದಗಿಸಿ.
+            ಆಳವಾದ ವಿಶ್ಲೇಷಣೆಗಾಗಿ, ಗುರುಗಳೊಂದಿಗೆ ನೇರ ಸಮಾಲೋಚಿಸಿ ಅಥವಾ AI ಸಹಾಯ ಪಡೆಯಿರಿ.
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="space-y-6">
+           <Button asChild variant="outline" className="w-full border-accent text-accent hover:bg-accent hover:text-accent-foreground">
+            <Link href={WHATSAPP_URL} target="_blank">
+                <Phone className="mr-2 h-4 w-4" />
+                ಗುರುಗಳೊಂದಿಗೆ ನೇರ ಸಮಾಲೋಚನೆ (WhatsApp)
+            </Link>
+          </Button>
+
+          <Separator className="my-4" />
+
           <Form {...birthChartForm}>
             <form onSubmit={birthChartForm.handleSubmit(onBirthChartSubmit)} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -217,19 +227,6 @@ export default function AstrologyPage() {
               </Button>
             </form>
           </Form>
-
-          <div className="flex items-center space-x-4 my-4">
-            <div className="flex-1 border-t border-dashed"></div>
-            <span className="text-sm text-muted-foreground">ಅಥವಾ</span>
-            <div className="flex-1 border-t border-dashed"></div>
-          </div>
-          
-          <Button asChild variant="outline" className="w-full border-accent text-accent hover:bg-accent hover:text-accent-foreground">
-            <Link href={WHATSAPP_URL} target="_blank">
-                <Phone className="mr-2 h-4 w-4" />
-                ಗುರುಗಳೊಂದಿಗೆ ನೇರ ಸಮಾಲೋಚನೆ (WhatsApp)
-            </Link>
-          </Button>
 
         </CardContent>
       </Card>
