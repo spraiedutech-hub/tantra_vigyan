@@ -90,6 +90,21 @@ export default function ShareMarketAstrologyPage() {
                       ))}
                     </ul>
                   </div>
+                  <Separator className="my-6" />
+                  <div className="space-y-4">
+                    <h3 className="font-semibold text-accent flex items-center gap-2">
+                      <Star className="h-4 w-4" />
+                      ನಿಫ್ಟಿ ಸ್ಟಾಕ್‌ಗಳು (Stocks of the day)
+                    </h3>
+                    <ul className="space-y-3">
+                      {marketPredictions.nifty.stocksToWatch.map((stock, index) => (
+                        <li key={index} className="p-3 rounded-md border bg-muted/30">
+                          <p className="font-bold text-foreground">{stock.name}</p>
+                          <p className="text-sm text-muted-foreground">{stock.reason}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </TabsContent>
               <TabsContent value="banknifty" className="mt-4">
@@ -109,24 +124,24 @@ export default function ShareMarketAstrologyPage() {
                       ))}
                     </ul>
                   </div>
+                  <Separator className="my-6" />
+                   <div className="space-y-4">
+                    <h3 className="font-semibold text-accent flex items-center gap-2">
+                      <Star className="h-4 w-4" />
+                      ಬ್ಯಾಂಕ್ ನಿಫ್ಟಿ ಸ್ಟಾಕ್‌ಗಳು (Stocks of the day)
+                    </h3>
+                    <ul className="space-y-3">
+                      {marketPredictions.banknifty.stocksToWatch.map((stock, index) => (
+                        <li key={index} className="p-3 rounded-md border bg-muted/30">
+                          <p className="font-bold text-foreground">{stock.name}</p>
+                          <p className="text-sm text-muted-foreground">{stock.reason}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </TabsContent>
             </Tabs>
-            <Separator className="my-6" />
-            <div className="space-y-4">
-              <h3 className="font-semibold text-accent flex items-center gap-2">
-                <Star className="h-4 w-4" />
-                ಗಮನಿಸಬೇಕಾದ ಸ್ಟಾಕ್‌ಗಳು (Stocks of the day)
-              </h3>
-              <ul className="space-y-3">
-                {marketPredictions.stocksToWatch.map((stock, index) => (
-                   <li key={index} className="p-3 rounded-md border bg-muted/30">
-                     <p className="font-bold text-foreground">{stock.name}</p>
-                     <p className="text-sm text-muted-foreground">{stock.reason}</p>
-                   </li>
-                ))}
-              </ul>
-            </div>
           </CardContent>
         </Card>
       </ScrollAnimate>
@@ -192,3 +207,5 @@ export default function ShareMarketAstrologyPage() {
     </div>
   );
 }
+
+    
