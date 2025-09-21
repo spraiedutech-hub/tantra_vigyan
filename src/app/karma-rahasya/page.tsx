@@ -104,6 +104,9 @@ export default function KarmaRahasyaPage() {
                 <p className="prose prose-lg dark:prose-invert max-w-full text-foreground/90">
                 ನಿಮ್ಮ ಹಿಂದಿನ ಕರ್ಮಗಳ ಯಾವ ಪ್ರಭಾವವು ನಿಮ್ಮ ಪ್ರಸ್ತುತ ಜೀವನದ ಮೇಲೆ ಪರಿಣಾಮ ಬೀರುತ್ತಿದೆ ಎಂಬುದನ್ನು ತಿಳಿದುಕೊಳ್ಳಿ. ಗುರೂಜಿಯವರಿಂದ ವೈಯಕ್ತಿಕ ಮಾರ್ಗದರ್ಶನ ಪಡೆದು, ನಿಮ್ಮ ಕರ್ಮದ ಬಂಧನಗಳನ್ನು ನಿವಾರಿಸಲು ಸರಿಯಾದ ಆಧ್ಯಾತ್ಮಿಕ ಮಾರ್ಗವನ್ನು ಕಂಡುಕೊಳ್ಳಿ.
                 </p>
+                <p className="mt-4 font-semibold text-center text-lg">
+                ಸಂಪರ್ಕಿಸಿ: 7022070287
+                </p>
             </CardContent>
             <CardFooter className="flex-col sm:flex-row items-center gap-4">
                 <p className="text-xl font-bold text-primary">ಶುಲ್ಕ: ₹2,222</p>
