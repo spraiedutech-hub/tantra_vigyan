@@ -6,7 +6,7 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Zap, AlertTriangle, Activity } from 'lucide-react';
 import { ScrollAnimate } from '@/components/ui/scroll-animate';
 import chakrasData from '@/lib/content/chakras-powerhouses.json';
-import ChakraPractitioner from '@/components/chakra-practitioner';
+import ChakraEnergyFlow from '@/components/chakra-energy-flow';
 
 export default function ChakrasInfoPage() {
   return (
@@ -45,9 +45,7 @@ export default function ChakrasInfoPage() {
       </ScrollAnimate>
       
       <div className="relative w-full h-96 md:h-[500px] flex items-center justify-center my-8">
-        <div className="relative w-full h-full max-w-[450px] md:max-w-none md:max-h-[500px]">
-            <ChakraPractitioner />
-        </div>
+        <ChakraEnergyFlow />
       </div>
 
       <div className="space-y-6">

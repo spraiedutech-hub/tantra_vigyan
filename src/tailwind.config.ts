@@ -248,6 +248,11 @@ export default {
           '0%': { opacity: '0', transform: 'scale(0.5) translateY(20px)' },
           '100%': { opacity: '1', transform: 'scale(0.6) translateY(0)' },
         },
+        'prana-flow': {
+          '0%': { opacity: '0' },
+          '50%': { opacity: '1' },
+          '100%': { opacity: '0' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -288,6 +293,7 @@ export default {
         'blueprint-draw': 'blueprint-draw 1.5s ease-out forwards',
         'blueprint-glow': 'blueprint-glow 3s ease-in-out infinite',
         'shivalingam-appear': 'shivalingam-appear 1.5s ease-out forwards',
+        'prana-flow': 'prana-flow 5s ease-in-out infinite',
       },
     },
   },
