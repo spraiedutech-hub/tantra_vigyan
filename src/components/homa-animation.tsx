@@ -45,7 +45,7 @@ export default function HomaAnimation() {
       </g>
       
       {/* Full Moon */}
-      <g transform="translate(250, 50)" className="animate-pulse-slow">
+      <g transform="translate(250, 50)" className="animate-move-across-sky">
         <circle cx="0" cy="0" r="25" fill="url(#gradFullMoon)" />
         <circle cx="0" cy="0" r="18" fill="hsl(60, 50%, 90%)" />
       </g>

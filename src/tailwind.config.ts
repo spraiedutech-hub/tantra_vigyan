@@ -254,9 +254,11 @@ export default {
           '100%': { opacity: '0' },
         },
         'fire-flicker': {
-          '0%, 100%': { transform: 'scale(1, 1) translateY(0)', opacity: '0.9' },
-          '25%': { transform: 'scale(1.1, 0.9) translateY(-10px) skewX(-5deg)', opacity: '1' },
-          '75%': { transform: 'scale(0.9, 1.1) translateY(5px) skewX(5deg)', opacity: '0.8' },
+          '0%, 100%': { transform: 'scaleY(1)', opacity: '0.9' },
+          '20%': { transform: 'scaleY(2.0) skewX(15deg)', opacity: '1' },
+          '40%': { transform: 'scaleY(0.8) skewX(-10deg)', opacity: '0.8' },
+          '60%': { transform: 'scaleY(1.8) skewX(10deg)', opacity: '1' },
+          '80%': { transform: 'scaleY(0.9) skewX(-15deg)', opacity: '0.9' },
         },
         'sparks-fly': {
           '0%': { transform: 'translateY(0) translateX(0)', opacity: '1' },
@@ -265,6 +267,10 @@ export default {
         'star-twinkle': {
           '0%, 100%': { opacity: '0.3' },
           '50%': { opacity: '1' },
+        },
+        'move-across-sky': {
+          '0%': { transform: 'translateX(-150px)' },
+          '100%': { transform: 'translateX(150px)' },
         },
       },
       animation: {
@@ -307,9 +313,10 @@ export default {
         'blueprint-glow': 'blueprint-glow 3s ease-in-out infinite',
         'shivalingam-appear': 'shivalingam-appear 1.5s ease-out forwards',
         'prana-flow': 'prana-flow 5s ease-in-out infinite',
-        'fire-flicker': 'fire-flicker 1.5s ease-in-out infinite',
+        'fire-flicker': 'fire-flicker 1.2s ease-in-out infinite',
         'sparks-fly': 'sparks-fly linear infinite',
         'star-twinkle': 'star-twinkle 4s ease-in-out infinite',
+        'move-across-sky': 'move-across-sky 40s linear infinite alternate',
       },
     },
   },
