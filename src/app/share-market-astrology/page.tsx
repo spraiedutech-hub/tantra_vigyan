@@ -10,7 +10,7 @@ import Link from 'next/link';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import personalizedForecastInfo from '@/lib/content/personalized-forecast-info.json';
 import planetaryInfluences from '@/lib/content/planetary-influences.json';
 import dailyPrediction from '@/lib/content/market-predictions.json';
@@ -18,8 +18,11 @@ import type { MarketPredictionOutput } from '@/lib/types';
 
 
 const WHATSAPP_NUMBER = "917022070287";
-const WHATSAPP_MESSAGE = "ನಮಸ್ಕಾರ, ನಾನು ತಂತ್ರ ವಿಜ್ಞಾನ ಅಪ್ಲಿಕೇಶನ್‌ನಿಂದ ಶೇರು ಮಾರುಕಟ್ಟೆ ಜ್ಯೋತಿಷ್ಯ ವರದಿಗಾಗಿ ಸಂಪರ್ಕಿಸುತ್ತಿದ್ದೇನೆ.";
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+const WHATSAPP_MESSAGE_YEARLY = "ನಮಸ್ಕಾರ, ನಾನು ತಂತ್ರ ವಿಜ್ಞಾನ ಅಪ್ಲಿಕೇಶನ್‌ನಿಂದ 1 ವರ್ಷದ ಶೇರು ಮಾರುಕಟ್ಟೆ ಜ್ಯೋತಿಷ್ಯ ವರದಿಗಾಗಿ ಸಂಪರ್ಕಿಸುತ್ತಿದ್ದೇನೆ.";
+const WHATSAPP_URL_YEARLY = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE_YEARLY)}`;
+
+const WHATSAPP_MESSAGE_DAILY = "ನಮಸ್ಕಾರ, ನಾನು ತಂತ್ರ ವಿಜ್ಞಾನ ಅಪ್ಲಿಕೇಶನ್‌ನಿಂದ ದೈನಂದಿನ ವೈಯಕ್ತಿಕ ಶೇರು ಮಾರುಕಟ್ಟೆ ಮುನ್ಸೂಚನೆ ಸೇವೆಗಾಗಿ ಸಂಪರ್ಕಿಸುತ್ತಿದ್ದೇನೆ.";
+const WHATSAPP_URL_DAILY = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE_DAILY)}`;
 
 const planetIcons: { [key: string]: React.ElementType } = {
     "ಗುರು": TrendingUp,
@@ -184,6 +187,34 @@ export default function ShareMarketAstrologyPage() {
                 </div>
             </TabsContent>
        </Tabs>
+       
+       <ScrollAnimate delay={500}>
+        <Card className="bg-gradient-to-br from-primary/20 to-accent/20 animated-border transform hover:scale-[1.01] transition-transform duration-300">
+            <CardHeader>
+                <CardTitle className="text-2xl font-headline text-accent flex items-center gap-3">
+                    <Star className="animate-pulse-glow" />
+                    ವಿಶೇಷ ಸೇವೆ: ವೈಯಕ್ತಿಕ ದೈನಂದಿನ ಮುನ್ಸೂಚನೆ
+                </CardTitle>
+                <CardDescription>
+                ಪ್ರತಿದಿನ ನಿಮ್ಮ ಜನ್ಮ ಕುಂಡಲಿಯನ್ನು ಆಧರಿಸಿ ನಿಮಗಾಗಿ ವಿಶೇಷವಾಗಿ ಸಿದ್ಧಪಡಿಸಿದ, ನಿಖರವಾದ ಮುನ್ಸೂಚನೆಗಳನ್ನು ಪಡೆಯಿರಿ.
+                </CardDescription>
+            </CardHeader>
+            <CardContent>
+                <p className="prose prose-lg dark:prose-invert max-w-full text-foreground/90">
+                ಸಾಮಾನ್ಯ ಮುನ್ಸೂಚನೆಗಳ ಆಚೆಗೆ, ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಗ್ರಹಸ್ಥಿತಿಗಳಿಗೆ ಅನುಗುಣವಾಗಿ ಪ್ರತಿದಿನ ಯಾವ ಸ್ಟಾಕ್‌ಗಳು ಲಾಭದಾಯಕ, ಯಾವ ಸಮಯದಲ್ಲಿ ವ್ಯಾಪಾರ ಮಾಡುವುದು ಉತ್ತಮ ಮತ್ತು ಯಾವ ದಿನಗಳು ನಿಮಗೆ ಅನುಕೂಲಕರವಾಗಿಲ್ಲ ಎಂಬುದರ ಕುರಿತು ನೇರ ಮಾರ್ಗದರ್ಶನವನ್ನು ಪಡೆಯಿರಿ.
+                </p>
+            </CardContent>
+            <CardFooter className="flex-col sm:flex-row items-center gap-4">
+                <p className="text-xl font-bold text-primary">ಶುಲ್ಕ: ₹555 / ದಿನ</p>
+                <Button asChild size="lg" className="w-full sm:w-auto">
+                    <Link href={WHATSAPP_URL_DAILY} target="_blank">
+                    <Phone className="mr-2 h-5 w-5" />
+                    ದೈನಂದಿನ ಸೇವೆಗೆ ವಿನಂತಿಸಿ
+                    </Link>
+                </Button>
+            </CardFooter>
+        </Card>
+      </ScrollAnimate>
 
       <ScrollAnimate delay={700}>
         <Card className="bg-gradient-to-br from-primary/10 to-accent/10 animated-border transform hover:scale-[1.01] transition-transform duration-300">
@@ -204,7 +235,7 @@ export default function ShareMarketAstrologyPage() {
             <CardFooter className="flex-col sm:flex-row items-center gap-4">
                 <p className="text-xl font-bold text-primary">ಶುಲ್ಕ: ₹3,333</p>
                 <Button asChild size="lg" className="w-full sm:w-auto">
-                    <Link href={WHATSAPP_URL} target="_blank">
+                    <Link href={WHATSAPP_URL_YEARLY} target="_blank">
                     <Phone className="mr-2 h-5 w-5" />
                     WhatsApp ಮೂಲಕ ವಿನಂತಿಸಿ
                     </Link>
