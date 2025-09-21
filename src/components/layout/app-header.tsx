@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import { Button } from '@/components/ui/button';
-import { navItems } from '@/lib/nav-items';
+import { navGroups } from '@/lib/nav-items';
 import { useMemo } from 'react';
 import { ArrowRight, Share2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
@@ -14,9 +14,11 @@ export default function AppHeader() {
   const pathname = usePathname();
   const { toast } = useToast();
 
+  const allNavItems = useMemo(() => navGroups.flatMap(group => group.items), []);
+
   const currentPage = useMemo(() => {
-    return navItems.find((item) => item.href === pathname);
-  }, [pathname]);
+    return allNavItems.find((item) => item.href === pathname);
+  }, [pathname, allNavItems]);
 
   const handleShare = async () => {
     const shareData = {
