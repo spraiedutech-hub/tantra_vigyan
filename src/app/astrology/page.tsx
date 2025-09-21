@@ -116,7 +116,7 @@ export default function AstrologyPage() {
         <AlertTriangle className="h-4 w-4" />
         <AlertTitle>ಪ್ರಮುಖ ಸೂಚನೆ</AlertTitle>
         <AlertDescription>
-          ಈ AI-ಚಾಲಿತ ವಿಶ್ಲೇಷಣೆಯು ಮಾರ್ಗದರ್ಶನಕ್ಕಾಗಿ ಮಾತ್ರ. ನಿಖರವಾದ ಮತ್ತು ಆಳವಾದ ವಿಶ್ಲೇಷಣೆಗಾಗಿ, ದಯವಿಟ್ಟು ಅನುಭವಿ ಜ್ಯೋತಿಷಿಗಳನ್ನು ಸಂಪರ್ಕಿಸಿ.
+          ಈ AI-ಚಾಲಿತ ವಿಶ್ಲೇಷಣೆಯು ಮಾರ್ಗದರ್ಶನಕ್ಕಾಗಿ ಮಾತ್ರ. ನಿಖರವಾದ ಮತ್ತು ಆಳವಾದ ವಿಶ್ಲೇಷಣೆಗಾಗಿ, ದಯವಿಟ್ಟು ಪರಿಣಿತ ಗುರುಗಳನ್ನು ಸಂಪರ್ಕಿಸಿ.
         </AlertDescription>
       </Alert>
 
@@ -244,5 +244,3 @@ export default function AstrologyPage() {
     </div>
   );
 }
-
-    
