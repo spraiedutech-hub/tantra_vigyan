@@ -3,7 +3,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { LineChart, AlertTriangle, UserCheck, Phone, TrendingUp, CalendarDays, Star, Loader2 } from 'lucide-react';
+import { LineChart, AlertTriangle, UserCheck, Phone, TrendingUp, CalendarDays, Star, Loader2, BookOpen } from 'lucide-react';
 import { ScrollAnimate } from '@/components/ui/scroll-animate';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -14,6 +14,7 @@ import { useState, useEffect } from 'react';
 import { generateMarketPrediction, type MarketPredictionOutput } from '@/ai/flows/generate-market-prediction';
 import { useToast } from '@/hooks/use-toast';
 import { Skeleton } from '@/components/ui/skeleton';
+import personalizedForecastInfo from '@/lib/content/personalized-forecast-info.json';
 
 
 const WHATSAPP_NUMBER = "917022070287";
@@ -239,18 +240,21 @@ export default function ShareMarketAstrologyPage() {
       <ScrollAnimate delay={450}>
         <Card>
             <CardHeader>
-                <CardTitle>ಹಣಕಾಸು ಜ್ಯೋತಿಷ್ಯ ಎಂದರೇನು?</CardTitle>
+                <CardTitle className="flex items-center gap-3">
+                    <BookOpen className="text-primary"/>
+                    {personalizedForecastInfo.title}
+                </CardTitle>
             </CardHeader>
-            <CardContent className="prose prose-lg dark:prose-invert max-w-full text-foreground/90">
-                <p>
-                ಹಣಕಾಸು ಜ್ಯೋತಿಷ್ಯವು ಜ್ಯೋತಿಷ್ಯ ಶಾಸ್ತ್ರದ ಒಂದು ವಿಶೇಷ ಶಾಖೆಯಾಗಿದ್ದು, ಇದು ಗ್ರಹಗಳ ಸ್ಥಾನ ಮತ್ತು ಚಲನೆಯನ್ನು ಆಧರಿಸಿ ಆರ್ಥಿಕ ಪ್ರವೃತ್ತಿಗಳು, ಮಾರುಕಟ್ಟೆಯ ಏರಿಳಿತಗಳು ಮತ್ತು ವೈಯಕ್ತಿಕ ಹೂಡಿಕೆಗಳ ಭವಿಷ್ಯವನ್ನು ವಿಶ್ಲೇಷಿಸುತ್ತದೆ. ಪ್ರತಿಯೊಂದು ಗ್ರಹ, ರಾಶಿ ಮತ್ತು ನಕ್ಷತ್ರವು ನಿರ್ದಿಷ್ಟ ಆರ್ಥಿಕ ಕ್ಷೇತ್ರಗಳು ಮತ್ತು ಸರಕುಗಳ ಮೇಲೆ ತನ್ನ ಪ್ರಭಾವವನ್ನು ಬೀರುತ್ತದೆ. ಈ ಜ್ಞಾನವನ್ನು ಬಳಸಿಕೊಂಡು, ಒಬ್ಬ ವ್ಯಕ್ತಿಯ ಜಾತಕದ ಆಧಾರದ ಮೇಲೆ ಅವರಿಗೆ ಯಾವ ರೀತಿಯ ಹೂಡಿಕೆಗಳು (ದೀರ್ಘಾವಧಿ, ಅಲ್ಪಾವಧಿ, ಊಹಾಪೋಹ) ಲಾಭದಾಯಕವಾಗಬಹುದು ಮತ್ತು ಯಾವ ಸಮಯದಲ್ಲಿ ಹೂಡಿಕೆ ಮಾಡುವುದು ಅಥವಾ ಮಾರಾಟ ಮಾಡುವುದು ಉತ್ತಮ ಎಂಬುದನ್ನು ನಿರ್ಧರಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.
-                </p>
+            <CardContent className="prose prose-lg dark:prose-invert max-w-full text-foreground/90 text-justify leading-relaxed">
+                 {personalizedForecastInfo.content.split('\n\n').map((paragraph, index) => (
+                    <p key={index}>{paragraph}</p>
+                ))}
             </CardContent>
         </Card>
       </ScrollAnimate>
 
-      <div className="space-y-6">
-        <h2 className="text-3xl font-bold font-headline text-primary mt-12">ಮಾರುಕಟ್ಟೆಯ ಮೇಲೆ ಗ್ರಹಗಳ ಪ್ರಭಾವ</h2>
+      <div className="space-y-6 mt-12">
+        <h2 className="text-3xl font-bold font-headline text-primary">ಮಾರುಕಟ್ಟೆಯ ಮೇಲೆ ಗ್ರಹಗಳ ಪ್ರಭಾವ</h2>
         {planetaryInfluences.map((item, index) => (
           <ScrollAnimate key={index} delay={600 + index * 150}>
             <Card className="transform hover:scale-[1.01] transition-transform duration-300 ease-in-out">
@@ -297,3 +301,5 @@ export default function ShareMarketAstrologyPage() {
     </div>
   );
 }
+
+    
