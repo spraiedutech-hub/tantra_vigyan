@@ -3,7 +3,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Gem, AlertTriangle, UserCheck, Phone } from 'lucide-react';
+import { Gem, AlertTriangle, UserCheck, Phone, ShoppingCart } from 'lucide-react';
 import { ScrollAnimate } from '@/components/ui/scroll-animate';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -67,6 +67,30 @@ export default function EnergizedItemsPage() {
           </ScrollAnimate>
         ))}
       </div>
+
+      <ScrollAnimate delay={300}>
+        <section className="space-y-6">
+            <h2 className="text-3xl font-bold font-headline text-primary text-center flex items-center justify-center gap-3">
+                <ShoppingCart />
+                ಲಭ್ಯವಿರುವ ಸಾಧನಗಳು
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {energizedItemsData.products.map((product, index) => (
+                    <Card key={index} className="flex flex-col">
+                        <CardHeader>
+                            <CardTitle className="text-accent">{product.name}</CardTitle>
+                        </CardHeader>
+                        <CardContent className="flex-grow">
+                            <p className="text-muted-foreground">{product.description}</p>
+                        </CardContent>
+                        <CardFooter>
+                            <p className="text-xl font-bold text-primary w-full text-center">{product.price}</p>
+                        </CardFooter>
+                    </Card>
+                ))}
+            </div>
+        </section>
+      </ScrollAnimate>
 
       <ScrollAnimate delay={500 + energizedItemsData.sections.length * 150}>
         <Card className="bg-gradient-to-br from-primary/10 to-accent/10 animated-border transform hover:scale-[1.01] transition-transform duration-300">
