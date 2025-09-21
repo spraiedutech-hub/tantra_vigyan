@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { zodResolver } from '@hook-form/resolvers/zod';
 import { z } from 'zod';
 import { generateBirthChartAnalysis, type BirthChartAnalysisOutput } from '@/ai/flows/generate-birth-chart-analysis';
 import { Button } from '@/components/ui/button';
@@ -12,13 +12,11 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2, Star, Sparkles, AlertTriangle, CalendarDays, Phone } from 'lucide-react';
+import { Loader2, Star, Sparkles, AlertTriangle, CalendarDays, Phone, ArrowRight } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Skeleton } from '@/components/ui/skeleton';
 import dailyHoroscopes from '@/lib/content/daily-horoscopes.json';
 import Link from 'next/link';
-import RemedySchoolsInfo from '@/components/remedy-schools-info';
-import ConsultationPricing from '@/components/consultation-pricing';
 
 const birthChartSchema = z.object({
   dateOfBirth: z.string().min(1, 'ದಯವಿಟ್ಟು ಜನ್ಮ ದಿನಾಂಕವನ್ನು ನಮೂದಿಸಿ'),
@@ -244,9 +242,22 @@ export default function AstrologyPage() {
           </CardContent>
         </Card>
       )}
-
-      <ConsultationPricing />
-      <RemedySchoolsInfo />
+      
+      <Card className="mt-8 bg-gradient-to-r from-primary/20 via-card to-accent/20 animated-border">
+        <CardHeader>
+            <CardTitle className="text-2xl font-headline text-center">ನಿಮ್ಮ ಸಂಪೂರ್ಣ ಜಾತಕ ವಿಶ್ಲೇಷಣೆ</CardTitle>
+        </CardHeader>
+        <CardContent className="text-center">
+            <p className="text-muted-foreground mb-6">
+            ನಿಮ್ಮ ಜನ್ಮ ಕುಂಡಲಿಯ ಆಳವಾದ, ವೈಯಕ್ತಿಕ ವಿಶ್ಲೇಷಣೆ ಮತ್ತು ಪರಿಹಾರಗಳಿಗಾಗಿ ನಮ್ಮ ಪರಿಣಿತರನ್ನು ಸಂಪರ್ಕಿಸಿ.
+            </p>
+            <Button asChild size="lg">
+                <Link href="/consultations">
+                ಸಮಾಲೋಚನೆ ವಿವರಗಳನ್ನು ವೀಕ್ಷಿಸಿ <ArrowRight className="ml-2" />
+                </Link>
+            </Button>
+        </CardContent>
+      </Card>
     </div>
   );
 }

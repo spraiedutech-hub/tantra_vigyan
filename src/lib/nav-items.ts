@@ -16,7 +16,6 @@ import {
   Feather,
   CheckCircle,
   HeartHandshake,
-  Headphones,
   Users,
   Mic,
   Star,
@@ -78,7 +77,7 @@ export const aiToolsPages = [
 ];
 
 export const communityPages = [
-    { href: '/guidance', label: 'ವೈಯಕ್ತಿಕ ಮಾರ್ಗದರ್ಶನ', icon: ShieldQuestion },
+    { href: '/consultations', label: 'ಸಮಾಲೋಚನೆ', icon: ShieldQuestion },
     { href: '/duties', label: 'ಸಾಧಕನ ಕರ್ತವ್ಯಗಳು', icon: ClipboardCheck },
     { href: '/energized-items', label: 'ಶಕ್ತಿ ತುಂಬಿದ ಸಾಧನಗಳು', icon: Gem },
     { href: '/progress', label: 'ಪ್ರಗತಿ', icon: TrendingUp },
