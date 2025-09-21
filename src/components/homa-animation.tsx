@@ -55,21 +55,21 @@ export default function HomaAnimation() {
             d="M 0 0 Q -10 -20, -5 -40 Q 0 -60, 5 -40 Q 10 -20, 0 0 Z" 
             fill="hsl(var(--primary))" 
             className="animate-fire-flicker" 
-            style={{ animationDelay: '0s', animationDuration: '1.5s' }}
+            style={{ animationDelay: '0s', animationDuration: '0.8s' }}
         />
         {/* Flames Layer 2 (Middle, Orange) */}
         <path 
             d="M -10 0 Q -20 -15, -15 -30 Q -10 -45, 0 -30 Q 5 -20, -10 0 Z" 
             fill="hsl(var(--accent))" 
             className="animate-fire-flicker" 
-            style={{ animationDelay: '0.5s', animationDuration: '1.2s' }}
+            style={{ animationDelay: '0.2s', animationDuration: '0.6s' }}
         />
         {/* Flames Layer 3 (Front, Red) */}
         <path 
             d="M 10 0 Q 20 -10, 15 -25 Q 10 -40, 0 -25 Q -5 -15, 10 0 Z" 
             fill="hsl(var(--destructive))" 
             className="animate-fire-flicker" 
-            style={{ animationDelay: '0.2s', animationDuration: '1.8s' }}
+            style={{ animationDelay: '0.1s', animationDuration: '0.9s' }}
         />
       </g>
     </svg>
