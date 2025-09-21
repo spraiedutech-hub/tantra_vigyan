@@ -23,6 +23,7 @@ import {
   Clock,
   Orbit,
   LineChart,
+  Dices,
 } from 'lucide-react';
 
 export const navItems = [
@@ -35,6 +36,7 @@ export const navItems = [
   { href: '/kaalagnana', label: 'ಕಾಲಜ್ಞಾನ', icon: Clock },
   { href: '/karma-rahasya', label: 'ಕರ್ಮ ರಹಸ್ಯ', icon: Orbit },
   { href: '/share-market-astrology', label: 'ಶೇರು ಮಾರುಕಟ್ಟೆ ಜ್ಯೋತಿಷ್ಯ', icon: LineChart },
+  { href: '/gambling', label: 'ಜೂಜು ಮತ್ತು ಅದೃಷ್ಟ', icon: Dices },
   { href: '/yantras', label: 'ಯಂತ್ರಗಳು', icon: Shapes },
   { href: '/mantras', label: 'ಮಂತ್ರಗಳು', icon: BookAudio },
   { href: '/activities', label: 'ಚಟುವಟಿಕೆಗಳು', icon: CheckCircle },
@@ -50,3 +52,5 @@ export const navItems = [
   { href: '/forum', label: 'ಸಮುದಾಯ ವೇದಿಕೆ', icon: Users },
   { href: '/youtube', label: 'YouTube', icon: Youtube },
 ];
+
+    
