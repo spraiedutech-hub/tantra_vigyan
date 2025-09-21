@@ -20,6 +20,7 @@ import {
   Users,
   Mic,
   Star,
+  Clock,
 } from 'lucide-react';
 
 export const navItems = [
@@ -29,6 +30,7 @@ export const navItems = [
   { href: '/initiation', label: 'ದೀಕ್ಷೆ', icon: KeyRound },
   { href: '/guidance', label: 'ಮಾರ್ಗದರ್ಶನ', icon: ShieldQuestion },
   { href: '/astrology', label: 'ಜ್ಯೋತಿಷ್ಯ', icon: Star },
+  { href: '/kaalagnana', label: 'ಕಾಲಜ್ಞಾನ', icon: Clock },
   { href: '/yantras', label: 'ಯಂತ್ರಗಳು', icon: Shapes },
   { href: '/mantras', label: 'ಮಂತ್ರಗಳು', icon: BookAudio },
   { href: '/activities', label: 'ಚಟುವಟಿಕೆಗಳು', icon: CheckCircle },

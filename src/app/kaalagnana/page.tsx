@@ -1,0 +1,90 @@
+
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { Clock, AlertTriangle } from 'lucide-react';
+import { ScrollAnimate } from '@/components/ui/scroll-animate';
+
+const prophecies = [
+  {
+    title: "ಜ್ಞಾನದ ಪ್ರಾಮುಖ್ಯತೆ",
+    prophecy: "ಕಲಿಯುಗದ ಅಂತ್ಯದಲ್ಲಿ, ಜ್ಞಾನವು ಎಲ್ಲಕ್ಕಿಂತ ಮಿಗಿಲಾದ ಶಕ್ತಿಯಾಗುತ್ತದೆ. ಯಾರು ಜ್ಞಾನವನ್ನು ಹೊಂದಿರುವರೋ, ಅವರೇ ಜಗತ್ತನ್ನು ಆಳುವರು. ಭೌತಿಕ ಶಕ್ತಿಯು ಜ್ಞಾನದ ಮುಂದೆ ಮಂಡಿಯೂರಲಿದೆ."
+  },
+  {
+    title: "ಪ್ರಕೃತಿಯ ಮುನಿಸು",
+    prophecy: "ಮಾನವನು ಪ್ರಕೃತಿಯನ್ನು ಮರೆತು ಅಹಂಕಾರದಿಂದ ಮೆರೆದಾಗ, ಪ್ರಕೃತಿಯು ತನ್ನ रौद्र रूपವನ್ನು ತೋರಿಸುತ್ತದೆ. ಅಕಾಲಿಕ ಮಳೆ, ಭೂಕಂಪಗಳು ಮತ್ತು ವಿಚಿತ್ರ ರೋಗಗಳು ಸಾಮಾನ್ಯವಾಗುತ್ತವೆ."
+  },
+  {
+    title: "ತಂತ್ರಜ್ಞಾನದ ಪ್ರಭಾವ",
+    prophecy: "ಮಾನವನು ಯಂತ್ರಗಳನ್ನು ಸೃಷ್ಟಿಸಿ, ಅವುಗಳ ದಾಸನಾಗುತ್ತಾನೆ. ದೂರದಲ್ಲಿರುವವರೊಂದಿಗೆ ಮಾತನಾಡುತ್ತಾ, ಪಕ್ಕದಲ್ಲಿರುವವರನ್ನು ಮರೆಯುತ್ತಾನೆ. ಮಾಯೆಯು ಹೊಸ ರೂಪದಲ್ಲಿ ಜಗತ್ತನ್ನು ಆವರಿಸುತ್ತದೆ."
+  },
+  {
+    title: "ಆಧ್ಯಾತ್ಮಿಕ ಜಾಗೃತಿ",
+    prophecy: "ಭೌತಿಕತೆಯ ಅತಿಯಾದ ನಂತರ, ಜನರ ಮನಸ್ಸಿನಲ್ಲಿ ಆಧ್ಯಾತ್ಮಿಕತೆಯ ಹುಡುಕಾಟ ಪ್ರಾರಂಭವಾಗುತ್ತದೆ. ಪ್ರಾಚೀನ ಜ್ಞಾನ ಮತ್ತು ಗುರು ಪರಂಪರೆಗೆ ಮತ್ತೆ ಮಹತ್ವ ಬರುತ್ತದೆ. ಜನರು ಶಾಂತಿಗಾಗಿ ಆಂತರಿಕ ಪ್ರಯಾಣವನ್ನು ಪ್ರಾರಂಭಿಸುತ್ತಾರೆ."
+  }
+];
+
+
+export default function KaalagnanaPage() {
+  return (
+    <div className="space-y-8 animate-fade-in">
+      <header className="space-y-2 p-4 rounded-lg animated-border">
+        <h1 className="text-4xl font-bold font-headline text-primary flex items-center gap-2">
+          <Clock />
+          ಕಾಲಜ್ಞಾನ
+        </h1>
+        <p className="text-lg text-muted-foreground">
+          ಕಾಲದ ಜ್ಞಾನ ಮತ್ತು ಭವಿಷ್ಯದ ಬಗ್ಗೆ ಮಹಾಪುರುಷರು ನುಡಿದಿರುವ ಮಾತುಗಳು.
+        </p>
+      </header>
+
+      <ScrollAnimate>
+        <Card>
+            <CardHeader>
+                <CardTitle>ಕಾಲಜ್ಞಾನ ಎಂದರೇನು?</CardTitle>
+            </CardHeader>
+            <CardContent className="prose prose-lg dark:prose-invert max-w-full text-foreground/90">
+                <p>
+                ಕಾಲಜ್ಞಾನವೆಂದರೆ 'ಕಾಲದ ಜ್ಞಾನ'. ಇದು ಭೂತ, ವರ್ತಮಾನ ಮತ್ತು ಭವಿಷ್ಯದ ಬಗ್ಗೆ ಅತೀಂದ್ರಿಯ ಶಕ್ತಿಯ ಮೂಲಕ ಪಡೆದ ಜ್ಞಾನವಾಗಿದೆ. ಭಾರತೀಯ ಪರಂಪರೆಯಲ್ಲಿ, ಶ್ರೀ ಪೋతులೂರಿ ವೀರಬ್ರಹ್ಮೇಂದ್ರ ಸ್ವಾಮಿಗಳಂತಹ ಅನೇಕ ಮಹಾಪುರುಷರು ಮತ್ತು ಸಿದ್ಧರು ತಮ್ಮ ದಿವ್ಯದೃಷ್ಟಿಯಿಂದ ಭವಿಷ್ಯದಲ್ಲಿ ನಡೆಯುವ ಘಟನೆಗಳನ್ನು ಮುಂಚಿತವಾಗಿಯೇ ಗ್ರಹಿಸಿ, ಅವುಗಳನ್ನು ತಾಳೆಗರಿಗಳಲ್ಲಿ ಅಥವಾ ವಚನಗಳ ರೂಪದಲ್ಲಿ ದಾಖಲಿಸಿದ್ದಾರೆ.
+                </p>
+                <p>
+                ಈ ಭವಿಷ್ಯವಾಣಿಗಳು ಕೇವಲ ಘಟನೆಗಳನ್ನು ತಿಳಿಸುವುದಷ್ಟೇ ಅಲ್ಲ, ಬದಲಿಗೆ ಮಾನವಕುಲಕ್ಕೆ ಎಚ್ಚರಿಕೆಗಳನ್ನು ನೀಡುವ ಮತ್ತು ಧರ್ಮದ ಮಾರ್ಗದಲ್ಲಿ ನಡೆಯಲು ಪ್ರೇರೇಪಿಸುವ ಉದ್ದೇಶವನ್ನು ಹೊಂದಿವೆ.
+                </p>
+            </CardContent>
+        </Card>
+      </ScrollAnimate>
+      
+      <ScrollAnimate delay={150}>
+        <Alert variant="destructive" className="border-accent/50 text-accent [&>svg]:text-accent">
+          <AlertTriangle className="h-4 w-4" />
+          <AlertTitle>ಪ್ರಮುಖ ಸೂಚನೆ</AlertTitle>
+          <AlertDescription>
+            ಇಲ್ಲಿ ನೀಡಲಾದ ಕಾಲಜ್ಞಾನದ ವಚನಗಳು ವ್ಯಾಖ್ಯಾನಕ್ಕೆ ಒಳಪಟ್ಟಿವೆ ಮತ್ತು ಮಾಹಿತಿ ಉದ್ದೇಶಕ್ಕಾಗಿ ಮಾತ್ರ. ಇದನ್ನು ಯಾವುದೇ ರೀತಿಯಲ್ಲಿ ಅಂತಿಮ ಸತ್ಯವೆಂದು ಪರಿಗಣಿಸಬಾರದು. ಇದು ನಿಮ್ಮನ್ನು ಭಯಭೀತರನ್ನಾಗಿ ಮಾಡುವ ಉದ್ದೇಶವನ್ನು ಹೊಂದಿಲ್ಲ, ಬದಲಿಗೆ ಆತ್ಮಾವಲೋಕನಕ್ಕೆ ಪ್ರೇರೇಪಿಸುವುದಾಗಿದೆ.
+          </AlertDescription>
+        </Alert>
+      </ScrollAnimate>
+
+      <div className="space-y-6">
+        {prophecies.map((item, index) => (
+          <ScrollAnimate key={index} delay={300 + index * 150}>
+            <Card className="transform hover:scale-[1.01] transition-transform duration-300 ease-in-out">
+              <CardHeader>
+                <CardTitle className="font-headline text-2xl text-accent">{item.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <blockquote className="border-l-4 border-accent pl-4 italic text-foreground/90 text-lg">
+                    {item.prophecy}
+                </blockquote>
+              </CardContent>
+            </Card>
+          </ScrollAnimate>
+        ))}
+      </div>
+      
+      <ScrollAnimate delay={300 + prophecies.length * 150}>
+        <div className="text-center text-muted-foreground italic mt-8">
+          <p>ಇನ್ನಷ್ಟು ಜ್ಞಾನ ಶೀಘ್ರದಲ್ಲೇ ಬರಲಿದೆ, ನಿರೀಕ್ಷಿಸಿ...</p>
+        </div>
+      </ScrollAnimate>
+    </div>
+  );
+}
