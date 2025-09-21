@@ -28,7 +28,7 @@ export default function KnowledgePage() {
         </p>
       </header>
 
-      <div className="relative w-full h-64 md:h-80 flex items-center justify-center my-4 overflow-hidden rounded-lg">
+      <div className="relative w-full h-80 md:h-96 flex items-center justify-center my-4 overflow-hidden rounded-lg">
           <KnowledgeFlowAnimation />
       </div>
 
