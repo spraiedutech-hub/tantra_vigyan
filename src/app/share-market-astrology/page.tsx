@@ -63,10 +63,12 @@ export default function ShareMarketAstrologyPage() {
           const parsed = JSON.parse(cachedPrediction) as MarketPredictionOutput;
           if (parsed.date === dateString) {
             setPrediction(parsed);
-            return;
+            setIsLoading(false); // Stop loading if cached data is valid
+            return; // Exit the function
           }
         }
         
+        // If no valid cache, generate a new prediction
         const result = await generateMarketPrediction(dateString);
         setPrediction(result);
         localStorage.setItem(PREDICTION_STORAGE_KEY, JSON.stringify(result));
