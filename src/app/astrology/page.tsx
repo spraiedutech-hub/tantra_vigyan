@@ -113,7 +113,7 @@ export default function AstrologyPage() {
 
       <Card>
         <CardHeader>
-          <CardTitle>ದಿನದ ಭವಿಷ್ಯ (Daily Horoscope)</CardTitle>
+          <CardTitle>ದಿನದ ಭವಿಷ್ಯ (ನಾಡಿ ಜ್ಯೋತಿಷ್ಯ ಆಧಾರಿತ)</CardTitle>
           <CardDescription>
             ನಿಮ್ಮ ಲಗ್ನವನ್ನು ಆಯ್ಕೆಮಾಡಿ ಮತ್ತು ಇಂದಿನ ವೈಯಕ್ತಿಕ ಭವಿಷ್ಯವನ್ನು ಪಡೆಯಿರಿ.
           </CardDescription>
