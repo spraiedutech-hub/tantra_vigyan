@@ -11,11 +11,15 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2, HeartHandshake, AlertTriangle, Wand2 } from 'lucide-react';
+import { Loader2, HeartHandshake, AlertTriangle, Wand2, BookOpen } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Skeleton } from '@/components/ui/skeleton';
 import preloadedRemedies from '@/lib/content/remedies-base.json';
 import { Badge } from '@/components/ui/badge';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import remedySchools from '@/lib/content/remedy-schools.json';
+import { ScrollAnimate } from '@/components/ui/scroll-animate';
+
 
 const commonProblems = [
     { id: 'financial', label: 'ಆರ್ಥಿಕ ಸ್ಥಿರತೆ', problem: 'Financial problems and stability' },
@@ -203,6 +207,31 @@ export default function RemediesPage() {
           </CardContent>
         </Card>
       )}
+
+      <section className="space-y-4 mt-12">
+        <h2 className="text-3xl font-bold font-headline text-primary flex items-center gap-2">
+            <BookOpen />
+            ಪರಿಹಾರ ಶಾಸ್ತ್ರಗಳ ಬಗ್ಗೆ ತಿಳಿಯಿರಿ
+        </h2>
+        <Accordion type="single" collapsible className="w-full">
+            {remedySchools.map((item, index) => (
+                <ScrollAnimate key={index} delay={index * 100}>
+                    <AccordionItem value={`item-${index}`}>
+                        <AccordionTrigger className="text-xl font-headline text-accent hover:no-underline text-left">
+                            {item.title}
+                        </AccordionTrigger>
+                        <AccordionContent>
+                            <div className="prose prose-lg dark:prose-invert max-w-full text-foreground/90 space-y-6 text-justify leading-relaxed">
+                                {item.content.split('\n\n').map((paragraph, pIndex) => (
+                                    <p key={pIndex}>{paragraph}</p>
+                                ))}
+                            </div>
+                        </AccordionContent>
+                    </AccordionItem>
+                </ScrollAnimate>
+            ))}
+        </Accordion>
+      </section>
 
     </div>
   );
