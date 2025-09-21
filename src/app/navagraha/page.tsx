@@ -8,6 +8,7 @@ import { ScrollAnimate } from '@/components/ui/scroll-animate';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import NavagrahaSystem from '@/components/navagraha-system';
+import navagrahaContent from '@/lib/content/navagraha-impact.json';
 
 const WHATSAPP_NUMBER = "917022070287";
 const WHATSAPP_MESSAGE = "ನಮಸ್ಕಾರ, ನಾನು ತಂತ್ರ ವಿಜ್ಞಾನ ಅಪ್ಲಿಕೇಶನ್‌ನಿಂದ ವೈಯಕ್ತಿಕ ಜಾತಕ ವಿಶ್ಲೇಷಣೆಗಾಗಿ ಸಂಪರ್ಕಿಸುತ್ತಿದ್ದೇನೆ.";
@@ -25,6 +26,17 @@ export default function NavagrahaPage() {
           ನಮ್ಮ ಜೀವನದ ಮೇಲೆ ಒಂಬತ್ತು ಗ್ರಹಗಳು ಬೀರುವ ಪ್ರಭಾವದ ಬಗ್ಗೆ ತಿಳಿಯಿರಿ.
         </p>
       </header>
+
+      <ScrollAnimate>
+        <Card>
+            <CardHeader>
+                <CardTitle>{navagrahaContent.introduction.title}</CardTitle>
+            </CardHeader>
+            <CardContent className="prose prose-lg dark:prose-invert max-w-full text-foreground/90 text-justify leading-relaxed">
+                <p>{navagrahaContent.introduction.content}</p>
+            </CardContent>
+        </Card>
+      </ScrollAnimate>
       
       <Card className="transform hover:scale-[1.01] transition-transform duration-300 ease-in-out">
         <CardHeader>
