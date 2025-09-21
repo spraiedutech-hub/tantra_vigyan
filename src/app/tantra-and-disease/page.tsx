@@ -104,6 +104,9 @@ export default function TantraAndDiseasePage() {
                 <p className="prose prose-lg dark:prose-invert max-w-full text-foreground/90">
                   ನಿಮ್ಮ ದೀರ್ಘಕಾಲದ ಆರೋಗ್ಯ ಸಮಸ್ಯೆಗಳ ಹಿಂದಿನ ಕರ್ಮದ ಅಥವಾ ಶಕ್ತಿಯ ಅಸಮತೋಲನದ ಕಾರಣಗಳನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಿ. ಗುರೂಜಿಯವರಿಂದ ವೈಯಕ್ತಿಕ ಸಲಹೆ ಪಡೆದು, ನಿಮ್ಮ ಆರೋಗ್ಯವನ್ನು ಸುಧಾರಿಸಲು ಮತ್ತು ರೋಗನಿರೋಧಕ ಶಕ್ತಿಯನ್ನು ಹೆಚ್ಚಿಸಲು ಸೂಕ್ತವಾದ ಮಂತ್ರ, ಯಂತ್ರ ಮತ್ತು ಜೀವನಶೈಲಿಯ ಬದಲಾವಣೆಗಳನ್ನು ತಿಳಿಯಿರಿ.
                 </p>
+                 <p className="mt-4 font-semibold text-center text-lg">
+                    ಸಂಪರ್ಕಿಸಿ: 7022070287
+                </p>
             </CardContent>
             <CardFooter className="flex-col sm:flex-row items-center gap-4">
                 <p className="text-xl font-bold text-primary">ಶುಲ್ಕ: ₹2,222</p>
