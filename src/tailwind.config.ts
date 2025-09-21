@@ -204,8 +204,8 @@ export default {
           '50%': { opacity: '1' },
         },
         'unfurl': {
-            '0%': { transform: 'scaleY(0)' },
-            '100%': { transform: 'scaleY(1)' },
+            '0%': { 'stroke-dashoffset': '1' },
+            '100%': { 'stroke-dashoffset': '0' },
         },
         'script-glow': {
             '0%': { opacity: '0', filter: 'drop-shadow(0 0 2px hsl(var(--primary)))' },
@@ -226,6 +226,10 @@ export default {
           '20%': { opacity: '1', r: 'var(--size, 2px)' },
           '80%': { opacity: '1', r: 'var(--size, 2px)' },
           '100%': { opacity: '0', r: '1' },
+        },
+        'chariot-wheel-rotate': {
+          from: { transform: 'rotate(0deg)' },
+          to: { transform: 'rotate(360deg)' },
         },
       },
       animation: {
@@ -263,6 +267,7 @@ export default {
         'line-draw': 'line-draw 3s ease-out forwards',
         'karma-rotate': 'karma-rotate var(--duration, 20s) linear infinite',
         'karma-particle': 'karma-particle 8s ease-in-out infinite',
+        'chariot-wheel-rotate': 'chariot-wheel-rotate 20s linear infinite',
       },
     },
   },

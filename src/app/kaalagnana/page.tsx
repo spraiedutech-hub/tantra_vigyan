@@ -7,6 +7,7 @@ import { Clock, AlertTriangle, Library, ArrowRight, Star, UserCheck, Phone } fro
 import { ScrollAnimate } from '@/components/ui/scroll-animate';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import ChariotWheelAnimation from '@/components/chariot-wheel-animation';
 
 const prophecies = [
   {
@@ -63,6 +64,10 @@ export default function KaalagnanaPage() {
           ಕಾಲದ ಜ್ಞಾನ ಮತ್ತು ಭವಿಷ್ಯದ ಬಗ್ಗೆ ವಿವಿಧ ಸಂಸ್ಕೃತಿಗಳ ಮಹಾಪುರುಷರು ನುಡಿದಿರುವ ಮಾತುಗಳು.
         </p>
       </header>
+      
+      <div className="relative w-full h-80 md:h-96 flex items-center justify-center my-4 overflow-hidden rounded-lg">
+          <ChariotWheelAnimation />
+      </div>
 
       <ScrollAnimate>
         <Card>
