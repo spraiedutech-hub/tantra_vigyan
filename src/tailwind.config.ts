@@ -202,7 +202,16 @@ export default {
         'knowledge-particle': {
           '0%, 100%': { opacity: '0' },
           '50%': { opacity: '1' },
-        }
+        },
+        'unfurl': {
+            '0%': { transform: 'scaleY(0)' },
+            '100%': { transform: 'scaleY(1)' },
+        },
+        'script-glow': {
+            '0%': { opacity: '0', filter: 'drop-shadow(0 0 2px hsl(var(--primary)))' },
+            '50%': { opacity: '1', filter: 'drop-shadow(0 0 10px hsl(var(--primary)))' },
+            '100%': { opacity: '0', filter: 'drop-shadow(0 0 2px hsl(var(--primary)))' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -234,6 +243,8 @@ export default {
         'knowledge-wave': 'knowledge-wave 6s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite',
         'knowledge-line-flow': 'knowledge-line-flow 8s linear infinite',
         'knowledge-particle': 'knowledge-particle 5s ease-in-out infinite',
+        'unfurl': 'unfurl 2s ease-out forwards',
+        'script-glow': 'script-glow 4s ease-in-out infinite',
       },
     },
   },

@@ -12,6 +12,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import LiteratureAnimation from '@/components/literature-animation';
 
 export default function LiteraturePage() {
   return (
@@ -26,6 +27,10 @@ export default function LiteraturePage() {
         </p>
       </header>
       
+      <div className="relative w-full h-64 md:h-80 flex items-center justify-center my-4 overflow-hidden rounded-lg">
+          <LiteratureAnimation />
+      </div>
+
       <ScrollAnimate>
         <Alert>
           <Lightbulb className="h-4 w-4" />
