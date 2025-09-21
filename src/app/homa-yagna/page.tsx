@@ -101,9 +101,17 @@ export default function HomaYagnaPage() {
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                <p className="prose prose-lg dark:prose-invert max-w-full text-foreground/90">
-                ನಿಮ್ಮ ಜೀವನದ ಅಡೆತಡೆಗಳನ್ನು ನಿವಾರಿಸಲು, ಗ್ರಹ ದೋಷಗಳನ್ನು ಶಾಂತಗೊಳಿಸಲು, ಅಥವಾ ನಿರ್ದಿಷ್ಟ ದೇವತೆಯ ಅನುಗ್ರಹವನ್ನು ಪಡೆಯಲು, ನಮ್ಮ ಅನುಭವಿ ಗುರುಗಳು ಶಾಸ್ತ್ರೋಕ್ತವಾಗಿ ಹೋಮವನ್ನು ನಡೆಸಿಕೊಡುತ್ತಾರೆ. ನಿಮ್ಮ ಅಗತ್ಯಗಳನ್ನು ಚರ್ಚಿಸಲು ಮತ್ತು ಸೂಕ್ತವಾದ ಹೋಮವನ್ನು ಆಯ್ಕೆ ಮಾಡಲು ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ.
-                </p>
+                <div className="prose prose-lg dark:prose-invert max-w-full text-foreground/90 space-y-4">
+                    <p>
+                    ನಿಮ್ಮ ಜೀವನದ ಅಡೆತಡೆಗಳನ್ನು ನಿವಾರಿಸಲು, ಗ್ರಹ ದೋಷಗಳನ್ನು ಶಾಂತಗೊಳಿಸಲು, ಅಥವಾ ನಿರ್ದಿಷ್ಟ ದೇವತೆಯ ಅನುಗ್ರಹವನ್ನು ಪಡೆಯಲು, ನಮ್ಮ ಅನುಭವಿ ಗುರುಗಳು ಶಾಸ್ತ್ರೋಕ್ತವಾಗಿ ಹೋಮವನ್ನು ನಡೆಸಿಕೊಡುತ್ತಾರೆ. ನಿಮ್ಮ ಅಗತ್ಯಗಳನ್ನು ಚರ್ಚಿಸಲು ಮತ್ತು ಸೂಕ್ತವಾದ ಹೋಮವನ್ನು ಆಯ್ಕೆ ಮಾಡಲು ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ.
+                    </p>
+                    <Alert variant="destructive" className="border-accent/50 text-accent [&>svg]:text-accent">
+                        <AlertTitle className="font-bold">ಗೌಪ್ಯತೆಯ ಸೂಚನೆ</AlertTitle>
+                        <AlertDescription>
+                        ನಾವು ಕೇವಲ ತಾಂತ್ರಿಕ ಹೋಮ ಮತ್ತು ಯಜ್ಞಗಳನ್ನು ಮಾತ್ರ ಮಾಡುತ್ತೇವೆ. ತಂತ್ರದ ಗೌಪ್ಯತೆಯ ತತ್ವವನ್ನು ಗೌರವಿಸಲು, ಈ ಆಚರಣೆಗಳನ್ನು ಅತ್ಯಂತ ರಹಸ್ಯವಾಗಿ ಮಾಡಲಾಗುತ್ತದೆ. ಹೋಮದ ಸ್ಥಳ, ದಿನಾಂಕ ಮತ್ತು ಸಮಯವನ್ನು ಯಾರಿಗೂ, ಯಾರಿಗಾಗಿ ಹೋಮ ಮಾಡಲಾಗುತ್ತದೆಯೋ ಅವರಿಗೂ ಸಹ, ತಿಳಿಸಲಾಗುವುದಿಲ್ಲ. ಆಚರಣೆಯ ಸಮಯದಲ್ಲಿ ಯಾರ ಉಪಸ್ಥಿತಿಗೂ ಅನುಮತಿಯಿಲ್ಲ. ಕಾರ್ಯವು ಪೂರ್ಣಗೊಂಡ ನಂತರ, 'ಕಾರ್ಯವು ಮುಗಿದಿದೆ' ಎಂಬ ಮಾಹಿತಿಯನ್ನು ಮಾತ್ರ ನೀಡಲಾಗುತ್ತದೆ.
+                        </AlertDescription>
+                    </Alert>
+                </div>
             </CardContent>
             <CardFooter className="flex-col sm:flex-row items-center gap-4">
                 <p className="text-xl font-bold text-primary">ಶುಲ್ಕವು ಹೋಮದ ಪ್ರಕಾರವನ್ನು ಅವಲಂಬಿಸಿರುತ್ತದೆ</p>
