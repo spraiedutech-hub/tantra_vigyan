@@ -86,25 +86,7 @@ export default function KaalagnanaPage() {
         </Alert>
       </ScrollAnimate>
 
-      <div className="space-y-6">
-        {prophecies.map((item, index) => (
-          <ScrollAnimate key={index} delay={300 + index * 150}>
-            <Card className="transform hover:scale-[1.01] transition-transform duration-300 ease-in-out">
-              <CardHeader>
-                <CardTitle className="font-headline text-2xl text-accent">{item.title}</CardTitle>
-                <CardDescription>ಮೂಲ: {item.source}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <blockquote className="border-l-4 border-accent pl-4 italic text-foreground/90 text-lg">
-                    {item.prophecy}
-                </blockquote>
-              </CardContent>
-            </Card>
-          </ScrollAnimate>
-        ))}
-      </div>
-
-      <ScrollAnimate delay={300 + prophecies.length * 150}>
+      <ScrollAnimate delay={300}>
         <Card className="transform hover:scale-[1.01] transition-transform duration-300 ease-in-out bg-card/80 backdrop-blur-sm shadow-md">
             <CardHeader>
                 <CardTitle className="font-headline text-2xl text-primary flex items-center gap-3">
@@ -119,6 +101,24 @@ export default function KaalagnanaPage() {
             </CardContent>
         </Card>
       </ScrollAnimate>
+
+      <div className="space-y-6">
+        {prophecies.map((item, index) => (
+          <ScrollAnimate key={index} delay={450 + index * 150}>
+            <Card className="transform hover:scale-[1.01] transition-transform duration-300 ease-in-out">
+              <CardHeader>
+                <CardTitle className="font-headline text-2xl text-accent">{item.title}</CardTitle>
+                <CardDescription>ಮೂಲ: {item.source}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <blockquote className="border-l-4 border-accent pl-4 italic text-foreground/90 text-lg">
+                    {item.prophecy}
+                </blockquote>
+              </CardContent>
+            </Card>
+          </ScrollAnimate>
+        ))}
+      </div>
       
       <ScrollAnimate delay={400 + prophecies.length * 150}>
          <Card className="bg-gradient-to-r from-primary/10 via-card to-accent/10 animated-border">
