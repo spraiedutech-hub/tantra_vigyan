@@ -1,6 +1,6 @@
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ShieldQuestion, UserCheck, BookCheck, HeartHandshake, CircleAlert } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { ShieldQuestion, UserCheck, BookCheck, HeartHandshake, CircleAlert, CheckCircle, MessageSquare, Camera, Timer } from 'lucide-react';
 import ConsultationPricing from '@/components/consultation-pricing';
 
 export default function ConsultationsPage() {
@@ -17,6 +17,53 @@ export default function ConsultationsPage() {
       </header>
       
       <ConsultationPricing />
+
+      <Card className="transform hover:scale-[1.02] transition-transform duration-300 ease-in-out">
+        <CardHeader>
+          <CardTitle className="font-headline text-2xl text-accent">ಸಮಾಲೋಚನೆ ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ?</CardTitle>
+          <CardDescription>How the Consultation Works</CardDescription>
+        </CardHeader>
+        <CardContent>
+            <ol className="space-y-4">
+                <li className="flex items-start gap-4">
+                    <div className="flex-shrink-0 bg-primary/10 text-primary p-2 rounded-full h-fit">
+                        <CheckCircle className="w-5 h-5"/>
+                    </div>
+                    <div>
+                        <h3 className="font-semibold">1. ಸೇವೆ ಆಯ್ಕೆಮಾಡಿ</h3>
+                        <p className="text-muted-foreground">ನಿಮಗೆ ಬೇಕಾದ ಸೇವೆಯನ್ನು (ದೂರವಾಣಿ, ಜಾತಕ ವಿಶ್ಲೇಷಣೆ, ಇತ್ಯಾದಿ) ಮೇಲಿನ ಪಟ್ಟಿಯಿಂದ ಆಯ್ಕೆಮಾಡಿ.</p>
+                    </div>
+                </li>
+                 <li className="flex items-start gap-4">
+                    <div className="flex-shrink-0 bg-primary/10 text-primary p-2 rounded-full h-fit">
+                        <MessageSquare className="w-5 h-5"/>
+                    </div>
+                    <div>
+                        <h3 className="font-semibold">2. WhatsApp ನಲ್ಲಿ ನಿಮ್ಮ ಪ್ರಶ್ನೆ ಕಳುಹಿಸಿ</h3>
+                        <p className="text-muted-foreground">'WhatsApp ಮೂಲಕ ವಿನಂತಿಸಿ' ಬಟನ್ ಕ್ಲಿಕ್ ಮಾಡಿ ಮತ್ತು ನಿಮ್ಮ ಪ್ರಶ್ನೆಗಳನ್ನು ಅಥವಾ ಜನ್ಮ ವಿವರಗಳನ್ನು ಕಳುಹಿಸಿ.</p>
+                    </div>
+                </li>
+                 <li className="flex items-start gap-4">
+                    <div className="flex-shrink-0 bg-primary/10 text-primary p-2 rounded-full h-fit">
+                        <Camera className="w-5 h-5"/>
+                    </div>
+                    <div>
+                        <h3 className="font-semibold">3. ಪಾವತಿ ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಕಳುಹಿಸಿ</h3>
+                        <p className="text-muted-foreground">ನಿಮಗೆ ನೀಡಲಾಗುವ UPI ವಿವರಗಳಿಗೆ ಪಾವತಿ ಮಾಡಿ ಮತ್ತು ಅದರ ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಅನ್ನು WhatsApp ನಲ್ಲಿ ಕಳುಹಿಸಿ.</p>
+                    </div>
+                </li>
+                 <li className="flex items-start gap-4">
+                    <div className="flex-shrink-0 bg-primary/10 text-primary p-2 rounded-full h-fit">
+                        <Timer className="w-5 h-5"/>
+                    </div>
+                    <div>
+                        <h3 className="font-semibold">4. ಉತ್ತರವನ್ನು ಪಡೆಯಿರಿ</h3>
+                        <p className="text-muted-foreground">ನಿಮ್ಮ ಪಾವತಿಯನ್ನು ದೃಢಪಡಿಸಿದ ನಂತರ, ನಿಮ್ಮ ಪ್ರಶ್ನೆಗಳಿಗೆ ನಿಗದಿತ ಸಮಯದಲ್ಲಿ ಉತ್ತರವನ್ನು ನೀಡಲಾಗುತ್ತದೆ. ಮುಂದಿನ ಹಂತಗಳನ್ನು WhatsApp ಮೂಲಕ ತಿಳಿಸಲಾಗುವುದು.</p>
+                    </div>
+                </li>
+            </ol>
+        </CardContent>
+      </Card>
 
       <div className="space-y-6">
         <h2 className="text-3xl font-bold font-headline text-primary text-center mt-12">ಸಾధನೆಯಲ್ಲಿನ ಸಾಮಾನ್ಯ ಅಡೆತಡೆಗಳು</h2>
