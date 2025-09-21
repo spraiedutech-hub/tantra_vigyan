@@ -1,12 +1,11 @@
 
 'use client';
 
-import { useState } from 'react';
-import { useForm, type SubmitHandler, Controller } from 'react-hook-form';
+import { useState, useEffect } from 'react';
+import { useForm, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { generateBirthChartAnalysis, type BirthChartAnalysisOutput } from '@/ai/flows/generate-birth-chart-analysis';
-import { generateDailyHoroscope, type DailyHoroscopeOutput } from '@/ai/flows/generate-daily-horoscope';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -16,6 +15,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Loader2, Star, Sparkles, AlertTriangle, CalendarDays } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Skeleton } from '@/components/ui/skeleton';
+import dailyHoroscopes from '@/lib/content/daily-horoscopes.json';
 
 const birthChartSchema = z.object({
   dateOfBirth: z.string().min(1, 'ದಯವಿಟ್ಟು ಜನ್ಮ ದಿನಾಂಕವನ್ನು ನಮೂದಿಸಿ'),
@@ -29,13 +29,26 @@ const lagnas = [
   'ತುಲಾ', 'ವೃಶ್ಚಿಕ', 'ಧನು', 'ಮಕರ', 'ಕುಂಭ', 'ಮೀನ'
 ];
 
+type Horoscope = {
+  lagna: string;
+  forecast: string;
+};
+
 export default function AstrologyPage() {
   const { toast } = useToast();
   const [isChartLoading, setIsChartLoading] = useState(false);
-  const [isHoroscopeLoading, setIsHoroscopeLoading] = useState(false);
   const [analysis, setAnalysis] = useState<BirthChartAnalysisOutput | null>(null);
-  const [horoscope, setHoroscope] = useState<DailyHoroscopeOutput | null>(null);
+  const [horoscope, setHoroscope] = useState<Horoscope | null>(null);
   const [selectedLagna, setSelectedLagna] = useState<string>('');
+  const [currentDate, setCurrentDate] = useState('');
+
+  useEffect(() => {
+    const today = new Date();
+    const day = String(today.getDate()).padStart(2, '0');
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const year = today.getFullYear();
+    setCurrentDate(`${day}/${month}/${year}`);
+  }, []);
 
   const birthChartForm = useForm<BirthChartFormValues>({
     resolver: zodResolver(birthChartSchema),
@@ -64,7 +77,7 @@ export default function AstrologyPage() {
     }
   };
   
-  const handleDailyHoroscope = async () => {
+  const handleDailyHoroscope = () => {
     if (!selectedLagna) {
         toast({
             variant: 'destructive',
@@ -73,20 +86,16 @@ export default function AstrologyPage() {
         });
         return;
     }
-    setIsHoroscopeLoading(true);
-    setHoroscope(null);
-    try {
-        const result = await generateDailyHoroscope({ lagna: selectedLagna });
-        setHoroscope(result);
-    } catch (error) {
-        console.error('Error generating daily horoscope:', error);
+    setHoroscope(null); // Clear previous horoscope
+    const foundHoroscope = dailyHoroscopes.find(h => h.lagna === selectedLagna);
+    if (foundHoroscope) {
+        setHoroscope(foundHoroscope);
+    } else {
         toast({
             variant: 'destructive',
             title: 'ದೋಷ',
-            description: 'ದಿನದ ಭವಿಷ್ಯವನ್ನು ರಚಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.',
+            description: 'ಈ ಲಗ್ನಕ್ಕೆ ಭವಿಷ್ಯ ಲಭ್ಯವಿಲ್ಲ.',
         });
-    } finally {
-        setIsHoroscopeLoading(false);
     }
   };
 
@@ -115,7 +124,7 @@ export default function AstrologyPage() {
         <CardHeader>
           <CardTitle>ದಿನದ ಭವಿಷ್ಯ (ನಾಡಿ ಜ್ಯೋತಿಷ್ಯ ಆಧಾರಿತ)</CardTitle>
           <CardDescription>
-            ನಿಮ್ಮ ಲಗ್ನವನ್ನು ಆಯ್ಕೆಮಾಡಿ ಮತ್ತು ಇಂದಿನ ವೈಯಕ್ತಿಕ ಭವಿಷ್ಯವನ್ನು ಪಡೆಯಿರಿ.
+            ನಿಮ್ಮ ಲಗ್ನವನ್ನು ಆಯ್ಕೆಮಾಡಿ ಮತ್ತು {currentDate} ದಿನಾಂಕದ ವೈಯಕ್ತಿಕ ಭವಿಷ್ಯವನ್ನು ಪಡೆಯಿರಿ.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -130,17 +139,11 @@ export default function AstrologyPage() {
                         ))}
                     </SelectContent>
                 </Select>
-                <Button onClick={handleDailyHoroscope} disabled={isHoroscopeLoading || !selectedLagna} className="w-full sm:w-auto">
-                    {isHoroscopeLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <CalendarDays className="mr-2 h-4 w-4" />}
+                <Button onClick={handleDailyHoroscope} disabled={!selectedLagna} className="w-full sm:w-auto">
+                    <CalendarDays className="mr-2 h-4 w-4" />
                     ಭವಿಷ್ಯ ಪಡೆಯಿರಿ
                 </Button>
             </div>
-            {isHoroscopeLoading && (
-                 <div className="space-y-2 pt-4">
-                    <Skeleton className="h-4 w-full" />
-                    <Skeleton className="h-4 w-5/6" />
-                </div>
-            )}
             {horoscope && (
                 <div className="pt-4 animate-fade-in">
                      <blockquote className="border-l-4 border-accent pl-4 italic text-foreground/90 text-lg">
@@ -241,3 +244,5 @@ export default function AstrologyPage() {
     </div>
   );
 }
+
+    
