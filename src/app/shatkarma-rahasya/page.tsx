@@ -89,19 +89,19 @@ export default function ShatkarmaRahasyaPage() {
             <CardHeader>
                 <CardTitle className="text-2xl font-headline text-accent flex items-center gap-3">
                     <UserCheck />
-                    ವೈಯಕ್ತಿಕ ಮಾರ್ಗದರ್ಶನ
+                    ವೈಯಕ್ತಿಕ ಮಾರ್ಗದರ್ಶನ ಮತ್ತು ದೀಕ್ಷೆ
                 </CardTitle>
                 <CardDescription>
-                  ಈ ಶಕ್ತಿಶಾಲಿ ಜ್ಞಾನದ ನೈತಿಕ ಮತ್ತು ಆಧ್ಯಾತ್ಮಿಕ ಅಂಶಗಳ ಬಗ್ಗೆ ಸರಿಯಾದ ಮಾರ್ಗದರ್ಶನವನ್ನು ಪಡೆಯಿರಿ.
+                  ಈ ಶಕ್ತಿಶಾಲಿ ಜ್ಞಾನವನ್ನು ಜವಾಬ್ದಾರಿಯುತವಾಗಿ ಕಲಿಯಲು ಮತ್ತು ಆಧ್ಯಾತ್ಮಿಕ ಉನ್ನತಿಗಾಗಿ ಬಳಸಲು ನೇರ ಮಾರ್ಗದರ್ಶನವನ್ನು ಪಡೆಯಿರಿ.
                 </CardDescription>
             </CardHeader>
             <CardContent>
                 <p className="prose prose-lg dark:prose-invert max-w-full text-foreground/90">
-                  ಷಟ್ಕರ್ಮಗಳ ಹಿಂದಿನ ನಿಜವಾದ ತತ್ವ ಮತ್ತು ಅವುಗಳ ಆಧ್ಯಾತ್ಮಿಕ ಉದ್ದೇಶವನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು, ಮತ್ತು ಶಕ್ತಿಯನ್ನು ಜವಾಬ್ದಾರಿಯುತವಾಗಿ ಹೇಗೆ ಬಳಸುವುದು ಎಂಬುದನ್ನು ತಿಳಿಯಲು ಗುರೂಜಿಯವರಿಂದ ವೈಯಕ್ತಿಕ ಸಮಾಲೋಚನೆ ಪಡೆಯಿರಿ.
+                  ಷಟ್ಕರ್ಮಗಳ ಹಿಂದಿನ ನಿಜವಾದ ತತ್ವ, ಅವುಗಳ ಸಾಧನಾ ವಿಧಾನ ಮತ್ತು ನೈತಿಕ ಗಡಿಗಳನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು, ಗುರೂಜಿಯವರಿಂದ ವೈಯಕ್ತಿಕ ದೀಕ್ಷೆ ಮತ್ತು ಸಮಾಲೋಚನೆ ಪಡೆಯಿರಿ. ಶಕ್ತಿಯನ್ನು ಜವಾಬ್ದಾರಿಯುತವಾಗಿ ಮತ್ತು ಲೋಕ ಕಲ್ಯಾಣಕ್ಕಾಗಿ ಹೇಗೆ ಬಳಸುವುದು ಎಂಬುದನ್ನು ತಿಳಿಯಿರಿ.
                 </p>
             </CardContent>
             <CardFooter className="flex-col sm:flex-row items-center gap-4">
-                <p className="text-xl font-bold text-primary">ಶುಲ್ಕವು ಸಮಾಲೋಚನೆಯನ್ನು ಅವಲಂಬಿಸಿರುತ್ತದೆ</p>
+                <p className="text-xl font-bold text-primary">ಶುಲ್ಕವು ದೀಕ್ಷೆ ಮತ್ತು ಸಮಾಲೋಚನೆಯನ್ನು ಅವಲಂಬಿಸಿರುತ್ತದೆ</p>
                 <Button asChild size="lg" className="w-full sm:w-auto">
                     <Link href={WHATSAPP_URL} target="_blank">
                     <Phone className="mr-2 h-5 w-5" />
