@@ -19,16 +19,18 @@ import {
   Headphones,
   Users,
   Mic,
+  Star,
 } from 'lucide-react';
 
 export const navItems = [
   { href: '/', label: 'ಮುಖಪುಟ', icon: Home },
   { href: '/tour', label: 'ಸೈಟ್ ಪ್ರವಾಸ', icon: Compass },
-  { href: '/yantras', label: 'ಯಂತ್ರಗಳು', icon: Shapes },
-  { href: '/mantras', label: 'ಮಂತ್ರಗಳು', icon: BookAudio },
   { href: '/sadhana', label: 'ನಿತ್ಯ ಸಾಧನಾ', icon: Sunrise },
   { href: '/initiation', label: 'ದೀಕ್ಷೆ', icon: KeyRound },
   { href: '/guidance', label: 'ಮಾರ್ಗದರ್ಶನ', icon: ShieldQuestion },
+  { href: '/astrology', label: 'ಜ್ಯೋತಿಷ್ಯ', icon: Star },
+  { href: '/yantras', label: 'ಯಂತ್ರಗಳು', icon: Shapes },
+  { href: '/mantras', label: 'ಮಂತ್ರಗಳು', icon: BookAudio },
   { href: '/activities', label: 'ಚಟುವಟಿಕೆಗಳು', icon: CheckCircle },
   { href: '/remedies', label: 'ಪರಿಹಾರಗಳು', icon: HeartHandshake },
   { href: '/recommendations', label: 'ಶಿಫಾರಸುಗಳು', icon: Sparkles },
