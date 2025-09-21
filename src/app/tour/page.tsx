@@ -21,7 +21,7 @@ export default function TourPage() {
         case '/mantras':
             return "ವಿವಿಧ ಸಾಂಪ್ರದಾಯಿಕ ತಂತ್ರ ಮಂತ್ರಗಳು ಮತ್ತು ಅವುಗಳ ಮಹತ್ವವನ್ನು ಅನ್ವೇಷಿಸಿ. ನಿಮ್ಮ ದೈನಂದಿನ ಅಭ್ಯಾಸಕ್ಕಾಗಿ ಇಲ್ಲಿಂದ ಮಂತ್ರಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಿಕೊಳ್ಳಬಹುದು.";
         case '/sadhana':
-            return "ಪ್ರತಿದิน ನಿಮಗಾಗಿ ವಿಶೇಷವಾಗಿ ರಚಿಸಲಾದ ಹೊಸ, AI-ಚಾಲಿತ ಆಧ್ಯಾತ್ಮಿಕ ಅಭ್ಯಾಸವನ್ನು (ಸಾಧನಾ) ಪಡೆಯಿರಿ. ಇದು ನಿಮ್ಮ ದಿನವನ್ನು ಶಾಂತಿ ಮತ್ತು ಉದ್ದೇಶದಿಂದ ಪ್ರಾರಂಭಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.";
+            return "ಪ್ರತಿದಿನ ನಿಮಗಾಗಿ ವಿಶೇಷವಾಗಿ ರಚಿಸಲಾದ ಹೊಸ, AI-ಚಾಲಿತ ಆಧ್ಯಾತ್ಮಿಕ ಅಭ್ಯಾಸವನ್ನು (ಸಾಧನಾ) ಪಡೆಯಿರಿ. ಇದು ನಿಮ್ಮ ದಿನವನ್ನು ಶಾಂತಿ ಮತ್ತು ಉದ್ದೇಶದಿಂದ ಪ್ರಾರಂಭಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.";
         case '/activities':
             return "ನಿಮ್ಮ ಆಧ್ಯಾತ್ಮಿಕ ಅಭ್ಯಾಸವನ್ನು ಹೆಚ್ಚಿಸಲು ಸರಳವಾದ ತಾಂತ್ರಿಕ ಕ್ರಿಯೆಗಳು ಮತ್ತು ಆಚರಣೆಗಳನ್ನು ಕಲಿಯಿರಿ.";
         case '/recommendations':
@@ -83,9 +83,8 @@ export default function TourPage() {
 
   return (
     <div className="space-y-8 animate-fade-in">
-      <header className="space-y-2 p-4 rounded-lg animated-border overflow-hidden">
-        <div className="flex flex-col md:flex-row items-center gap-4">
-            <div className="flex-1 space-y-2">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+            <header className="space-y-2 p-4 rounded-lg animated-border flex-1 w-full">
                 <h1 className="text-4xl font-bold font-headline text-primary flex items-center gap-2">
                 <Compass />
                 ಅಪ್ಲಿಕೇಶನ್ ಪ್ರವಾಸ
@@ -93,12 +92,11 @@ export default function TourPage() {
                 <p className="text-lg text-muted-foreground">
                 ಈ ಅಪ್ಲಿಕೇಶನ್‌ನಲ್ಲಿ ಲಭ್ಯವಿರುವ ಎಲ್ಲಾ ವೈಶಿಷ್ಟ್ಯಗಳು ಮತ್ತು ವಿಭಾಗಗಳ ಅವಲೋಕನ.
                 </p>
-            </div>
-            <div className="w-48 h-48 md:w-56 md:h-56">
+            </header>
+            <div className="w-48 h-48 md:w-56 md:h-56 flex-shrink-0">
                 <AppTourAnimation />
             </div>
         </div>
-      </header>
 
       <div className="space-y-6">
         {navGroups.map((group) => (
