@@ -22,18 +22,20 @@ export default function DeekshaAnimation() {
         </radialGradient>
       </defs>
 
-      {/* Guru Figure */}
-      <g transform="translate(50, 100)">
+      {/* Guru Figure (Larger) */}
+      <g transform="translate(60, 100) scale(1.2)">
         <circle cx="0" cy="-20" r="15" fill="hsl(var(--primary))" />
         <path
           d="M -25 0 C -25 30, 25 30, 25 0 Z"
           fill="hsl(var(--primary))"
         />
         <circle cx="0" cy="0" r="40" fill="url(#gradGuru)" className="animate-pulse-slow" />
+        {/* Open Palm */}
+        <path d="M 20 -5 C 25 -10, 35 -5, 35 5 C 35 15, 25 20, 20 15 Z" fill="hsl(var(--primary))" />
       </g>
       
-      {/* Disciple Figure */}
-      <g transform="translate(250, 100)">
+      {/* Disciple Figure (Smaller) */}
+      <g transform="translate(240, 110) scale(0.8)">
         <circle cx="0" cy="-20" r="15" fill="hsl(var(--accent))" />
         <path
           d="M -25 0 C -25 30, 25 30, 25 0 Z"
@@ -45,7 +47,7 @@ export default function DeekshaAnimation() {
       {/* Energy Transfer Path */}
       <path
         id="energyPath"
-        d="M 85 80 C 150 40, 150 160, 215 80"
+        d="M 100 85 C 150 50, 170 150, 232 94"
         fill="none"
         stroke="hsl(var(--border))"
         strokeWidth="0.5"
@@ -64,13 +66,13 @@ export default function DeekshaAnimation() {
           <animateMotion
             dur="3s"
             repeatCount="indefinite"
-            path="M 85 80 C 150 40, 150 160, 215 80"
+            path="M 100 85 C 150 50, 170 150, 232 94"
           />
         </circle>
       ))}
 
       {/* Sahasrara glow on disciple */}
-      <circle cx="250" cy="80" r="10" fill="hsl(var(--primary))" className="animate-pulse-glow-strong" style={{ animationDuration: '4s' }} />
+      <circle cx="240" cy="94" r="10" fill="hsl(var(--primary))" className="animate-pulse-glow-strong" style={{ animationDuration: '4s' }} />
 
     </svg>
   );
