@@ -7,6 +7,7 @@ import { Music, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { recordMantraPracticed } from '@/lib/progress-tracker';
 import { useToast } from '@/hooks/use-toast';
+import MantraVibrationAnimation from '@/components/mantra-vibration-animation';
 
 export default function MantrasPage() {
   const { toast } = useToast();
@@ -21,14 +22,17 @@ export default function MantrasPage() {
 
   return (
     <div className="space-y-8 animate-fade-in">
-      <header className="space-y-2 p-4 rounded-lg animated-border">
-        <h1 className="text-4xl font-bold font-headline text-primary flex items-center gap-2">
+      <header className="space-y-2 p-4 rounded-lg animated-border text-center">
+        <h1 className="text-4xl font-bold font-headline text-primary flex items-center justify-center gap-2">
           <Music />
           ಮಂತ್ರ ಸಂಗ್ರಹ
         </h1>
         <p className="text-lg text-muted-foreground">
           ಸಾಂಪ್ರದಾಯಿಕ ತಂತ್ರ ಮಂತ್ರಗಳನ್ನು ಅನ್ವೇಷಿಸಿ.
         </p>
+        <div className="relative w-full h-48 md:h-64 flex items-center justify-center my-4 overflow-hidden">
+            <MantraVibrationAnimation />
+        </div>
       </header>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
