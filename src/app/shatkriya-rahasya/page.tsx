@@ -8,6 +8,7 @@ import { ScrollAnimate } from '@/components/ui/scroll-animate';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import shatkriyaData from '@/lib/content/shatkriya-rahasya.json';
+import PurificationAnimation from '@/components/purification-animation';
 
 const WHATSAPP_NUMBER = "7022070287";
 const WHATSAPP_MESSAGE = "ನಮಸ್ಕಾರ, ನಾನು ತಂತ್ರ ವಿಜ್ಞಾನ ಅಪ್ಲಿಕೇಶನ್‌ನಿಂದ ಷಟ್ಕರ್ಮಗಳ ಬಗ್ಗೆ ವೈಯಕ್ತಿಕ ಮಾರ್ಗದರ್ಶನಕ್ಕಾಗಿ ಸಂಪರ್ಕಿಸುತ್ತಿದ್ದೇನೆ.";
@@ -26,6 +27,10 @@ export default function ShatkriyaRahasyaPage() {
         </p>
       </header>
       
+      <div className="relative w-full h-80 md:h-96 flex items-center justify-center my-4 overflow-hidden rounded-lg bg-muted/30">
+        <PurificationAnimation />
+      </div>
+
       <ScrollAnimate>
         <Card>
             <CardHeader>
