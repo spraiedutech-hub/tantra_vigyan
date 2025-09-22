@@ -21,7 +21,7 @@ export default function WealthFlowAnimation() {
       </defs>
 
       {/* Wealth Source (Shreem Bija Mantra) */}
-      <g transform="translate(150, 80)">
+      <g transform="translate(150, 80)" className="animate-rotate-slow">
         <circle r="40" fill="url(#gradWealthSource)" className="animate-pulse-slow" />
         <text
           x="0"
