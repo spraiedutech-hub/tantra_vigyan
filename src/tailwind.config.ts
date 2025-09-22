@@ -321,6 +321,10 @@ export default {
           '75%': { transform: 'translate(var(--x4), var(--y4))' },
           '100%': { transform: 'translate(var(--x1), var(--y1))' },
         },
+        'market-planet-pulse': {
+          '0%, 100%': { r: 'var(--r, 8px)', opacity: '0.8', filter: 'drop-shadow(0 0 4px currentColor)' },
+          '50%': { r: 'calc(var(--r, 8px) * 1.2)', opacity: '1', filter: 'drop-shadow(0 0 12px currentColor)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -377,6 +381,7 @@ export default {
         'script-fade-in': 'script-fade-in 1s ease-out forwards',
         'shield-pulse': 'shield-pulse 5s ease-in-out infinite',
         'particle-roam': 'particle-roam var(--duration, 10s) linear infinite',
+        'market-planet-pulse': 'market-planet-pulse 4s ease-in-out infinite',
       },
     },
   },

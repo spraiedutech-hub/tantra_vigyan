@@ -15,6 +15,7 @@ import personalizedForecastInfo from '@/lib/content/personalized-forecast-info.j
 import planetaryInfluences from '@/lib/content/planetary-influences.json';
 import dailyPrediction from '@/lib/content/market-predictions.json';
 import type { MarketPredictionOutput } from '@/lib/types';
+import MarketGraphAnimation from '@/components/market-graph-animation';
 
 
 const WHATSAPP_NUMBER = "917022070287";
@@ -48,6 +49,10 @@ export default function ShareMarketAstrologyPage() {
           ಗ್ರಹಗಳ ಚಲನೆಯು ಮಾರುಕಟ್ಟೆಯ ಮೇಲೆ ಹೇಗೆ ಪ್ರಭಾವ ಬೀರುತ್ತದೆ ಎಂಬುದನ್ನು ಅರಿಯಿರಿ.
         </p>
       </header>
+      
+      <div className="relative w-full h-80 md:h-96 flex items-center justify-center my-4 overflow-hidden rounded-lg bg-muted/30">
+        <MarketGraphAnimation />
+      </div>
       
        <ScrollAnimate delay={150}>
         <Alert variant="destructive" className="border-accent/50 text-accent [&>svg]:text-accent">
@@ -249,4 +254,3 @@ export default function ShareMarketAstrologyPage() {
     </div>
   );
 }
-
