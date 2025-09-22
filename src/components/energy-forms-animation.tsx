@@ -4,94 +4,99 @@
 import { useMemo } from 'react';
 
 export default function EnergyFormsAnimation() {
-  const subtleBeings = useMemo(() => {
-    return Array.from({ length: 5 }).map((_, i) => ({
-      id: `subtle-${i}`,
-      rx: 60 + Math.random() * 30,
-      ry: 60 + Math.random() * 30,
-      duration: `${15 + Math.random() * 10}s`,
-      delay: `${Math.random() * 5}s`,
+  const divineOrbits = useMemo(() => {
+    return Array.from({ length: 3 }).map((_, i) => ({
+      id: `divine-${i}`,
+      radius: 20 + i * 15,
+      duration: `${8 + i * 4}s`,
+      delay: `${i * 0.5}s`,
     }));
   }, []);
 
-  const negativeEntities = useMemo(() => {
-    return Array.from({ length: 7 }).map((_, i) => ({
-      id: `neg-${i}`,
-      startX: 10 + Math.random() * 80,
-      startY: 85 + Math.random() * 15,
-      endX: 10 + Math.random() * 80,
-      endY: 85 + Math.random() * 15,
-      duration: `${2 + Math.random() * 3}s`,
-      delay: `${Math.random() * 4}s`,
+  const subtleOrbits = useMemo(() => {
+    return Array.from({ length: 2 }).map((_, i) => ({
+      id: `subtle-${i}`,
+      rx: 80 + i * 10,
+      ry: 40 + i * 5,
+      duration: `${20 + i * 5}s`,
+      delay: `${i * 1}s`,
     }));
   }, []);
+
+  const negativePaths = useMemo(() => {
+    return Array.from({ length: 5 }).map((_, i) => ({
+      id: `neg-${i}`,
+      path: `M ${10 + Math.random() * 80},95 Q ${50 + (Math.random() - 0.5) * 40},80 ${10 + Math.random() * 80},95`,
+      duration: `${3 + Math.random() * 3}s`,
+      delay: `${Math.random() * 3}s`,
+    }));
+  }, []);
+
 
   return (
-    <svg viewBox="0 0 100 100" className="w-full h-full">
+    <svg viewBox="0 0 200 200" className="w-full h-full">
       <defs>
-        <radialGradient id="gradConsciousness" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="hsl(var(--accent))" stopOpacity="0.8" />
-          <stop offset="100%" stopColor="hsl(var(--accent))" stopOpacity="0" />
+        <radialGradient id="gradCenterGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.5" />
+          <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
         </radialGradient>
-        <filter id="energyGlow" x="-50%" y="-50%" width="200%" height="200%">
+         <filter id="energyGlowFilter" x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur stdDeviation="1.5" result="coloredBlur" />
           <feMerge>
             <feMergeNode in="coloredBlur" />
             <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
+        
+        {/* Define paths for motion */}
+        {divineOrbits.map(o => (
+            <path key={o.id} id={o.id} d={`M ${100 - o.radius},100 a ${o.radius},${o.radius} 0 1,0 ${o.radius * 2},0 a ${o.radius},${o.radius} 0 1,0 -${o.radius * 2},0`} fill="none" />
+        ))}
+         {subtleOrbits.map(o => (
+            <path key={o.id} id={o.id} d={`M ${100 - o.rx},100 a ${o.rx},${o.ry} 0 1,0 ${o.rx * 2},0 a ${o.rx},${o.ry} 0 1,0 -${o.rx * 2},0`} fill="none" />
+        ))}
+        {negativePaths.map(p => (
+            <path key={p.id} id={p.id} d={p.path} fill="none" />
+        ))}
+
       </defs>
 
-      {/* Central Consciousness */}
-      <circle cx="50" cy="50" r="8" fill="hsl(var(--accent))" className="animate-pulse-glow" />
+      {/* Background glow */}
+      <circle cx="100" cy="100" r="100" fill="url(#gradCenterGlow)" className="animate-pulse-slow"/>
 
-      {/* Divine Energy Waves */}
-      <g filter="url(#energyGlow)">
-        <circle cx="50" cy="50" r="10" fill="none" stroke="hsl(var(--primary))" strokeWidth="1" className="animate-divine-wave" style={{ animationDelay: '0s' }}/>
-        <circle cx="50" cy="50" r="10" fill="none" stroke="hsl(var(--primary))" strokeWidth="1" className="animate-divine-wave" style={{ animationDelay: '2s' }}/>
-        <circle cx="50" cy="50" r="10" fill="none" stroke="hsl(var(--primary))" strokeWidth="1" className="animate-divine-wave" style={{ animationDelay: '4s' }}/>
+      {/* Central Consciousness */}
+      <circle cx="100" cy="100" r="8" fill="hsl(var(--primary))" filter="url(#energyGlowFilter)" />
+
+      {/* Divine Energies */}
+      <g>
+        {divineOrbits.map(orbit => (
+          <circle key={orbit.id} r="2" fill="hsl(var(--accent))" filter="url(#energyGlowFilter)">
+            <animateMotion dur={orbit.duration} begin={orbit.delay} repeatCount="indefinite">
+              <mpath href={`#${orbit.id}`} />
+            </animateMotion>
+          </circle>
+        ))}
       </g>
       
       {/* Subtle Beings */}
       <g>
-        {subtleBeings.map(s => (
-          <ellipse
-            key={s.id}
-            cx="50"
-            cy="50"
-            rx={s.rx}
-            ry={s.ry}
-            fill="none"
-            stroke="hsl(var(--muted-foreground))"
-            strokeWidth="0.3"
-            strokeDasharray="3 5"
-            className="animate-subtle-shimmer"
-            style={{
-              animationDuration: s.duration,
-              animationDelay: s.delay,
-              transformOrigin: '50px 50px'
-            }}
-          />
+        {subtleOrbits.map(orbit => (
+           <circle key={orbit.id} r="1.5" fill="hsl(var(--muted-foreground))" className="opacity-70">
+            <animateMotion dur={orbit.duration} begin={orbit.delay} repeatCount="indefinite">
+              <mpath href={`#${orbit.id}`} />
+            </animateMotion>
+          </circle>
         ))}
       </g>
-
+      
       {/* Negative Energies */}
       <g>
-        {negativeEntities.map((n) => (
-          <path
-            key={n.id}
-            d="M 0 0 L 5 2 L 2 5 L 0 0 Z"
-            fill="hsl(var(--destructive))"
-            className="animate-negative-jag"
-            style={{
-              '--start-x': `${n.startX}px`,
-              '--start-y': `${n.startY}px`,
-              '--end-x': `${n.endX}px`,
-              '--end-y': `${n.endY}px`,
-              animationDuration: n.duration,
-              animationDelay: n.delay,
-            } as React.CSSProperties}
-          />
+        {negativePaths.map(p => (
+            <path key={p.id} d="M -2,-2 L 2,2 M 2,-2 L -2,2" stroke="hsl(var(--destructive))" strokeWidth="1" className="opacity-80">
+                 <animateMotion dur={p.duration} begin={p.delay} repeatCount="indefinite">
+                    <mpath href={`#${p.id}`} />
+                </animateMotion>
+            </path>
         ))}
       </g>
     </svg>
