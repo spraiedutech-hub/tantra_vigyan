@@ -277,18 +277,10 @@ export default {
           '50%': { transform: 'scale(1.05)', opacity: '0.8' },
         },
         'prana-particle': {
-          '0%': {
-            cx: 'var(--start-x)',
-            cy: 'var(--start-y)',
-            opacity: '0',
-          },
+          '0%': { opacity: '0', transform: 'translate(var(--start-x), var(--start-y))' },
           '20%': { opacity: '1' },
           '80%': { opacity: '1' },
-          '100%': {
-            cx: 'var(--end-x)',
-            cy: 'var(--end-y)',
-            opacity: '0',
-          },
+          '100%': { opacity: '0', transform: 'translate(var(--end-x), var(--end-y))' },
         },
         'blockage-pulse': {
           '0%, 100%': { transform: 'scale(1)', opacity: '0.8' },
@@ -300,18 +292,17 @@ export default {
           '80%': { opacity: '1' },
           '100%': { opacity: '0' },
         },
-        'wealth-flow': {
+        'coin-fall': {
           '0%': {
-              'offset-path': 'path("M var(--start-x) var(--start-y) C var(--control-x1) var(--control-y1), var(--control-x2) var(--control-y2), var(--end-x) var(--end-y)")',
-              opacity: '0',
-              'offset-distance': '0%',
+            transform: 'translate(var(--start-x), 120px)',
+            opacity: '0',
           },
-          '20%': { opacity: '1' },
-          '80%': { opacity: '1' },
+          '20%': {
+            opacity: '1',
+          },
           '100%': {
-              'offset-path': 'path("M var(--start-x) var(--start-y) C var(--control-x1) var(--control-y1), var(--control-x2) var(--control-y2), var(--end-x) var(--end-y)")',
-              opacity: '0',
-              'offset-distance': '100%',
+            transform: 'translate(var(--start-x), var(--end-y))',
+            opacity: '1',
           },
         },
       },
@@ -360,10 +351,10 @@ export default {
         'star-twinkle': 'star-twinkle 4s ease-in-out infinite',
         'move-across-sky': 'move-across-sky 40s linear infinite alternate',
         'aura-pulse': 'aura-pulse 6s ease-in-out infinite',
-        'prana-particle': 'prana-particle linear infinite',
+        'prana-particle': 'prana-particle var(--duration, 8s) linear infinite var(--delay, 0s)',
         'blockage-pulse': 'blockage-pulse 4s ease-in-out infinite',
         'healing-light-appear': 'healing-light-appear 8s ease-in-out infinite 2s',
-        'wealth-flow': 'wealth-flow linear infinite',
+        'coin-fall': 'coin-fall var(--duration) linear infinite var(--delay)',
       },
     },
   },

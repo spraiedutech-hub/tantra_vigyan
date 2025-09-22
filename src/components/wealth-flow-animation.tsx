@@ -2,7 +2,7 @@
 'use client';
 
 export default function WealthFlowAnimation() {
-  const particleCount = 40;
+  const coinCount = 30;
 
   return (
     <svg viewBox="0 0 300 400" className="w-full h-full">
@@ -36,25 +36,35 @@ export default function WealthFlowAnimation() {
         </text>
       </g>
       
-      {/* Flowing Wealth Particles */}
+      {/* Pot of Gold */}
+      <g transform="translate(150, 350)">
+        <path d="M -60 0 C -60 -40, 60 -40, 60 0 Q 50 10, -50 10 Z" fill="hsl(var(--muted))" stroke="hsl(var(--border))" strokeWidth="2" />
+        <ellipse cx="0" cy="0" rx="60" ry="15" fill="hsl(var(--muted))" stroke="hsl(var(--border))" strokeWidth="2" />
+      </g>
+      
+      {/* Overflowing Coins */}
+       <g fill="hsl(var(--primary))">
+          <circle cx="150" cy="340" r="10" />
+          <circle cx="130" cy="345" r="12" />
+          <circle cx="170" cy="345" r="11" />
+          <circle cx="155" cy="355" r="9" />
+          <circle cx="115" cy="350" r="10" />
+          <circle cx="185" cy="350" r="8" />
+       </g>
+
+      {/* Falling Coins */}
       <g>
-        {Array.from({ length: particleCount }).map((_, i) => (
+        {Array.from({ length: coinCount }).map((_, i) => (
           <circle
-            key={`particle-${i}`}
-            r={1.5 + Math.random() * 2}
+            key={`coin-${i}`}
+            r={4 + Math.random() * 4}
             fill="hsl(var(--primary))"
-            className="animate-wealth-flow"
+            className="animate-coin-fall"
             style={{
                 '--start-x': `${150 + (Math.random() - 0.5) * 80}px`,
-                '--start-y': '80px',
-                '--end-x': `${150 + (Math.random() - 0.5) * 250}px`,
-                '--end-y': '400px',
-                '--control-x1': `${150 + (Math.random() - 0.5) * 150}px`,
-                '--control-y1': `${150 + Math.random() * 50}px`,
-                '--control-x2': `${150 + (Math.random() - 0.5) * 200}px`,
-                '--control-y2': `${250 + Math.random() * 50}px`,
-                animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${4 + Math.random() * 4}s`,
+                '--end-y': `${350 + Math.random() * 20}px`,
+                '--delay': `${Math.random() * 5}s`,
+                '--duration': `${2 + Math.random() * 3}s`,
             } as React.CSSProperties}
           />
         ))}
