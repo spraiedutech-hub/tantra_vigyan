@@ -11,6 +11,7 @@ import AnimatedBackground from '@/components/animated-background';
 import AppHeader from '@/components/layout/app-header';
 import AppFooter from '@/components/layout/app-footer';
 import SplashScreen from '@/components/splash-screen';
+import { app } from '@/lib/firebase'; // Import Firebase
 
 export default function LayoutProvider({
   children,
@@ -20,6 +21,7 @@ export default function LayoutProvider({
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    console.log('Firebase App initialized:', app.name);
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2500); // Splash screen duration
