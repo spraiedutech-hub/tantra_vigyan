@@ -296,9 +296,11 @@ export default {
           '0%, 100%': { 'stroke-opacity': '0.7' },
           '50%': { 'stroke-opacity': '1' },
         },
-        'particle-fade': {
-          '0%, 100%': { opacity: '0' },
-          '50%': { opacity: '0.8' },
+        'particle-flow': {
+          '0%': { transform: 'translate(var(--start-x), var(--start-y))', opacity: '0' },
+          '20%': { opacity: '1' },
+          '80%': { opacity: '1' },
+          '100%': { transform: 'translate(var(--end-x), var(--end-y))', opacity: '0' },
         },
       },
       animation: {
@@ -350,7 +352,7 @@ export default {
         'blockage-pulse': 'blockage-pulse 4s ease-in-out infinite',
         'healing-light-appear': 'healing-light-appear 8s ease-in-out infinite 2s',
         'yantra-pulse': 'yantra-pulse 4s ease-in-out infinite',
-        'particle-fade': 'particle-fade var(--duration, 5s) ease-in-out infinite var(--delay, 0s)',
+        'particle-flow': 'particle-flow var(--duration, 5s) ease-in-out infinite var(--delay, 0s)',
       },
     },
   },

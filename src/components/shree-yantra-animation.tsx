@@ -7,15 +7,22 @@ export default function ShreeYantraAnimation() {
   // Function to generate random positions for particles
   const particles = Array.from({ length: particleCount }).map((_, i) => {
     const angle = Math.random() * 2 * Math.PI;
-    const radius = 20 + Math.random() * 110;
-    const x = 150 + radius * Math.cos(angle);
-    const y = 150 + radius * Math.sin(angle);
+    const startRadius = 5;
+    const endRadius = 130 + Math.random() * 10;
+    
+    const startX = 150 + startRadius * Math.cos(angle);
+    const startY = 150 + startRadius * Math.sin(angle);
+    const endX = 150 + endRadius * Math.cos(angle);
+    const endY = 150 + endRadius * Math.sin(angle);
+
     return {
-      cx: x,
-      cy: y,
+      startX,
+      startY,
+      endX,
+      endY,
       r: Math.random() * 1.5 + 0.5,
       delay: `${Math.random() * 5}s`,
-      duration: `${3 + Math.random() * 4}s`,
+      duration: `${4 + Math.random() * 4}s`,
     };
   });
 
@@ -63,15 +70,19 @@ export default function ShreeYantraAnimation() {
         {particles.map((p, i) => (
           <circle
             key={i}
-            cx={p.cx}
-            cy={p.cy}
             r={p.r}
             fill="hsl(var(--accent))"
-            className="animate-particle-fade"
-            style={{
-              animationDelay: p.delay,
-              animationDuration: p.duration,
-            }}
+            className="animate-particle-flow"
+            style={
+              {
+                '--start-x': `${p.startX}px`,
+                '--start-y': `${p.startY}px`,
+                '--end-x': `${p.endX}px`,
+                '--end-y': `${p.endY}px`,
+                animationDelay: p.delay,
+                animationDuration: p.duration,
+              } as React.CSSProperties
+            }
           />
         ))}
       </g>
