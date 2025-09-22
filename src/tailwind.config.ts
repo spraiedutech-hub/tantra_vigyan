@@ -277,6 +277,50 @@ export default {
             '90%': { opacity: '1' },
             '100%': { transform: 'translateY(var(--translate-y, 100px))', opacity: '0' },
         },
+        'orbit': {
+          from: { transform: 'rotate(0deg)' },
+          to: { transform: 'rotate(360deg)' },
+        },
+        'prana-flow': {
+          '0%': { opacity: '0' },
+          '50%': { opacity: '1' },
+          '100%': { opacity: '0', offsetDistance: '100%' },
+        },
+        'star-twinkle': {
+            '0%, 100%': { opacity: 0.5 },
+            '50%': { opacity: 1 },
+        },
+        'move-across-sky': {
+            '0%': { transform: 'translate(250px, 50px)' },
+            '100%': { transform: 'translate(-50px, 150px)' },
+        },
+        'fire-flicker': {
+            '0%, 100%': { transform: 'scaleY(1) skewX(0)', opacity: 0.8 },
+            '50%': { transform: 'scaleY(1.2) skewX(5deg)', opacity: 1 },
+        },
+        'sparks-fly': {
+            '0%': { transform: 'translate(0, 0) scale(1)', opacity: 1 },
+            '100%': { transform: 'translate(var(--tx), -80px) scale(0)', opacity: 0 },
+        },
+        'unfurl-scroll': {
+          '0%': { transform: 'scaleY(0)' },
+          '100%': { transform: 'scaleY(1)' },
+        },
+        'script-fade-in': {
+          from: { opacity: '0' },
+          to: { opacity: '1' },
+        },
+        'shield-pulse': {
+          '0%, 100%': { transform: 'scale(1)', filter: 'drop-shadow(0 0 8px hsl(var(--primary)))' },
+          '50%': { transform: 'scale(1.05)', filter: 'drop-shadow(0 0 16px hsl(var(--primary)))' },
+        },
+        'particle-roam': {
+          '0%': { transform: 'translate(var(--x1), var(--y1))' },
+          '25%': { transform: 'translate(var(--x2), var(--y2))' },
+          '50%': { transform: 'translate(var(--x3), var(--y3))' },
+          '75%': { transform: 'translate(var(--x4), var(--y4))' },
+          '100%': { transform: 'translate(var(--x1), var(--y1))' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -323,6 +367,16 @@ export default {
         'thought-flow': 'thought-flow 6s ease-in-out infinite',
         'mantra-fade': 'mantra-fade 8s ease-in-out infinite',
         'coin-fall': 'coin-fall var(--duration, 4s) ease-in-out infinite var(--delay, 0s)',
+        'orbit': 'orbit var(--duration, 20s) linear infinite',
+        'prana-flow': 'prana-flow var(--duration, 10s) ease-in-out infinite var(--delay, 0s)',
+        'star-twinkle': 'star-twinkle 4s ease-in-out infinite',
+        'move-across-sky': 'move-across-sky 60s linear infinite',
+        'fire-flicker': 'fire-flicker var(--duration, 1s) ease-in-out infinite',
+        'sparks-fly': 'sparks-fly var(--duration, 2s) ease-out infinite',
+        'unfurl-scroll': 'unfurl-scroll 1.5s ease-out forwards',
+        'script-fade-in': 'script-fade-in 1s ease-out forwards',
+        'shield-pulse': 'shield-pulse 5s ease-in-out infinite',
+        'particle-roam': 'particle-roam var(--duration, 10s) linear infinite',
       },
     },
   },
