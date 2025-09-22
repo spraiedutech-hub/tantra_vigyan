@@ -5,16 +5,18 @@ import { motion } from 'framer-motion';
 
 export default function JatakaBlueprintAnimation() {
   const planets = [
-    { cx: 150, cy: 55, delay: "3s" },
-    { cx: 200, cy: 75, delay: "3.2s" },
-    { cx: 245, cy: 150, delay: "3.4s" },
-    { cx: 200, cy: 225, delay: "3.6s" },
-    { cx: 150, cy: 245, delay: "3.8s" },
-    { cx: 100, cy: 225, delay: "4s" },
-    { cx: 55, cy: 150, delay: "4.2s" },
-    { cx: 100, cy: 75, delay: "4.4s" },
-    { cx: 150, cy: 150, delay: "4.6s" },
+    { cx: 150, cy: 55 },
+    { cx: 200, cy: 75 },
+    { cx: 245, cy: 150 },
+    { cx: 200, cy: 225 },
+    { cx: 150, cy: 245 },
+    { cx: 100, cy: 225 },
+    { cx: 55, cy: 150 },
+    { cx: 100, cy: 75 },
+    { cx: 150, cy: 150 },
   ];
+
+  const totalDuration = 8; // Total duration for one cycle
 
   const drawVariant = (delay: number, duration: number = 2) => ({
     hidden: { pathLength: 0, opacity: 0 },
@@ -22,11 +24,41 @@ export default function JatakaBlueprintAnimation() {
       pathLength: 1,
       opacity: 1,
       transition: {
-        pathLength: { delay, duration, ease: "easeInOut" },
-        opacity: { delay, duration: 0.1 }
+        pathLength: { delay, duration, ease: "easeInOut", repeat: Infinity, repeatDelay: totalDuration - duration - delay },
+        opacity: { delay, duration: 0.1, repeat: Infinity, repeatDelay: totalDuration - 0.1 - delay }
       }
     }
   });
+  
+  const planetVariant = (delay: number) => ({
+      hidden: { opacity: 0, scale: 0 },
+      visible: { 
+        opacity: [0, 1, 1, 0], 
+        scale: [0, 1, 1, 0],
+        transition: {
+            delay,
+            duration: totalDuration - delay,
+            times: [0, 0.1, 0.9, 1],
+            repeat: Infinity,
+        }
+    },
+  });
+  
+  const structureVariant = (delay: number, duration: number = 1.5) => ({
+      hidden: { opacity: 0, y: 20 },
+      visible: {
+        opacity: [0, 1, 1, 0],
+        y: [20, 0, 0, 20],
+        transition: {
+            delay,
+            duration,
+            times: [0, 0.2, 0.8, 1],
+            repeat: Infinity,
+            repeatDelay: totalDuration - duration - delay
+        }
+    }
+  });
+
 
   return (
     <svg viewBox="0 0 300 300" className="w-full h-full">
@@ -49,10 +81,10 @@ export default function JatakaBlueprintAnimation() {
       
       {/* Horoscope Chart Lines */}
       <g stroke="hsl(var(--primary))" strokeWidth="1" filter="url(#blueprintGlow)">
-        <motion.path d="M 50 50 L 250 50 L 250 250 L 50 250 Z" variants={drawVariant(0.5)} initial="hidden" animate="visible" />
-        <motion.path d="M 50 50 L 250 250" variants={drawVariant(1)} initial="hidden" animate="visible" />
-        <motion.path d="M 250 50 L 50 250" variants={drawVariant(1)} initial="hidden" animate="visible" />
-        <motion.path d="M 150 50 L 50 150 L 150 250 L 250 150 Z" variants={drawVariant(1.5)} initial="hidden" animate="visible" />
+        <motion.path d="M 50 50 L 250 50 L 250 250 L 50 250 Z" variants={drawVariant(0.5, 1.5)} initial="hidden" animate="visible" />
+        <motion.path d="M 50 50 L 250 250" variants={drawVariant(1, 1.5)} initial="hidden" animate="visible" />
+        <motion.path d="M 250 50 L 50 250" variants={drawVariant(1, 1.5)} initial="hidden" animate="visible" />
+        <motion.path d="M 150 50 L 50 150 L 150 250 L 250 150 Z" variants={drawVariant(1.5, 2)} initial="hidden" animate="visible" />
       </g>
 
       {/* Planets appearing */}
@@ -64,20 +96,20 @@ export default function JatakaBlueprintAnimation() {
             cy={planet.cy} 
             r="4" 
             fill="hsl(var(--accent))" 
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 2.5 + i * 0.2 }}
+            variants={planetVariant(2.5 + i * 0.2)}
+            initial="hidden"
+            animate="visible"
           />
         ))}
       </g>
       
       {/* Temple structure building */}
       <g stroke="hsl(var(--primary))" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
-        <motion.path d="M 100 220 L 200 220" variants={drawVariant(4)} initial="hidden" animate="visible" />
-        <motion.path d="M 110 220 L 110 160" variants={drawVariant(4.5)} initial="hidden" animate="visible" />
-        <motion.path d="M 190 220 L 190 160" variants={drawVariant(4.5)} initial="hidden" animate="visible" />
-        <motion.path d="M 100 160 L 200 160" variants={drawVariant(5)} initial="hidden" animate="visible" />
-        <motion.path d="M 90 160 L 150 110 L 210 160 Z" variants={drawVariant(5.5)} initial="hidden" animate="visible" />
+        <motion.path d="M 100 220 L 200 220" variants={drawVariant(4.5, 1)} initial="hidden" animate="visible" />
+        <motion.path d="M 110 220 L 110 160" variants={drawVariant(5, 1)} initial="hidden" animate="visible" />
+        <motion.path d="M 190 220 L 190 160" variants={drawVariant(5, 1)} initial="hidden" animate="visible" />
+        <motion.path d="M 100 160 L 200 160" variants={drawVariant(5.5, 1)} initial="hidden" animate="visible" />
+        <motion.path d="M 90 160 L 150 110 L 210 160 Z" variants={drawVariant(6, 1)} initial="hidden" animate="visible" />
       </g>
 
       {/* Shivalingam appearing at the end */}
@@ -86,9 +118,9 @@ export default function JatakaBlueprintAnimation() {
         fill="hsl(var(--accent))" 
         stroke="hsl(var(--accent))" 
         strokeWidth="2" 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 6.5 }}
+        variants={structureVariant(6.5, 1.5)}
+        initial="hidden"
+        animate="visible"
        >
         <path d="M -25,20 A 25,10 0 0,0 25,20 Z" />
         <path d="M -15,20 Q 0,30 15,20 L 15,5 Q 0,-20 -15,5 Z" />
