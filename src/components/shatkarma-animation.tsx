@@ -1,7 +1,8 @@
 
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
+import { useEffect } from 'react';
 
 const symbols = [
   // Vashikarana (Control) - Spiral
@@ -29,6 +30,42 @@ const pathVariants = {
     },
   }),
 };
+
+// A custom component to handle the path animation for each particle
+function AnimatedParticle({ path, index }: { path: string; index: number }) {
+  const pathRef = React.useRef<SVGPathElement>(null);
+  const progress = useMotionValue(0);
+
+  useEffect(() => {
+    const animation = animate(progress, [0, 1], {
+      delay: index * 0.5 + 1.5,
+      duration: 2,
+      repeat: Infinity,
+      repeatType: "loop",
+      ease: "linear",
+    });
+    return () => animation.stop();
+  }, [progress, index]);
+
+  const x = useTransform(progress, (value) => {
+    return pathRef.current?.getPointAtLength(value * pathRef.current.getTotalLength()).x;
+  });
+  const y = useTransform(progress, (value) => {
+    return pathRef.current?.getPointAtLength(value * pathRef.current.getTotalLength()).y;
+  });
+
+  return (
+    <>
+      <path d={path} ref={pathRef} style={{ display: 'none' }} />
+      <motion.circle
+        r="2"
+        fill="hsl(var(--accent))"
+        style={{ x, y }}
+      />
+    </>
+  );
+}
+
 
 export default function ShatkarmaAnimation() {
   return (
@@ -58,6 +95,7 @@ export default function ShatkarmaAnimation() {
         {/* Radiating Paths and Symbols */}
         {symbols.map((symbol, i) => {
           const [tx, ty] = symbol.transform.match(/-?\d+/g)!.map(Number);
+          const linePath = `M 150 150 L ${tx} ${ty}`;
           return (
             <g key={i}>
               <motion.line
@@ -82,21 +120,7 @@ export default function ShatkarmaAnimation() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: i * 0.3 + 1, duration: 0.8 }}
               />
-               <motion.circle
-                  r="2"
-                  fill="hsl(var(--accent))"
-                  initial={{ offsetDistance: "0%" }}
-                  animate={{ offsetDistance: "100%" }}
-                  transition={{
-                      delay: i * 0.5 + 1.5,
-                      duration: 2,
-                      repeat: Infinity,
-                      repeatType: "loop",
-                      ease: "linear"
-                  }}
-                >
-                    <motion.path d={`M 150 150 L ${tx} ${ty}`} fill="none" />
-                </motion.circle>
+               <AnimatedParticle path={linePath} index={i} />
             </g>
           );
         })}
