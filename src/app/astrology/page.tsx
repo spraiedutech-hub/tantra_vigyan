@@ -266,7 +266,7 @@ export default function AstrologyPage() {
             ನಿಮ್ಮ ಜನ್ಮ ಕುಂಡಲಿಯ ಆಳವಾದ, ವೈಯಕ್ತಿಕ ವಿಶ್ಲೇಷಣೆ ಮತ್ತು ಪರಿಹಾರಗಳಿಗಾಗಿ ನಮ್ಮ ಪರಿಣಿತರನ್ನು ಸಂಪರ್ಕಿಸಿ.
             </p>
             <Button asChild size="lg">
-                <Link href="/consultations">
+                <Link href="/guidance">
                 ಸಮಾಲೋಚನೆ ವಿವರಗಳನ್ನು ವೀಕ್ಷಿಸಿ <ArrowRight className="ml-2" />
                 </Link>
             </Button>
