@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import blackMagicData from '@/lib/content/black-magic.json';
 import ProtectionShieldAnimation from '@/components/protection-shield-animation';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const WHATSAPP_NUMBER = "917022070287";
 const WHATSAPP_MESSAGE = "ನಮಸ್ಕಾರ, ನಾನು ತಂತ್ರ ವಿಜ್ಞಾನ ಅಪ್ಲಿಕೇಶನ್‌ನಿಂದ ಮಾಟ ಮಂತ್ರ ಮತ್ತು ರಕ್ಷಣೆಯ ಬಗ್ಗೆ ವೈಯಕ್ತಿಕ ಸಲಹೆಗಾಗಿ ಸಂಪರ್ಕಿಸುತ್ತಿದ್ದೇನೆ.";
@@ -55,22 +56,26 @@ export default function BlackMagicPage() {
       </ScrollAnimate>
 
       <div className="space-y-6">
-        {blackMagicData.sections.map((item, index) => (
-          <ScrollAnimate key={index} delay={300 + index * 150}>
-            <Card className="transform hover:scale-[1.01] transition-transform duration-300 ease-in-out">
-              <CardHeader>
-                <CardTitle className="font-headline text-2xl text-accent">{item.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="prose prose-lg dark:prose-invert max-w-full text-foreground/90 space-y-4 text-justify leading-relaxed">
-                   {item.content.split('\n\n').map((paragraph, pIndex) => (
-                    <p key={pIndex}>{paragraph}</p>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </ScrollAnimate>
-        ))}
+        <Accordion type="single" collapsible className="w-full space-y-4">
+          {blackMagicData.sections.map((item, index) => (
+            <ScrollAnimate key={index} delay={300 + index * 150}>
+              <Card className="transform hover:scale-[1.01] transition-transform duration-300 ease-in-out">
+                <AccordionItem value={`item-${index}`} className="border-b-0">
+                  <AccordionTrigger className="text-xl font-headline text-accent hover:no-underline p-6 text-left">
+                    {item.title}
+                  </AccordionTrigger>
+                  <AccordionContent className="p-6 pt-0">
+                    <div className="prose prose-lg dark:prose-invert max-w-full text-foreground/90 space-y-4 text-justify leading-relaxed">
+                      {item.content.split('\n\n').map((paragraph, pIndex) => (
+                        <p key={pIndex}>{paragraph}</p>
+                      ))}
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              </Card>
+            </ScrollAnimate>
+          ))}
+        </Accordion>
       </div>
 
        <ScrollAnimate delay={400 + blackMagicData.sections.length * 150}>
