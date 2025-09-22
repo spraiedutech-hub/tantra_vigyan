@@ -39,6 +39,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2, Wand2 } from 'lucide-react';
 import { Separator } from './ui/separator';
+import { zodResolver } from '@hookform/resolvers/zod';
+
 
 // Zod schemas for form validation
 const mantraSchema = z.object({
@@ -66,6 +68,7 @@ export default function RecommendationsTool() {
     useState<ActivityRecommendationsOutput | null>(null);
 
   const mantraForm = useForm<MantraFormValues>({
+    resolver: zodResolver(mantraSchema),
     defaultValues: {
       desiredOutcome: '',
       timeCommitment: '',
@@ -74,6 +77,7 @@ export default function RecommendationsTool() {
   });
 
   const activityForm = useForm<ActivityFormValues>({
+    resolver: zodResolver(activitySchema),
     defaultValues: {
       experienceLevel: '',
       availableTime: '',
@@ -82,17 +86,6 @@ export default function RecommendationsTool() {
   });
 
   const onMantraSubmit: SubmitHandler<MantraFormValues> = async (data) => {
-    const parsed = mantraSchema.safeParse(data);
-    if (!parsed.success) {
-      parsed.error.errors.forEach((err) => {
-        mantraForm.setError(err.path[0] as keyof MantraFormValues, {
-            type: 'manual',
-            message: err.message,
-        });
-      });
-      return;
-    }
-
     setMantraLoading(true);
     setMantraResult(null);
     try {
@@ -111,17 +104,6 @@ export default function RecommendationsTool() {
   };
 
   const onActivitySubmit: SubmitHandler<ActivityFormValues> = async (data) => {
-    const parsed = activitySchema.safeParse(data);
-     if (!parsed.success) {
-      parsed.error.errors.forEach((err) => {
-        activityForm.setError(err.path[0] as keyof ActivityFormValues, {
-            type: 'manual',
-            message: err.message,
-        });
-      });
-      return;
-    }
-
     setActivityLoading(true);
     setActivityResult(null);
     try {
