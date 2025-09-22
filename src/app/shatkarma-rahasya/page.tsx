@@ -8,6 +8,7 @@ import { ScrollAnimate } from '@/components/ui/scroll-animate';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import shatkarmaData from '@/lib/content/shatkarma-rahasya.json';
+import ShatkarmaAnimation from '@/components/shatkarma-animation';
 
 const WHATSAPP_NUMBER = "917022070287";
 const WHATSAPP_MESSAGE = "ನಮಸ್ಕಾರ, ನಾನು ತಂತ್ರ ವಿಜ್ಞಾನ ಅಪ್ಲಿಕೇಶನ್‌ನಿಂದ ಷಟ್ಕರ್ಮಗಳ ಬಗ್ಗೆ ವೈಯಕ್ತಿಕ ಮಾರ್ಗದರ್ಶನಕ್ಕಾಗಿ ಸಂಪರ್ಕಿಸುತ್ತಿದ್ದೇನೆ.";
@@ -26,6 +27,8 @@ export default function ShatkarmaRahasyaPage() {
         </p>
       </header>
       
+      <ShatkarmaAnimation />
+
       <ScrollAnimate>
         <Card>
             <CardHeader>
