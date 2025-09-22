@@ -325,6 +325,13 @@ export default {
           '0%, 100%': { r: 'var(--r, 8px)', opacity: '0.8', filter: 'drop-shadow(0 0 4px currentColor)' },
           '50%': { r: 'calc(var(--r, 8px) * 1.2)', opacity: '1', filter: 'drop-shadow(0 0 12px currentColor)' },
         },
+        'dice-tumble': {
+          '0%': { transform: 'rotate(0deg) scale(0.8)' },
+          '25%': { transform: 'rotate(90deg) scale(1)' },
+          '50%': { transform: 'rotate(180deg) scale(0.8)' },
+          '75%': { transform: 'rotate(270deg) scale(1)' },
+          '100%': { transform: 'rotate(360deg) scale(0.8)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -382,6 +389,7 @@ export default {
         'shield-pulse': 'shield-pulse 5s ease-in-out infinite',
         'particle-roam': 'particle-roam var(--duration, 10s) linear infinite',
         'market-planet-pulse': 'market-planet-pulse 4s ease-in-out infinite',
+        'dice-tumble': 'dice-tumble 8s ease-in-out infinite',
       },
     },
   },
