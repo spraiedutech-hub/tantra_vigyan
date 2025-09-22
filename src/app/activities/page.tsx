@@ -9,6 +9,7 @@ import { recordActivityCompleted } from '@/lib/progress-tracker';
 import { useToast } from '@/hooks/use-toast';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
+import RitualOfferingAnimation from '@/components/ritual-offering-animation';
 
 export default function ActivitiesPage() {
   const { toast } = useToast();
@@ -23,14 +24,17 @@ export default function ActivitiesPage() {
 
   return (
     <div className="space-y-8 animate-fade-in">
-      <header className="space-y-2 p-4 rounded-lg animated-border">
-        <h1 className="text-4xl font-bold font-headline text-primary flex items-center gap-2">
+      <header className="space-y-2 p-4 rounded-lg animated-border text-center">
+        <h1 className="text-4xl font-bold font-headline text-primary flex items-center justify-center gap-2">
           <CheckCircle />
           ತಾಂತ್ರಿಕ ಚಟುವಟಿಕೆಗಳು
         </h1>
         <p className="text-lg text-muted-foreground">
           ನಿಮ್ಮ ಆಧ್ಯಾತ್ಮಿಕ ಅಭ್ಯಾಸವನ್ನು ಹೆಚ್ಚಿಸಲು ಸರಳವಾದ ತಾಂತ್ರಿಕ ಕ್ರಿಯೆಗಳು ಮತ್ತು ಆಚರಣೆಗಳು.
         </p>
+         <div className="relative w-full h-48 md:h-64 flex items-center justify-center my-4 overflow-hidden">
+            <RitualOfferingAnimation />
+        </div>
       </header>
       
       <Alert variant="destructive" className="border-accent/50 text-accent [&>svg]:text-accent">
