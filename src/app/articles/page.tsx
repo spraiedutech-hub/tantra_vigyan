@@ -3,7 +3,6 @@
 
 import { useState, useMemo } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { generateArticle, type ArticleOutput } from '@/ai/flows/generate-article';
 import { Button } from '@/components/ui/button';
@@ -28,7 +27,6 @@ export default function ArticleGeneratorPage() {
   const [article, setArticle] = useState<ArticleOutput | null>(null);
 
   const form = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
     defaultValues: {
       topic: '',
     },
@@ -59,6 +57,16 @@ export default function ArticleGeneratorPage() {
   };
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
+    const parsed = formSchema.safeParse(data);
+    if (!parsed.success) {
+      parsed.error.errors.forEach((err) => {
+        form.setError(err.path[0] as keyof FormValues, {
+            type: 'manual',
+            message: err.message,
+        });
+      });
+      return;
+    }
     handleGenerateArticle(data.topic);
   };
 

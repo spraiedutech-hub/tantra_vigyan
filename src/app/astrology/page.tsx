@@ -3,7 +3,6 @@
 
 import { useState, useEffect } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
-import { zodResolver } from '@hook-form/resolvers/zod';
 import { z } from 'zod';
 import { generateBirthChartAnalysis, type BirthChartAnalysisOutput } from '@/ai/flows/generate-birth-chart-analysis';
 import { Button } from '@/components/ui/button';
@@ -52,7 +51,6 @@ export default function AstrologyPage() {
   }, []);
 
   const birthChartForm = useForm<BirthChartFormValues>({
-    resolver: zodResolver(birthChartSchema),
     defaultValues: {
       dateOfBirth: '',
       timeOfBirth: '',
@@ -61,6 +59,17 @@ export default function AstrologyPage() {
   });
 
   const onBirthChartSubmit: SubmitHandler<BirthChartFormValues> = async (data) => {
+    const parsed = birthChartSchema.safeParse(data);
+    if (!parsed.success) {
+        parsed.error.errors.forEach((err) => {
+            birthChartForm.setError(err.path[0] as keyof BirthChartFormValues, {
+                type: 'manual',
+                message: err.message,
+            });
+        });
+        return;
+    }
+
     setIsChartLoading(true);
     setAnalysis(null);
     try {

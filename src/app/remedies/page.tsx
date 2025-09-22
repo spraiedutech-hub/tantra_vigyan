@@ -3,7 +3,6 @@
 
 import { useState } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { generateRemedyRitual, type RemedyRitualOutput } from '@/ai/flows/generate-remedy-ritual';
 import { Button } from '@/components/ui/button';
@@ -39,7 +38,6 @@ export default function RemediesPage() {
   const [currentProblem, setCurrentProblem] = useState<string | null>(null);
 
   const form = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
     defaultValues: {
       problem: '',
     },
@@ -81,6 +79,16 @@ export default function RemediesPage() {
   };
 
   const onFormSubmit: SubmitHandler<FormValues> = (data) => {
+    const parsed = formSchema.safeParse(data);
+    if (!parsed.success) {
+      parsed.error.errors.forEach((err) => {
+        form.setError(err.path[0] as keyof FormValues, {
+            type: 'manual',
+            message: err.message,
+        });
+      });
+      return;
+    }
     handleAiRitual(data.problem, "ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಸಮಸ್ಯೆ");
   };
 
