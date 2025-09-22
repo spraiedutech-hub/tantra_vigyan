@@ -104,6 +104,9 @@ export default function OvercomingSadMemoriesPage() {
                 <p className="prose prose-lg dark:prose-invert max-w-full text-foreground/90">
                   ಕೆಲವೊಮ್ಮೆ, ಆಳವಾದ ಗಾಯಗಳನ್ನು ಗುಣಪಡಿಸಲು ವೈಯಕ್ತಿಕ ಗಮನದ ಅಗತ್ಯವಿರುತ್ತದೆ. ಗುರೂಜಿಯವರು ನಿಮ್ಮ ಶಕ್ತಿ ಕ್ಷೇತ್ರವನ್ನು ವಿಶ್ಲೇಷಿಸಿ, ನಿಮ್ಮ ನೋವಿನ ಮೂಲವನ್ನು ಗುರುತಿಸಲು ಮತ್ತು ಅದನ್ನು ಶುದ್ಧೀಕರಿಸಲು ಸೂಕ್ತವಾದ ಮಂತ್ರ, ಯಂತ್ರ ಮತ್ತು ಧ್ಯಾನದ ತಂತ್ರಗಳನ್ನು ಸೂಚಿಸುತ್ತಾರೆ.
                 </p>
+                <p className="mt-4 font-semibold text-center text-lg">
+                    ಸಂಪರ್ಕಿಸಿ: 7022070287
+                </p>
             </CardContent>
             <CardFooter className="flex-col sm:flex-row items-center gap-4">
                 <p className="text-xl font-bold text-primary">ಶುಲ್ಕ: ₹2,222</p>
