@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import shatkriyaData from '@/lib/content/shatkriya-rahasya.json';
 
-const WHATSAPP_NUMBER = "917204676465";
+const WHATSAPP_NUMBER = "7022070287";
 const WHATSAPP_MESSAGE = "ನಮಸ್ಕಾರ, ನಾನು ತಂತ್ರ ವಿಜ್ಞಾನ ಅಪ್ಲಿಕೇಶನ್‌ನಿಂದ ಷಟ್ಕರ್ಮಗಳ ಬಗ್ಗೆ ವೈಯಕ್ತಿಕ ಮಾರ್ಗದರ್ಶನಕ್ಕಾಗಿ ಸಂಪರ್ಕಿಸುತ್ತಿದ್ದೇನೆ.";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
@@ -98,6 +98,9 @@ export default function ShatkriyaRahasyaPage() {
             <CardContent>
                 <p className="prose prose-lg dark:prose-invert max-w-full text-foreground/90">
                 ನಿಮ್ಮ ಆರೋಗ್ಯ, ವಯಸ್ಸು ಮತ್ತು ಆಧ್ಯಾತ್ಮಿಕ ಗುರಿಗಳನ್ನು ಪರಿಗಣಿಸಿ, ನಿಮಗೆ ಯಾವ ಷಟ್ಕ್ರಿಯಾವು ಹೆಚ್ಚು ಸೂಕ್ತ ಮತ್ತು ಅದನ್ನು ಹೇಗೆ ಸರಿಯಾಗಿ ಮಾಡುವುದು ಎಂಬುದರ ಕುರಿತು ಗುರೂಜಿಯವರಿಂದ ವೈಯಕ್ತಿಕ ತರಬೇತಿ ಪಡೆಯಿರಿ.
+                </p>
+                <p className="mt-4 font-semibold text-center text-lg">
+                    ಸಂಪರ್ಕಿಸಿ: 7022070287
                 </p>
             </CardContent>
             <CardFooter className="flex-col sm:flex-row items-center gap-4">
