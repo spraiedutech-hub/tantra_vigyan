@@ -1,83 +1,123 @@
-
 'use client';
 
-export default function WealthFlowAnimation() {
-  const coinCount = 30;
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { Coins, AlertTriangle, UserCheck, Phone } from 'lucide-react';
+import { ScrollAnimate } from '@/components/ui/scroll-animate';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import tantraAndMoneyData from '@/lib/content/tantra-and-money.json';
+import ShreeYantraAnimation from '@/components/shree-yantra-animation';
 
+const WHATSAPP_NUMBER = "917022070287";
+const WHATSAPP_MESSAGE = "ನಮಸ್ಕಾರ, ನಾನು ತಂತ್ರ ವಿಜ್ಞಾನ ಅಪ್ಲಿಕೇಶನ್‌ನಿಂದ ಸಂಪತ್ತಿಗೆ ಸಂಬಂಧಿಸಿದಂತೆ ವೈಯಕ್ತಿಕ ಮಾರ್ಗದರ್ಶನಕ್ಕಾಗಿ ಸಂಪರ್ಕಿಸುತ್ತಿದ್ದೇನೆ.";
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+
+export default function TantraAndMoneyPage() {
   return (
-    <svg viewBox="0 0 300 400" className="w-full h-full">
-      <defs>
-        <radialGradient id="gradWealthSource" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.8" />
-          <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
-        </radialGradient>
-        <filter id="wealthGlow">
-          <feGaussianBlur stdDeviation="5" result="coloredBlur" />
-          <feMerge>
-            <feMergeNode in="coloredBlur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
-
-      {/* Wealth Source (Shreem Bija Mantra) */}
-      <g transform="translate(150, 80)">
-        <animateTransform
-          attributeName="transform"
-          attributeType="XML"
-          type="rotate"
-          from="0 0 0"
-          to="360 0 0"
-          dur="40s"
-          repeatCount="indefinite"
-        />
-        <circle r="40" fill="url(#gradWealthSource)" className="animate-pulse-slow" />
-        <text
-          x="0"
-          y="12"
-          textAnchor="middle"
-          fill="hsl(var(--primary-foreground))"
-          fontSize="32"
-          className="font-headline animate-pulse-glow"
-          filter="url(#wealthGlow)"
-        >
-          श्रीं
-        </text>
-      </g>
+    <div className="space-y-8 animate-fade-in">
+      <header className="space-y-2 p-4 rounded-lg animated-border">
+        <h1 className="text-4xl font-bold font-headline text-primary flex items-center gap-2">
+          <Coins />
+          ತಂತ್ರ ಮತ್ತು ಸಂಪತ್ತು
+        </h1>
+        <p className="text-lg text-muted-foreground">
+          ಸಂಪತ್ತು ಮತ್ತು ಸಮೃದ್ಧಿಯ ಬಗ್ಗೆ ತಂತ್ರದ ಆಧ್ಯಾತ್ಮಿಕ ದೃಷ್ಟಿಕೋನ.
+        </p>
+      </header>
       
-      {/* Pot of Gold */}
-      <g transform="translate(150, 350)">
-        <path d="M -60 0 C -60 -40, 60 -40, 60 0 Q 50 10, -50 10 Z" fill="hsl(var(--muted))" stroke="hsl(var(--border))" strokeWidth="2" />
-        <ellipse cx="0" cy="0" rx="60" ry="15" fill="hsl(var(--muted))" stroke="hsl(var(--border))" strokeWidth="2" />
-      </g>
-      
-      {/* Overflowing Coins */}
-       <g fill="hsl(var(--primary))">
-          <circle cx="150" cy="340" r="10" />
-          <circle cx="130" cy="345" r="12" />
-          <circle cx="170" cy="345" r="11" />
-          <circle cx="155" cy="355" r="9" />
-          <circle cx="115" cy="350" r="10" />
-          <circle cx="185" cy="350" r="8" />
-       </g>
+      <div className="relative w-full h-80 md:h-96 flex items-center justify-center my-4 overflow-hidden rounded-lg bg-muted/30">
+        <ShreeYantraAnimation />
+      </div>
 
-      {/* Falling Coins */}
-      <g>
-        {Array.from({ length: coinCount }).map((_, i) => (
-          <circle
-            key={`coin-${i}`}
-            r={4 + Math.random() * 4}
-            fill="hsl(var(--primary))"
-            className="animate-coin-fall"
-            style={{
-                '--start-x': `${150 + (Math.random() - 0.5) * 80}px`,
-                '--end-y': `${350 + Math.random() * 20}px`,
-                '--delay': `${Math.random() * 5}s`,
-                '--duration': `${2 + Math.random() * 3}s`,
-            } as React.CSSProperties}
-          />
+      <ScrollAnimate delay={150}>
+        <Alert variant="destructive" className="border-accent/50 text-accent [&>svg]:text-accent">
+          <AlertTriangle className="h-4 w-4" />
+          <AlertTitle className="font-bold text-lg">ಹಕ್ಕು ನಿರಾಕರಣೆ (Disclaimer)</AlertTitle>
+          <AlertDescription>
+            ಈ ಪುಟದಲ್ಲಿನ ಮಾಹಿತಿಯು ಆಧ್ಯಾತ್ಮಿಕ ಮತ್ತು ಶೈಕ್ಷಣಿಕ ಉದ್ದೇಶಕ್ಕಾಗಿ ಮಾತ್ರ. ಇದು ಯಾವುದೇ ರೀತಿಯ ಹಣಕಾಸು ಸಲಹೆಯಲ್ಲ. ತಾಂತ್ರಿಕ ಅಭ್ಯಾಸಗಳು ಶ್ರದ್ಧೆ ಮತ್ತು ವೈಯಕ್ತಿಕ ಪ್ರಯತ್ನವನ್ನು ಅವಲಂಬಿಸಿವೆ, ಮತ್ತು ಫಲಿತಾಂಶಗಳಿಗೆ ಯಾವುದೇ ಗ್ಯಾರಂಟಿ ಇಲ್ಲ.
+          </AlertDescription>
+        </Alert>
+      </ScrollAnimate>
+
+      <ScrollAnimate>
+        <Card>
+            <CardHeader>
+                <CardTitle>{tantraAndMoneyData.introduction.title}</CardTitle>
+            </CardHeader>
+            <CardContent className="prose prose-lg dark:prose-invert max-w-full text-foreground/90 text-justify leading-relaxed">
+                {tantraAndMoneyData.introduction.content.split('\n\n').map((paragraph, index) => (
+                    <p key={index}>{paragraph}</p>
+                ))}
+            </CardContent>
+        </Card>
+      </ScrollAnimate>
+
+      <div className="space-y-6">
+        {tantraAndMoneyData.sections.map((item, index) => (
+          <ScrollAnimate key={index} delay={300 + index * 150}>
+            <Card className="transform hover:scale-[1.01] transition-transform duration-300 ease-in-out">
+              <CardHeader>
+                <CardTitle className="font-headline text-2xl text-accent">{item.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="prose prose-lg dark:prose-invert max-w-full text-foreground/90 space-y-4 text-justify leading-relaxed">
+                  {item.content.split('\n\n').map((paragraph, pIndex) => (
+                    <p key={pIndex}>{paragraph}</p>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </ScrollAnimate>
         ))}
-      </g>
-    </svg>
+      </div>
+
+       <ScrollAnimate delay={400 + tantraAndMoneyData.sections.length * 150}>
+         <Card className="bg-gradient-to-r from-primary/10 via-card to-accent/10 animated-border">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <UserCheck className="text-primary"/>
+              {tantraAndMoneyData.conclusion.title}
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="prose prose-lg dark:prose-invert max-w-full text-foreground/90">
+            {tantraAndMoneyData.conclusion.content.split('\n\n').map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+            ))}
+          </CardContent>
+        </Card>
+      </ScrollAnimate>
+
+      <ScrollAnimate delay={500 + tantraAndMoneyData.sections.length * 150}>
+        <Card className="bg-gradient-to-br from-primary/10 to-accent/10 animated-border transform hover:scale-[1.01] transition-transform duration-300">
+            <CardHeader>
+                <CardTitle className="text-2xl font-headline text-accent flex items-center gap-3">
+                    <UserCheck />
+                    ವೈಯಕ್ತಿಕ ಆರ್ಥಿಕ ಮಾರ್ಗದರ್ಶನ
+                </CardTitle>
+                <CardDescription>
+                  ನಿಮ್ಮ ಜನ್ಮ ಕುಂಡಲಿ ಮತ್ತು ಪ್ರಸ್ತುತ ಶಕ್ತಿ ಕ್ಷೇತ್ರದ ಆಧಾರದ ಮೇಲೆ ನಿಮ್ಮ ಆರ್ಥಿಕ ಸ್ಥಿತಿಯನ್ನು ಸುಧಾರಿಸಲು ವೈಯಕ್ತಿಕ ಆಧ್ಯಾತ್ಮಿಕ ಮಾರ್ಗದರ್ಶನವನ್ನು ಪಡೆಯಿರಿ.
+                </CardDescription>
+            </CardHeader>
+            <CardContent>
+                <p className="prose prose-lg dark:prose-invert max-w-full text-foreground/90">
+                  ನಿಮ್ಮ ಆರ್ಥಿಕ ಅಡೆತಡೆಗಳ ಹಿಂದಿನ ಕರ್ಮದ ಅಥವಾ ಶಕ್ತಿಯ ಅಸಮತೋಲನದ ಕಾರಣಗಳನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಿ. ಗುರೂಜಿಯವರಿಂದ ವೈಯಕ್ತಿಕ ಸಲಹೆ ಪಡೆದು, ಸಮೃದ್ಧಿಯನ್ನು ಆಕರ್ಷಿಸಲು ಸೂಕ್ತವಾದ ಮಂತ್ರ, ಯಂತ್ರ ಮತ್ತು ಪರಿಹಾರ ಕ್ರಮಗಳನ್ನು ತಿಳಿಯಿರಿ.
+                </p>
+                <p className="mt-4 font-semibold text-center text-lg">
+                    ಸಂಪರ್ಕಿಸಿ: 7022070287
+                </p>
+            </CardContent>
+            <CardFooter className="flex-col sm:flex-row items-center gap-4">
+                <p className="text-xl font-bold text-primary">ಶುಲ್ಕ: ₹2,222</p>
+                <Button asChild size="lg" className="w-full sm:w-auto">
+                    <Link href={WHATSAPP_URL} target="_blank">
+                    <Phone className="mr-2 h-5 w-5" />
+                    WhatsApp ಮೂಲಕ ವಿನಂತಿಸಿ
+                    </Link>
+                </Button>
+            </CardFooter>
+        </Card>
+      </ScrollAnimate>
+    </div>
   );
 }
