@@ -212,7 +212,7 @@ export default function RecommendationsTool() {
                           <FormControl>
                             <SelectTrigger>
                               <SelectValue placeholder="ಮಟ್ಟವನ್ನು ಆಯ್ಕೆಮಾಡಿ" />
-                            </Trigger>
+                            </SelectTrigger>
                           </FormControl>
                           <SelectContent>
                             <SelectItem value="beginner">ಆರಂಭಿಕ</SelectItem>
