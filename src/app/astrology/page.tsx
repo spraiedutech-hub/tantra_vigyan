@@ -16,6 +16,7 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Skeleton } from '@/components/ui/skeleton';
 import dailyHoroscopes from '@/lib/content/daily-horoscopes.json';
 import Link from 'next/link';
+import JatakaBlueprintAnimation from '@/components/jataka-blueprint-animation';
 
 const birthChartSchema = z.object({
   dateOfBirth: z.string().min(1, 'ದಯವಿಟ್ಟು ಜನ್ಮ ದಿನಾಂಕವನ್ನು ನಮೂದಿಸಿ'),
@@ -121,6 +122,10 @@ export default function AstrologyPage() {
           ದಿನದ ಭವಿಷ್ಯ ಮತ್ತು ನಿಮ್ಮ ಜನ್ಮ ಕುಂಡಲಿಯ ಆಧಾರದ ಮೇಲೆ ವೈಯಕ್ತಿಕ ಮಾರ್ಗದರ್ಶನ.
         </p>
       </header>
+      
+      <div className="relative w-full h-80 md:h-96 flex items-center justify-center my-4 overflow-hidden rounded-lg">
+          <JatakaBlueprintAnimation />
+      </div>
 
       <Alert variant="destructive" className="border-accent/50 text-accent [&>svg]:text-accent">
         <AlertTriangle className="h-4 w-4" />
