@@ -99,6 +99,9 @@ export default function EntitiesExplainedPage() {
                 <p className="prose prose-lg dark:prose-invert max-w-full text-foreground/90">
                   ನೀವು ಯಾವುದೇ ರೀತಿಯ ನಕಾರಾತ್ಮಕ ಶಕ್ತಿಯ ಪ್ರಭಾವವನ್ನು ಅನುಭವಿಸುತ್ತಿದ್ದರೆ, ಭಯಪಡುವ ಅಗತ್ಯವಿಲ್ಲ. ಗುರೂಜಿಯವರಿಂದ ನಿಮ್ಮ ಪರಿಸ್ಥಿತಿಯನ್ನು ವಿಶ್ಲೇಷಿಸಿ, ನಿಮಗೆ ಸೂಕ್ತವಾದ ರಕ್ಷಾ ಮಂತ್ರಗಳು, ಯಂತ್ರಗಳು ಮತ್ತು ಪರಿಹಾರ ಕ್ರಮಗಳನ್ನು ತಿಳಿದುಕೊಂಡು, ನಿಮ್ಮ ಜೀವನದಲ್ಲಿ ಶಾಂತಿ ಮತ್ತು ಸುರಕ್ಷತೆಯನ್ನು ಪುನಃಸ್ಥಾಪಿಸಿಕೊಳ್ಳಿ.
                 </p>
+                <p className="mt-4 font-semibold text-center text-lg">
+                    ಸಂಪರ್ಕಿಸಿ: 7022070287
+                </p>
             </CardContent>
             <CardFooter className="flex-col sm:flex-row items-center gap-4">
                 <p className="text-xl font-bold text-primary">ಶುಲ್ಕ: ₹2,222</p>
