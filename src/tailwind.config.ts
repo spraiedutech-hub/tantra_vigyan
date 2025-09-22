@@ -254,10 +254,10 @@ export default {
           '100%': { opacity: '0' },
         },
         'fire-flicker': {
-          '0%, 100%': { transform: 'scaleY(1)', opacity: '0.9' },
-          '20%': { transform: 'scaleY(2.0) skewX(15deg)', opacity: '1' },
-          '40%': { transform: 'scaleY(0.8) skewX(-10deg)', opacity: '0.8' },
-          '60%': { transform: 'scaleY(1.8) skewX(10deg)', opacity: '1' },
+          '0%, 100%': { transform: 'scaleY(1) skewX(-5deg)', opacity: '0.9' },
+          '20%': { transform: 'scaleY(2.2) skewX(20deg)', opacity: '1' },
+          '40%': { transform: 'scaleY(0.8) skewX(-20deg)', opacity: '0.8' },
+          '60%': { transform: 'scaleY(2.0) skewX(15deg)', opacity: '1' },
           '80%': { transform: 'scaleY(0.9) skewX(-15deg)', opacity: '0.9' },
         },
         'sparks-fly': {
@@ -269,8 +269,8 @@ export default {
           '50%': { opacity: '1' },
         },
         'move-across-sky': {
-          '0%': { transform: 'translateX(-150px)' },
-          '100%': { transform: 'translateX(150px)' },
+          '0%': { transform: 'translate(250px, 50px)' },
+          '100%': { transform: 'translate(-50px, 50px)' },
         },
         'aura-pulse': {
           '0%, 100%': { transform: 'scale(1)', opacity: '0.6' },
@@ -299,6 +299,20 @@ export default {
           '60%': { opacity: '1' },
           '80%': { opacity: '1' },
           '100%': { opacity: '0' },
+        },
+        'wealth-flow': {
+          '0%': {
+              'offset-path': 'path("M var(--start-x) var(--start-y) C var(--control-x1) var(--control-y1), var(--control-x2) var(--control-y2), var(--end-x) var(--end-y)")',
+              opacity: '0',
+              'offset-distance': '0%',
+          },
+          '20%': { opacity: '1' },
+          '80%': { opacity: '1' },
+          '100%': {
+              'offset-path': 'path("M var(--start-x) var(--start-y) C var(--control-x1) var(--control-y1), var(--control-x2) var(--control-y2), var(--end-x) var(--end-y)")',
+              opacity: '0',
+              'offset-distance': '100%',
+          },
         },
       },
       animation: {
@@ -333,7 +347,7 @@ export default {
         'knowledge-particle': 'knowledge-particle 5s ease-in-out infinite',
         'unfurl': 'unfurl 2s ease-out forwards',
         'script-glow': 'script-glow 4s ease-in-out infinite',
-        'line-draw': 'line-draw 3s ease-out forwards',
+         'line-draw': 'line-draw 3s ease-out forwards',
         'karma-rotate': 'karma-rotate var(--duration, 20s) linear infinite',
         'karma-particle': 'karma-particle 8s ease-in-out infinite',
         'chariot-wheel-rotate': 'chariot-wheel-rotate 20s linear infinite',
@@ -341,7 +355,7 @@ export default {
         'blueprint-glow': 'blueprint-glow 3s ease-in-out infinite',
         'shivalingam-appear': 'shivalingam-appear 1.5s ease-out forwards',
         'prana-flow': 'prana-flow 5s ease-in-out infinite',
-        'fire-flicker': 'fire-flicker 1.2s ease-in-out infinite',
+        'fire-flicker': 'fire-flicker 0.8s ease-in-out infinite',
         'sparks-fly': 'sparks-fly linear infinite',
         'star-twinkle': 'star-twinkle 4s ease-in-out infinite',
         'move-across-sky': 'move-across-sky 40s linear infinite alternate',
@@ -349,6 +363,7 @@ export default {
         'prana-particle': 'prana-particle linear infinite',
         'blockage-pulse': 'blockage-pulse 4s ease-in-out infinite',
         'healing-light-appear': 'healing-light-appear 8s ease-in-out infinite 2s',
+        'wealth-flow': 'wealth-flow linear infinite',
       },
     },
   },

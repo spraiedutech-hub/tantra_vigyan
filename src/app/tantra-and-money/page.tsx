@@ -8,6 +8,7 @@ import { ScrollAnimate } from '@/components/ui/scroll-animate';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import tantraAndMoneyData from '@/lib/content/tantra-and-money.json';
+import WealthFlowAnimation from '@/components/wealth-flow-animation';
 
 const WHATSAPP_NUMBER = "917022070287";
 const WHATSAPP_MESSAGE = "ನಮಸ್ಕಾರ, ನಾನು ತಂತ್ರ ವಿಜ್ಞಾನ ಅಪ್ಲಿಕೇಶನ್‌ನಿಂದ ಸಂಪತ್ತಿಗೆ ಸಂಬಂಧಿಸಿದಂತೆ ವೈಯಕ್ತಿಕ ಮಾರ್ಗದರ್ಶನಕ್ಕಾಗಿ ಸಂಪರ್ಕಿಸುತ್ತಿದ್ದೇನೆ.";
@@ -26,6 +27,10 @@ export default function TantraAndMoneyPage() {
         </p>
       </header>
       
+      <div className="relative w-full h-80 md:h-96 flex items-center justify-center my-4 overflow-hidden rounded-lg bg-muted/30">
+        <WealthFlowAnimation />
+      </div>
+
       <ScrollAnimate delay={150}>
         <Alert variant="destructive" className="border-accent/50 text-accent [&>svg]:text-accent">
           <AlertTriangle className="h-4 w-4" />
