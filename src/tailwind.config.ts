@@ -248,30 +248,6 @@ export default {
           '0%': { opacity: '0', transform: 'scale(0.5) translateY(20px)' },
           '100%': { opacity: '1', transform: 'scale(0.6) translateY(0)' },
         },
-        'prana-flow': {
-          '0%': { opacity: '0' },
-          '50%': { opacity: '1' },
-          '100%': { opacity: '0' },
-        },
-        'fire-flicker': {
-          '0%, 100%': { transform: 'scaleY(1) skewX(-5deg)', opacity: '0.9' },
-          '20%': { transform: 'scaleY(2.2) skewX(20deg)', opacity: '1' },
-          '40%': { transform: 'scaleY(0.8) skewX(-20deg)', opacity: '0.8' },
-          '60%': { transform: 'scaleY(2.0) skewX(15deg)', opacity: '1' },
-          '80%': { transform: 'scaleY(0.9) skewX(-15deg)', opacity: '0.9' },
-        },
-        'sparks-fly': {
-          '0%': { transform: 'translateY(0) translateX(0)', opacity: '1' },
-          '100%': { transform: 'translateY(-120px) translateX(var(--tx, 0))', opacity: '0' },
-        },
-        'star-twinkle': {
-          '0%, 100%': { opacity: '0.3' },
-          '50%': { opacity: '1' },
-        },
-        'move-across-sky': {
-          '0%': { transform: 'translate(250px, 50px)' },
-          '100%': { transform: 'translate(-50px, 50px)' },
-        },
         'aura-pulse': {
           '0%, 100%': { transform: 'scale(1)', opacity: '0.6' },
           '50%': { transform: 'scale(1.05)', opacity: '0.8' },
