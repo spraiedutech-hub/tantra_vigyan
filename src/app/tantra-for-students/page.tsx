@@ -104,6 +104,9 @@ export default function TantraForStudentsPage() {
                 <p className="prose prose-lg dark:prose-invert max-w-full text-foreground/90">
                   ನಿಮ್ಮ ಮಗುವಿನ ಜಾತಕವನ್ನು ವಿಶ್ಲೇಷಿಸಿ, ಅವರ ಏಕಾಗ್ರತೆ, ಸ್ಮರಣಶಕ್ತಿ ಮತ್ತು ಕಲಿಕೆಯ ಸಾಮರ್ಥ್ಯವನ್ನು ಹೆಚ್ಚಿಸಲು ಯಾವ ಮಂತ್ರ, ಯಂತ್ರ ಅಥವಾ ರತ್ನವು ಸೂಕ್ತವೆಂದು ತಿಳಿಯಿರಿ. ಪರೀಕ್ಷೆಯ ಭಯ, ಒತ್ತಡ ಮತ್ತು ಇತರ ಶೈಕ್ಷಣಿಕ ಅಡೆತಡೆಗಳನ್ನು ನಿವಾರಿಸಲು ಗುರೂಜಿಯವರಿಂದ ವೈಯಕ್ತಿಕ ಸಲಹೆ ಪಡೆಯಿರಿ.
                 </p>
+                <p className="mt-4 font-semibold text-center text-lg">
+                    ಸಂಪರ್ಕಿಸಿ: 7022070287
+                </p>
             </CardContent>
             <CardFooter className="flex-col sm:flex-row items-center gap-4">
                 <p className="text-xl font-bold text-primary">ಶುಲ್ಕ: ₹1,111</p>
