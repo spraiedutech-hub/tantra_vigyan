@@ -2,7 +2,6 @@
 'use client';
 import { useState } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import {
   personalizedMantraRecommendations,
@@ -67,7 +66,6 @@ export default function RecommendationsTool() {
     useState<ActivityRecommendationsOutput | null>(null);
 
   const mantraForm = useForm<MantraFormValues>({
-    resolver: zodResolver(mantraSchema),
     defaultValues: {
       desiredOutcome: '',
       timeCommitment: '',
@@ -76,7 +74,6 @@ export default function RecommendationsTool() {
   });
 
   const activityForm = useForm<ActivityFormValues>({
-    resolver: zodResolver(activitySchema),
     defaultValues: {
       experienceLevel: '',
       availableTime: '',
@@ -85,6 +82,17 @@ export default function RecommendationsTool() {
   });
 
   const onMantraSubmit: SubmitHandler<MantraFormValues> = async (data) => {
+    const parsed = mantraSchema.safeParse(data);
+    if (!parsed.success) {
+      parsed.error.errors.forEach((err) => {
+        mantraForm.setError(err.path[0] as keyof MantraFormValues, {
+            type: 'manual',
+            message: err.message,
+        });
+      });
+      return;
+    }
+
     setMantraLoading(true);
     setMantraResult(null);
     try {
@@ -103,6 +111,17 @@ export default function RecommendationsTool() {
   };
 
   const onActivitySubmit: SubmitHandler<ActivityFormValues> = async (data) => {
+    const parsed = activitySchema.safeParse(data);
+     if (!parsed.success) {
+      parsed.error.errors.forEach((err) => {
+        activityForm.setError(err.path[0] as keyof ActivityFormValues, {
+            type: 'manual',
+            message: err.message,
+        });
+      });
+      return;
+    }
+
     setActivityLoading(true);
     setActivityResult(null);
     try {
@@ -193,7 +212,7 @@ export default function RecommendationsTool() {
                           <FormControl>
                             <SelectTrigger>
                               <SelectValue placeholder="ಮಟ್ಟವನ್ನು ಆಯ್ಕೆಮಾಡಿ" />
-                            </SelectTrigger>
+                            </Trigger>
                           </FormControl>
                           <SelectContent>
                             <SelectItem value="beginner">ಆರಂಭಿಕ</SelectItem>
