@@ -4,48 +4,26 @@
 import { useMemo } from 'react';
 
 export default function EnergyFormsAnimation() {
-  const particles = useMemo(() => {
-    const particleArray = [];
-    // Divine particles (golden, upward float)
-    for (let i = 0; i < 15; i++) {
-      particleArray.push({
-        type: 'divine',
-        cx: 5 + Math.random() * 90,
-        cy: 50 + Math.random() * 50,
-        r: 1 + Math.random() * 1.5,
-        duration: `${8 + Math.random() * 8}s`,
-        delay: `${Math.random() * 10}s`,
-        fill: 'hsl(var(--primary))',
-        animationClass: 'animate-divine-float',
-      });
-    }
-    // Subtle particles (silvery, whimsical drift)
-    for (let i = 0; i < 15; i++) {
-      particleArray.push({
-        type: 'subtle',
-        cx: 20 + Math.random() * 60,
-        cy: 40 + Math.random() * 20,
-        r: 0.8 + Math.random(),
-        duration: `${10 + Math.random() * 10}s`,
-        delay: `${Math.random() * 12}s`,
-        fill: 'hsl(var(--muted-foreground))',
-        animationClass: 'animate-subtle-drift',
-      });
-    }
-    // Negative particles (dark, erratic darting)
-    for (let i = 0; i < 10; i++) {
-      particleArray.push({
-        type: 'negative',
-        cx: 10 + Math.random() * 80,
-        cy: 90 + Math.random() * 5,
-        r: 1 + Math.random() * 0.5,
-        duration: `${4 + Math.random() * 4}s`,
-        delay: `${Math.random() * 6}s`,
-        fill: 'hsl(var(--destructive))',
-        animationClass: 'animate-negative-dart',
-      });
-    }
-    return particleArray;
+  const subtleBeings = useMemo(() => {
+    return Array.from({ length: 5 }).map((_, i) => ({
+      id: `subtle-${i}`,
+      rx: 60 + Math.random() * 30,
+      ry: 60 + Math.random() * 30,
+      duration: `${15 + Math.random() * 10}s`,
+      delay: `${Math.random() * 5}s`,
+    }));
+  }, []);
+
+  const negativeEntities = useMemo(() => {
+    return Array.from({ length: 7 }).map((_, i) => ({
+      id: `neg-${i}`,
+      startX: 10 + Math.random() * 80,
+      startY: 85 + Math.random() * 15,
+      endX: 10 + Math.random() * 80,
+      endY: 85 + Math.random() * 15,
+      duration: `${2 + Math.random() * 3}s`,
+      delay: `${Math.random() * 4}s`,
+    }));
   }, []);
 
   return (
@@ -55,26 +33,64 @@ export default function EnergyFormsAnimation() {
           <stop offset="0%" stopColor="hsl(var(--accent))" stopOpacity="0.8" />
           <stop offset="100%" stopColor="hsl(var(--accent))" stopOpacity="0" />
         </radialGradient>
+        <filter id="energyGlow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="1.5" result="coloredBlur" />
+          <feMerge>
+            <feMergeNode in="coloredBlur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
       </defs>
 
       {/* Central Consciousness */}
-      <circle cx="50" cy="50" r="10" fill="url(#gradConsciousness)" className="animate-pulse-glow" />
-      <circle cx="50" cy="50" r="5" fill="hsl(var(--accent))" />
+      <circle cx="50" cy="50" r="8" fill="hsl(var(--accent))" className="animate-pulse-glow" />
 
-      {/* Energy Particles */}
+      {/* Divine Energy Waves */}
+      <g filter="url(#energyGlow)">
+        <circle cx="50" cy="50" r="10" fill="none" stroke="hsl(var(--primary))" strokeWidth="1" className="animate-divine-wave" style={{ animationDelay: '0s' }}/>
+        <circle cx="50" cy="50" r="10" fill="none" stroke="hsl(var(--primary))" strokeWidth="1" className="animate-divine-wave" style={{ animationDelay: '2s' }}/>
+        <circle cx="50" cy="50" r="10" fill="none" stroke="hsl(var(--primary))" strokeWidth="1" className="animate-divine-wave" style={{ animationDelay: '4s' }}/>
+      </g>
+      
+      {/* Subtle Beings */}
       <g>
-        {particles.map((p, i) => (
-          <circle
-            key={i}
-            cx={p.cx}
-            cy={p.cy}
-            r={p.r}
-            fill={p.fill}
-            className={p.animationClass}
+        {subtleBeings.map(s => (
+          <ellipse
+            key={s.id}
+            cx="50"
+            cy="50"
+            rx={s.rx}
+            ry={s.ry}
+            fill="none"
+            stroke="hsl(var(--muted-foreground))"
+            strokeWidth="0.3"
+            strokeDasharray="3 5"
+            className="animate-subtle-shimmer"
             style={{
-              animationDuration: p.duration,
-              animationDelay: p.delay,
+              animationDuration: s.duration,
+              animationDelay: s.delay,
+              transformOrigin: '50px 50px'
             }}
+          />
+        ))}
+      </g>
+
+      {/* Negative Energies */}
+      <g>
+        {negativeEntities.map((n) => (
+          <path
+            key={n.id}
+            d="M 0 0 L 5 2 L 2 5 L 0 0 Z"
+            fill="hsl(var(--destructive))"
+            className="animate-negative-jag"
+            style={{
+              '--start-x': `${n.startX}px`,
+              '--start-y': `${n.startY}px`,
+              '--end-x': `${n.endX}px`,
+              '--end-y': `${n.endY}px`,
+              animationDuration: n.duration,
+              animationDelay: n.delay,
+            } as React.CSSProperties}
           />
         ))}
       </g>
